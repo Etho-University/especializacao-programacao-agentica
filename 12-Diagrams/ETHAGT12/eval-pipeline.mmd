@@ -1,0 +1,21 @@
+%% ETHAGT12 — Pipeline de eval com CI
+flowchart LR
+    Change([mudança]) --> CI{"CI roda eval"}
+    CI --> Golden["golden cases"]
+    CI --> Bench["benchmark subset"]
+    Golden --> Judge["LLM-as-judge"]
+    Bench --> Judge
+    Judge --> Cmp{"regressão?"}
+    Cmp -- "sim" --> Block(["bloquear deploy"])
+    Cmp -- "não" --> Deploy(["deploy"])
+
+    classDef ch fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef ev fill:#fce7f3,stroke:#be185d,color:#000
+    classDef dec fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef ok fill:#dcfce7,stroke:#15803d,color:#000
+    classDef no fill:#fee2e2,stroke:#b91c1c,color:#000
+    class Change ch
+    class Golden,Bench,Judge ev
+    class CI,Cmp dec
+    class Deploy ok
+    class Block no

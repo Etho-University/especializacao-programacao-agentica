@@ -1,0 +1,8 @@
+%% ETHAGT09 — Actor model
+flowchart LR
+    A1["Ator 1<br/>(mailbox + estado privado)"] -- "msg async" --> A2["Ator 2<br/>(mailbox)"]
+    A2 -- "msg async" --> A3["Ator 3<br/>(mailbox)"]
+    A3 -- "msg async" --> A1
+
+    classDef actor fill:#dbeafe,stroke:#1e40af,color:#000
+    class A1,A2,A3 actor

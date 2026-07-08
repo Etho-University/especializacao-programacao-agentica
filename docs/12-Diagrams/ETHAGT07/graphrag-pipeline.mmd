@@ -1,0 +1,29 @@
+%% ETHAGT07 — Pipeline GraphRAG (Microsoft)
+flowchart LR
+    subgraph Build["Construção (offline)"]
+        direction TB
+        Docs[corpus de docs] --> Extract["Extração LLM<br/>entidades + relações"]
+        Extract --> Graph[("Knowledge Graph")]
+        Graph --> Comm["Detecção de comunidades<br/>(Leiden)"]
+        Comm --> Sum["Sumarização hierárquica<br/>(LLM por comunidade)"]
+    end
+
+    subgraph Query["Query (online)"]
+        direction TB
+        Q([pergunta]) --> Decide{"Tipo?"}
+        Decide -- "específica" --> Local["Local search<br/>entidades mencionadas + vizinhança"]
+        Decide -- "ampla" --> Global["Global search<br/>agrega resumos de comunidades"]
+        Local --> Ans([resposta])
+        Global --> Ans
+    end
+
+    Sum -.alimenta.-> Query
+
+    classDef build fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef query fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef store fill:#fef3c7,stroke:#b45309,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class Docs,Extract,Comm,Sum build
+    class Q,Decide,Local,Global query
+    class Graph store
+    class Ans term

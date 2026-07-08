@@ -1,0 +1,17 @@
+%% ETHAGT11 — Saga pattern (transação compensatória)
+flowchart TB
+    Start([iniciar]) --> S1["1. debitar(origem)"]
+    S1 -- "ok" --> S2["2. creditar(destino)"]
+    S2 -- "ok" --> Done([sucesso])
+    S2 -- "falha" --> C2["compensar 1: estornar(origem)"]
+    C2 --> Fail([falha recuperada])
+    S1 -- "falha" --> Fail
+
+    classDef ok fill:#dcfce7,stroke:#15803d,color:#000
+    classDef step fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef comp fill:#fee2e2,stroke:#b91c1c,color:#000
+    classDef term fill:#fef3c7,stroke:#b45309,color:#000
+    class Start,Done term
+    class S1,S2 step
+    class C2 comp
+    class Fail ok

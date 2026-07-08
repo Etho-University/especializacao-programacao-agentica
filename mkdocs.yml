@@ -1,0 +1,249 @@
+﻿# mkdocs.yml
+site_name: Programação Agêntica — Especialização Etho
+site_description: Especialização em Programação Agêntica — Universidade Etho
+site_author: Universidade Etho — Escola de Tecnologia
+site_url: https://etho-university.github.io/especializacao-programacao-agentica/
+
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: blue
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - toc.integrate
+    - search.highlight
+    - search.suggest
+  language: pt
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/etho/especializacao-programacao-agentica
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.tasklist
+  - pymdownx.magiclink
+  - pymdownx.snippets
+  - attr_list
+  - md_in_html
+
+docs_dir: docs
+
+nav:
+  - Início: index.md
+  - Sobre:
+    - Governança: sobre/governanca.md
+    - Roadmap: sobre/roadmap.md
+    - ADRs: sobre/adr-001.md
+  - Currículo:
+    - Grade Curricular: curriculo/grade.md
+    - Matriz de Competências: curriculo/competencias.md
+    - Mapa de Fases: curriculo/fases.md
+    - Rastreabilidade: curriculo/rastreabilidade.md
+  - Cursos:
+    - "ETHAGT01 — Fundamentos (Agentes LLM)":
+      - Apostila: 04-Apostilas/ETHAGT01/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT01/lab-01-react-em-50-linhas.md
+        - Lab 02: 05-Labs/ETHAGT01/lab-02-augmented-llm.md
+      - Projeto: 06-Projects/ETHAGT01/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT01/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT01/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT01/assignment-01.md
+      - Prova: 23-Exams/ETHAGT01/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT01/gabarito.md
+    - "ETHAGT02 — Tool Calling & ACI":
+      - Apostila: 04-Apostilas/ETHAGT02/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT02/lab-01-refatorando-tools.md
+        - Lab 02: 05-Labs/ETHAGT02/lab-02-tool-destrutiva-com-hitl.md
+      - Projeto: 06-Projects/ETHAGT02/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT02/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT02/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT02/assignment-01.md
+      - Prova: 23-Exams/ETHAGT02/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT02/gabarito.md
+    - "ETHAGT03 — Workflows Agênticos":
+      - Apostila: 04-Apostilas/ETHAGT03/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT03/lab-01-os-cinco-workflows.md
+        - Lab 02: 05-Labs/ETHAGT03/lab-02-composicao-de-workflows.md
+      - Projeto: 06-Projects/ETHAGT03/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT03/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT03/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT03/assignment-01.md
+      - Prova: 23-Exams/ETHAGT03/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT03/gabarito.md
+    - "ETHAGT04 — Reasoning & Planning":
+      - Apostila: 04-Apostilas/ETHAGT04/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT04/lab-01-plan-and-execute-vs-react.md
+        - Lab 02: 05-Labs/ETHAGT04/lab-02-reflexion-com-memoria.md
+      - Projeto: 06-Projects/ETHAGT04/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT04/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT04/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT04/assignment-01.md
+      - Prova: 23-Exams/ETHAGT04/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT04/gabarito.md
+    - "ETHAGT05 — Memória de Agentes":
+      - Apostila: 04-Apostilas/ETHAGT05/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT05/lab-01-checkpointer-em-postgres.md
+        - Lab 02: 05-Labs/ETHAGT05/lab-02-memoria-episodica.md
+      - Projeto: 06-Projects/ETHAGT05/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT05/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT05/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT05/assignment-01.md
+      - Prova: 23-Exams/ETHAGT05/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT05/gabarito.md
+    - "ETHAGT06 — RAG Agêntico":
+      - Apostila: 04-Apostilas/ETHAGT06/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT06/lab-01-diagnosticando-falhas.md
+        - Lab 02: 05-Labs/ETHAGT06/lab-02-agentic-rag-multi-hop.md
+      - Projeto: 06-Projects/ETHAGT06/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT06/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT06/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT06/assignment-01.md
+      - Prova: 23-Exams/ETHAGT06/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT06/gabarito.md
+    - "ETHAGT07 — KGs & Vector DBs":
+      - Apostila: 04-Apostilas/ETHAGT07/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT07/lab-01-vector-db-bake-off.md
+        - Lab 02: 05-Labs/ETHAGT07/lab-02-graphrag-em-neo4j.md
+      - Projeto: 06-Projects/ETHAGT07/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT07/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT07/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT07/assignment-01.md
+      - Prova: 23-Exams/ETHAGT07/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT07/gabarito.md
+    - "ETHAGT08 — MCP":
+      - Apostila: 04-Apostilas/ETHAGT08/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT08/lab-01-primeiro-mcp-server.md
+        - Lab 02: 05-Labs/ETHAGT08/lab-02-composicao-multi-server.md
+      - Projeto: 06-Projects/ETHAGT08/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT08/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT08/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT08/assignment-01.md
+      - Prova: 23-Exams/ETHAGT08/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT08/gabarito.md
+    - "ETHAGT09 — Comunicação Multi-Agente":
+      - Apostila: 04-Apostilas/ETHAGT09/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT09/lab-01-duas-arquiteturas-um-problema.md
+        - Lab 02: 05-Labs/ETHAGT09/lab-02-actor-model-com-handoffs.md
+      - Projeto: 06-Projects/ETHAGT09/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT09/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT09/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT09/assignment-01.md
+      - Prova: 23-Exams/ETHAGT09/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT09/gabarito.md
+    - "ETHAGT10 — Topologias Multi-Agente":
+      - Apostila: 04-Apostilas/ETHAGT10/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT10/lab-01-hierarchical-teams.md
+        - Lab 02: 05-Labs/ETHAGT10/lab-02-swarm-vs-supervisor.md
+      - Projeto: 06-Projects/ETHAGT10/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT10/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT10/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT10/assignment-01.md
+      - Prova: 23-Exams/ETHAGT10/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT10/gabarito.md
+    - "ETHAGT11 — Event-Driven & Orquestração":
+      - Apostila: 04-Apostilas/ETHAGT11/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT11/lab-01-agente-com-kafka.md
+        - Lab 02: 05-Labs/ETHAGT11/lab-02-workflow-duravel-temporal.md
+      - Projeto: 06-Projects/ETHAGT11/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT11/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT11/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT11/assignment-01.md
+      - Prova: 23-Exams/ETHAGT11/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT11/gabarito.md
+    - "ETHAGT12 — AgentOps & Avaliação":
+      - Apostila: 04-Apostilas/ETHAGT12/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT12/lab-01-traces-everywhere.md
+        - Lab 02: 05-Labs/ETHAGT12/lab-02-eval-automatizado.md
+      - Projeto: 06-Projects/ETHAGT12/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT12/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT12/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT12/assignment-01.md
+      - Prova: 23-Exams/ETHAGT12/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT12/gabarito.md
+    - "ETHAGT13 — Segurança & Governança":
+      - Apostila: 04-Apostilas/ETHAGT13/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT13/lab-01-red-team-de-um-agente-rag.md
+        - Lab 02: 05-Labs/ETHAGT13/lab-02-defesa-em-profundidade.md
+      - Projeto: 06-Projects/ETHAGT13/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT13/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT13/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT13/assignment-01.md
+      - Prova: 23-Exams/ETHAGT13/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT13/gabarito.md
+    - "ETHAGT14 — Escalabilidade & Distribuído":
+      - Apostila: 04-Apostilas/ETHAGT14/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT14/lab-01-cache-semantico.md
+        - Lab 02: 05-Labs/ETHAGT14/lab-02-sharding-por-tenant.md
+      - Projeto: 06-Projects/ETHAGT14/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT14/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT14/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT14/assignment-01.md
+      - Prova: 23-Exams/ETHAGT14/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT14/gabarito.md
+    - "ETHAGT15 — Meta-Agentes":
+      - Apostila: 04-Apostilas/ETHAGT15/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT15/lab-01-agente-que-escreve-agente.md
+        - Lab 02: 05-Labs/ETHAGT15/lab-02-otimizacao-com-dspy.md
+      - Projeto: 06-Projects/ETHAGT15/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT15/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT15/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT15/assignment-01.md
+      - Prova: 23-Exams/ETHAGT15/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT15/gabarito.md
+    - "ETHAGT16 — Sociedades & Autonomous Research":
+      - Apostila: 04-Apostilas/ETHAGT16/apostila.md
+      - Laboratórios:
+        - Lab 01: 05-Labs/ETHAGT16/lab-01-mini-sociedade.md
+        - Lab 02: 05-Labs/ETHAGT16/lab-02-autonomous-research-system.md
+      - Projeto: 06-Projects/ETHAGT16/projeto.md
+      - Exercícios: 07-Exercises/ETHAGT16/exercicios.md
+      - Gabarito (Exercícios): 07-Exercises/ETHAGT16/gabarito.md
+      - Avaliação (Rubrica): 08-Assignments/ETHAGT16/assignment-01.md
+      - Prova: 23-Exams/ETHAGT16/prova.md
+      - Gabarito (Prova): 23-Exams/ETHAGT16/gabarito.md
+  - Bibliotecas:
+    - Arquiteturas: bibliotecas/arquiteturas.md
+    - Padrões de Agentes: bibliotecas/padroes.md
+    - Workflows: bibliotecas/workflows.md
+    - RAG: bibliotecas/rag.md
+    - Memória: bibliotecas/memoria.md
+    - MCP: bibliotecas/mcp.md
+    - Prompt Library: bibliotecas/prompts.md
+    - Ferramentas: bibliotecas/ferramentas.md
+    - Glossário: bibliotecas/glossario.md
+  - Pesquisa:
+    - Master Index: pesquisa/master-index.md
+    - Papers: pesquisa/papers.md
+  - Avaliação:
+    - Provas Modulares: avaliacao/provas.md
+    - Prova Final Integradora: 23-Exams/final-exam.md
+    - Capstone: avaliacao/capstone.md
+    - Certificação: avaliacao/certificacao.md
+  - Template & Checklists: templates/README.md

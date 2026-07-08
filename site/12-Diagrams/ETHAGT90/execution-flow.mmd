@@ -1,0 +1,28 @@
+%% ETHAGT90 — Capstone: Fluxo de execução (sequência)
+flowchart TB
+    Start([pergunta]) --> Plan["1. Supervisor planeja<br/>(quais fontes, ordem)"]
+    Plan --> Par["2. Orchestrator-Workers<br/>(paralelo via NATS)"]
+    Par --> RA["researcher_arxiv"]
+    Par --> RG["researcher_github"]
+    Par --> RK["researcher_kb<br/>+ RAG agêntico"]
+    RA --> Syn["3. Synthesizer integra"]
+    RG --> Syn
+    RK --> Syn
+    Syn --> Eval{"4. Evaluator:<br/>completo?"}
+    Eval -- "não" --> Par
+    Eval -- "sim" --> Wri["5. Writer: rascunho"]
+    Wri --> Hitl{"6. HITL:<br/>humano aprova?"}
+    Hitl -- "rejeita/edita" --> Wri
+    Hitl -- "aprova" --> Pub["7. Publisher: relatório final"]
+    Pub --> Out([relatório + fontes])
+
+    classDef st fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef par fill:#fce7f3,stroke:#be185d,color:#000
+    classDef dec fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef hi fill:#fef3c7,stroke:#b45309,color:#000
+    classDef tm fill:#dcfce7,stroke:#15803d,color:#000
+    class Plan,RA,RG,RK,Syn,Wri,Pub st
+    class Par par
+    class Eval dec
+    class Hitl hi
+    class Start,Out tm

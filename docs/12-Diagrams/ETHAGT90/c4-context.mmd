@@ -1,0 +1,15 @@
+%% ETHAGT90 — Capstone: C4 Context (nível 1)
+flowchart LR
+    User["Usuário<br/>(pesquisador)"]
+    User -- "pergunta de pesquisa" --> System["PLATAFORMA AUTORESEARCH"]
+    System -- "relatório técnico + fontes" --> User
+    System -.busca.-> Arxiv[("arXiv API")]
+    System -.busca.-> Github[("GitHub API")]
+    System -.busca.-> Conf[("Confluence Etho")]
+
+    classDef user fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef sys fill:#fce7f3,stroke:#be185d,stroke-width:3px,color:#000
+    classDef ext fill:#fed7aa,stroke:#c2410c,color:#000
+    class User user
+    class System sys
+    class Arxiv,Github,Conf ext

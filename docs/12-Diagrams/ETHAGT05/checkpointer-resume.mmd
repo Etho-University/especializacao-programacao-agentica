@@ -1,0 +1,14 @@
+%% ETHAGT05 — Checkpointer: pausar e retomar
+flowchart LR
+    A1["Agente em execução<br/>(sessão 1)"] -- "estado serializado" --> CK[("Checkpointer<br/>Postgres")]
+    CK -- "thread_id" --> A2["Agente retoma<br/>(dias depois, sessão 2)"]
+    CK -- "mesmo thread_id" --> A3["Agente retoma<br/>(semana depois, sessão 3)"]
+    A1 -.interrupt.-> HITL["Humano aprova"]
+    HITL -- "resume" --> A1
+
+    classDef ag fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef ck fill:#fef3c7,stroke:#b45309,color:#000
+    classDef hu fill:#dcfce7,stroke:#15803d,color:#000
+    class A1,A2,A3 ag
+    class CK ck
+    class HITL hu

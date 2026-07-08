@@ -1,0 +1,13 @@
+%% ETHAGT10 — Swarm (handoffs descentralizados)
+flowchart LR
+    T["Triager"] -.-> S["Sales"]
+    T -.-> B["Billing"]
+    T -.-> Su["Support"]
+    S <-.-> B
+    B <-.-> Su
+    Su -.-> E["Escalation"]
+
+    classDef ag fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef esc fill:#fee2e2,stroke:#b91c1c,color:#000
+    class T,S,B,Su ag
+    class E esc

@@ -1,0 +1,17 @@
+%% ETHAGT02 — Matriz de risco de tools (reversibilidade × impacto)
+%% Classifica quando HITL é obrigatório
+flowchart TB
+    subgraph Chart["Matriz de Risco"]
+        direction TB
+        Hi_Impact_rev["ALTO impacto<br/>REVERSÍVEL<br/>ex.: update_profile<br/>HITL opcional"]
+        Hi_Impact_irrev["ALTO impacto<br/>IRREVERSÍVEL<br/>ex.: delete_account, deploy<br/>HITL OBRIGATÓRIO"]
+        Lo_Impact_rev["BAIXO impacto<br/>REVERSÍVEL<br/>ex.: get_order, search<br/>sem HITL"]
+        Lo_Impact_irrev["BAIXO impacto<br/>IRREVERSÍVEL<br/>ex.: log_event<br/>HITL opcional"]
+    end
+
+    classDef safe fill:#dcfce7,stroke:#15803d,color:#000
+    classDef warn fill:#fef3c7,stroke:#b45309,color:#000
+    classDef danger fill:#fee2e2,stroke:#b91c1c,color:#000
+    class Lo_Impact_rev safe
+    class Hi_Impact_rev,Lo_Impact_irrev warn
+    class Hi_Impact_irrev danger

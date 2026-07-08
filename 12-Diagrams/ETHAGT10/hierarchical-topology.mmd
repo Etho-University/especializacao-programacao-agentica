@@ -1,0 +1,16 @@
+%% ETHAGT10 — Hierarchical (3 níveis)
+flowchart TB
+    T["Top Supervisor"]
+    T --> SA["Sub-supervisor A"]
+    T --> SB["Sub-supervisor B"]
+    SA --> W1["Worker 1"]
+    SA --> W2["Worker 2"]
+    SB --> W3["Worker 3"]
+    SB --> W4["Worker 4"]
+
+    classDef top fill:#fce7f3,stroke:#be185d,color:#000
+    classDef sub fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef wk fill:#dbeafe,stroke:#1e40af,color:#000
+    class T top
+    class SA,SB sub
+    class W1,W2,W3,W4 wk

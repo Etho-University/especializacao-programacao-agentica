@@ -1,0 +1,20 @@
+%% ETHAGT15 — Loop de evolução (strategy evolver)
+flowchart LR
+    Cur["estratégia atual"] --> Mut["gerar variações"]
+    Mut --> Eval["avaliar em subset"]
+    Eval --> Sel{"melhor que atual?"}
+    Sel -- "sim" --> Replace["substituir"]
+    Sel -- "não" --> Cur
+    Replace --> Cur
+    Cur -.audit.-> H["HITL"]
+
+    classDef cu fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef mu fill:#fce7f3,stroke:#be185d,color:#000
+    classDef ev fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef se fill:#fef3c7,stroke:#b45309,color:#000
+    classDef hi fill:#dcfce7,stroke:#15803d,color:#000
+    class Cur cu
+    class Mut ev
+    class Eval ev
+    class Sel,Replace se
+    class H hi

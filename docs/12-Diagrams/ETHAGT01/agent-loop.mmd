@@ -1,0 +1,24 @@
+%% ETHAGT01 — O Agent Loop (ReAct)
+%% Fonte: Yao et al., ReAct (ICLR 2023, arXiv:2210.03629)
+flowchart TB
+    Start([query do usuário]) --> Think
+    
+    subgraph Loop["Agent Loop (max_steps)"]
+        direction TB
+        Think["Thought<br/>raciocínio sobre o estado"]
+        Think --> Act{"Action?"}
+        Act -- "tool_call" --> Tool[/"executar tool<br/>com args"/]
+        Tool --> Obs["Observation<br/>resultado da tool"]
+        Obs --> Think
+        Act -- "sem tool_call" --> Ans
+        Ans["Answer<br/>resposta final"]
+    end
+    
+    Ans --> End([retorna ao usuário])
+
+    classDef step fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef decide fill:#fef3c7,stroke:#b45309,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class Think,Tool,Obs,Ans step
+    class Act decide
+    class Start,End term

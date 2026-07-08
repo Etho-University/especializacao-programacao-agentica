@@ -1,0 +1,26 @@
+%% ETHAGT02 — Fluxo HITL para tool destrutiva
+%% O agente nunca tem acesso à tool real
+flowchart TB
+    Agent["Agente<br/>(loop)"] -- "chama request_send_email" --> Runtime["Runtime"]
+    Runtime -- "pausa + serializa estado" --> Human["Humano<br/>vê preview"]
+    Human -- "aprovar" --> Real["_send_email_real<br/>(não exposta ao agente)"]
+    Human -- "rejeitar" --> Reject["observação: rejeitado + motivo"]
+    Human -- "editar" --> Edit["aplicar edição → Real"]
+    Real --> Audit[("log de auditoria")]
+    Real --> Obs1["observação: enviado"]
+    Reject --> Agent
+    Obs1 --> Agent
+    Edit --> Audit
+
+    Agent -.não tem acesso.->xReal["_send_email_real ❌"]
+
+    classDef ag fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef rt fill:#fce7f3,stroke:#be185d,color:#000
+    classDef hu fill:#fef3c7,stroke:#b45309,color:#000
+    classDef rl fill:#dcfce7,stroke:#15803d,color:#000
+    classDef no fill:#fee2e2,stroke:#b91c1c,color:#000,stroke-dasharray:5
+    class Agent ag
+    class Runtime rt
+    class Human hu
+    class Real,Reject,Edit,Audit,Obs1 rl
+    class xReal no

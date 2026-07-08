@@ -1,0 +1,17 @@
+%% ETHAGT04 — Plan-and-Execute
+flowchart TB
+    P([problema]) --> Planner["Planner LLM"]
+    Planner --> Plan["plano<br/>[passo1, passo2, ...]"]
+    Plan --> Exec["Executor<br/>(percorre passos, chama tools)"]
+    Exec --> Rep{"Replanner:<br/>plano ainda ok?"}
+    Rep -- "sim" --> Out([resposta])
+    Rep -- "não" --> Planner
+
+    classDef pl fill:#fce7f3,stroke:#be185d,color:#000
+    classDef ex fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef rp fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class Planner pl
+    class Exec ex
+    class Rep rp
+    class P,Out term

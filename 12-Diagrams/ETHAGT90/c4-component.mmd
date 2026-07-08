@@ -1,0 +1,51 @@
+%% ETHAGT90 — Capstone: C4 Component (nível 3, do Agent Runtime)
+flowchart TB
+    subgraph RT["Agent Runtime (LangGraph)"]
+        direction TB
+        Sup["supervisor<br/>(planner + router)"]
+        
+        subgraph Workers
+            RA["researcher_arxiv"]
+            RG["researcher_github"]
+            RK["researcher_kb"]
+            Syn["synthesizer"]
+            Eva["evaluator"]
+            Wri["writer"]
+        end
+        
+        Hitl["HITL<br/>(interrupt + resume)"]
+        
+        subgraph Mem["memory"]
+            WM["working"]
+            EP["episodic"]
+            SE["semantic"]
+            PR["procedural"]
+        end
+        
+        subgraph Sec["security"]
+            IF["input_filter"]
+            OF["output_filter"]
+            TA["tool_allowlist"]
+        end
+        
+        Obs2["tracer + cost_meter"]
+        
+        Sup --> Workers
+        Workers <--> Mem
+        Workers <--> Sec
+        Sup <--> Hitl
+        Workers -.-> Obs2
+    end
+
+    classDef sup fill:#fce7f3,stroke:#be185d,stroke-width:2px,color:#000
+    classDef wk fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef hi fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef me fill:#fef3c7,stroke:#b45309,color:#000
+    classDef se fill:#fee2e2,stroke:#b91c1c,color:#000
+    classDef ob fill:#dcfce7,stroke:#15803d,color:#000
+    class Sup sup
+    class RA,RG,RK,Syn,Eva,Wri wk
+    class Hitl hi
+    class WM,EP,SE,PR me
+    class IF,OF,TA se
+    class Obs2 ob

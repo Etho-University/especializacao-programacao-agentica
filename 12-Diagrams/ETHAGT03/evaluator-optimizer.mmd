@@ -1,0 +1,16 @@
+%% ETHAGT03 — Workflow 5: Evaluator-Optimizer
+flowchart LR
+    I([input]) --> G["Generator<br/>(LLM: produzir)"]
+    G --> E{"Evaluator<br/>(LLM: avaliar vs critério)"}
+    E -- "não satisfaz<br/>+ feedback" --> G
+    E -- "satisfaz" --> O([saída final])
+    E -.max iter.-> Stop(["parar (teto)"])
+
+    classDef gen fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef ev fill:#fce7f3,stroke:#be185d,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    classDef stop fill:#fee2e2,stroke:#b91c1c,color:#000
+    class G gen
+    class E ev
+    class I,O term
+    class Stop stop

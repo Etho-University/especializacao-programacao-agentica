@@ -1,0 +1,10 @@
+%% ETHAGT09 — Blackboard pattern
+flowchart TB
+    A1["Agente 1"] <--> BB[("Blackboard<br/>(facts, hypotheses)")]
+    A2["Agente 2"] <--> BB
+    A3["Agente 3"] <--> BB
+
+    classDef ag fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef bb fill:#fed7aa,stroke:#c2410c,color:#000
+    class A1,A2,A3 ag
+    class BB bb

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "moodle-mcp": {
+      "command": "python",
+      "args": ["-m", "moodle_mcp.server"],
+      "env": {
+        "MOODLE_URL": "https://universidade-etho.moodlecloud.com/webservice/rest/server.php",
+        "MOODLE_TOKEN": "1a5d99c1741225c59dcd833d88a31c7a"
+      }
+    }
+  }
+}

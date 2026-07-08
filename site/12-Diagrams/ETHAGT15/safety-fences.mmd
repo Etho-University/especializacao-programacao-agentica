@@ -1,0 +1,28 @@
+%% ETHAGT15 — Safety fences para mudanças auto-propostas
+flowchart TB
+    Proposta["mudança proposta"] --> MG["Meta-Governor"]
+    MG --> Pol{"policy-as-code"}
+    Pol -- "vetar" --> Block(["bloquear"])
+    Pol -- "ok" --> Sand["Sandbox test"]
+    Sand --> P1{"passa?"}
+    P1 -- "não" --> Block
+    P1 -- "sim" --> Shadow["Shadow run"]
+    Shadow --> P2{"melhor?"}
+    P2 -- "não" --> Block
+    P2 -- "sim" --> Canary["Canary"]
+    Canary --> P3{"ok?"}
+    P3 -- "sim" --> Prod["Produção"]
+    P3 -- "não" --> Rollback(["Rollback"])
+
+    classDef pr fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef mg fill:#fce7f3,stroke:#be185d,color:#000
+    classDef po fill:#fef3c7,stroke:#b45309,color:#000
+    classDef st fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef ok fill:#dcfce7,stroke:#15803d,color:#000
+    classDef no fill:#fee2e2,stroke:#b91c1c,color:#000
+    class Proposta pr
+    class MG,Pol mg
+    class Sand,Shadow,Canary st
+    class P1,P2,P3 po
+    class Prod ok
+    class Block,Rollback no

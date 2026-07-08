@@ -1,0 +1,18 @@
+%% ETHAGT06 — Adaptive RAG
+flowchart TB
+    Q([pergunta]) --> C{"Classificador:<br/>precisa de retrieval?"}
+    C -- "não" --> Direct["Responder direto<br/>(LLM puro)"]
+    C -- "simples" --> R1["retrieve top-3"]
+    C -- "complexa" --> R2["retrieve +<br/>query rewrite"]
+    R1 --> Gen["Gerar resposta"]
+    R2 --> Gen
+    Direct --> Out([resposta])
+
+    classDef cls fill:#fce7f3,stroke:#be185d,color:#000
+    classDef rt fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef gen fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class C cls
+    class R1,R2,Direct rt
+    class Gen gen
+    class Q,Out term

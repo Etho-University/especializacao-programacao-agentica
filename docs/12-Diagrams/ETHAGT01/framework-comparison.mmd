@@ -1,0 +1,33 @@
+%% ETHAGT01 — Comparação estrutural: do zero vs framework
+%% O que cada camada abstrai/esconde
+flowchart LR
+    subgraph Puro["Python puro + SDK"]
+        direction TB
+        P1["prompt efetivo<br/>(você escreve)"]
+        P2["loop<br/>(você controla)"]
+        P3["estado<br/>(transparente)"]
+        P4["tools<br/>(você valida)"]
+        P1 --> P2 --> P3 --> P4
+    end
+    
+    subgraph FW["Framework (ex.: LangGraph)"]
+        direction TB
+        F1["prompt efetivo<br/>(framework adiciona)"]
+        F2["loop<br/>(abstraído)"]
+        F3["estado<br/>(serializado opaco)"]
+        F4["tools<br/>(wrappers)"]
+        F0["camada de abstração<br/>↴"]
+        F0 --> F1
+        F0 --> F2
+        F0 --> F3
+        F0 --> F4
+    end
+
+    Puro -.compara.-> FW
+
+    classDef pure fill:#dcfce7,stroke:#15803d,color:#000
+    classDef fw fill:#fef3c7,stroke:#b45309,color:#000
+    classDef abs fill:#fce7f3,stroke:#be185d,color:#000
+    class P1,P2,P3,P4 pure
+    class F1,F2,F3,F4 fw
+    class F0 abs
