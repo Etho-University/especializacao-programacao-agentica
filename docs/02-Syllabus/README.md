@@ -1,10 +1,6 @@
-# 02 — Syllabus
+# Syllabi
 
-Um syllabus por curso da Especialização (17 arquivos: 16 cursos + capstone). Cada arquivo segue o template em [`24-Templates/template-syllabus.md`](../24-Templates/template-syllabus.md) com as 16 seções padronizadas.
-
-## Status: Sprint 2 concluído ✓
-
-Todos os 17 syllabi produzidos (Versão 1.0 · Julho 2026).
+Cada curso da Especialização possui um syllabus com objetivos, carga horária, pré-requisitos, tópicos, bibliografia e competências desenvolvidas.
 
 ## Índice
 
@@ -51,23 +47,3 @@ Todos os 17 syllabi produzidos (Versão 1.0 · Julho 2026).
 | `ETHAGT90` | Capstone — Plataforma de Pesquisa Autônoma | 60 h | [syllabus](ETHAGT90-capstone-syllabus.md) |
 
 **Carga total**: ~440 h
-
-## Convenção de naming
-
-`ETHAGT[NN]-[tema-curto].md` — o número reflete a ordem na grade. Capstone usa `90`. Eletivos usam `ETHAGT-E[N]`.
-
-## Cobertura de competências (verificação)
-
-Cada syllabus declara competências desenvolvidas (C1-C6) em nível B/I/A. A rastreabilidade total está em [`01-Curriculum/mapa-competencias-modulos.md`](../01-Curriculum/mapa-competencias-modulos.md). Resumo da cobertura:
-
-- Todas as 6 competências têm ≥4 módulos desenvolvendo-as ✓
-- Todas as 6 competências têm ≥2 modalidades de avaliação medindo-as ✓
-- Capstone desenvolve **todas** em nível A ✓
-
-## Papers canônicos referenciados (amostra)
-
-ReAct · Reflexion · Toolformer · Tree of Thoughts · LATS · Self-Discover · ReWOO · Plan-and-Solve · LLMCompiler · RAG original · Self-RAG · CRAG · GraphRAG · MemGPT · Generative Agents · AutoGen · CAMEL · MetaGPT · AgentVerse · Voyager · DSPy · Promptbreeder · AI Scientist · SWE-bench · GAIA · τ-bench · AgentBench · WebArena · Survey arXiv:2601.12560 · Anthropic Building Effective Agents · MCP spec.
-
-## Próximo passo (Sprint 3)
-
-Produção da **Fase A completa** (`ETHAGT01-03`): apostila + slides + labs + exercícios + avaliação + gabaritos + diagramas + casos de estudo + fichas de pesquisa. Ver [`00-Governanca/roadmap.md`](../00-Governanca/roadmap.md).
