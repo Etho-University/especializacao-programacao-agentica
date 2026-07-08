@@ -53,6 +53,7 @@ nav:
     - Rastreabilidade: curriculo/rastreabilidade.md
   - Cursos:
     - "ETHAGT01 — Fundamentos (Agentes LLM)":
+      - Slides: 03-Slides/ETHAGT01-slides.md
       - Apostila: 04-Apostilas/ETHAGT01/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT01/lab-01-react-em-50-linhas.md
@@ -61,9 +62,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT01/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT01/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT01/assignment-01.md
-      - Prova: 23-Exams/ETHAGT01/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT01/gabarito.md
     - "ETHAGT02 — Tool Calling & ACI":
+      - Slides: 03-Slides/ETHAGT02-slides.md
       - Apostila: 04-Apostilas/ETHAGT02/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT02/lab-01-refatorando-tools.md
@@ -72,9 +72,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT02/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT02/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT02/assignment-01.md
-      - Prova: 23-Exams/ETHAGT02/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT02/gabarito.md
     - "ETHAGT03 — Workflows Agênticos":
+      - Slides: 03-Slides/ETHAGT03-slides.md
       - Apostila: 04-Apostilas/ETHAGT03/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT03/lab-01-os-cinco-workflows.md
@@ -83,9 +82,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT03/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT03/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT03/assignment-01.md
-      - Prova: 23-Exams/ETHAGT03/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT03/gabarito.md
     - "ETHAGT04 — Reasoning & Planning":
+      - Slides: 03-Slides/ETHAGT04-slides.md
       - Apostila: 04-Apostilas/ETHAGT04/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT04/lab-01-plan-and-execute-vs-react.md
@@ -94,9 +92,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT04/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT04/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT04/assignment-01.md
-      - Prova: 23-Exams/ETHAGT04/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT04/gabarito.md
     - "ETHAGT05 — Memória de Agentes":
+      - Slides: 03-Slides/ETHAGT05-slides.md
       - Apostila: 04-Apostilas/ETHAGT05/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT05/lab-01-checkpointer-em-postgres.md
@@ -105,9 +102,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT05/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT05/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT05/assignment-01.md
-      - Prova: 23-Exams/ETHAGT05/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT05/gabarito.md
     - "ETHAGT06 — RAG Agêntico":
+      - Slides: 03-Slides/ETHAGT06-slides.md
       - Apostila: 04-Apostilas/ETHAGT06/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT06/lab-01-diagnosticando-falhas.md
@@ -116,9 +112,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT06/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT06/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT06/assignment-01.md
-      - Prova: 23-Exams/ETHAGT06/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT06/gabarito.md
     - "ETHAGT07 — KGs & Vector DBs":
+      - Slides: 03-Slides/ETHAGT07-slides.md
       - Apostila: 04-Apostilas/ETHAGT07/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT07/lab-01-vector-db-bake-off.md
@@ -127,9 +122,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT07/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT07/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT07/assignment-01.md
-      - Prova: 23-Exams/ETHAGT07/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT07/gabarito.md
     - "ETHAGT08 — MCP":
+      - Slides: 03-Slides/ETHAGT08-slides.md
       - Apostila: 04-Apostilas/ETHAGT08/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT08/lab-01-primeiro-mcp-server.md
@@ -138,9 +132,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT08/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT08/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT08/assignment-01.md
-      - Prova: 23-Exams/ETHAGT08/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT08/gabarito.md
     - "ETHAGT09 — Comunicação Multi-Agente":
+      - Slides: 03-Slides/ETHAGT09-slides.md
       - Apostila: 04-Apostilas/ETHAGT09/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT09/lab-01-duas-arquiteturas-um-problema.md
@@ -149,9 +142,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT09/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT09/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT09/assignment-01.md
-      - Prova: 23-Exams/ETHAGT09/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT09/gabarito.md
     - "ETHAGT10 — Topologias Multi-Agente":
+      - Slides: 03-Slides/ETHAGT10-slides.md
       - Apostila: 04-Apostilas/ETHAGT10/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT10/lab-01-hierarchical-teams.md
@@ -160,9 +152,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT10/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT10/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT10/assignment-01.md
-      - Prova: 23-Exams/ETHAGT10/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT10/gabarito.md
     - "ETHAGT11 — Event-Driven & Orquestração":
+      - Slides: 03-Slides/ETHAGT11-slides.md
       - Apostila: 04-Apostilas/ETHAGT11/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT11/lab-01-agente-com-kafka.md
@@ -171,9 +162,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT11/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT11/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT11/assignment-01.md
-      - Prova: 23-Exams/ETHAGT11/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT11/gabarito.md
     - "ETHAGT12 — AgentOps & Avaliação":
+      - Slides: 03-Slides/ETHAGT12-slides.md
       - Apostila: 04-Apostilas/ETHAGT12/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT12/lab-01-traces-everywhere.md
@@ -182,9 +172,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT12/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT12/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT12/assignment-01.md
-      - Prova: 23-Exams/ETHAGT12/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT12/gabarito.md
     - "ETHAGT13 — Segurança & Governança":
+      - Slides: 03-Slides/ETHAGT13-slides.md
       - Apostila: 04-Apostilas/ETHAGT13/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT13/lab-01-red-team-de-um-agente-rag.md
@@ -193,9 +182,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT13/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT13/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT13/assignment-01.md
-      - Prova: 23-Exams/ETHAGT13/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT13/gabarito.md
     - "ETHAGT14 — Escalabilidade & Distribuído":
+      - Slides: 03-Slides/ETHAGT14-slides.md
       - Apostila: 04-Apostilas/ETHAGT14/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT14/lab-01-cache-semantico.md
@@ -204,9 +192,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT14/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT14/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT14/assignment-01.md
-      - Prova: 23-Exams/ETHAGT14/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT14/gabarito.md
     - "ETHAGT15 — Meta-Agentes":
+      - Slides: 03-Slides/ETHAGT15-slides.md
       - Apostila: 04-Apostilas/ETHAGT15/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT15/lab-01-agente-que-escreve-agente.md
@@ -215,9 +202,8 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT15/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT15/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT15/assignment-01.md
-      - Prova: 23-Exams/ETHAGT15/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT15/gabarito.md
     - "ETHAGT16 — Sociedades & Autonomous Research":
+      - Slides: 03-Slides/ETHAGT16-slides.md
       - Apostila: 04-Apostilas/ETHAGT16/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT16/lab-01-mini-sociedade.md
@@ -226,8 +212,56 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT16/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT16/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT16/assignment-01.md
+  - Professor (Acesso Restrito):
+    - Aviso: sobre/aviso-professor.md
+    - ETHAGT01:
+      - Prova: 23-Exams/ETHAGT01/prova.md
+      - Gabarito: 23-Exams/ETHAGT01/gabarito.md
+    - ETHAGT02:
+      - Prova: 23-Exams/ETHAGT02/prova.md
+      - Gabarito: 23-Exams/ETHAGT02/gabarito.md
+    - ETHAGT03:
+      - Prova: 23-Exams/ETHAGT03/prova.md
+      - Gabarito: 23-Exams/ETHAGT03/gabarito.md
+    - ETHAGT04:
+      - Prova: 23-Exams/ETHAGT04/prova.md
+      - Gabarito: 23-Exams/ETHAGT04/gabarito.md
+    - ETHAGT05:
+      - Prova: 23-Exams/ETHAGT05/prova.md
+      - Gabarito: 23-Exams/ETHAGT05/gabarito.md
+    - ETHAGT06:
+      - Prova: 23-Exams/ETHAGT06/prova.md
+      - Gabarito: 23-Exams/ETHAGT06/gabarito.md
+    - ETHAGT07:
+      - Prova: 23-Exams/ETHAGT07/prova.md
+      - Gabarito: 23-Exams/ETHAGT07/gabarito.md
+    - ETHAGT08:
+      - Prova: 23-Exams/ETHAGT08/prova.md
+      - Gabarito: 23-Exams/ETHAGT08/gabarito.md
+    - ETHAGT09:
+      - Prova: 23-Exams/ETHAGT09/prova.md
+      - Gabarito: 23-Exams/ETHAGT09/gabarito.md
+    - ETHAGT10:
+      - Prova: 23-Exams/ETHAGT10/prova.md
+      - Gabarito: 23-Exams/ETHAGT10/gabarito.md
+    - ETHAGT11:
+      - Prova: 23-Exams/ETHAGT11/prova.md
+      - Gabarito: 23-Exams/ETHAGT11/gabarito.md
+    - ETHAGT12:
+      - Prova: 23-Exams/ETHAGT12/prova.md
+      - Gabarito: 23-Exams/ETHAGT12/gabarito.md
+    - ETHAGT13:
+      - Prova: 23-Exams/ETHAGT13/prova.md
+      - Gabarito: 23-Exams/ETHAGT13/gabarito.md
+    - ETHAGT14:
+      - Prova: 23-Exams/ETHAGT14/prova.md
+      - Gabarito: 23-Exams/ETHAGT14/gabarito.md
+    - ETHAGT15:
+      - Prova: 23-Exams/ETHAGT15/prova.md
+      - Gabarito: 23-Exams/ETHAGT15/gabarito.md
+    - ETHAGT16:
       - Prova: 23-Exams/ETHAGT16/prova.md
-      - Gabarito (Prova): 23-Exams/ETHAGT16/gabarito.md
+      - Gabarito: 23-Exams/ETHAGT16/gabarito.md
   - Bibliotecas:
     - Arquiteturas: bibliotecas/arquiteturas.md
     - Padrões de Agentes: bibliotecas/padroes.md

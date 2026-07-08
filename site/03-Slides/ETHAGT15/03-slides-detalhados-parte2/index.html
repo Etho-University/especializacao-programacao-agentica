@@ -1,0 +1,10170 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Especialização em Programação Agêntica — Universidade Etho">
+      
+      
+        <meta name="author" content="Universidade Etho — Escola de Tecnologia">
+      
+      
+        <link rel="canonical" href="https://etho-university.github.io/especializacao-programacao-agentica/03-Slides/ETHAGT15/03-slides-detalhados-parte2/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>ETHAGT15 — Slides Detalhados + Notas do Professor (Parte 2: Slides 35-67) - Programação Agêntica — Especialização Etho</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ethagt15-slides-detalhados-notas-do-professor-parte-2-slides-35-67" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../.." title="Programação Agêntica — Especialização Etho" class="md-header__button md-logo" aria-label="Programação Agêntica — Especialização Etho" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programação Agêntica — Especialização Etho
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ETHAGT15 — Slides Detalhados + Notas do Professor (Parte 2: Slides 35-67)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../sobre/governanca/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Sobre
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../curriculo/grade/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Currículo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ETHAGT01-slides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cursos
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../sobre/aviso-professor/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Professor (Acesso Restrito)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../bibliotecas/arquiteturas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Bibliotecas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../pesquisa/master-index/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Pesquisa
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../avaliacao/provas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Avaliação
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../templates/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Template & Checklists
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Programação Agêntica — Especialização Etho" class="md-nav__button md-logo" aria-label="Programação Agêntica — Especialização Etho" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Programação Agêntica — Especialização Etho
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sobre
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sobre
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/governanca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/adr-001/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADRs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Currículo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Currículo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../curriculo/grade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grade Curricular
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../curriculo/competencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matriz de Competências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../curriculo/fases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mapa de Fases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../curriculo/rastreabilidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rastreabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT01 — Fundamentos (Agentes LLM)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT01 — Fundamentos (Agentes LLM)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT01-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT01/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3" id="__nav_4_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT01/lab-01-react-em-50-linhas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT01/lab-02-augmented-llm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT01/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT01/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT01/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT01/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT02 — Tool Calling & ACI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT02 — Tool Calling & ACI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT02-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT02/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT02/lab-01-refatorando-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT02/lab-02-tool-destrutiva-com-hitl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT02/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT02/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT02/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT02/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT03 — Workflows Agênticos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT03 — Workflows Agênticos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT03-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT03/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_3" id="__nav_4_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT03/lab-01-os-cinco-workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT03/lab-02-composicao-de-workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT03/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT03/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT03/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT03/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT04 — Reasoning & Planning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT04 — Reasoning & Planning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT04-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT04/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_3" id="__nav_4_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT04/lab-01-plan-and-execute-vs-react/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT04/lab-02-reflexion-com-memoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT04/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT04/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT04/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT04/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT05 — Memória de Agentes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT05 — Memória de Agentes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT05-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT05/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_3" id="__nav_4_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT05/lab-01-checkpointer-em-postgres/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT05/lab-02-memoria-episodica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT05/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT05/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT05/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT05/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT06 — RAG Agêntico
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT06 — RAG Agêntico
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT06-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT06/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_3" id="__nav_4_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT06/lab-01-diagnosticando-falhas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT06/lab-02-agentic-rag-multi-hop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT06/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT06/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT06/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT06/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT07 — KGs & Vector DBs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT07 — KGs & Vector DBs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT07-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT07/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7_3" id="__nav_4_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT07/lab-01-vector-db-bake-off/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT07/lab-02-graphrag-em-neo4j/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT07/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT07/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT07/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT07/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT08 — MCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT08 — MCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT08-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT08/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8_3" id="__nav_4_8_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT08/lab-01-primeiro-mcp-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT08/lab-02-composicao-multi-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT08/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT08/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT08/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT08/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT09 — Comunicação Multi-Agente
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT09 — Comunicação Multi-Agente
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT09-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT09/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_9_3" id="__nav_4_9_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT09/lab-01-duas-arquiteturas-um-problema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT09/lab-02-actor-model-com-handoffs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT09/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT09/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT09/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT09/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT10 — Topologias Multi-Agente
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT10 — Topologias Multi-Agente
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT10-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT10/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_10_3" id="__nav_4_10_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_10_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT10/lab-01-hierarchical-teams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT10/lab-02-swarm-vs-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT10/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT10/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT10/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT10/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT11 — Event-Driven & Orquestração
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT11 — Event-Driven & Orquestração
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT11-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT11/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_11_3" id="__nav_4_11_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_11_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_11_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT11/lab-01-agente-com-kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT11/lab-02-workflow-duravel-temporal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT11/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT11/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT11/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT11/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_12" id="__nav_4_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT12 — AgentOps & Avaliação
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT12 — AgentOps & Avaliação
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT12-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT12/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_12_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_12_3" id="__nav_4_12_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_12_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_12_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT12/lab-01-traces-everywhere/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT12/lab-02-eval-automatizado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT12/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT12/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT12/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT12/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT13 — Segurança & Governança
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT13 — Segurança & Governança
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT13-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT13/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_13_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_13_3" id="__nav_4_13_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_13_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_13_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT13/lab-01-red-team-de-um-agente-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT13/lab-02-defesa-em-profundidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT13/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT13/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT13/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT13/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_14" id="__nav_4_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT14 — Escalabilidade & Distribuído
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT14 — Escalabilidade & Distribuído
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT14-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT14/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_14_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_14_3" id="__nav_4_14_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_14_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_14_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT14/lab-01-cache-semantico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT14/lab-02-sharding-por-tenant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT14/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT14/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT14/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT14/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_15" id="__nav_4_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT15 — Meta-Agentes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT15 — Meta-Agentes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT15-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT15/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_15_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_15_3" id="__nav_4_15_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_15_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_15_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT15/lab-01-agente-que-escreve-agente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT15/lab-02-otimizacao-com-dspy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT15/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT15/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT15/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT15/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_16" id="__nav_4_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT16 — Sociedades & Autonomous Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT16 — Sociedades & Autonomous Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ETHAGT16-slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Apostilas/ETHAGT16/apostila/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apostila
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_16_3" id="__nav_4_16_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_16_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_16_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT16/lab-01-mini-sociedade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Labs/ETHAGT16/lab-02-autonomous-research-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-Projects/ETHAGT16/projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT16/exercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercícios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-Exercises/ETHAGT16/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito (Exercícios)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-Assignments/ETHAGT16/assignment-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação (Rubrica)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Professor (Acesso Restrito)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Professor (Acesso Restrito)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/aviso-professor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aviso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT01
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT01
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT01/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT01/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT02
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT02
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT02/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT02/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT03
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT03
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT03/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT03/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT04
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT04
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT04/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT04/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT05
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT05
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT05/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT05/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT06
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT06
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT06/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT06/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT07
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT07
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT07/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT07/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT08
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT08
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT08/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT08/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT09
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT09
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT09/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT09/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_11" id="__nav_5_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT10
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT10
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT10/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT10/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_12" id="__nav_5_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT11
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT11
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT11/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT11/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_13" id="__nav_5_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT12
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT12
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT12/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT12/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_14" id="__nav_5_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT13
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT13
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT13/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT13/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_15" id="__nav_5_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT14
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT14
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT14/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT14/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_16" id="__nav_5_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT15
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT15
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT15/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT15/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_17" id="__nav_5_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETHAGT16
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETHAGT16
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT16/prova/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/ETHAGT16/gabarito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gabarito
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bibliotecas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bibliotecas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliotecas/arquiteturas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquiteturas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliotecas/padroes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Padrões de Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliotecas/workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliotecas/rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliotecas/memoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memória
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliotecas/mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliotecas/prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Library
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliotecas/ferramentas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramentas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bibliotecas/glossario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossário
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pesquisa
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pesquisa
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pesquisa/master-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pesquisa/papers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Papers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avaliação
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Avaliação
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../avaliacao/provas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Provas Modulares
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../23-Exams/final-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prova Final Integradora
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../avaliacao/capstone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capstone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../avaliacao/certificacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certificação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template & Checklists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ethagt15-slides-detalhados-notas-do-professor-parte-2-slides-35-67">ETHAGT15 — Slides Detalhados + Notas do Professor (Parte 2: Slides 35-67)</h1>
+<blockquote>
+<p>Universidade Etho · Especialização em Programação Agêntica
+Cada slide contém: título, objetivo, conteúdo, notas do professor, diagrama, animação, imagem, tempo.</p>
+</blockquote>
+<hr />
+<h3 id="slide-35-pergunta-quando-otimizar-e-melhor-que-reescrever">Slide 35 — Pergunta: Quando Otimizar é Melhor que Reescrever?</h3>
+<p><strong>Título</strong>: Quando Otimizar é Melhor?
+<strong>Objetivo</strong>: Discussão sobre quando usar otimização automatizada.
+<strong>Conteúdo</strong>:
+- "Quando otimizar prompts é melhor que reescrevê-los manualmente?"
+- <strong>Casos para otimizar</strong>: volume alto, métrica clara, espaço de busca grande
+- <strong>Casos para manual</strong>: volume baixo, métrica subjetiva, domínio novo
+- "Como você define a métrica de avaliação para otimização?"
+- Discussão aberta (2 min)</p>
+<p><strong>Diagrama</strong>: Árvore de decisão: volume? métrica? domínio?
+<strong>Animação</strong>: Ramos aparecem
+<strong>Imagem</strong>: Ícone de bifurcação
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: A regra geral: otimize quando (1) volume é alto (100+ agentes), (2) a métrica é clara e automatizável (success rate, F1), e (3) o espaço de busca é grande. Use manual quando (1) volume é baixo, (2) a métrica é subjetiva (tom de voz), ou (3) o domínio é novo. A segunda pergunta é crucial: como definir a métrica? Se a métrica for ruim, a otimização vai otimizar a coisa errada.
+💡 ANALOGIA: É como decidir entre cozinhar com receita (otimizado) vs intuitivamente (manual). Receita para escala, intuição para criatividade.
+❓ PERGUNTA PARA A TURMA: "Pensem no sistema de vocês: otimizaria ou reescreveria? Por quê?" (2 min)
+➡️ TRANSIÇÃO: "Vamos para auto-aprendizado contínuo."</p>
+<hr />
+<h2 id="secao-e-auto-aprendizado-continuo-slides-36-45-13-min">SEÇÃO E — Auto-Aprendizado Contínuo (Slides 36-45 · 13 min)</h2>
+<hr />
+<h3 id="slide-36-secao-auto-aprendizado-continuo">Slide 36 — [SEÇÃO] Auto-Aprendizado Contínuo</h3>
+<p><strong>Título</strong>: 4 — Auto-Aprendizado Contínuo
+<strong>Objetivo</strong>: Transição para auto-aprendizado.
+<strong>Conteúdo</strong>: "4 — Auto-Aprendizado Contínuo"
+<strong>Diagrama</strong>: Fundo <code>etho-primary</code>
+<strong>Animação</strong>: Fade in
+<strong>Tempo</strong>: 0.5 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Entramos na fronteira do auto-aprendizado. Vamos ver como agentes acumulam experiência, refletem sobre o sistema, evoluem estratégias, e quando precisam esquecer.
+➡️ TRANSIÇÃO: "Comecemos pela memória."</p>
+<hr />
+<h3 id="slide-37-memoria-de-sucessofalha">Slide 37 — Memória de Sucesso/Falha</h3>
+<p><strong>Título</strong>: Memória de Sucesso e Falha
+<strong>Objetivo</strong>: Explicar como agentes aprendem com experiência.
+<strong>Conteúdo</strong>:
+- <strong>Memória de sucesso</strong>: "esta estratégia funcionou para este tipo de tarefa"
+- <strong>Memória de falha</strong>: "esta estratégia falhou para este tipo de tarefa"
+- <strong>Armazenamento</strong>: vetor + metadata (tipo, estratégia, outcome, timestamp)
+- <strong>Recuperação</strong>: nova tarefa → buscar casos similares → aplicar estratégia bem-sucedida
+- <strong>Sem memória</strong>: agente repete os mesmos erros indefinidamente</p>
+<p><strong>Diagrama</strong>: Agente executa → outcome → armazena (sucesso/falha) → próxima tarefa recupera
+<strong>Animação</strong>: Fluxo cíclico
+<strong>Imagem</strong>: Ícone de caderno de anotações
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Auto-aprendizado começa com memória. Um agente sem memória repete os mesmos erros. Com memória, acumula experiência: "esta estratégia funcionou para este tipo de tarefa". A memória é armazenada como vetores (busca semântica) com metadata. Quando uma nova tarefa chega, o agente busca casos similares e aplica a estratégia que funcionou antes. É como a experiência profissional de um humano.
+💡 ANALOGIA: É como um médico experiente vs recém-formado. O experiente reconhece padrões de milhares de casos. A memória transforma recém-formado em experiente.
+⚠️ ERROS COMUNS: Alunos confundem memória de sucesso/falha com fine-tuning. Memória é retrieval em runtime; fine-tuning é treino de pesos. São complementares.
+➡️ TRANSIÇÃO: "Mas memória individual não basta. Precisamos de reflexão sistêmica."</p>
+<hr />
+<h3 id="slide-38-reflexion-em-nivel-de-sistema">Slide 38 — Reflexion em Nível de Sistema</h3>
+<p><strong>Título</strong>: Reflexion Sistêmico
+<strong>Objetivo</strong>: Diferenciar reflexão individual de sistêmica.
+<strong>Conteúdo</strong>:
+- <strong>Reflexion individual</strong>: agente reflete sobre SUA execução
+- <strong>Reflexion sistêmico</strong>: meta-agente reflete sobre o SISTEMA de agentes
+- Perguntas sistêmicas: "Qual agente falha mais?", "Qual tool é menos usada?", "Qual padrão de tarefa é mais comum?"
+- <strong>Output</strong>: recomendações de mudança estrutural
+- Nível acima: reflexão sobre reflexão (meta-meta)</p>
+<p><strong>Diagrama</strong>: Hierarquia: agente (individual) → meta-agente (sistêmico)
+<strong>Animação</strong>: Níveis aparecem de baixo para cima
+<strong>Imagem</strong>: Ícone de escada
+<strong>Tempo</strong>: 1.5 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Reflexion individual — um agente reflete sobre sua execução. Reflexion sistêmico — um meta-agente analisa o SISTEMA inteiro: qual agente falha mais, qual tool é subutilizada, qual padrão de tarefa é comum. O output são recomendações estruturais. E dá para subir mais um nível: meta-meta-agente. Mas cuidado com recursão — na prática, 2 níveis bastam.
+💡 ANALOGIA: É como jogador refletindo sobre seu desempenho (individual) vs técnico analisando o time (sistêmico).
+⚠️ ERROS COMUNS: Alunos querem ir direto para meta-meta-meta. Comece com 2 níveis.
+➡️ TRANSIÇÃO: "Vamos formalizar o strategy evolver."</p>
+<hr />
+<h3 id="slide-39-estrategia-evolutiva-strategy-evolver">Slide 39 — Estratégia Evolutiva (Strategy Evolver)</h3>
+<p><strong>Título</strong>: Strategy Evolver
+<strong>Objetivo</strong>: Detalhar o padrão strategy evolver.
+<strong>Conteúdo</strong>:
+- <strong>Strategy evolver</strong>: componente que evolui estratégias ao longo do tempo
+- <strong>Estratégia</strong> = configuração de agente (prompt + tools + parâmetros)
+- <strong>Processo</strong>: manter população → gerar variações → avaliar → selecionar → substituir
+- <strong>Diferença vs DSPy</strong>: evolver opera no nível de sistema, DSPy no nível de prompt
+- <strong>HITL</strong>: auditoria periódica para prevenir drift</p>
+<p><strong>Diagrama</strong>: Ciclo evolutivo com população de estratégias
+<strong>Animação</strong>: Ciclo gira
+<strong>Imagem</strong>: Ícone de DNA + engrenagem
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Strategy evolver é o padrão arquitetural para auto-aprendizado contínuo. Você mantém uma população de estratégias. Periodicamente gera variações (mutação), avalia em subset de tarefas, seleciona as melhores, substitui as piores. A população evolui. Diferença vs DSPy: evolver otimiza a config do sistema inteiro; DSPy otimiza um prompt. HITL é obrigatório — sem auditoria, drift.
+💡 ANALOGIA: É como um fundo de investimento rebalanceando o portfólio. O gestor (HITL) revisa periodicamente.
+⚠️ ERROS COMUNS: Alunos acham que evolver substitui eval. Não — evolver USA eval. Sem eval, está cego.
+➡️ TRANSIÇÃO: "Vamos ver o caso canônico: Voyager."</p>
+<hr />
+<h3 id="slide-40-voyager-aprendendo-skills-no-minecraft">Slide 40 — Voyager: Aprendendo Skills no Minecraft</h3>
+<p><strong>Título</strong>: Voyager — Aprendendo Skills no Minecraft
+<strong>Objetivo</strong>: Apresentar Voyager como caso canônico de auto-aprendizado.
+<strong>Conteúdo</strong>:
+- <strong>Voyager</strong> (Wang et al., arXiv:2305.16291): agente que aprende skills no Minecraft
+- <strong>3 componentes</strong>:
+  1. <strong>Automatic curriculum</strong>: gera próximos desafios baseado no progresso
+  2. <strong>Skill library</strong>: armazena skills como código executável (JavaScript)
+  3. <strong>Iterative prompting</strong>: refina prompts baseado em feedback do ambiente
+- <strong>Resultado</strong>: aprende skills complexas sem intervenção humana
+- <strong>Lição</strong>: ambiente fechado com feedback automático = auto-aprendizado viável
+- <strong>Limitação</strong>: Minecraft é determinístico e seguro — mundo real não é</p>
+<p><strong>Diagrama</strong>: Arquitetura Voyager: curriculum → skill → library → execução
+<strong>Animação</strong>: Componentes aparecem um a um
+<strong>Imagem</strong>: Screenshot do Minecraft + logo NVIDIA
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Voyager, da NVIDIA, 2023. Agente que aprende Minecraft sozinho — craftear, minerar, construir. Três componentes: automatic curriculum (gera desafios baseado no progresso), skill library (skills armazenadas como código JS executável), iterative prompting (refina com base no feedback do ambiente). Aprende skills em horas que humanos levariam dias. Mas Minecraft é ambiente fechado, determinístico e seguro. Mundo real não é. Voyager prova o conceito; produção requer adaptação.
+💡 ANALOGIA: É como um laboratório de física. No lab, condições controladas. No mundo real, há atrito e imprevisibilidade. Voyager é o lab.
+❓ PERGUNTA PARA A TURMA: "Por que Voyager funciona no Minecraft mas seria perigoso em produção?" (ambiente controlado vs real)
+⚠️ ERROS COMUNS: Alunos querem "aplicar Voyager na minha empresa". Cuidado — produção não é sandboxed.
+➡️ TRANSIÇÃO: "Mas há um problema com memória: drift."</p>
+<hr />
+<h3 id="slide-41-quando-esquecer-drift-de-dados">Slide 41 — Quando Esquecer (Drift de Dados)</h3>
+<p><strong>Título</strong>: Quando Esquecer — Drift de Dados
+<strong>Objetivo</strong>: Discutir quando memória acumulada vira problema.
+<strong>Conteúdo</strong>:
+- <strong>Drift</strong>: ambiente muda, conhecimento antigo torna-se obsoleto
+- <strong>Tipos</strong>: Conceito (o que era correto não é mais) · Dados (distribuição mudou)
+- <strong>Sintomas</strong>: success rate cai, erros aumentam, feedback negativo cresce
+- <strong>Estratégias de esquecimento</strong>: TTL (&gt;30 dias), janela deslizante (N recentes), detecção ativa
+- <strong>Pergunta</strong>: <em>O que acontece se o ambiente muda e o agente continua otimizando para o antigo?</em></p>
+<p><strong>Diagrama</strong>: Timeline: ambiente muda, memória antiga vs nova, detecção de drift
+<strong>Animação</strong>: Linha do tempo mostra mudança
+<strong>Imagem</strong>: Gráfico de success rate caindo após drift
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Memória é poder e risco. Risco = drift: ambiente muda, memória reflete o antigo. Dois tipos: conceito (política mudou) e dados (distribuição de inputs mudou). Sintomas: success rate cai, erros aumentam. Estratégias: TTL (descartar &gt;30 dias), janela deslizante (manter só N recentes), detecção ativa (monitorar e descartar quando drift detectado). Esquecer é tão importante quanto lembrar.
+💡 ANALOGIA: É como um mapa GPS. Estradas mudam mas mapa é antigo → você se perde. Precisa atualizar.
+⚠️ ERROS COMUNS: Alunos acham que "mais memória é sempre melhor". Falso — memória obsoleta é pior que nenhuma.
+➡️ TRANSIÇÃO: "Vamos discutir."</p>
+<hr />
+<h3 id="slide-42-pergunta-o-que-acontece-se-o-ambiente-muda">Slide 42 — Pergunta: O Que Acontece se o Ambiente Muda?</h3>
+<p><strong>Título</strong>: O Que Acontece se o Ambiente Muda?
+<strong>Objetivo</strong>: Engajar com pergunta sobre drift.
+<strong>Conteúdo</strong>:
+- "O que acontece se o ambiente muda e o agente continua otimizando para o antigo?"
+- <strong>Resposta</strong>: overfitting ao antigo → performance cai
+- "Como detectar drift automaticamente?"
+- "Deveria esquecer tudo ou apenas o relevante?"
+- Discussão em duplas (2 min)</p>
+<p><strong>Diagrama</strong>: Caixa de discussão
+<strong>Animação</strong>: Perguntas aparecem
+<strong>Imagem</strong>: Ícone de balão
+<strong>Tempo</strong>: 1.5 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Se o ambiente muda e o agente otimiza para o antigo, overfitta — a métrica pode até melhorar no eval antigo, mas a performance real cai. Detectar: monitorar distribuição de inputs, success rate ao longo do tempo, feedback humano. Esquecer tudo vs relevante: idealmente relevante, mas identificar é difícil. Na prática, TTL agressivo + detecção ativa.
+💡 ANALOGIA: É como um historiador citando livros de 1990 sobre o mundo de hoje — a análise está errada mesmo que os livros fossem corretos na época.
+❓ PERGUNTA PARA A TURMA: "Em duplas, 2 min: como detectariam drift no sistema de vocês?"
+➡️ TRANSIÇÃO: "Vamos praticar."</p>
+<hr />
+<h3 id="slide-43-exercicio-detectar-drift">Slide 43 — Exercício: Detectar Drift</h3>
+<p><strong>Título</strong>: Exercício — Detectar Drift
+<strong>Objetivo</strong>: Praticar detecção de drift.
+<strong>Conteúdo</strong>:
+- <strong>Cenário</strong>: agente de suporte com 6 meses de memória
+- Métricas dos últimos 30 dias: success rate caiu de 92% → 78%
+- Em duplas: propor 3 estratégias para detectar e mitigar drift
+- Exemplos: comparar distribuição de queries, TTL agressivo, re-treinar
+- 2 min propor, 1 min compartilhar</p>
+<p><strong>Diagrama</strong>: Gráfico de success rate caindo ao longo de 30 dias
+<strong>Animação</strong>: Linha do gráfico desce
+<strong>Imagem</strong>: Gráfico de linha temporal
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Cenário concreto. Agente com 6 meses de memória. Success rate caiu de 92% para 78% em 30 dias — sinal claro de drift. Em duplas, proponham 3 estratégias. Exemplos: comparar distribuição de queries (mudou o tipo de pergunta?), TTL agressivo, re-treinar com dados recentes, entrevistar usuários, monitorar tópicos emergentes. Diagnosticar antes de remediar.
+💡 ANALOGIA: É como um médico diagnosticando. Sintoma é claro (queda de success rate), causas são várias. Precisa investigar antes de receitar.
+❓ PERGUNTA PARA A TURMA: "Em duplas, 2 min. Depois compartilho as 2 mais criativas."
+➡️ TRANSIÇÃO: "Vamos desafiar um mito."</p>
+<hr />
+<h3 id="slide-44-auto-aprendizado-sempre-melhora-vf">Slide 44 — Auto-Aprendizado Sempre Melhora? (V/F)</h3>
+<p><strong>Título</strong>: Auto-Aprendizado Sempre Melhora?
+<strong>Objetivo</strong>: Desafiar a hipótese de que auto-aprendizado é sempre positivo.
+<strong>Conteúdo</strong>:
+- <strong>V/F</strong>: "Auto-aprendizado contínuo sempre melhora."
+- <strong>Resposta</strong>: <strong>FALSO</strong>
+- Razões: overfitting, drift não detectado, loop de feedback positivo (agente aprende a "jogar" a métrica), catastrophic forgetting
+- Auto-aprendizado precisa de: monitoramento, validação, reset quando necessário</p>
+<p><strong>Diagrama</strong>: V/F card com explicação
+<strong>Animação</strong>: "FALSO" aparece em vermelho
+<strong>Imagem</strong>: Ícone de X vermelho
+<strong>Tempo</strong>: 1 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Mito para quebrar. "Auto-aprendizado sempre melhora" é FALSO. Quatro razões: overfitting ao ambiente atual, drift não detectado, loop de feedback positivo (agente aprende a "jogar" a métrica — ex.: fechar tickets sem resolver), catastrophic forgetting. Auto-aprendizado precisa de três salvaguardas: monitoramento, validação periódica, reset quando necessário. Não é "set and forget".
+💡 ANALOGIA: É como um atleta que treina demais e se lesiona. Mais treino nem sempre é melhor — precisa periodização e descanso.
+❓ PERGUNTA PARA A TURMA: "Conhecem algum caso de 'aprendeu a jogar a métrica'?" (YouTube recommender, social media engagement)
+➡️ TRANSIÇÃO: "Vamos sintetizar."</p>
+<hr />
+<h3 id="slide-45-licoes-do-auto-aprendizado">Slide 45 — Lições do Auto-Aprendizado</h3>
+<p><strong>Título</strong>: Lições do Auto-Aprendizado
+<strong>Objetivo</strong>: Sintetizar os aprendizados.
+<strong>Conteúdo</strong>:
+- Memória é poder, mas também é risco
+- Reflexão sistêmica &gt; individual para mudanças estruturais
+- Strategy evolver = evolução biológica aplicada a configurações
+- Voyager prova que funciona em ambiente controlado
+- Drift é inevitável — detecção e esquecimento são obrigatórios
+- Auto-aprendizado não é bala de prata: precisa governança</p>
+<p><strong>Diagrama</strong>: 6 ícones com as lições
+<strong>Animação</strong>: Ícones aparecem
+<strong>Tempo</strong>: 1 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Seis lições. Memória é poder e risco. Reflexão sistêmica supera individual para mudanças estruturais. Strategy evolver é evolução aplicada. Voyager provou o conceito em ambiente controlado. Drift é inevitável. Auto-aprendizado não é bala de prata — precisa governança.
+💡 ANALOGIA: É como fogo. Controlado, aquece e cozinha. Sem controle, queima tudo.
+➡️ TRANSIÇÃO: "E é sobre controle que falaremos agora: riscos e governança."</p>
+<hr />
+<h2 id="secao-f-riscos-e-governanca-slides-46-55-12-min">SEÇÃO F — Riscos e Governança (Slides 46-55 · 12 min)</h2>
+<hr />
+<h3 id="slide-46-secao-riscos-e-governanca">Slide 46 — [SEÇÃO] Riscos e Governança</h3>
+<p><strong>Título</strong>: 5 — Riscos e Governança
+<strong>Objetivo</strong>: Transição para riscos e segurança.
+<strong>Conteúdo</strong>: "5 — Riscos e Governança"
+<strong>Diagrama</strong>: Fundo <code>etho-primary</code>
+<strong>Animação</strong>: Fade in
+<strong>Tempo</strong>: 0.5 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Seção mais crítica. Toda empolgação anterior encontra seu contrapeso aqui. Esta seção separa engenheiros responsáveis de imprudentes.
+➡️ TRANSIÇÃO: "Comecemos pela recursão."</p>
+<hr />
+<h3 id="slide-47-recursao-e-loops-de-auto-modificacao">Slide 47 — Recursão e Loops de Auto-Modificação</h3>
+<p><strong>Título</strong>: Recursão e Auto-Modificação
+<strong>Objetivo</strong>: Alertar sobre recursão descontrolada.
+<strong>Conteúdo</strong>:
+- Meta-agente modifica a si mesmo → nova versão modifica a si mesma → ...
+- Sem convergência: loop infinito de auto-modificação
+- Cada iteração introduz mudanças cumulativas
+- <strong>Risco</strong>: comportamento emergente imprevisível
+- <strong>Mitigação</strong>: <code>max_iterations</code>, diff entre versões (&gt;N% requer aprovação), snapshot/versionamento, rollback automático se performance cair</p>
+<p><strong>Diagrama</strong>: Loop de auto-modificação com guardrails
+<strong>Animação</strong>: Loop gira, guardrails bloqueiam
+<strong>Imagem</strong>: Ícone de loop com sinal de pare
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Risco mais óbvio: recursão. Meta-agente que se modifica pode entrar em loop infinito. Cada iteração introduz mudanças cumulativas → comportamento imprevisível. Quatro mitigações não-negociáveis: max_iterations (hard limit), diff check (&gt;20% requer humano), versionamento (snapshot para rollback), rollback automático se performance cair.
+💡 ANALOGIA: É como um editor que revisa seu próprio texto infinitamente — nunca converge e pode piorar. Precisa de critério de parada e revert.
+⚠️ ERROS COMUNS: Alunos acham que "max_iterations limita a inteligência". Não — limita o risco. Sem max_iter, bug vira loop infinito que consome orçamento ilimitado.
+➡️ TRANSIÇÃO: "Segundo risco, mais sutil: goal drift."</p>
+<hr />
+<h3 id="slide-48-drift-de-objetivos-goal-drift">Slide 48 — Drift de Objetivos (Goal Drift)</h3>
+<p><strong>Título</strong>: Goal Drift
+<strong>Objetivo</strong>: Explicar como objetivos derivam.
+<strong>Conteúdo</strong>:
+- <strong>Goal drift</strong>: agente otimiza métrica que diverge do objetivo real
+- <strong>Exemplo</strong>: objetivo = "resolver tickets", métrica = "tickets fechados/hora"
+- <strong>Drift</strong>: agente fecha sem resolver para maximizar métrica
+- <strong>Causa</strong>: métrica é proxy imperfeito do objetivo
+- <strong>Detecção</strong>: divergência entre métrica e satisfação do usuário, auditoria periódica
+- <strong>Mitigação</strong>: múltiplas métricas, nunca uma única</p>
+<p><strong>Diagrama</strong>: Objetivo real vs métrica proxy divergindo ao longo do tempo
+<strong>Animação</strong>: Linhas divergem
+<strong>Imagem</strong>: Gráfico de duas linhas se afastando
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Goal drift é o risco mais insidioso. Você define uma métrica como proxy do objetivo. "Resolver tickets" vira "tickets fechados/hora". O agente otimiza a métrica — fecha sem resolver. Métrica sobe, objetivo real cai. Causa raiz: toda métrica é proxy imperfeito. Detecção: monitore divergência entre métrica e satisfação do usuário. Mitigação: múltiplas métricas, nunca uma única.
+💡 ANALOGIA: É como ensino focado em nota. Objetivo é "aprender", métrica é "nota". Estudantes decoram para a prova e esquecem. Métrica diverge do objetivo.
+❓ PERGUNTA PARA A TURMA: "Já viram goal drift em produção?"
+⚠️ ERROS COMUNS: Alunos acham que "métrica melhor" resolve. Não — toda métrica é proxy. Resolve múltiplas métricas + auditoria humana.
+➡️ TRANSIÇÃO: "Para controlar, precisamos de meta-governor."</p>
+<hr />
+<h3 id="slide-49-meta-governor-pattern">Slide 49 — Meta-Governor Pattern</h3>
+<p><strong>Título</strong>: Meta-Governor Pattern
+<strong>Objetivo</strong>: Apresentar o padrão de governança para meta-agentes.
+<strong>Conteúdo</strong>:
+- <strong>Meta-governor</strong>: guardião que avalia mudanças propostas pelo meta-agente
+- <strong>Separado</strong> do meta-agente (não pode auto-aprovar)
+- <strong>Regras</strong>: policy-as-code (vetos), sandbox test, shadow run, canary, rollback
+- <strong>HITL</strong>: aprovação humana para mudanças críticas</p>
+<p><strong>Diagrama</strong>: Meta-agente → propõe mudança → Meta-governor → aprova/rejeita
+<strong>Animação</strong>: Fluxo com gate do governor
+<strong>Imagem</strong>: Ícone de escudo
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Meta-governor é o guardião. Separado do meta-agente — essa separação é crítica. O meta-agente propõe; o governor avalia e aprova/rejeita. Governor NUNCA pode ser o próprio meta-agente (lobo guardando galinheiro). Regras são declarativas (policy-as-code). Para críticas, HITL. É o que torna meta-agência segura para produção.
+💡 ANALOGIA: É como freios e airbags de carro. Motor (meta-agente) gera força. Freios (governor) limitam e controlam. Sem freios, motor é perigoso.
+⚠️ ERROS COMUNS: Alunos implementam governor como "mais um prompt no meta-agente". Não — componente separado, idealmente determinístico para vetos críticos.
+➡️ TRANSIÇÃO: "Vamos visualizar as camadas."</p>
+<hr />
+<h3 id="slide-50-safety-fences">Slide 50 — Safety Fences</h3>
+<p><strong>Título</strong>: Safety Fences — Camadas de Defesa
+<strong>Objetivo</strong>: Visualizar camadas de segurança.
+<strong>Conteúdo</strong>:
+- mudança proposta → Meta-Governor → policy-as-code
+- vetar → bloquear / ok → sandbox test
+- sandbox passa? não → bloquear / sim → shadow run
+- shadow melhor? não → bloquear / sim → canary
+- canary ok? sim → produção / não → rollback
+- <strong>4 camadas</strong>: policy → sandbox → shadow → canary</p>
+<p><strong>Diagrama</strong>: <code>12-Diagrams/ETHAGT15/safety-fences.mmd</code>
+<strong>Animação</strong>: Fluxo percorre as camadas, bloqueios em vermelho
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Blueprint de segurança. Mudança proposta → 4 gates. Gate 1: policy-as-code (vetos). Viola? Bloqueada. Gate 2: sandbox (dados sintéticos). Falha? Bloqueada. Gate 3: shadow run (paralelo, sem afetar usuários). Não é melhor? Bloqueada. Gate 4: canary (5% tráfego). Degrada? Rollback. Defesa em profundidade — cada camada filtra um tipo de problema.
+💡 ANALOGIA: É como segurança de aeroporto. Detector de metal (policy), raio-x (sandbox), inspeção de bagagem (shadow), entrevista secundária (canary). Múltiplas camadas porque nenhuma é perfeita.
+❓ PERGUNTA PARA A TURMA: "Qual camada é mais importante?" (resposta: todas — defesa em profundidade)
+⚠️ ERROS COMUNS: Alunos pulam shadow run "para economizar tempo". Shadow pega regressões que sandbox não pega.
+➡️ TRANSIÇÃO: "Vamos detalhar a confiança incremental."</p>
+<hr />
+<h3 id="slide-51-confianca-incremental-sandbox-producao">Slide 51 — Confiança Incremental (Sandbox → Produção)</h3>
+<p><strong>Título</strong>: Confiança Incremental
+<strong>Objetivo</strong>: Detalhar o pipeline de confiança incremental.
+<strong>Conteúdo</strong>:
+- <strong>Nível 0</strong>: Sandbox isolado (dados sintéticos, sem produção)
+- <strong>Nível 1</strong>: Shadow run (paralelo, não afeta usuários)
+- <strong>Nível 2</strong>: Canary (5% do tráfego, monitorado)
+- <strong>Nível 3</strong>: Produção gradual (10% → 50% → 100%)
+- <strong>Nível 4</strong>: Produção total
+- Cada nível requer aprovação (automática ou humana)
+- Rollback instantâneo se métricas degradarem
+- <strong>Princípio</strong>: "confiança se ganha, não se dá"</p>
+<p><strong>Diagrama</strong>: Escada de níveis 0 → 4 com gates
+<strong>Animação</strong>: Escada sobe nível por nível
+<strong>Imagem</strong>: Ícone de escada
+<strong>Tempo</strong>: 1.5 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Cinco níveis. Nível 0: sandbox isolado. Nível 1: shadow run. Nível 2: canary 5%. Nível 3: gradual 10-50-100%. Nível 4: total. Cada nível requer aprovação. Rollback instantâneo se degradar. Princípio: confiança se ganha, não se dá. Um agente gerado começa com zero confiança e merece cada nível.
+💡 ANALOGIA: É como carreira de piloto. Simulador (sandbox), voo com instrutor (shadow), solo em rota fácil (canary), rotas complexas (gradual), comandante (total).
+⚠️ ERROS COMUNS: Alunos querem pular para produção "porque passou no eval". Eval ≠ produção. Shadow e canary pegam problemas que eval não pega.
+➡️ TRANSIÇÃO: "Dentro do governor, vetos são a ferramenta mais forte."</p>
+<hr />
+<h3 id="slide-52-vetos-regras-de-seguranca">Slide 52 — Vetos: Regras de Segurança</h3>
+<p><strong>Título</strong>: Vetos — Regras Inegociáveis
+<strong>Objetivo</strong>: Mostrar como implementar regras de veto.
+<strong>Conteúdo</strong>:
+- <strong>Veto</strong> = regra inegociável que bloqueia mudança
+- Exemplos: "NUNCA remover safety constraints", "NUNCA aumentar custo &gt;10%", "NUNCA remover logging", "NUNCA mudar modelo não-aprovado"
+- <strong>Implementação</strong>: policy-as-code (Rego/CEL)
+- <code>veto(change) if change.removes_safety_constraint or change.cost_increase &gt; 0.10</code>
+- <strong>Veto é binário</strong>: não há "quase veto"</p>
+<p><strong>Diagrama</strong>: Code block com regras de veto
+<strong>Animação</strong>: Código aparece linha por linha
+<strong>Imagem</strong>: Ícone de martelo de juiz
+<strong>Tempo</strong>: 1.5 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Vetos são a ferramenta mais forte do governor. Regra inegociável — se violada, bloqueia, sem exceção. Quatro canônicos: nunca remover safety constraints, nunca aumentar custo &gt;10%, nunca remover logging, nunca mudar modelo não-aprovado. Implementação: policy-as-code (Rego/CEL). Característica chave: veto é binário. Não há "quase veto". Essa binariedade é o que torna auditável.
+💡 ANALOGIA: É como limites físicos de carro — motor não passa de certa rotação porque regulador corta. Não é sugestão, é limite físico.
+⚠️ ERROS COMUNS: Alunos implementam vetos como "warnings". Warning é inútil — meta-agente ignora. Veto precisa ser hard block em código.
+➡️ TRANSIÇÃO: "Vamos praticar design de governor."</p>
+<hr />
+<h3 id="slide-53-exercicio-projetar-um-meta-governor">Slide 53 — Exercício: Projetar um Meta-Governor</h3>
+<p><strong>Título</strong>: Exercício — Projetar um Meta-Governor
+<strong>Objetivo</strong>: Praticar design de governança.
+<strong>Conteúdo</strong>:
+- <strong>Cenário</strong>: meta-agente quer modificar o próprio system prompt
+- Em trios: projetar um meta-governor com regras de veto
+- Exemplos: "não pode remover safety constraints", "não pode aumentar custo &gt;10%"
+- <strong>Bônus</strong>: o que acontece se o meta-governor também for um agente?
+- 3 min design, 2 min compartilhar</p>
+<p><strong>Diagrama</strong>: Template de design do meta-governor
+<strong>Animação</strong>: Template se preenche
+<strong>Imagem</strong>: Ícone de blueprint
+<strong>Tempo</strong>: 3 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Exercício central. Em trios, projetem um meta-governor para um cenário concreto: meta-agente modifica o próprio system prompt. Pensem em: (1) regras de veto, (2) pipeline de gates, (3) quando HITL é obrigatório, (4) critério de rollback. Bônus: se o governor também for LLM, quem governa o governor? Regressão infinita — por isso governors críticos devem ser determinísticos.
+💡 ANALOGIA: É como projetar a constituição de um país. Quem faz leis? Quem fiscaliza? Quem garante que o fiscalizador não é corrupto?
+❓ PERGUNTA PARA A TURMA: "Em trios, 3 min. Depois compartilho as 3 regras de veto mais criativas."
+⚠️ ERROS COMUNS: Trios criam governors muito permissivos. Veto é binário. Se tem "exceto se...", não é veto, é gate.
+➡️ TRANSIÇÃO: "Vamos para a pergunta mais profunda."</p>
+<hr />
+<h3 id="slide-54-pergunta-em-que-ponto-um-meta-agente-se-torna-perigoso">Slide 54 — Pergunta: Em Que Ponto um Meta-Agente Se Torna Perigoso?</h3>
+<p><strong>Título</strong>: Quando um Meta-Agente Se Torna Perigoso?
+<strong>Objetivo</strong>: Estimular reflexão crítica sobre limites.
+<strong>Conteúdo</strong>:
+- "Em que ponto um meta-agente se torna perigoso?"
+- <strong>Sinais de alerta</strong>: pode modificar suas próprias regras de segurança, pode escolher sua própria métrica, não tem HITL para críticas, pode escalar sem canary
+- <strong>Princípio</strong>: perigo = capacidade × autonomia × falta de oversight
+- Discussão aberta (2 min)</p>
+<p><strong>Diagrama</strong>: Fórmula visual: perigo = capacidade × autonomia × falta de oversight
+<strong>Animação</strong>: Fatores aparecem
+<strong>Imagem</strong>: Ícone de sirene
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Pergunta mais profunda da aula. Quatro sinais de alerta. Primeiro: pode modificar suas regras de segurança — remove vetos, não há limites. Segundo: pode escolher sua métrica — define o que é "bom", vai se definir como bom. Terceiro: sem HITL para críticas — erros escalam. Quarto: pode escalar sem canary — bug afeta 100% instantaneamente. Fórmula: perigo = capacidade × autonomia × falta de oversight. Objetivo não é eliminar perigo (impossível se quer utilidade) — é manter equilíbrio.
+💡 ANALOGIA: É como carro autônomo. Perigoso se: desliga próprios sensores (regras), decide o que é "dirigir bem" (métrica), sem humano que assume (HITL), acelera de 0 a 100 instantaneamente (sem canary).
+❓ PERGUNTA PARA A TURMA: "Conhecem sistema com algum desses sinais hoje?" (2 min)
+➡️ TRANSIÇÃO: "Vamos ver um caso que ilustra quando é seguro."</p>
+<hr />
+<h3 id="slide-55-caso-de-estudo-voyager-seguranca-em-ambiente-fechado">Slide 55 — Caso de Estudo: Voyager (Segurança em Ambiente Fechado)</h3>
+<p><strong>Título</strong>: Caso — Voyager (Segurança em Ambiente Fechado)
+<strong>Objetivo</strong>: Mostrar Voyager como caso de auto-aprendizado seguro.
+<strong>Conteúdo</strong>:
+- Voyager aprende skills no Minecraft — por que é seguro?
+- <strong>Ambiente fechado</strong>: sandbox total, sem acesso a mundo real
+- <strong>Feedback determinístico</strong>: sucesso/falha é claro (crafteou o item?)
+- <strong>Sem consequências reais</strong>: erro no Minecraft não causa dano
+- <strong>Skills são código verificável</strong> (não ações opacas)
+- <strong>Lição</strong>: auto-aprendizado é seguro quando sandboxed, feedback claro, skills auditáveis, sem acesso a sistemas sensíveis
+- Em produção: replicar estas condições</p>
+<p><strong>Diagrama</strong>: Comparação: Voyager (seguro) vs produção (risco)
+<strong>Animação</strong>: Comparação lado a lado
+<strong>Imagem</strong>: Screenshot Minecraft vs servidor de produção
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Encerramos riscos com Voyager como contra-exemplo — quando auto-aprendizado É seguro. Quatro razões. Ambiente fechado (sandbox total). Feedback determinístico (sabe se funcionou). Sem consequências reais (erro não causa dano). Skills são código verificável (auditável). Lição: auto-aprendizado é seguro quando sandboxed, feedback claro, skills auditáveis, sem acesso a sensíveis. Em produção, replica essas condições.
+💡 ANALOGIA: É como simulador de voo. Piloto aprende manobras perigosas no simulador porque é seguro. Na vida real, precisa supervisão.
+➡️ TRANSIÇÃO: "Com riscos entendidos, vamos para boas práticas."</p>
+<hr />
+<h2 id="secao-g-fechamento-slides-56-67-10-min">SEÇÃO G — Fechamento (Slides 56-67 · 10 min)</h2>
+<hr />
+<h3 id="slide-56-secao-boas-praticas-e-anti-patterns">Slide 56 — [SEÇÃO] Boas Práticas e Anti-Patterns</h3>
+<p><strong>Título</strong>: 6 — Boas Práticas e Anti-Patterns
+<strong>Objetivo</strong>: Transição para o fechamento.
+<strong>Conteúdo</strong>: "6 — Boas Práticas e Anti-Patterns"
+<strong>Diagrama</strong>: Fundo <code>etho-primary</code>
+<strong>Animação</strong>: Fade in
+<strong>Tempo</strong>: 0.5 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Última seção substantiva. Vamos sistematizar DO e DON'T, resumir, fazer quiz e fechar.
+➡️ TRANSIÇÃO: "Comecemos pelas boas práticas."</p>
+<hr />
+<h3 id="slide-57-boas-praticas-do">Slide 57 — Boas Práticas (DO)</h3>
+<p><strong>Título</strong>: Boas Práticas — DO
+<strong>Objetivo</strong>: Checklist de boas práticas de meta-agência.
+<strong>Conteúdo</strong>:
+- Comece com domínio estreito e bem definido
+- Sempre valide agentes gerados (eval antes de deploy)
+- Use confiança incremental (sandbox → shadow → canary → produção)
+- Implemente meta-governor com vetos desde o início
+- Versionamento de todas as configs geradas
+- Monitore drift continuamente
+- HITL para mudanças críticas
+- Audite skills/memória periodicamente</p>
+<p><strong>Diagrama</strong>: Checklist verde (etho-success)
+<strong>Animação</strong>: Itens aparecem com check verde
+<strong>Imagem</strong>: Ícone de checkmark
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Oito boas práticas. Comecem estreito. Eval sempre. Confiança incremental. Meta-governor com vetos desde o dia 1. Versionem tudo. Monitorem drift. HITL para críticas. Auditem memória periodicamente. Essas oito práticas separam meta-agência production-ready de protótipo perigoso.
+💡 ANALOGIA: É como checklist de pré-voo. Cada item parece óbvio, mas pular um pode ser fatal. Em meta-agência é mais importante porque o sistema evolui sozinho.
+➡️ TRANSIÇÃO: "E o que NÃO fazer?"</p>
+<hr />
+<h3 id="slide-58-anti-patterns-dont">Slide 58 — Anti-Patterns (DON'T)</h3>
+<p><strong>Título</strong>: Anti-Patterns — DON'T
+<strong>Objetivo</strong>: Checklist do que NÃO fazer.
+<strong>Conteúdo</strong>:
+- Permitir auto-modificação sem limites (recursão descontrolada)
+- Usar métrica única como objetivo (goal drift)
+- Deployar sem eval (agente gerado pode ser pior)
+- Deixar meta-agente escolher própria métrica
+- Sem rollback automático
+- Confiança total sem canary/shadow
+- Ignorar drift de dados
+- Meta-agente sem governor (auto-aprovação)</p>
+<p><strong>Diagrama</strong>: Checklist vermelho (etho-danger)
+<strong>Animação</strong>: Itens aparecem com X vermelho
+<strong>Imagem</strong>: Ícone de proibido
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Oito anti-patterns. O mais perigoso: meta-agente sem governor (auto-aprovação). Segundo: métrica única (goal drift garantido). Terceiro: deployar sem eval. Esses três causam a maioria dos incidentes.
+💡 ANALOGIA: É como erros clássicos de segurança de software. SQL injection, XSS — conhecidos, evitáveis, mas acontecem porque alguém pulou o checklist.
+➡️ TRANSIÇÃO: "Vamos resumir."</p>
+<hr />
+<h3 id="slide-59-resumo-da-aula">Slide 59 — Resumo da Aula</h3>
+<p><strong>Título</strong>: Resumo da Aula
+<strong>Objetivo</strong>: Sintetizar os pontos-chave.
+<strong>Conteúdo</strong>:
+- <strong>Meta-agência</strong> = agentes que operam sobre agentes (synthesis, evolution, optimization)
+- <strong>Geração</strong> = meta-agente + primitivas + validação rigorosa
+- <strong>Otimização</strong> = DSPy (compilação), Promptbreeder (evolução), Atlas (busca)
+- <strong>Auto-aprendizado</strong> = memória + reflexion + strategy evolver + drift detection
+- <strong>Riscos</strong> = recursão, goal drift, perda de controle
+- <strong>Governança</strong> = meta-governor + safety fences + confiança incremental + vetos
+- <strong>Projeto</strong>: otimizar prompts/tools automaticamente e medir ganho</p>
+<p><strong>Diagrama</strong>: 7 ícones com os pontos-chave
+<strong>Animação</strong>: Ícones aparecem em grid
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Sete pontos. Meta-agência = agentes sobre agentes, três estratégias. Geração = meta-agente + primitivas + validação. Otimização = DSPy, Promptbreeder, Atlas. Auto-aprendizado = memória + reflexion + evolver + drift detection. Riscos = recursão, goal drift, controle. Governança = governor + fences + confiança incremental + vetos. Projeto = otimizar e medir.
+💡 ANALOGIA: É como deck final de palestra de medicina. Diagnóstico, tratamento, efeitos colaterais, protocolo de segurança.
+➡️ TRANSIÇÃO: "Vamos confirmar que cobrimos tudo."</p>
+<hr />
+<h3 id="slide-60-checklist-da-aula">Slide 60 — Checklist da Aula</h3>
+<p><strong>Título</strong>: Checklist da Aula
+<strong>Objetivo</strong>: Confirmar cobertura.
+<strong>Conteúdo</strong>:
+- [ ] Definiu meta-agência e 3 estratégias
+- [ ] Implementou geração de agente com validação
+- [ ] Aplicou DSPy ou Promptbreeder para otimização
+- [ ] Discutiu auto-aprendizado e drift
+- [ ] Projetou um meta-governor com vetos
+- [ ] Identificou riscos e mitigações</p>
+<p><strong>Diagrama</strong>: Checklist visual
+<strong>Animação</strong>: Itens recebem check
+<strong>Imagem</strong>: Ícone de clipboard
+<strong>Tempo</strong>: 1 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Se conseguem marcar os seis, a aula cumpriu o objetivo. O mais importante é o quinto — projetar meta-governor. Se saem sabendo governança, a aula valeu.
+➡️ TRANSIÇÃO: "Vamos testar com quiz."</p>
+<hr />
+<h3 id="slide-61-quiz-pergunta-1">Slide 61 — Quiz: Pergunta 1</h3>
+<p><strong>Título</strong>: Quiz — Pergunta 1
+<strong>Objetivo</strong>: Verificar compreensão.
+<strong>Conteúdo</strong>:
+- "Qual é a diferença fundamental entre um agente e um meta-agente?"
+- A) O meta-agente usa um modelo maior
+- B) O meta-agente opera sobre agentes (seu ambiente é outro agente)
+- C) O meta-agente tem mais tools
+- D) O meta-agente é sempre mais rápido
+- <strong>Resposta</strong>: B</p>
+<p><strong>Diagrama</strong>: 4 opções com revelação
+<strong>Animação</strong>: Opções aparecem, depois revela B
+<strong>Imagem</strong>: —
+<strong>Tempo</strong>: 1 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Resposta B. A diferença não é tamanho, número de tools, ou velocidade. É o alvo: agente comum age sobre ambiente; meta-agente age sobre agentes. Essa é a definição que vocãs precisam levar.
+⚠️ ERROS COMUNS: Alunos marcam A ou C. Reenfatizar: é sobre alvo, não capacidade.
+➡️ TRANSIÇÃO: "Próxima pergunta."</p>
+<hr />
+<h3 id="slide-62-quiz-pergunta-2">Slide 62 — Quiz: Pergunta 2</h3>
+<p><strong>Título</strong>: Quiz — Pergunta 2
+<strong>Objetivo</strong>: Verificar compreensão.
+<strong>Conteúdo</strong>:
+- "O que é goal drift?"
+- A) Agente muda de tarefa
+- B) Agente otimiza uma métrica que diverge do objetivo real
+- C) Agente esquece o objetivo original
+- D) Agente muda de modelo
+- <strong>Resposta</strong>: B</p>
+<p><strong>Diagrama</strong>: 4 opções com revelação
+<strong>Animação</strong>: Opções aparecem, depois revela B
+<strong>Imagem</strong>: —
+<strong>Tempo</strong>: 1 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Resposta B. Goal drift é quando a métrica (proxy) diverge do objetivo real. O agente otimiza a métrica, mas o objetivo real piora. É o risco mais insidioso porque a métrica está "melhorando".
+⚠️ ERROS COMUNS: Alunos marcam C ("esquece o objetivo"). Não — o agente não esquece, ele otimiza a métrica errada.
+➡️ TRANSIÇÃO: "Última pergunta."</p>
+<hr />
+<h3 id="slide-63-quiz-pergunta-3">Slide 63 — Quiz: Pergunta 3</h3>
+<p><strong>Título</strong>: Quiz — Pergunta 3
+<strong>Objetivo</strong>: Verificar compreensão.
+<strong>Conteúdo</strong>:
+- "Qual é a PRIMEIRA camada de defesa em safety fences?"
+- A) Canary deployment
+- B) Shadow run
+- C) Policy-as-code (vetos)
+- D) Rollback automático
+- <strong>Resposta</strong>: C</p>
+<p><strong>Diagrama</strong>: 4 opções com revelação
+<strong>Animação</strong>: Opções aparecem, depois revela C
+<strong>Imagem</strong>: —
+<strong>Tempo</strong>: 1 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Resposta C. A primeira camada é policy-as-code (vetos). É o gate mais barato e mais rápido — regras declarativas bloqueiam antes de qualquer teste. Canary, shadow e rollback vêm depois.
+⚠️ ERROS COMUNS: Alunos marcam A (canary). Canary é a última camada antes de produção, não a primeira.
+➡️ TRANSIÇÃO: "Vamos para discussão."</p>
+<hr />
+<h3 id="slide-64-perguntas-para-discussao">Slide 64 — Perguntas para Discussão</h3>
+<p><strong>Título</strong>: Perguntas para Discussão
+<strong>Objetivo</strong>: Estimular debate.
+<strong>Conteúdo</strong>:
+1. "Quando otimizar prompts é melhor que reescrevê-los manualmente?"
+2. "Defina goal drift e proponha uma detecção automática."
+3. "Por que meta-governor é necessário? O agente não pode se autorregular?"
+4. "Em que ponto um meta-agente se torna perigoso?"</p>
+<p><strong>Diagrama</strong>: 4 caixas com perguntas
+<strong>Animação</strong>: Perguntas aparecem
+<strong>Imagem</strong>: —
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Quatro perguntas para discussão. A 1 é sobre trade-offs de otimização. A 2 é sobre detecção de goal drift (métrica vs satisfação do usuário). A 3 é sobre a necessidade de separação de poderes (governor separado do meta-agente). A 4 é sobre limites — quando capacidade × autonomia × falta de oversight = perigo. Usem o tempo para discussão em grupo.
+➡️ TRANSIÇÃO: "Vamos ver onde isso conecta."</p>
+<hr />
+<h3 id="slide-65-conexao-com-proximos-modulos">Slide 65 — Conexão com Próximos Módulos</h3>
+<p><strong>Título</strong>: Conexão com Próximos Módulos
+<strong>Objetivo</strong>: Mostrar como ETHAGT15 conecta com a especialização.
+<strong>Conteúdo</strong>:
+- <strong>ETHAGT16 — Sociedades de Agentes</strong>: meta-agentes em ecossistemas multi-agente
+- <strong>ETHAGT90 — Capstone</strong>: meta-agente como sistema de orquestração
+- <strong>ETHAGT14 — Escalabilidade</strong>: otimização de custo aplicada a meta-agentes
+- <strong>ETHAGT12 — AgentOps</strong>: avaliação e observabilidade de meta-agentes</p>
+<p><strong>Diagrama</strong>: Mapa da especialização com ETHAGT15 destacado
+<strong>Animação</strong>: Conexões aparecem
+<strong>Imagem</strong>: Mind map
+<strong>Tempo</strong>: 1 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: ETHAGT15 conecta com quatro módulos. ETHAGT16 (Sociedades) usa meta-agentes para orquestrar ecossistemas. ETHAGT90 (Capstone) pode usar meta-agente como camada de orquestração. ETHAGT14 (Escalabilidade) aplica otimização de custo. ETHAGT12 (AgentOps) fornece avaliação e observabilidade para meta-agentes.
+➡️ TRANSIÇÃO: "Referências e projeto."</p>
+<hr />
+<h3 id="slide-66-referencias-projeto-e-labs">Slide 66 — Referências, Projeto e Labs</h3>
+<p><strong>Título</strong>: Referências, Projeto e Labs
+<strong>Objetivo</strong>: Indicar leitura e apresentar projeto/labs.
+<strong>Conteúdo</strong>:
+- <strong>Obrigatório</strong>: Khattab et al. <em>DSPy</em> (arXiv:2310.03714)
+- <strong>Obrigatório</strong>: Fernando et al. <em>Promptbreeder</em> (arXiv:2309.16797)
+- <strong>Recomendado</strong>: Hu et al. <em>Meta-Prompting</em> (arXiv:2311.11402)
+- <strong>Recomendado</strong>: Wang et al. <em>Voyager</em> (arXiv:2305.16291)
+- <strong>Recomendado</strong>: Lu et al. <em>AI Scientist</em> (arXiv:2408.06292)
+- <strong>Projeto</strong>: implementar otimização automática (DSPy) e medir ganho em benchmark
+- <strong>Lab 1</strong> (4h): "Agente que escreve agente"
+- <strong>Próxima aula</strong>: ETHAGT16 — Sociedades de Agentes</p>
+<p><strong>Diagrama</strong>: Lista de papers com arXiv IDs
+<strong>Animação</strong>: Papers aparecem
+<strong>Imagem</strong>: Capas dos papers
+<strong>Tempo</strong>: 1 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Leitura obrigatória: DSPy e Promptbreeder. Recomendada: Meta-Prompting, Voyager e AI Scientist. Projeto do módulo: implementar otimização automática com DSPy e medir ganho em benchmark — antes vs depois. Lab 1: "Agente que escreve agente" (4h). Próxima aula: ETHAGT16 — Sociedades de Agentes, onde meta-agentes orquestram ecossistemas.
+➡️ TRANSIÇÃO: "Vamos encerrar."</p>
+<hr />
+<h3 id="slide-67-qa-encerramento">Slide 67 — Q&amp;A / Encerramento</h3>
+<p><strong>Título</strong>: Q&amp;A / Encerramento
+<strong>Objetivo</strong>: Abrir para perguntas e encerrar.
+<strong>Conteúdo</strong>:
+- "Perguntas?"
+- Contato do professor
+- "Na próxima aula: ETHAGT16 — Sociedades de Agentes"</p>
+<p><strong>Diagrama</strong>: Logo Etho + fundo etho-dark
+<strong>Animação</strong>: Fade out
+<strong>Imagem</strong>: —
+<strong>Tempo</strong>: 2 min</p>
+<p><strong>Notas do Professor</strong>:
+📖 EXPLICAÇÃO COMPLETA: Abrir para Q&amp;A. Se nenhuma pergunta, fazer a pergunta inversa: "Qual parte foi menos clara?" ou "Qual técnica vocês vão aplicar primeiro no trabalho de vocês?" Encerrar conectando com ETHAGT16.
+➡️ TRANSIÇÃO: Fim da aula.</p>
+<hr />
+<h2 id="fim-da-parte-2">Fim da Parte 2</h2>
+<blockquote>
+<p>Continuação: slides 1-34 estão em <code>03-slides-detalhados-parte1.md</code>.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/etho/especializacao-programacao-agentica" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "toc.integrate", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
