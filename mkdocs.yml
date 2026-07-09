@@ -57,7 +57,7 @@ nav:
     - Rastreabilidade: curriculo/rastreabilidade.md
   - Cursos:
     - "ETHAGT01 — Fundamentos (Agentes LLM)":
-      - Slides: 03-Slides/ETHAGT01-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT01/ETHAGT01-Apresentacao.pptx
       - Apostila: 04-Apostilas/ETHAGT01/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT01/lab-01-react-em-50-linhas.md
@@ -67,7 +67,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT01/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT01/assignment-01.md
     - "ETHAGT02 — Tool Calling & ACI":
-      - Slides: 03-Slides/ETHAGT02-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT02/ETHAGT02-Apresentacao.pptx
       - Apostila: 04-Apostilas/ETHAGT02/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT02/lab-01-refatorando-tools.md
@@ -77,7 +77,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT02/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT02/assignment-01.md
     - "ETHAGT03 — Workflows Agênticos":
-      - Slides: 03-Slides/ETHAGT03-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT03/ETHAGT03-Apresentacao.pptx
       - Apostila: 04-Apostilas/ETHAGT03/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT03/lab-01-os-cinco-workflows.md
@@ -87,7 +87,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT03/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT03/assignment-01.md
     - "ETHAGT04 — Reasoning & Planning":
-      - Slides: 03-Slides/ETHAGT04-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT04/ETHAGT04-Apresentacao.pptx
       - Apostila: 04-Apostilas/ETHAGT04/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT04/lab-01-plan-and-execute-vs-react.md
@@ -97,7 +97,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT04/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT04/assignment-01.md
     - "ETHAGT05 — Memória de Agentes":
-      - Slides: 03-Slides/ETHAGT05-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT05/ETHAGT05-Apresentacao.pptx
       - Apostila: 04-Apostilas/ETHAGT05/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT05/lab-01-checkpointer-em-postgres.md
@@ -107,7 +107,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT05/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT05/assignment-01.md
     - "ETHAGT06 — RAG Agêntico":
-      - Slides: 03-Slides/ETHAGT06-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT06/ETHAGT06-RAG-Agentico.pptx
       - Apostila: 04-Apostilas/ETHAGT06/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT06/lab-01-diagnosticando-falhas.md
@@ -117,7 +117,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT06/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT06/assignment-01.md
     - "ETHAGT07 — KGs & Vector DBs":
-      - Slides: 03-Slides/ETHAGT07-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT07/ETHAGT07-slides.pptx
       - Apostila: 04-Apostilas/ETHAGT07/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT07/lab-01-vector-db-bake-off.md
@@ -127,7 +127,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT07/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT07/assignment-01.md
     - "ETHAGT08 — MCP":
-      - Slides: 03-Slides/ETHAGT08-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT08/ETHAGT08-slides.pptx
       - Apostila: 04-Apostilas/ETHAGT08/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT08/lab-01-primeiro-mcp-server.md
@@ -137,7 +137,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT08/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT08/assignment-01.md
     - "ETHAGT09 — Comunicação Multi-Agente":
-      - Slides: 03-Slides/ETHAGT09-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT09/ETHAGT09-slides.pptx
       - Apostila: 04-Apostilas/ETHAGT09/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT09/lab-01-duas-arquiteturas-um-problema.md
@@ -147,7 +147,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT09/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT09/assignment-01.md
     - "ETHAGT10 — Topologias Multi-Agente":
-      - Slides: 03-Slides/ETHAGT10-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT10/ETHAGT10-slides.pptx
       - Apostila: 04-Apostilas/ETHAGT10/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT10/lab-01-hierarchical-teams.md
@@ -157,7 +157,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT10/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT10/assignment-01.md
     - "ETHAGT11 — Event-Driven & Orquestração":
-      - Slides: 03-Slides/ETHAGT11-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT11/ETHAGT11-Apresentacao.pptx
       - Apostila: 04-Apostilas/ETHAGT11/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT11/lab-01-agente-com-kafka.md
@@ -167,7 +167,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT11/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT11/assignment-01.md
     - "ETHAGT12 — AgentOps & Avaliação":
-      - Slides: 03-Slides/ETHAGT12-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT12/ETHAGT12-slides.pptx
       - Apostila: 04-Apostilas/ETHAGT12/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT12/lab-01-traces-everywhere.md
@@ -177,7 +177,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT12/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT12/assignment-01.md
     - "ETHAGT13 — Segurança & Governança":
-      - Slides: 03-Slides/ETHAGT13-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT13/ETHAGT13-Apresentacao.pptx
       - Apostila: 04-Apostilas/ETHAGT13/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT13/lab-01-red-team-de-um-agente-rag.md
@@ -187,7 +187,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT13/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT13/assignment-01.md
     - "ETHAGT14 — Escalabilidade & Distribuído":
-      - Slides: 03-Slides/ETHAGT14-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT14/ETHAGT14-escalabilidade-sistemas-distribuidos.pptx
       - Apostila: 04-Apostilas/ETHAGT14/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT14/lab-01-cache-semantico.md
@@ -197,7 +197,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT14/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT14/assignment-01.md
     - "ETHAGT15 — Meta-Agentes":
-      - Slides: 03-Slides/ETHAGT15-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT15/ETHAGT15-slides.pptx
       - Apostila: 04-Apostilas/ETHAGT15/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT15/lab-01-agente-que-escreve-agente.md
@@ -207,7 +207,7 @@ nav:
       - Gabarito (Exercícios): 07-Exercises/ETHAGT15/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT15/assignment-01.md
     - "ETHAGT16 — Sociedades & Autonomous Research":
-      - Slides: 03-Slides/ETHAGT16-slides.md
+      - Apresentação (PPTX): 03-Slides/ETHAGT16/ETHAGT16-slides.pptx
       - Apostila: 04-Apostilas/ETHAGT16/apostila.md
       - Laboratórios:
         - Lab 01: 05-Labs/ETHAGT16/lab-01-mini-sociedade.md
