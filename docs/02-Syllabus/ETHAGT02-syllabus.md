@@ -1,3 +1,11 @@
+---
+tags:
+  - ETHAGT02
+  - syllabus
+  - tool-calling
+  - aci
+---
+
 # `ETHAGT02` — Tool Calling e Agent-Computer Interface (ACI)
 
 > Especialização em Programação Agêntica · Universidade Etho

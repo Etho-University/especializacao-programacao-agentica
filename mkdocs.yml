@@ -16,6 +16,8 @@ theme:
     - toc.integrate
     - search.highlight
     - search.suggest
+    - content.code.copy
+    - content.tooltips
   language: pt
 
 extra:
@@ -23,24 +25,78 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/etho/especializacao-programacao-agentica
 
-markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.tabbed
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.keys
-  - pymdownx.smartsymbols
-  - pymdownx.tasklist
-  - pymdownx.magiclink
-  - pymdownx.snippets
-  - attr_list
-  - md_in_html
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+
+  generator: false
+
+  authors:
+    Etho University:
+      name: Etho University
+      description: Universidade Etho — Escola de Tecnologia
+      avatar: https://github.com/etho-university.png
 
 plugins:
   - search
+  - tags:
+      tags_file: tags/index.md
+  - blog:
+      blog_dir: blog
+      post_dir: "{blog}/posts"
+      post_date_format: short
+      post_url_date_format: yyyy/MM
+      post_url_format: "{date}/{slug}"
+      archive: true
+      categories: true
+  - rss:
+      match_path: blog/posts/.*
+      date_from_meta:
+        as_creation: date
+      pretty_print: true
   - encryptcontent
+  - social:
+      cards_layout: default
+      cards_layout_options:
+        background_color: "#3949ab"
+        color: "#FFFFFF"
+  - print-site:
+      add_table_of_contents: true
+      toc_title: "Índice"
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.magiclink
+  - pymdownx.snippets:
+      auto_append:
+        - includes/glossary-abbr.md
+  - attr_list
+  - md_in_html
+  - abbr
+  - footnotes
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+
+extra_css:
+  - stylesheets/extra.css
 
 docs_dir: docs
 

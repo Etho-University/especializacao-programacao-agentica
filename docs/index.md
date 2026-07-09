@@ -1,3 +1,11 @@
+---
+tags:
+  - especializacao
+  - programacao-agentica
+  - etho
+  - home
+---
+
 # Especialização em Programação Agêntica
 
 > **Universidade Etho** · Escola de Tecnologia · Área de Inteligência Artificial
