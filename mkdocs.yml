@@ -96,6 +96,7 @@ markdown_extensions:
 
 extra_javascript:
   - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - javascripts/pptx-viewer.js
 
 extra_css:
   - stylesheets/extra.css
@@ -275,6 +276,56 @@ nav:
       - Exercícios: 07-Exercises/ETHAGT16/exercicios.md
       - Gabarito (Exercícios): 07-Exercises/ETHAGT16/gabarito.md
       - Avaliação (Rubrica): 08-Assignments/ETHAGT16/assignment-01.md
+  - Syllabi:
+    - Visão Geral: 02-Syllabus/README.md
+    - ETHAGT01: 02-Syllabus/ETHAGT01-syllabus.md
+    - ETHAGT02: 02-Syllabus/ETHAGT02-syllabus.md
+    - ETHAGT03: 02-Syllabus/ETHAGT03-syllabus.md
+    - ETHAGT04: 02-Syllabus/ETHAGT04-syllabus.md
+    - ETHAGT05: 02-Syllabus/ETHAGT05-syllabus.md
+    - ETHAGT06: 02-Syllabus/ETHAGT06-syllabus.md
+    - ETHAGT07: 02-Syllabus/ETHAGT07-syllabus.md
+    - ETHAGT08: 02-Syllabus/ETHAGT08-syllabus.md
+    - ETHAGT09: 02-Syllabus/ETHAGT09-syllabus.md
+    - ETHAGT10: 02-Syllabus/ETHAGT10-syllabus.md
+    - ETHAGT11: 02-Syllabus/ETHAGT11-syllabus.md
+    - ETHAGT12: 02-Syllabus/ETHAGT12-syllabus.md
+    - ETHAGT13: 02-Syllabus/ETHAGT13-syllabus.md
+    - ETHAGT14: 02-Syllabus/ETHAGT14-syllabus.md
+    - ETHAGT15: 02-Syllabus/ETHAGT15-syllabus.md
+    - ETHAGT16: 02-Syllabus/ETHAGT16-syllabus.md
+    - Capstone: 02-Syllabus/ETHAGT90-capstone-syllabus.md
+  - Casos de Estudo:
+    - Visão Geral: 09-CaseStudies/README.md
+    - "01 — SWE-bench (Anthropic)": 09-CaseStudies/01-anthropic-swe-bench-coding-agent.md
+    - "02 — Tool Redesign ACI (Anthropic)": 09-CaseStudies/02-anthropic-tool-redesign-aci.md
+    - "03 — Suporte ao Cliente (Anthropic)": 09-CaseStudies/03-suporte-cliente-workflows-producao.md
+    - "04 — Coding Agents SWE-bench": 09-CaseStudies/04-coding-agents-swebench-lats-reflexion.md
+    - "05 — Generative Agents (Smallville)": 09-CaseStudies/05-generative-agents-smallville.md
+    - "06 — RAG Enterprise": 09-CaseStudies/06-rag-assistentes-enterprise.md
+    - "07 — GraphRAG (Farm/Jur)": 09-CaseStudies/07-graphrag-farmaceutico-juridico.md
+    - "08 — Ecossistema MCP": 09-CaseStudies/08-ecossistema-mcp-producao-block-anthropic-replit.md
+    - "10 — MetaGPT Software House": 09-CaseStudies/10-metagpt-software-house-multi-agent.md
+    - "11 — MetaGPT Hierárquico": 09-CaseStudies/11-metagpt-hierarchical-software-house.md
+    - "12 — Pipeline Event-Driven": 09-CaseStudies/12-pipeline-documentos-event-driven-enterprise.md
+    - "13 — Avaliando Claude (Anthropic)": 09-CaseStudies/13-anthropic-avaliando-claude-swebench.md
+    - "14 — Incidentes em Produção": 09-CaseStudies/14-incidentes-reais-agentes-producao.md
+    - "15 — Assistentes em Escala": 09-CaseStudies/15-assistentes-empresa-escala-glean-hebbia.md
+    - "16 — Voyager / AI Scientist": 09-CaseStudies/16-voyager-ai-scientist-fronteira.md
+    - "17 — AI Scientist (Sakana)": 09-CaseStudies/17-ai-scientist-sakana-detalhado.md
+  - Bibliotecas:
+    - Arquiteturas: bibliotecas/arquiteturas.md
+    - Padrões de Agentes: bibliotecas/padroes.md
+    - Workflows: bibliotecas/workflows.md
+    - RAG: bibliotecas/rag.md
+    - Memória: bibliotecas/memoria.md
+    - MCP: bibliotecas/mcp.md
+    - Prompt Library: bibliotecas/prompts.md
+    - Ferramentas: bibliotecas/ferramentas.md
+    - Glossário: bibliotecas/glossario.md
+  - Pesquisa:
+    - Master Index: pesquisa/master-index.md
+    - Papers: pesquisa/papers.md
   - Professor (Acesso Restrito):
     - Aviso: sobre/aviso-professor.md
     - Avaliação:
@@ -331,53 +382,3 @@ nav:
     - ETHAGT16:
       - Prova: 23-Exams/ETHAGT16/prova.md
       - Gabarito: 23-Exams/ETHAGT16/gabarito.md
-  - Syllabi:
-    - Visão Geral: 02-Syllabus/README.md
-    - ETHAGT01: 02-Syllabus/ETHAGT01-syllabus.md
-    - ETHAGT02: 02-Syllabus/ETHAGT02-syllabus.md
-    - ETHAGT03: 02-Syllabus/ETHAGT03-syllabus.md
-    - ETHAGT04: 02-Syllabus/ETHAGT04-syllabus.md
-    - ETHAGT05: 02-Syllabus/ETHAGT05-syllabus.md
-    - ETHAGT06: 02-Syllabus/ETHAGT06-syllabus.md
-    - ETHAGT07: 02-Syllabus/ETHAGT07-syllabus.md
-    - ETHAGT08: 02-Syllabus/ETHAGT08-syllabus.md
-    - ETHAGT09: 02-Syllabus/ETHAGT09-syllabus.md
-    - ETHAGT10: 02-Syllabus/ETHAGT10-syllabus.md
-    - ETHAGT11: 02-Syllabus/ETHAGT11-syllabus.md
-    - ETHAGT12: 02-Syllabus/ETHAGT12-syllabus.md
-    - ETHAGT13: 02-Syllabus/ETHAGT13-syllabus.md
-    - ETHAGT14: 02-Syllabus/ETHAGT14-syllabus.md
-    - ETHAGT15: 02-Syllabus/ETHAGT15-syllabus.md
-    - ETHAGT16: 02-Syllabus/ETHAGT16-syllabus.md
-    - Capstone: 02-Syllabus/ETHAGT90-capstone-syllabus.md
-  - Casos de Estudo:
-    - Visão Geral: 09-CaseStudies/README.md
-    - "01 — SWE-bench (Anthropic)": 09-CaseStudies/01-anthropic-swe-bench-coding-agent.md
-    - "02 — Tool Redesign ACI (Anthropic)": 09-CaseStudies/02-anthropic-tool-redesign-aci.md
-    - "03 — Suporte ao Cliente (Anthropic)": 09-CaseStudies/03-suporte-cliente-workflows-producao.md
-    - "04 — Coding Agents SWE-bench": 09-CaseStudies/04-coding-agents-swebench-lats-reflexion.md
-    - "05 — Generative Agents (Smallville)": 09-CaseStudies/05-generative-agents-smallville.md
-    - "06 — RAG Enterprise": 09-CaseStudies/06-rag-assistentes-enterprise.md
-    - "07 — GraphRAG (Farm/Jur)": 09-CaseStudies/07-graphrag-farmaceutico-juridico.md
-    - "08 — Ecossistema MCP": 09-CaseStudies/08-ecossistema-mcp-producao-block-anthropic-replit.md
-    - "10 — MetaGPT Software House": 09-CaseStudies/10-metagpt-software-house-multi-agent.md
-    - "11 — MetaGPT Hierárquico": 09-CaseStudies/11-metagpt-hierarchical-software-house.md
-    - "12 — Pipeline Event-Driven": 09-CaseStudies/12-pipeline-documentos-event-driven-enterprise.md
-    - "13 — Avaliando Claude (Anthropic)": 09-CaseStudies/13-anthropic-avaliando-claude-swebench.md
-    - "14 — Incidentes em Produção": 09-CaseStudies/14-incidentes-reais-agentes-producao.md
-    - "15 — Assistentes em Escala": 09-CaseStudies/15-assistentes-empresa-escala-glean-hebbia.md
-    - "16 — Voyager / AI Scientist": 09-CaseStudies/16-voyager-ai-scientist-fronteira.md
-    - "17 — AI Scientist (Sakana)": 09-CaseStudies/17-ai-scientist-sakana-detalhado.md
-  - Bibliotecas:
-    - Arquiteturas: bibliotecas/arquiteturas.md
-    - Padrões de Agentes: bibliotecas/padroes.md
-    - Workflows: bibliotecas/workflows.md
-    - RAG: bibliotecas/rag.md
-    - Memória: bibliotecas/memoria.md
-    - MCP: bibliotecas/mcp.md
-    - Prompt Library: bibliotecas/prompts.md
-    - Ferramentas: bibliotecas/ferramentas.md
-    - Glossário: bibliotecas/glossario.md
-  - Pesquisa:
-    - Master Index: pesquisa/master-index.md
-    - Papers: pesquisa/papers.md
