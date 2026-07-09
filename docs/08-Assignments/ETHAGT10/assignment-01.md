@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ETHAGT10 — Avaliação do Módulo
 
 > Curso: Padrões de Arquitetura Multi-Agente (topologias) · Nota mínima de aprovação: 3,0

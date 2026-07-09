@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ETHAGT05 — Avaliação do Módulo
 
 > Curso: Memória de Agentes (working · episódica · semântica · procedural) · Nota mínima de aprovação: 3,0

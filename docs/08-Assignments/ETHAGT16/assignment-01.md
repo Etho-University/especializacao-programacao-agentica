@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ETHAGT16 — Avaliação do Módulo
 
 > Curso: Sociedades de Agentes & Autonomous Research Systems · Nota mínima de aprovação: 3,0

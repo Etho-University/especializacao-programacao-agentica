@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ETHAGT12 — Avaliação do Módulo
 
 > Curso: AgentOps, Observabilidade & Avaliação (LLMOps para agentes) · Nota mínima de aprovação: 3,0

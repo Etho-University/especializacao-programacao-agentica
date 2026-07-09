@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ADR-001 — Fundações da Especialização em Programação Agêntica
 
 - **Status**: Accepted

@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ETHAGT08 — Avaliação do Módulo
 
 > Curso: MCP — Model Context Protocol (servers, clients, hosts, governança) · Nota mínima de aprovação: 3,0

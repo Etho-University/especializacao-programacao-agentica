@@ -1,4 +1,7 @@
-﻿# Governança da Especialização
+﻿---
+password: Etho-Prof-2026
+---
+# Governança da Especialização
 
 Documentos de governança que definem a missão, visão, princípios e estrutura organizacional do programa de especialização em Programação Agêntica.
 

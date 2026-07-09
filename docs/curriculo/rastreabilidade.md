@@ -1,4 +1,7 @@
-﻿# Rastreabilidade Curricular
+﻿---
+password: Etho-Prof-2026
+---
+# Rastreabilidade Curricular
 
 Matriz de rastreabilidade que conecta competências, módulos, objetivos de aprendizagem e avaliações.
 

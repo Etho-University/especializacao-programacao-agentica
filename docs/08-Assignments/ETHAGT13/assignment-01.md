@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ETHAGT13 — Avaliação do Módulo
 
 > Curso: Segurança & Governança de Agentes · Nota mínima de aprovação: 3,0

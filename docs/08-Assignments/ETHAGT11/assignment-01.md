@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ETHAGT11 — Avaliação do Módulo
 
 > Curso: Event-Driven Agents & Workflow Orchestration · Nota mínima de aprovação: 3,0

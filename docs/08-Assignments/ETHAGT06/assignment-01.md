@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ETHAGT06 — Avaliação do Módulo
 
 > Curso: RAG Agêntico (Adaptive · Corrective · Self-RAG · Agentic) · Nota mínima de aprovação: 3,0

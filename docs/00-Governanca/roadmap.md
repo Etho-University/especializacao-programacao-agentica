@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # Roadmap de Desenvolvimento do Material
 
 Plano de produção da Especialização em sprints. Cada sprint entrega **material versionado, revisável e navegável**, com rastreabilidade competência → módulo → avaliação.

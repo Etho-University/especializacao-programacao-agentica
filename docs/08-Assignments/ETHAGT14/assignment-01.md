@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ETHAGT14 — Avaliação do Módulo
 
 > Curso: Escalabilidade & Sistemas Distribuídos de Agentes · Nota mínima de aprovação: 3,0

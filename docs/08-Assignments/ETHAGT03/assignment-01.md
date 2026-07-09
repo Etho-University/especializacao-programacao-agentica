@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ETHAGT03 — Avaliação do Módulo
 
 > Curso: Padrões de Workflow Agêntico (os 5 da Anthropic + composições) · Nota mínima de aprovação: 3,0

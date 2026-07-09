@@ -1,4 +1,7 @@
-﻿# Roadmap da Especialização
+﻿---
+password: Etho-Prof-2026
+---
+# Roadmap da Especialização
 
 Visão geral do planejamento, marcos e evolução prevista para o programa de especialização em Programação Agêntica.
 

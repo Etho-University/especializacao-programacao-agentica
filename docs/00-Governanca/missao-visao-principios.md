@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # Missão, Visão e Princípios
 
 ## Missão

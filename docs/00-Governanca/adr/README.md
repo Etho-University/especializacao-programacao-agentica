@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # Architecture Decision Records (ADRs)
 
 Registram **decisões** arquiteturais e pedagógicas da Especialização que são custosas de reverter. Cada ADR é imutável após aprovação; mudanças exigem ADR novo marcando o anterior como *superseded*.
