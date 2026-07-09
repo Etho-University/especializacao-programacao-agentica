@@ -1,3 +1,6 @@
+---
+password: Etho-Prof-2026
+---
 # ETHAGT16 — Prova do Módulo: Sociedades de Agentes & Autonomous Research Systems
 
 > Universidade Etho · Versão 1.0 · Julho 2026

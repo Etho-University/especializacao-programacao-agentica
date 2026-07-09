@@ -29,7 +29,7 @@
     
     
       
-        <title>Prova - Programação Agêntica — Especialização Etho</title>
+        <title>[Protected] Prova - Programação Agêntica — Especialização Etho</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Prova
+              [Protected] Prova
             
           </span>
         </div>
@@ -6968,7 +6968,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -6996,7 +6996,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7093,7 +7093,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7121,7 +7121,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7229,7 +7229,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7247,7 +7247,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7339,7 +7339,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -9622,8 +9622,6 @@
       
         
       
-        
-      
     
     
     
@@ -9889,34 +9887,6 @@
     
   
     08 — Ecossistema MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../09 — (saltar)" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -10838,83 +10808,34 @@
 
 
 
-<h1 id="ethagt03-prova-do-modulo-padroes-de-workflow-agentico">ETHAGT03 — Prova do Módulo: Padrões de Workflow Agêntico</h1>
-<blockquote>
-<p>Universidade Etho · Versão 1.0 · Julho 2026
-Duração: ~60 min · 10 questões · closed book · Pilar Técnico (40%)</p>
-</blockquote>
-<p>Esta prova avalia os 5 padrões canônicos de workflow (Anthropic), suas composições e o critério de decisão entre workflow e agente autônomo.</p>
-<hr />
-<h2 id="parte-1-conceitos-q1-4">Parte 1 — Conceitos (Q1-4)</h2>
-<p><strong>1. (Múltipla escolha)</strong> Qual é a diferença crucial entre Orchestrator-Workers e Parallelization?
-- (a) Orchestrator-Workers é mais rápido
-- (b) Na Parallelization a decomposição é fixa; no Orchestrator-Workers ela é dinâmica, decidida pelo LLM
-- &copy; Orchestrator-Workers usa modelos menores
-- (d) Parallelization sempre tem votação</p>
-<p><strong>2. (V/F justificado)</strong> "Para 80% de perguntas fáceis e 20% difíceis, Routing por modelo (Haiku vs Sonnet) economiza custo mantendo qualidade."</p>
-<p><strong>3. (Múltipla escolha)</strong> Qual padrão implementa "gerar → avaliar → refinar até critério"?
-- (a) Prompt Chaining
-- (b) Routing
-- &copy; Evaluator-Optimizer
-- (d) Orchestrator-Workers</p>
-<p><strong>4. (V/F justificado)</strong> "Orchestrator-Workers é sempre melhor que Parallelization."</p>
-<hr />
-<h2 id="parte-2-aplicacao-e-trade-off-q5-8">Parte 2 — Aplicação e trade-off (Q5-8)</h2>
-<p><strong>5. (Trade-off)</strong> Diferencie Sectioning e Voting dentro de Parallelization. Dê um cenário onde cada brilha.</p>
-<p><strong>6. (Análise de composição)</strong> Descreva a composição <code>Routing → Parallelization → Evaluator-Optimizer</code> aplicada a suporte ao cliente. O que cada etapa faz?</p>
-<p><strong>7. (Debug de workflow)</strong> Um colega construiu um "workflow" com 40 <code>if/else</code> para tentar prever todos os caminhos possíveis de atendimento. A latência explodiu e o sistema falha em casos que um humano resolveria adaptando o caminho. Qual é o diagnóstico?</p>
-<p><strong>8. (V/F justificado)</strong> "Gates em Prompt Chaining devem ser implementados por LLM, nunca por código determinístico."</p>
-<hr />
-<h2 id="parte-3-projeto-curto-q9-10">Parte 3 — Projeto curto (Q9-10)</h2>
-<p><strong>9. (Projeto curto)</strong> Escreva a condição de parada (3 critérios) de um loop Evaluator-Optimizer para tradução de documentação técnica, incluindo código.</p>
-<p><strong>10. (Projeto curto)</strong> Para os 3 cenários abaixo, indique o workflow mais adequado e justifique em uma frase:
-- (a) Traduzir um documento de 50 páginas para 3 idiomas simultaneamente
-- (b) Triar tickets de suporte em cobrança/técnico/cancelamento
-- &copy; Gerar um rascunho de artigo → validar se cobre tópicos obrigatórios → polir</p>
-<hr />
-<h2 id="criterios-de-correcao-resumo">Critérios de correção (resumo)</h2>
-<table>
-<thead>
-<tr>
-<th>Conceito</th>
-<th>Questões</th>
-<th>Peso</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Padrões canônicos</td>
-<td>1, 3, 5</td>
-<td>30%</td>
-</tr>
-<tr>
-<td>Composição &amp; fronteira</td>
-<td>4, 6, 7</td>
-<td>25%</td>
-</tr>
-<tr>
-<td>Trade-offs (custo/latência/qualidade)</td>
-<td>2, 8</td>
-<td>20%</td>
-</tr>
-<tr>
-<td>Escolha de padrão</td>
-<td>10</td>
-<td>15%</td>
-</tr>
-<tr>
-<td>Implementação</td>
-<td>9</td>
-<td>10%</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Conversão</strong>: cada questão vale 10 pts; total 100 pts. Nota 1-5.
-- 90+ pts: 5,0
-- 75-89: 4,0
-- 60-74: 3,0 (mínimo aprovação)
-- &lt;60: reprovação.</p>
-<p>Gabarito comentado em <a href="../gabarito/"><code>gabarito.md</code></a>.</p>
+<div id="mkdocs-encrypted-content" style="display:none">h9yL/7QT/opyOsIz71B5mg==;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</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password">
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "especializacao-programacao-agentica/23-Exams/ETHAGT03/prova/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["N8Yl3QkoznOwRMnQJQwGOg==;HIMvdOGcFLVhuZimmfFpB0yB8Lpb3mM73TOBsJmks7oceLCQz6lf/teyAciKEgROlGroF0WkB+RNnRaj5yi7UohoUr66UKox8WpkQDBytrLVwpECeTsvns4KHAs6FuvK;r8NhllBcBa2mYtJNVaqrtg=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
 
 
 

@@ -1,3 +1,6 @@
+---
+password: Etho-Prof-2026
+---
 # ETHAGT03 — Prova do Módulo: Padrões de Workflow Agêntico
 
 > Universidade Etho · Versão 1.0 · Julho 2026

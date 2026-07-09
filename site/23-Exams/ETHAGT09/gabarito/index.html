@@ -29,7 +29,7 @@
     
     
       
-        <title>Gabarito - Programação Agêntica — Especialização Etho</title>
+        <title>[Protected] Gabarito - Programação Agêntica — Especialização Etho</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gabarito
+              [Protected] Gabarito
             
           </span>
         </div>
@@ -6968,7 +6968,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -6996,7 +6996,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7093,7 +7093,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7121,7 +7121,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7218,7 +7218,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7246,7 +7246,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7343,7 +7343,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7371,7 +7371,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7468,7 +7468,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7496,7 +7496,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7593,7 +7593,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7621,7 +7621,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7718,7 +7718,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7746,7 +7746,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7843,7 +7843,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7871,7 +7871,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -8007,7 +8007,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -8025,7 +8025,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -9644,8 +9644,6 @@
       
         
       
-        
-      
     
     
     
@@ -9911,34 +9909,6 @@
     
   
     08 — Ecossistema MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../09 — (saltar)" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -10860,125 +10830,34 @@
 
 
 
-<h1 id="ethagt09-gabarito-da-prova">ETHAGT09 — Gabarito da Prova</h1>
-<blockquote>
-<p>Restrito a mentores.</p>
-</blockquote>
-<h2 id="parte-1-conceitos">Parte 1 — Conceitos</h2>
-<p><strong>1.</strong> <strong>(a)</strong> Correta. Broadcast = um emissor alcança todos; p2p = comunicação direta 1↔1; pub/sub = desacoplamento via tópicos (inscrição). — <em>Ref.: Apostila, Cap. 1 — O espectro da comunicação A2A (§1.2 taxonomia).</em></p>
-<p><strong>2.</strong> <strong>Falso.</strong> Actor model evita locks: concorrência via troca de mensagens e estado encapsulado. Compartilhar estado exige locks (lentidão, deadlocks). Em cargas distribuídas/paralelas o actor model costuma ser mais rápido e escalável; perde em casos de estado muito compartilhado e mutável. — <em>Ref.: Cap. 4 — Actor Model (§4.4 "Actor model é mais lento?").</em></p>
-<p><strong>3.</strong> <strong>(a)</strong> Correta. Handoff transfere controle + contexto ativo para outro agente; o supervisor roteia como tool calls mantendo posse do fluxo. — <em>Ref.: Cap. 2 — Padrões de conversação (§2.3 Handoff; §2.4 Supervisor vs handoff vs group chat).</em></p>
-<p><strong>4.</strong> <strong>Falso.</strong> No blackboard, especialistas só precisam conhecer o <em>espaço compartilhado</em>, não uns aos outros — esse desacoplamento é a vantagem central do padrão. — <em>Ref.: Cap. 3 — Blackboard (§3.1, §3.3).</em></p>
-<h2 id="parte-2-aplicacao-e-trade-off">Parte 2 — Aplicação e trade-off</h2>
-<p><strong>5.</strong> Critérios para preferir <strong>blackboard</strong>: (i) problema dinâmico, com contribuições de especialistas que não se conhecem a priori; (ii) muitos produtores/consumidores e baixo acoplamento desejado; (iii) necessidade de estado compartilhado consultável. Prefira <strong>mensagens diretas</strong> quando: fluxo conhecido, baixa latência ponto-a-ponto, poucos agentes com acoplamento explícito. — <em>Ref.: Cap. 3 (§3.2 Quando o blackboard brilha; §3.3).</em></p>
-<p><strong>6.</strong> Causas: (i) falta de condição de parada/termination no seletor ou agente; (ii) ausência de estado de progresso (agentes não sabem que a tarefa acabou). Correções: definir critério de <em>termination</em> explícito (ex.: mensagem <code>FINAL</code> ou max_turns); usar seletor que detecta repetição/estagnação e força convergência. — <em>Ref.: Cap. 2 — Padrões de conversação (§2.2 Group chat); Cap. 5 — Negociação (§5.4 Convergência e deadlock).</em></p>
-<p><strong>7.</strong> Propriedades: (i) <strong>encapsulamento de estado</strong> (cada actor é isolado, sem memória compartilhada); (ii) <strong>localização transparente</strong> (mensagens a actors locais ou remotos são idênticas → escala natural). Trade-off: overhead de mensagens e modelagem mental mais complexa; latência em coordenação fina. — <em>Ref.: Cap. 4 — Actor Model (§4.1, §4.2, §4.3).</em></p>
-<p><strong>8.</strong> Estratégias: (i) <strong>concessão monotônica</strong> (cada parte cede a cada rodada até zona de acordo); (ii) <strong>BATNA/limite de reserva</strong> conhecido + número máximo de rounds, após o qual aceita-se melhor oferta ou arbitragem. Combinar com <em>timeouts</em> e, se necessário, um <em>mediator</em>. — <em>Ref.: Cap. 5 — Negociação e conflito (§5.2 Bargaining/auction; §5.4).</em></p>
-<h2 id="parte-3-projeto-curto">Parte 3 — Projeto curto</h2>
-<p><strong>9.</strong> Exemplo mínimo:
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;agent://researcher&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;agent://critic&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;review_request&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;payload&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;claim_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c-42&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-O campo <code>version</code> permite evolução do protocolo sem quebrar consumidores antigos. — <em>Ref.: Cap. 1 — O espectro da comunicação A2A (§1.3 Schemas de mensagem).</em></p>
-<p><strong>10.</strong> MCP expõe tools/resources/prompts <em>para um agente</em> (client↔servidor); A2A orquestra <em>comunicação entre agentes</em>. São complementares: cada agente usa MCP para acessar capacidades, e A2A para coordenar com outros. Exemplo: um agente "pesquisador" (MCP: tool de busca) conversa via A2A com um agente "crítico" (MCP: tool de scoring). — <em>Ref.: Cap. 6 — Protocolos e padrões emergentes (§6.1 A2A; §6.2 MCP vs A2A).</em></p>
-<hr />
-<h2 id="erros-comuns-parcialdeducao">Erros comuns (parcial/dedução)</h2>
-<ul>
-<li><strong>Q1</strong>: confundir pub/sub com p2p → deduzir metade; marcar &copy; mostra visão invertida do broadcast.</li>
-<li><strong>Q2</strong>: responder "verdadeiro" citando só overhead de mensagens, ignorando custo dos locks e paralelismo → deduzir 50%.</li>
-<li><strong>Q3</strong>: confundir handoff com delegação reversa (worker devolve ao supervisor) → metade.</li>
-<li><strong>Q5/Q8</strong>: listar critérios genéricos sem citar convergência/deadlock/limite de reserva → até -40%.</li>
-<li><strong>Q9</strong>: schema sem <code>version</code> → -50% (não atende o enunciado).</li>
-<li><strong>Q10</strong>: dizer que MCP e A2A "fazem a mesma coisa" → anular (mostra não entendimento da complementaridade).</li>
-</ul>
-<p>Crédito parcial: justificativa certa com escolha errada vale até 50% se o raciocínio estiver coerente.</p>
-<hr />
-<h2 id="rubrica-por-questao-pts">Rubrica por questão (pts)</h2>
-<table>
-<thead>
-<tr>
-<th>Q</th>
-<th>Tipo</th>
-<th>pts</th>
-<th>Aceita parcial</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Múltipla escolha</td>
-<td>10</td>
-<td>0</td>
-</tr>
-<tr>
-<td>2</td>
-<td>V/F justificado</td>
-<td>10</td>
-<td>5 se V/F certo, justificativa errada</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Múltipla escolha</td>
-<td>10</td>
-<td>0</td>
-</tr>
-<tr>
-<td>4</td>
-<td>V/F justificado</td>
-<td>10</td>
-<td>5</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Trade-off (3 critérios)</td>
-<td>10</td>
-<td>3 pts por critério válido</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Debug (2+2)</td>
-<td>10</td>
-<td>2,5 por item válido</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Análise (2+1)</td>
-<td>10</td>
-<td>propriedade/trade-off válidos</td>
-</tr>
-<tr>
-<td>8</td>
-<td>Trade-off (2 estratégias)</td>
-<td>10</td>
-<td>5 por estratégia concreta</td>
-</tr>
-<tr>
-<td>9</td>
-<td>Projeto (schema)</td>
-<td>10</td>
-<td>5 se faltar <code>version</code></td>
-</tr>
-<tr>
-<td>10</td>
-<td>Projeto (MCP vs A2A)</td>
-<td>10</td>
-<td>5 se não der exemplo de uso conjunto</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="nota-esperada-por-perfil">Nota esperada por perfil</h2>
-<ul>
-<li><strong>5,0</strong>: justifica trade-offs com propriedade, vê quando cada padrão brilha e cita falhas concretas.</li>
-<li><strong>4,0</strong>: aplica conceitos corretos, justificativas boas com pequenas imprecisões.</li>
-<li><strong>3,0</strong>: conhece definições mas não diferencia padrões na prática.</li>
-<li><strong>&lt;3,0</strong>: confunde handoff/supervisor, blackboard/p2p, ou afirma mito do actor model.</li>
-</ul>
+<div id="mkdocs-encrypted-content" style="display:none">kkoQCXy68l8z1Tuk1hQVTw==;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</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password">
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "especializacao-programacao-agentica/23-Exams/ETHAGT09/gabarito/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["N8Yl3QkoznOwRMnQJQwGOg==;HIMvdOGcFLVhuZimmfFpB0yB8Lpb3mM73TOBsJmks7oceLCQz6lf/teyAciKEgROlGroF0WkB+RNnRaj5yi7UohoUr66UKox8WpkQDBytrLVwpECeTsvns4KHAs6FuvK;r8NhllBcBa2mYtJNVaqrtg=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
 
 
 

@@ -1,3 +1,6 @@
+---
+password: Etho-Prof-2026
+---
 # ETHAGT08 — Prova do Módulo: MCP — Model Context Protocol
 
 > Universidade Etho · Versão 1.0 · Julho 2026

@@ -29,7 +29,7 @@
     
     
       
-        <title>Prova - Programação Agêntica — Especialização Etho</title>
+        <title>[Protected] Prova - Programação Agêntica — Especialização Etho</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Prova
+              [Protected] Prova
             
           </span>
         </div>
@@ -6968,7 +6968,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -6996,7 +6996,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7093,7 +7093,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7121,7 +7121,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7218,7 +7218,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7246,7 +7246,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7343,7 +7343,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7371,7 +7371,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7468,7 +7468,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7496,7 +7496,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7593,7 +7593,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7621,7 +7621,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7729,7 +7729,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7747,7 +7747,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7839,7 +7839,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -9622,8 +9622,6 @@
       
         
       
-        
-      
     
     
     
@@ -9889,34 +9887,6 @@
     
   
     08 — Ecossistema MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../09 — (saltar)" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -10838,83 +10808,34 @@
 
 
 
-<h1 id="ethagt07-prova-do-modulo-knowledge-graphs-vector-databases-para-agentes">ETHAGT07 — Prova do Módulo: Knowledge Graphs &amp; Vector Databases para Agentes</h1>
-<blockquote>
-<p>Universidade Etho · Versão 1.0 · Julho 2026
-Duração: ~60 min · 10 questões · closed book · Pilar Técnico (40%)</p>
-</blockquote>
-<p>Esta prova avalia vector databases, knowledge graphs, GraphRAG e pipelines híbridos como infraestrutura cognitiva de agentes.</p>
-<hr />
-<h2 id="parte-1-conceitos-q1-4">Parte 1 — Conceitos (Q1-4)</h2>
-<p><strong>1. (Múltipla escolha)</strong> O que a técnica ANN (Approximate Nearest Neighbor) resolve?
-- (a) Embedding de textos
-- (b) A busca exata O(N) é inviável em milhões de vetores; ANN aproxima o resultado trocando recall por velocidade
-- &copy; Reordenação de resultados por relevância
-- (d) Compressão de vetores</p>
-<p><strong>2. (V/F justificado)</strong> "Um knowledge graph responde 'o que está relacionado com isto e como?', enquanto um vector DB responde 'o que é parecido com isto?'."</p>
-<p><strong>3. (Múltipla escolha)</strong> Qual métrica de similaridade é mais comum para embeddings de texto?
-- (a) Euclidean (L2)
-- (b) Manhattan
-- &copy; Cosine
-- (d) Hamming</p>
-<p><strong>4. (V/F justificado)</strong> "Sempre preferir pipeline híbrido (vector + grafo) é a melhor estratégia."</p>
-<hr />
-<h2 id="parte-2-aplicacao-e-trade-off-q5-8">Parte 2 — Aplicação e trade-off (Q5-8)</h2>
-<p><strong>5. (Trade-off)</strong> Por que GraphRAG é caro de construir? Justifique o custo e diga quando ele é amortizado.</p>
-<p><strong>6. (Análise comparativa)</strong> Para estes 3 cenários, vector DB ou knowledge graph?
-- (a) "Quais os temas principais deste corpus de 10.000 artigos científicos?"
-- (b) "Quais documentos falam sobre reembolso?"
-- &copy; "Quais drugs interagem com o gene X em até 3 saltos?"</p>
-<p><strong>7. (Debug de escala)</strong> Um vector DB com índice HNSW calibrado para 1M vetores está degradando em latência após chegar a 10M. O que aconteceu e qual é a solução?</p>
-<p><strong>8. (V/F justificado)</strong> "pgvector é uma opção operacional viável quando você já tem Postgres e quer adicionar busca vetorial sem introduzir um sistema novo."</p>
-<hr />
-<h2 id="parte-3-projeto-curto-q9-10">Parte 3 — Projeto curto (Q9-10)</h2>
-<p><strong>9. (Projeto curto)</strong> Escreva uma query Cypher (Neo4j) para encontrar "co-autores de Ana em até 3 saltos de coautoria", retornando nomes distintos.</p>
-<p><strong>10. (Projeto curto)</strong> Descreva o pipeline GraphRAG em 4 etapas (extração → comunidades → sumarização → consulta) e diferencie Local search de Global search.</p>
-<hr />
-<h2 id="criterios-de-correcao-resumo">Critérios de correção (resumo)</h2>
-<table>
-<thead>
-<tr>
-<th>Conceito</th>
-<th>Questões</th>
-<th>Peso</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Vector DBs &amp; ANN</td>
-<td>1, 3, 8</td>
-<td>20%</td>
-</tr>
-<tr>
-<td>Knowledge graphs</td>
-<td>2, 9</td>
-<td>20%</td>
-</tr>
-<tr>
-<td>GraphRAG &amp; custo</td>
-<td>5, 10</td>
-<td>25%</td>
-</tr>
-<tr>
-<td>Escolha de tecnologia</td>
-<td>4, 6</td>
-<td>20%</td>
-</tr>
-<tr>
-<td>Operação em escala</td>
-<td>7</td>
-<td>15%</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Conversão</strong>: cada questão vale 10 pts; total 100 pts. Nota 1-5.
-- 90+ pts: 5,0
-- 75-89: 4,0
-- 60-74: 3,0 (mínimo aprovação)
-- &lt;60: reprovação.</p>
-<p>Gabarito comentado em <a href="../gabarito/"><code>gabarito.md</code></a>.</p>
+<div id="mkdocs-encrypted-content" style="display:none">CyK0zsoV1tBgYGoFPu0FvA==;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</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password">
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "especializacao-programacao-agentica/23-Exams/ETHAGT07/prova/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["N8Yl3QkoznOwRMnQJQwGOg==;HIMvdOGcFLVhuZimmfFpB0yB8Lpb3mM73TOBsJmks7oceLCQz6lf/teyAciKEgROlGroF0WkB+RNnRaj5yi7UohoUr66UKox8WpkQDBytrLVwpECeTsvns4KHAs6FuvK;r8NhllBcBa2mYtJNVaqrtg=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
 
 
 

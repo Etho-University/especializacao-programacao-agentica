@@ -1,3 +1,6 @@
+---
+password: Etho-Prof-2026
+---
 # ETHAGT15 — Prova do Módulo: Meta-Agentes & Sistemas Autoaprendentes
 
 > Universidade Etho · Versão 1.0 · Julho 2026

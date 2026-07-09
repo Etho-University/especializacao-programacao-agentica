@@ -29,7 +29,7 @@
     
     
       
-        <title>Gabarito - Programação Agêntica — Especialização Etho</title>
+        <title>[Protected] Gabarito - Programação Agêntica — Especialização Etho</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gabarito
+              [Protected] Gabarito
             
           </span>
         </div>
@@ -6968,7 +6968,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -6996,7 +6996,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7093,7 +7093,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7121,7 +7121,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7218,7 +7218,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7246,7 +7246,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7382,7 +7382,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7400,7 +7400,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -9622,8 +9622,6 @@
       
         
       
-        
-      
     
     
     
@@ -9889,34 +9887,6 @@
     
   
     08 — Ecossistema MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../09 — (saltar)" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -10838,48 +10808,34 @@
 
 
 
-<h1 id="ethagt04-gabarito-da-prova">ETHAGT04 — Gabarito da Prova</h1>
-<blockquote>
-<p>Restrito a mentores. Respostas esperadas e critérios de correção para <a href="../prova/"><code>prova.md</code></a>.</p>
-</blockquote>
-<h2 id="parte-1-conceitos">Parte 1 — Conceitos</h2>
-<p><strong>1. (b) CoT = linear sem reflexão; Plan-and-Execute = linear sem reflexão; Reflexion = adiciona auto-correção.</strong> No mapa tridimensional (momento × estrutura × auto-correção): CoT é linear, raciocínio-durante, sem reflexão. Plan-and-Execute é linear, raciocínio-antes, sem reflexão. Reflexion adiciona a quarta dimensão: auto-correção após falha. Ref.: Capítulo 1 — Tipologia, §1.2.</p>
-<p><strong>2. FALSO.</strong> CoT ajuda em tarefas que <em>genuinamente requerem</em> raciocínio multi-step (matemática, lógica). Em recuperação factual simples ("qual a capital da França?"), CoT <em>adiciona custo sem benefício</em> e às vezes introduz erros. Regra: aplique CoT onde há raciocínio, não onde há fato. Ref.: Capítulo 2 — CoT, §2.2.</p>
-<p><strong>3. (b) O planner gera o plano inteiro de uma vez ("cego"), sem re-raciocinar entre passos, e executa em paralelo.</strong> ReWOO (Xu et al., arXiv:2305.18323) gera o plano completo sem ver evidências intermediárias, inclui variáveis para saídas futuras, e resolve as chamadas em paralelo — reduzindo drasticamente as chamadas ao LLM. Ref.: Capítulo 3 — Plan-and-Execute e ReWOO, §3.3.</p>
-<p><strong>4. FALSO.</strong> Com um reasoning model nativo, o modelo <em>já raciocina internamente</em>. Adicionar "pense passo a passo" é redundante ou até prejudicial. O design muda: não force CoT promptado; mais foco em tools; calibre o orçamento de thinking tokens. Ref.: Capítulo 7 — Inference-Time Reasoning, §7.2.</p>
-<h2 id="parte-2-aplicacao-e-trade-off">Parte 2 — Aplicação e trade-off</h2>
-<p><strong>5.</strong>
-| | Latência | Custo (tokens) | Robustez a planos errados |
-|---|---|---|---|
-| ReAct | média | alto (re-raciocina a cada passo; contexto cresce) | média (adapta via observação) |
-| Plan-and-Execute | média (1 planner + execução sequencial, mas sem re-raciocínio por passo) | médio | alta (re-planner corrige) |
-| ReWOO | baixa (execução em paralelo) | baixo | baixa (rígido, plano cego) |</p>
-<p>Ref.: Capítulo 3, §3.2-3.3.</p>
-<p><strong>6.</strong> Dois critérios: (i) o problema tem <strong>múltiplos caminhos possíveis com qualidade variável</strong> (espaço de busca explorável); (ii) há um <strong>avaliador confiável</strong> para podar ramos (sem avaliação, a árvore não sabe para onde ir). Adicional: o orçamento permite (o problema é valioso o suficiente). ToT é "artilharia pesada" — reserve para onde CoT/ReAct já falharam. Ref.: Capítulo 4 — ToT e LATS, §4.3.</p>
-<p><strong>7.</strong> Defesas canônica: (i) <strong>limite de tentativas</strong> (<code>max_attempts</code>) — hard cap que força o agente a parar; (ii) <strong>detecção de repetição</strong> — se o mesmo erro/lição aparece N vezes, force mudança; (iii) <strong>orçamento de tokens/passos</strong> — pare quando o gasto excede o orçamento; (iv) re-planejamento supervisionado (HITL se o agente está perdido). Ref.: Capítulo 5 — Reflexion, §5.4 e Capítulo 8 — Falhas, §8.1.</p>
-<p><strong>8. FALSO.</strong> Self-Discover é adequado para problemas <em>novos ou heterogêneos</em> onde não há padrão pronto. Para problemas bem-known (matemática padrão), CoT/ToT são mais previsíveis. Self-Discover adiciona custo inicial (fase de descoberta) que só vale em tarefas complexas. Ref.: Capítulo 6 — Self-Discover, §6.3.</p>
-<h2 id="parte-3-projeto-curto">Parte 3 — Projeto curto</h2>
-<p><strong>9.</strong> Espera-se os 3 atores com memória:
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">reflexion</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">max_attempts</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-    <span class="n">memoria</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_attempts</span><span class="p">):</span>
-        <span class="n">trace</span> <span class="o">=</span> <span class="n">actor</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">memoria</span><span class="p">)</span>           <span class="c1"># Actor age, alimentado pela memória</span>
-        <span class="k">if</span> <span class="n">evaluator</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;sucesso&quot;</span><span class="p">:</span>      <span class="c1"># Evaluator avalia</span>
-            <span class="k">return</span> <span class="n">trace</span>
-        <span class="n">licao</span> <span class="o">=</span> <span class="n">self_reflect</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>       <span class="c1"># Self-Reflection produz lição</span>
-        <span class="n">memoria</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">licao</span><span class="p">)</span>                   <span class="c1"># &quot;na próxima, verifique X antes de Y&quot;</span>
-    <span class="k">return</span> <span class="n">trace</span>
-</code></pre></div>
-Avaliar: loop com <code>max_attempts</code>, memória acumulada entre tentativas, 3 papéis distintos. Ref.: Capítulo 5, §5.2.</p>
-<p><strong>10.</strong> (a) <strong>Self-Consistency (voting sobre CoT):</strong> raciocínio matemático beneficia-se de múltiplas amostras votadas — cadeias erradas divergem, a correta converge. (b) <strong>ReAct:</strong> depuração tem número de passos imprevisível e exige observar o resultado de cada ação antes de decidir o próximo passo. &copy; <strong>Self-Discover:</strong> problema tão novo que não há padrão pronto — o agente compõe sua própria estratégia. Ref.: Capítulos 2, 1, 6.</p>
-<hr />
-<h2 id="nota-esperada-por-perfil">Nota esperada por perfil</h2>
-<ul>
-<li><strong>5,0</strong>: posiciona estratégias no mapa, implementa Reflexion, justifica escolhas com trade-offs explícitos.</li>
-<li><strong>4,0</strong>: diferencia estratégias, com pequenas imprecisões em custo/robustez.</li>
-<li><strong>3,0</strong>: conhece as estratégias mas não justifica quando usar cada uma.</li>
-<li><strong>&lt;3,0</strong>: precisa revisar raciocínio e planejamento.</li>
-</ul>
+<div id="mkdocs-encrypted-content" style="display:none">I/KZBg8rskeSEA4oTad5lw==;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</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password">
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "especializacao-programacao-agentica/23-Exams/ETHAGT04/gabarito/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["N8Yl3QkoznOwRMnQJQwGOg==;HIMvdOGcFLVhuZimmfFpB0yB8Lpb3mM73TOBsJmks7oceLCQz6lf/teyAciKEgROlGroF0WkB+RNnRaj5yi7UohoUr66UKox8WpkQDBytrLVwpECeTsvns4KHAs6FuvK;r8NhllBcBa2mYtJNVaqrtg=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
 
 
 

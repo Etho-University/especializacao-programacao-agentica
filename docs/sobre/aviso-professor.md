@@ -1,3 +1,6 @@
+---
+password: Etho-Prof-2026
+---
 # Aviso — Acesso Restrito
 
 > Esta seção é destinada **exclusivamente a professores e avaliadores** da especialização.

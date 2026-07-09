@@ -29,7 +29,7 @@
     
     
       
-        <title>Gabarito - Programação Agêntica — Especialização Etho</title>
+        <title>[Protected] Gabarito - Programação Agêntica — Especialização Etho</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gabarito
+              [Protected] Gabarito
             
           </span>
         </div>
@@ -6968,7 +6968,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -6996,7 +6996,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7093,7 +7093,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7121,7 +7121,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7218,7 +7218,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7246,7 +7246,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7343,7 +7343,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7371,7 +7371,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7468,7 +7468,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7496,7 +7496,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7632,7 +7632,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7650,7 +7650,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -9622,8 +9622,6 @@
       
         
       
-        
-      
     
     
     
@@ -9889,34 +9887,6 @@
     
   
     08 — Ecossistema MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../09 — (saltar)" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -10838,46 +10808,34 @@
 
 
 
-<h1 id="ethagt06-gabarito-da-prova">ETHAGT06 — Gabarito da Prova</h1>
-<blockquote>
-<p>Restrito a mentores. Respostas esperadas e critérios de correção para <a href="../prova/"><code>prova.md</code></a>.</p>
-</blockquote>
-<h2 id="parte-1-conceitos">Parte 1 — Conceitos</h2>
-<p><strong>1. (b) Adaptive RAG roteia por complexidade via classificador externo; Self-RAG usa tokens de reflexão internos.</strong> Adaptive RAG é essencialmente routing (ETHAGT03) aplicado à recuperação — um classificador decide se responde direto, recupera uma vez ou multi-hop. Self-RAG (Asai et al.) é um modelo <em>treinado</em> para emitir tokens de reflexão (<code>[Retrieve]</code>, <code>[Relevant]</code>, <code>[Supported]</code>) que controlam o processo internamente. Ref.: Capítulo 2 — Adaptive RAG e Capítulo 4 — Self-RAG.</p>
-<p><strong>2. FALSO.</strong> Adicionar mais documentos recuperados nem sempre melhora — pode <em>diluir</em> a relevância (mais ruído), aumentar custo/latência e causar "lost in the middle". O padrão correto é retrieve K grande (ex.: 20), re-rank para top-N pequeno (ex.: 5). Ref.: Capítulo 6 — Engenharia de qualidade, §6.2 (Re-ranking).</p>
-<p><strong>3. (b) O sistema descarta os documentos e busca na web como fallback.</strong> CRAG classifica os recuperados em três estados: correto (refina + usa), ambíguo (usa parte + web), incorreto (descarta + busca na web). A inovação é tratar a recuperação como <em>falível</em> e ter um plano B. Ref.: Capítulo 3 — CRAG, §3.2.</p>
-<p><strong>4. VERDADEIRO.</strong> O anti-pattern "vector DB resolve tudo" é exatamente isso: acreditar que vector search é um sistema completo. Na verdade, vector search é <em>uma etapa</em> de recuperação. A evolução para RAG agêntico consiste em adicionar inteligência ao redor: decidir se recuperar, como recuperar, avaliar e corrigir. Ref.: Capítulo 1 — Por que o RAG ingênuo falha, §1.4.</p>
-<h2 id="parte-2-aplicacao-e-trade-off">Parte 2 — Aplicação e trade-off</h2>
-<p><strong>5.</strong> Três classes de falha + correções: (i) <strong>Chunking ruim</strong> → chunking semântico/hierárquico/contextual (não por tamanho fixo); (ii) <strong>Sem re-ranking</strong> → adicionar re-ranker (Cohere, bge) para reordenar por relevância; (iii) <strong>Sem query rewriting</strong> → reescrever a pergunta do usuário em termos alinhados ao corpus (ou HyDE). Ref.: Capítulo 1, §1.3 e Capítulo 6.</p>
-<p><strong>6.</strong> <strong>Densa (vetorial):</strong> boa em semântica, sinônimos, significado. <strong>Esparsa (BM25/keyword):</strong> boa em termos exatos, nomes próprios, códigos, siglas. <strong>Hybrid search</strong> é preferível quando o corpus mistura semântica e termos exatos (ex.: nomes de produtos, códigos que não casam bem por embedding). A fusão (Reciprocal Rank Fusion) combina os rankings. Ref.: Capítulo 6, §6.4.</p>
-<p><strong>7.</strong> Faithfulness baixa (0.45) com context recall alto (0.92) indica: <strong>os documentos corretos foram recuperados</strong>, mas a <strong>resposta não é sustentada por eles</strong> (alucinação — o modelo inventa além do que está nos docs). Técnica que ajuda: <strong>chunking melhor</strong> (chunks mais focados) e <strong>prompt mais restritivo</strong> ("responda APENAS com base no contexto fornecido"). O critério de sucesso do módulo é faithfulness ≥ 0.85. Ref.: Capítulo 7 — Avaliação, §7.2.</p>
-<p><strong>8. VERDADEIRO.</strong> HyDE (Gao et al., arXiv:2212.10496): o LLM gera um documento <em>hipotético</em> que seria a resposta ideal, e busca por documentos <em>similares a esse documento hipotético</em> — casando por semântica da resposta, não da pergunta. Útil quando a pergunta do usuário não é uma boa query. Ref.: Capítulo 6, §6.3.</p>
-<h2 id="parte-3-projeto-curto">Parte 3 — Projeto curto</h2>
-<p><strong>9.</strong> Espera-se o agente dirigindo o processo:
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">agentic_rag</span><span class="p">(</span><span class="n">pergunta</span><span class="p">):</span>
-    <span class="n">agente</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span>
-        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">search_internal</span><span class="p">,</span> <span class="n">search_web</span><span class="p">,</span> <span class="n">search_kg</span><span class="p">],</span>
-        <span class="n">system</span><span class="o">=</span><span class="n">RAG_PROMPT</span>  <span class="c1"># &quot;resolva a pergunta; busque quantas vezes precisar; combine fontes&quot;</span>
-    <span class="p">)</span>
-    <span class="k">return</span> <span class="n">agente</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">pergunta</span><span class="p">)</span>  <span class="c1"># o agente decide quantos hops, quando parar</span>
-</code></pre></div>
-Avaliar: agente com tools de múltiplas fontes, decisão autônoma sobre hops, sem pipeline fixo. Ref.: Capítulo 5 — Agentic RAG, §5.1-5.2.</p>
-<p><strong>10.</strong> As 4 métricas canônicas (Ragas):
-| Métrica | Mede |
-|---|---|
-| <strong>Faithfulness</strong> | A resposta é sustentada pelos documentos recuperados? (anti-alucinação) |
-| <strong>Answer relevance</strong> | A resposta responde à pergunta? |
-| <strong>Context precision</strong> | Os documentos recuperados são relevantes? |
-| <strong>Context recall</strong> | Documentos relevantes foram recuperados? (cobertura) |</p>
-<p>Ref.: Capítulo 7 — Avaliação, §7.2.</p>
-<hr />
-<h2 id="nota-esperada-por-perfil">Nota esperada por perfil</h2>
-<ul>
-<li><strong>5,0</strong>: diagnostica falhas, implementa padrões agênticos, domina métricas de avaliação.</li>
-<li><strong>4,0</strong>: diferencia Adaptive/CRAG/Self-RAG, com pequenas imprecisões em engenharia.</li>
-<li><strong>3,0</strong>: conhece os padrões mas não articula quando usar cada um.</li>
-<li><strong>&lt;3,0</strong>: precisa revisar RAG agêntico e avaliação.</li>
-</ul>
+<div id="mkdocs-encrypted-content" style="display:none">lNGFhqa1PSYPgEh5w4U4KA==;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</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password">
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "especializacao-programacao-agentica/23-Exams/ETHAGT06/gabarito/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["N8Yl3QkoznOwRMnQJQwGOg==;HIMvdOGcFLVhuZimmfFpB0yB8Lpb3mM73TOBsJmks7oceLCQz6lf/teyAciKEgROlGroF0WkB+RNnRaj5yi7UohoUr66UKox8WpkQDBytrLVwpECeTsvns4KHAs6FuvK;r8NhllBcBa2mYtJNVaqrtg=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
 
 
 

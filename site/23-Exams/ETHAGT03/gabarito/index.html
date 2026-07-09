@@ -29,7 +29,7 @@
     
     
       
-        <title>Gabarito - Programação Agêntica — Especialização Etho</title>
+        <title>[Protected] Gabarito - Programação Agêntica — Especialização Etho</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gabarito
+              [Protected] Gabarito
             
           </span>
         </div>
@@ -6968,7 +6968,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -6996,7 +6996,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7093,7 +7093,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7121,7 +7121,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7257,7 +7257,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7275,7 +7275,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -9622,8 +9622,6 @@
       
         
       
-        
-      
     
     
     
@@ -9889,34 +9887,6 @@
     
   
     08 — Ecossistema MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../09 — (saltar)" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -10838,41 +10808,34 @@
 
 
 
-<h1 id="ethagt03-gabarito-da-prova">ETHAGT03 — Gabarito da Prova</h1>
-<blockquote>
-<p>Restrito a mentores. Respostas esperadas e critérios de correção para <a href="../prova/"><code>prova.md</code></a>.</p>
-</blockquote>
-<h2 id="parte-1-conceitos">Parte 1 — Conceitos</h2>
-<p><strong>1. (b) Na Parallelization a decomposição é fixa; no Orchestrator-Workers ela é dinâmica.</strong> O Orchestrator-Workers tem um LLM que decompõe a tarefa em tempo de execução (as subtarefas <em>emergem</em>), enquanto na Parallelization o particionamento é predefinido em código. Ref.: Capítulo 5 — Orchestrator-Workers, §5.1.</p>
-<p><strong>2. VERDADEIRO.</strong> Routing por dificuldade envia perguntas fáceis para modelo barato (Haiku) e difíceis para modelo potente (Sonnet/Opus). Para 80/20, isso reduz custo 5-7× sem perder qualidade percebida. O trade-off é a qualidade do classificador. Ref.: Capítulo 3 — Routing, §3.3 (Routing por modelo).</p>
-<p><strong>3. &copy; Evaluator-Optimizer.</strong> O Evaluator-Optimizer é um loop: um LLM gera, outro avalia e dá feedback, e o gerador refina até satisfazer um critério. Ref.: Capítulo 6 — Evaluator-Optimizer.</p>
-<p><strong>4. FALSO.</strong> Orchestrator-Workers é mais caro (planejamento + síntese) e menos previsível. Para subtarefas <em>fixas e conhecidas</em>, Parallelization é mais simples, barato e testável. Orchestrator-Workers só supera quando a decomposição é <em>dinâmica</em> (depende do conteúdo). Ref.: Capítulo 5, §5.5 (Trade-off).</p>
-<h2 id="parte-2-aplicacao-e-trade-off">Parte 2 — Aplicação e trade-off</h2>
-<p><strong>5.</strong> <strong>Sectioning:</strong> divide a tarefa em subtarefas <em>independentes</em> e executa em paralelo. Brilha quando há partes que não dependem umas das outras (ex.: resumir seções de um documento). <strong>Voting:</strong> executa a <em>mesma tarefa N vezes</em> (com temperatura/variação) e agrega por maioria. Brilha quando há incerteza e múltiplas amostras aumentam a confiança (ex.: self-consistency em raciocínio matemático). Ref.: Capítulo 4 — Parallelization, §4.2-4.3.</p>
-<p><strong>6.</strong> 1. <strong>Routing:</strong> classifica o ticket (cobrança, técnico, cancelamento) e encaminha ao tratador especializado. 2. <strong>Parallelization:</strong> o tratador resolve, rodando em paralelo com um guardião de segurança (filtra violações de política). 3. <strong>Evaluator-Optimizer:</strong> a resposta é avaliada (política, tom, precisão) e refinada antes de enviar ao cliente. Esta composição é o padrão canônico de produção (Coinbase, Intercom). Ref.: Capítulo 7 — Composições, §7.1.</p>
-<p><strong>7.</strong> O sistema está <strong>forçando workflow em um problema que pede agente</strong>. Sinais: branches crescendo sem parar, <code>if</code> sobre <code>if</code>, latência explodindo, falha em casos que exigem adaptação. Diagnóstico: o número de caminhos não é previsível — a tarefa pede a flexibilidade de um agente autônomo. Solução: migrar para agente com cercas (tools finitas, critério de sucesso, orçamento de iterações). Ref.: Capítulo 7, §7.3 (Sinais de que você está forçando workflow).</p>
-<p><strong>8. FALSO.</strong> Gates devem ser implementados por <strong>código determinístico</strong> (não LLM), sempre que possível. Um gate que valida "o esboço cobre os tópicos obrigatórios?" deve ser uma função de código que checa, não um LLM subjetivo. Gates de LLM introduzem imprevisibilidade. Ref.: Capítulo 2 — Prompt Chaining, §2.3 (Implementação: "os gates são código, não LLM").</p>
-<h2 id="parte-3-projeto-curto">Parte 3 — Projeto curto</h2>
-<p><strong>9.</strong> Três condições de parada: (1) score atinge o limiar (<code>score &gt;= min_score</code>); (2) máximo de iterações (<code>i &gt;= max_iter</code>); (3) feedback estagnado (delta entre iterações cai abaixo de um threshold — o avaliador não tem mais o que dizer).
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">evaluator_optimizer</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_score</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>
-    <span class="n">output</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
-        <span class="n">score</span><span class="p">,</span> <span class="n">feedback</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="n">min_score</span> <span class="ow">or</span> <span class="n">feedback</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">output</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="n">refine</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">feedback</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">output</span>
-</code></pre></div>
-Ref.: Capítulo 6, §6.3 (Critérios e convergência).</p>
-<p><strong>10.</strong> (a) <strong>Parallelization (sectioning):</strong> 3 idiomas são subtarefas independentes; executar em paralelo reduz latência. (b) <strong>Routing:</strong> categorias distintas com tratamentos especializados; classificador encaminha ao tratador certo. &copy; <strong>Prompt Chaining:</strong> passos lineares fixos com gates de validação entre etapas. Ref.: Capítulos 2, 3 e 4.</p>
-<hr />
-<h2 id="nota-esperada-por-perfil">Nota esperada por perfil</h2>
-<ul>
-<li><strong>5,0</strong>: domina os 5 padrões, compõe com critério, diagnostica fronteira workflow/agente.</li>
-<li><strong>4,0</strong>: diferencia padrões corretamente, com pequenas imprecisões em trade-offs.</li>
-<li><strong>3,0</strong>: conhece os padrões mas não justifica escolhas com evidência.</li>
-<li><strong>&lt;3,0</strong>: precisa revisar os 5 workflows.</li>
-</ul>
+<div id="mkdocs-encrypted-content" style="display:none">GgvjuzEv6K7r7L5+UdGkYg==;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</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password">
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "especializacao-programacao-agentica/23-Exams/ETHAGT03/gabarito/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["N8Yl3QkoznOwRMnQJQwGOg==;HIMvdOGcFLVhuZimmfFpB0yB8Lpb3mM73TOBsJmks7oceLCQz6lf/teyAciKEgROlGroF0WkB+RNnRaj5yi7UohoUr66UKox8WpkQDBytrLVwpECeTsvns4KHAs6FuvK;r8NhllBcBa2mYtJNVaqrtg=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
 
 
 

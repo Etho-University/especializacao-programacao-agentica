@@ -29,7 +29,7 @@
     
     
       
-        <title>Gabarito - Programação Agêntica — Especialização Etho</title>
+        <title>[Protected] Gabarito - Programação Agêntica — Especialização Etho</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gabarito
+              [Protected] Gabarito
             
           </span>
         </div>
@@ -6968,7 +6968,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -6996,7 +6996,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7093,7 +7093,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7121,7 +7121,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7218,7 +7218,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7246,7 +7246,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7343,7 +7343,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7371,7 +7371,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7468,7 +7468,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7496,7 +7496,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7593,7 +7593,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7621,7 +7621,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7757,7 +7757,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7775,7 +7775,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -9622,8 +9622,6 @@
       
         
       
-        
-      
     
     
     
@@ -9889,34 +9887,6 @@
     
   
     08 — Ecossistema MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../09 — (saltar)" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -10838,38 +10808,34 @@
 
 
 
-<h1 id="ethagt07-gabarito-da-prova">ETHAGT07 — Gabarito da Prova</h1>
-<blockquote>
-<p>Restrito a mentores. Respostas esperadas e critérios de correção para <a href="../prova/"><code>prova.md</code></a>.</p>
-</blockquote>
-<h2 id="parte-1-conceitos">Parte 1 — Conceitos</h2>
-<p><strong>1. (b) A busca exata O(N) é inviável em milhões de vetores; ANN aproxima o resultado trocando recall por velocidade.</strong> ANN (Approximate Nearest Neighbor) é a solução computacional para busca vetorial em escala — algoritmos como HNSW e IVF aproximam o vizinho mais próximo sem comparar com todos. Ref.: Capítulo 1 — Vector databases, §1.2.</p>
-<p><strong>2. VERDADEIRO.</strong> Essa é a distinção fundamental: vector DB = similaridade semântica ("parecido com isto"); knowledge graph = relações estruturadas ("relacionado com isto e como?"). Para raciocínio sobre relações, a estrutura de grafo é intrinsecamente superior. Ref.: Capítulo 3 — Knowledge graphs, §3.1.</p>
-<p><strong>3. &copy; Cosine.</strong> Cosine similarity é a métrica mais comum para embeddings de texto, pois mede a <em>direção</em> (semântica), não a magnitude. A escolha deve casar com o embedding: se o modelo foi treinado para cosine, use cosine. Ref.: Capítulo 1, §1.4.</p>
-<p><strong>4. FALSO.</strong> Híbrido adiciona complexidade operacional (dois sistemas para manter). Para aplicações simples, um vector DB basta. A regra: <strong>adicione complexidade só com evidência</strong> de que melhora o resultado. Meça: se o híbrido melhora success rate em casos multi-hop sem explodir custo, justifica-se; senão, é overhead. Ref.: Capítulo 5 — Pipelines híbridos, §5.4.</p>
-<h2 id="parte-2-aplicacao-e-trade-off">Parte 2 — Aplicação e trade-off</h2>
-<p><strong>5.</strong> GraphRAG é caro porque <strong>extrair entidades e relações de um corpus grande exige muitas chamadas LLM</strong> (LLM-based knowledge extraction). A construção pode custar ordens de magnitude mais que um vector DB. O custo é <em>amortizado</em> se o KG for consultado muitas vezes — mas para corpora voláteis, a reconstrução frequente é proibitiva. Mitigação: atualização incremental (adicionar novas entidades sem reconstruir tudo). Ref.: Capítulo 4 — GraphRAG, §4.4.</p>
-<p><strong>6.</strong> (a) <strong>Knowledge graph (GraphRAG global search):</strong> perguntas globais/sintetizadoras não têm chunk individual que as responda — GraphRAG agrega sumários de comunidade. (b) <strong>Vector DB:</strong> busca por similaridade semântica direta — "documentos sobre reembolso". &copy; <strong>Knowledge graph:</strong> travessia de relações em até 3 saltos (drug → gene → interaction) é uma query Cypher natural, impossível em vector DB. Ref.: Capítulo 4, §4.3 e Capítulo 5.</p>
-<p><strong>7.</strong> Os parâmetros do HNSW (ex.: <code>M</code>, <code>ef_construction</code>, <code>ef_search</code>) e do IVF (ex.: <code>nlist</code>) foram calibrados para 1M vetores e <strong>degradam em 10M</strong>. Solução: <strong>reindexação</strong> com parâmetros recalibrados para o novo volume. Planeje a reindexação como operação de manutenção esperada, não surpresa. Outro cenário que exige reindexação: troca do modelo de embedding (drift). Ref.: Capítulo 6 — Operação em escala, §6.2.</p>
-<p><strong>8. VERDADEIRO.</strong> pgvector resolve o dilema comum: você já tem Postgres e quer busca vetorial sem novo sistema. É uma extensão que adiciona tipos e índices vetoriais ao Postgres, permitindo combinar busca vetorial com consultas relacionais na mesma query. Ideal para volumes médios e operações que valorizam simplicidade de stack. Ref.: Capítulo 2 — Comparativo, §2.3.</p>
-<h2 id="parte-3-projeto-curto">Parte 3 — Projeto curto</h2>
-<p><strong>9.</strong>
-<div class="highlight"><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Pessoa</span><span class="w"> </span><span class="p">{</span><span class="n">nome</span><span class="p">:</span><span class="s">&quot;Ana&quot;</span><span class="p">})</span><span class="o">-[</span><span class="p">:</span><span class="n">COAUTORA</span><span class="p">*</span><span class="m">1</span><span class="p">..</span><span class="m">3</span><span class="o">]-</span><span class="p">(</span><span class="n">coautor</span><span class="p">)</span>
-<span class="k">RETURN</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">coautor</span><span class="p">.</span><span class="n">nome</span>
-</code></pre></div>
-Avaliar: pattern matching com <code>COAUTORA*1..3</code> (1 a 3 saltos), <code>DISTINCT</code> para evitar duplicatas. Ref.: Capítulo 3, §3.3.</p>
-<p><strong>10.</strong> As 4 etapas: (1) <strong>Extração:</strong> LLM extrai entidades e relações do corpus, formando um grafo. (2) <strong>Comunidades:</strong> algoritmo de detecção (ex.: Leiden) agrupa nós relacionados. (3) <strong>Sumarização hierárquica:</strong> cada comunidade é sumarizada pelo LLM em múltiplos níveis. (4) <strong>Consulta:</strong>
-- <strong>Local search:</strong> para perguntas sobre entidades específicas — traversa o grafo local.
-- <strong>Global search:</strong> para perguntas globais/sintetizadoras — agrega sumários de comunidade (map-reduce).</p>
-<p>Ref.: Capítulo 4 — GraphRAG, §4.2.</p>
-<hr />
-<h2 id="nota-esperada-por-perfil">Nota esperada por perfil</h2>
-<ul>
-<li><strong>5,0</strong>: domina vector DBs e KGs, justifica GraphRAG com custo/benefício, escreve Cypher.</li>
-<li><strong>4,0</strong>: diferencia tecnologias corretamente, com pequenas imprecisões em escala.</li>
-<li><strong>3,0</strong>: conhece conceitos mas não articula quando usar vector vs grafo.</li>
-<li><strong>&lt;3,0</strong>: precisa revisar infraestrutura cognitiva.</li>
-</ul>
+<div id="mkdocs-encrypted-content" style="display:none">RGDOTgmxOA4yF/vjQ7ldkg==;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</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password">
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "especializacao-programacao-agentica/23-Exams/ETHAGT07/gabarito/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["N8Yl3QkoznOwRMnQJQwGOg==;HIMvdOGcFLVhuZimmfFpB0yB8Lpb3mM73TOBsJmks7oceLCQz6lf/teyAciKEgROlGroF0WkB+RNnRaj5yi7UohoUr66UKox8WpkQDBytrLVwpECeTsvns4KHAs6FuvK;r8NhllBcBa2mYtJNVaqrtg=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
 
 
 

@@ -29,7 +29,7 @@
     
     
       
-        <title>Prova - Programação Agêntica — Especialização Etho</title>
+        <title>[Protected] Prova - Programação Agêntica — Especialização Etho</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Prova
+              [Protected] Prova
             
           </span>
         </div>
@@ -6979,7 +6979,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -6997,7 +6997,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7089,7 +7089,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -9622,8 +9622,6 @@
       
         
       
-        
-      
     
     
     
@@ -9889,34 +9887,6 @@
     
   
     08 — Ecossistema MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../09 — (saltar)" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -10838,90 +10808,34 @@
 
 
 
-<h1 id="ethagt01-prova-do-modulo-arquitetura-cognitiva-de-agentes-llm">ETHAGT01 — Prova do Módulo: Arquitetura Cognitiva de Agentes LLM</h1>
-<blockquote>
-<p>Universidade Etho · Versão 1.0 · Julho 2026
-Duração: ~60 min · 10 questões · closed book · Pilar Técnico (40%)</p>
-</blockquote>
-<p>Esta prova avalia os fundamentos da programação agêntica: o Augmented LLM, o agent loop ReAct, a distinção workflow vs agente e a observabilidade desde o primeiro dia.</p>
-<hr />
-<h2 id="parte-1-conceitos-q1-4">Parte 1 — Conceitos (Q1-4)</h2>
-<p><strong>1. (Múltipla escolha)</strong> A decomposição canônica do "Augmented LLM" (Anthropic) inclui quatro extensões. Qual alternativa lista corretamente as quatro?
-- (a) Prompt · modelo · fine-tuning · RAG
-- (b) Retrieval · Tools · Memory · Loop de controle
-- &copy; Percepção · Brain · Planning · Collaboration
-- (d) Chain-of-Thought · function calling · caching · guardrails</p>
-<p><strong>2. (V/F justificado)</strong> "Toda aplicação de LLM deveria ser um agente autônomo."</p>
-<p><strong>3. (Múltipla escolha)</strong> A taxonomia unificada (arXiv:2601.12560) decompõe um agente em seis componentes. Qual NÃO é uma delas?
-- (a) Perception
-- (b) Brain
-- &copy; Fine-tuning
-- (d) Collaboration</p>
-<p><strong>4. (V/F justificado)</strong> "A recuperação (retrieval) no Augmented LLM é estática e externa ao modelo, exatamente como no RAG ingênuo."</p>
-<hr />
-<h2 id="parte-2-aplicacao-e-trade-off-q5-8">Parte 2 — Aplicação e trade-off (Q5-8)</h2>
-<p><strong>5. (Trade-off)</strong> Um colega propõe começar um projeto de atendimento ao cliente diretamente com um agente totalmente autônomo. Cite o princípio de Anthropic que ele está violando e dê 2 riscos concretos dessa decisão.</p>
-<p><strong>6. (Debug de trace)</strong> Um agente ReAct produz o seguinte trace e entra em loop infinito:
-<div class="highlight"><pre><span></span><code>Thought: Preciso buscar o preço.
-Action: search_price
-Action Input: {&quot;product&quot;: &quot;laptop&quot;}
-Observation: ERRO: Ferramenta &#39;search_price&#39; não existe.
-Thought: Vou tentar novamente.
-Action: search_price
-Action Input: {&quot;product&quot;: &quot;laptop&quot;}
-Observation: ERRO: Ferramenta &#39;search_price&#39; não existe.
-</code></pre></div>
-Identifique 2 problemas e proponha correções.</p>
-<p><strong>7. (Análise de trade-off)</strong> Compare usar ReAct em Python puro vs LangGraph para um agente de produção. Liste 1 vantagem do Python puro e 2 do LangGraph.</p>
-<p><strong>8. (V/F justificado)</strong> "O custo do contexto (working memory) cresce quadraticamente com o número de tokens na maioria dos provedores, tornando contextos longos proibitivos."</p>
-<hr />
-<h2 id="parte-3-projeto-curto-q9-10">Parte 3 — Projeto curto (Q9-10)</h2>
-<p><strong>9. (Projeto curto)</strong> Escreva o esqueleto de um agent loop ReAct em Python (função <code>run_agent</code>) com: (a) limite de iterações, (b) tratamento de ferramenta inexistente que devolve mensagem útil, &copy; condição de parada. Não precisa implementar o LLM — use <code>llm(mensagens)</code> como abstração.</p>
-<p><strong>10. (Projeto curto)</strong> Você deve arquitetar um agente de "research assistant". Justifique em 3-4 frases: (a) workflow ou agente? (b) quais tools mínimas? &copy; qual métrica de observabilidade você monitoraria desde o dia 1?</p>
-<hr />
-<h2 id="criterios-de-correcao-resumo">Critérios de correção (resumo)</h2>
-<table>
-<thead>
-<tr>
-<th>Conceito</th>
-<th>Questões</th>
-<th>Peso</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Augmented LLM &amp; taxonomia</td>
-<td>1, 3, 4</td>
-<td>25%</td>
-</tr>
-<tr>
-<td>Workflow vs agente</td>
-<td>2, 5</td>
-<td>20%</td>
-</tr>
-<tr>
-<td>Agent loop (ReAct)</td>
-<td>6, 9</td>
-<td>25%</td>
-</tr>
-<tr>
-<td>Implementação &amp; trade-offs</td>
-<td>7, 8</td>
-<td>15%</td>
-</tr>
-<tr>
-<td>Arquitetura &amp; observabilidade</td>
-<td>10</td>
-<td>15%</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Conversão</strong>: cada questão vale 10 pts; total 100 pts. Nota 1-5.
-- 90+ pts: 5,0
-- 75-89: 4,0
-- 60-74: 3,0 (mínimo aprovação)
-- &lt;60: reprovação.</p>
-<p>Gabarito comentado em <a href="../gabarito/"><code>gabarito.md</code></a>.</p>
+<div id="mkdocs-encrypted-content" style="display:none">6aOeGCtsbguzZBWl55g61A==;G26Q2R6/XLmM8LyCZP8L981SltfkzC1ejrJ7RBm2GZM6qJCTvsdznU4l2nZ1eqPQ963Fdxq5CO5lTFd5eXrdp5iZ3Q+ZZC4nUmbTtQZUDJ1bbtWduF5RibZnQ5aoxXIQoZ+WteqEMXZt5acIwJRDDL2ajfD9fjhcCQbfCODhKkUbFf3XrXbD3OjAWGKaAiSrUB8A4dhBmv3v09s9cdmTCfWLYpjmazmLiubrtajWiKBea1rRB91axL0FA1w2VCCNItar11cjVs8zCUmaaCpU+HBJsR3xaYI1TMW6vqIbrlmFqs3YmHVqRqn3Apn57u222BnvZ2lVtf86H8enIh1GEjkM3PWXkJ14h7FEdbj7m+WJR91NsybOKX6096qephR7XWkoGjTYKNuED/3IbyZm1Z2wOW9GQu6hfLzNeNAwQF608kGOhXf3W2X6A9Vkibg40JxQgVDhkDNAgpRXhzqsD3lHSm4u98HT5XxZDJ87yKUhjSmNtrH2DKHofUVjJRv3X9gguuWcrsB3lTKkNkR0QFvO5XPUvCtZVZsjknTpvrMZJlGOCenzzyy6NXmHgWHFgDRn29RhhdlzZGHX/mLOqEB4+q9aLZkUb4ghbMsIS5hNGXVPQlHOTyna+yIrRyj53YYKCvn9TgtL2QkycFdemYKC2W6lnh/KiwYoiBl8EN6iq0swL13gpMjg2LP0a/FvBYbJ8go9LouU31bqlscz1RGj0VPJhYXfSRBRMdPvUMOHUwixChj9eS2Gf2zDACfp1eog9rl3kfCNQpZyJBEQHfJ3zFvpnmcDXlPG/f0L+3C8CLAfB+DpI6f7T4tPAWAuIsM9u6Su0604NcnuYhFXvUZRtN0UMLZN4gKI76lxK70wtel8PnV95Q6P4omFYW0p2ASmCCiNvbMSfvpvfhTkKGPzLMmNN9MPhPa6c4Gz7Uq9yPjDsxZJlFyWBwOjcXDDM53HTPnahty4nondAzexHFXx9HupouZtD6Dxp8BLiENOX9+F7UUi7Vxrk8AgALMFpIBr5Dhw43o12AfO3DGRuTD2aXQ8YqZmyaUCGFbHlysVpsx99IsEQLfF+k9i2ad/Ua0pD/VmfoSFcahhXxmpK0O8pePjkYAgv0npt+RiqN93ZBCevMWgpYO5qnc6N8MJjpgsE1klcWnYRuT9b7wdTln8OI9DBzujaPuUjVRXYHWR0XXUbiwzuovEycCSI4ib3DPgmL+2ERNmOSMXT8oXWlbNRMnukgIHvTmuuTl/9uzF6buo5vDYvysA0FBrFAOMYCYZyYuMaTJYdxI9B/oBzn7zsT/CIJ6Shrq8WHPzZ8W5fYg9XTjMSAXi/ASuHUwyLOKWjIGm3kDgz3q5mRmHLgZ/RorxDW0y9OtN/KUSptlDpDWUk5cQTSKW8BR46KCIe1srQNJO3Gj/rzwYYRHX/2gTwd1Uy5xynNW5kV1RPfAjgIKebW7btvkCRBmlStQab30i1nrOvr5EJihMc92+mPMluTHMdVliD4JMqlKRGH7Ei9yM7Suq5nUwiSWlAivLfh71zAwQT0XrJWdUTR6amvt03d2NpWXNXUEdOw+4hxxFmMpHasMaRJ2kmKMBuRM9JJpxAeJFvz3K6u38g9QE89hjz+TUNN0Hx9X6I70VBVQpqG9RbLoI5177FXt4+AsqzBk2+0cYiKGL2POd4VXnEfNvLfdTZDJP71mcI6ENj9KCkxXHgqIo8oW7HaipuyHoFu2Rbrwtn0gIKFmWMUe0HDC685K9WoJuSaMSNgiN7JxJox4s532IdOVvBWndShBKgQiJ6M8eSXxGNU6XD5rHpO2MPiKnzI9wC157sZiYvsMZDsHUxzHSEsuq77wOpYk6W+XaOeKv7m31l/CZExiRCtFZQAfETqJkBpkhRPPMoTYHwVSrrWua4XhowotW0lvggN4DRbKQpyUhvqXsZCtIINdJIDUSx16JWR9ELOTGdoTHr25L6zzwj1eh1QFNax+XhhSo7IZivKrAO3i8QOZ3dBDIENs/gWXO1iAaMC+bgmF1/JT2fD01LMjNaH7AmKSo6F/N58Ty7ceAC9hLR2eJMjCb0/OTIFYI0Am7AlVJXSTfmDfRbCOaJYRoGREeT/dnv2nmMuMvkyM704BwVVnWF1aOA5LAyJDYPOqcfOoUqzmYM/YON/2sL0i5OlN1nasXgew0ru1jVyOcoxuUMLO12+wMUIDV3Wjy7/jxPN9msVLvGWMdL4v/09PVehNeNHWVpM3FXoBKdL65+pcv0Mg+eYEH3XXUFHqUBYOgiMDHEpuFjDIl+uyqArtt+S/dXkMZlEH+dWQVarwciUP5i2ciU/P8bs0ZS3Ny/Hp4nWNkIYUItPsaqJkWgJJGBIt0HbVy68QpqDHDPdiQivjsoznnv/gXBfY7E7xhT1Iitd/y5Uy7Zn3RPArbqruQr/I4EQHuTEyo+8s/4keogXrE79YfBc0zAwkctpzAQt8gVuzI5HKFksvQ/RKuz57nm9ojd0ArgFyhrKGGEfJoEmCIPXLUke39Ss+LPgEvkxo3zO3GPfN35pxAyYfkwhNtNh1vGOzu1mQIefw03GxAXPeqmt9KjujfSE/FKuiBlufpksKwRjQ4Ujgy721A+tQOoo81vMMW2JdE1TDMryzyrfOzR5T5VyTjEaZKsbUMGH4iZgU30A3t+ZJxKA1n+etyGJy6Cnu/RW9blrKxl5gUXNjjlTsPyjm5X1k0oKuO67wmpse/8tHfoLuSK1I64CJynAb0w7KrhezdeRuVJyC/p/dWADNZYODSZxdEhqvBP0cAGlZ95PsiiYbz4avy+Ks58wdfSsSM5EEO7OJOX5Aetnx5ltRhwehtkjbCKbtxQFl9jxJ3vaM9sstNVMwffSptc8pXuq4CcDSAS7aRGjR9YC42MmhqTXZLdopLamHtYpFRWcrHSEcUSCVmQ1F8+S8fm2ZT5SOGH9/YtiA7Ygw251H0xG6h+5HWPfQJnp8O4H6FXdExb2pGGk8jV22Q71pMlWsTKDNdBZ/79OpwB++rI88nK+mJiO4GZjWrTml8rHQEYaxxrP4NdJXpJ+vVtq5OnIpx4hPCDVfjSzfixa5EQiLarQf9wWp+cG0ExhrSI3IkrUwuC/53ygwQE8S9E9tkT3nUd7Rk3HXFtUK6/OA7EgKJwOcEXIyNwcmxTSwi89VOCri/juaczNNzT31VgxB63jiA4espLbKVW3ZjwTY52HS5R3AaQocSjfM5XlqerIvXhBqmk7jAvBNl9qqp2TKS9EMd4cZ5vC+SaoNvB2UgvbdtyrsgflDy8UO83qWOamYcMAaEy5hD8oNkiG1ftSgh0u6LvTB72Efv3GcFMmg7LNlV2TmbsRCZpvPDvJpYGrNID70VYdHBkMrm4S8GkWbihj4Pb6ys1XZtrw27rRRkhfA5/G3/pN5vauRgnfEEunoYqwq0F+Y4Wy+VSyixeCst7KnygyGkifcf5upXtScXAR2Lz3k00BH4+HEwhA1teH7QExYFaEX3HcMudINlu4VE/4ARTyE+g3IuE4nAdhGMYlxHiaudhbSAF6txa9+8Hn6NSHXwy4mx1cMExJMiK0z5ZFb9CvV0nTPDVxFi0VVMID7N5i0XVhYgc3xk9gjCqHj81cxhTFrpD7P+lybqilzpPIKhuhioDvUBT4KSkn8Yyje7d/XWEcla+j4y/+xFHwQbcGU1td1imKxkFkV7e05tGCj9kO3pxmsxaCAFPSsTyOsgXwZ0xUUBRbqyDOm6Kna1oPiZMrZwLrTEp3wAaeur/NDCH/qxd1bSaH1QVRWCbHF/PfIzh7vFMgN50hYx9qRYreTU1JEDEWT0JyQevt89clJMMWnynshwWFDVCVHiveh0975ftNzf0DH24qc2xBYZol49Luf2Pt1thxdiBcTkvdPSvFynOrG9bg7VEmKlfWUIYLcTHDxCsKZzaEAo7x+ZJnOkMIS6DuivCsiuqhMSk4Sq11Pit4EGkkPRm70NhyQzld2fpAXGlSYhzRDnSM40JVAWWWXYG2v7dTXtY6WLLhOsauSJWifbqIVeaowBVtaEj9f9VTZxUuf4JvQsdbLwUJvB527CirUVleZQvvx7LHTkh0Ry5L2bv90mvpoqzn6UJ5SCCscVl0Jy6VYm2NPMHR1+DtPxF9M4CbniZHx43YXUq8RaN9LEMXlu2H0wWZjjUtiaoBogpmz2FXoO5wdV/lagDp1+n/8j/AIJDtkhwRev1yCxShM/Icm5VmHRtyvrlxtvy9Wl8aMjZinU/bxyIf13h/oLimlyHmfQeCi4qKvbb8nrY0NO6EbWPIgMlQvbYfAMpFxhhnV03zpo54K8UwCxn8TTh5SvaNCFBRqPurjvKHw7O9kNncZgy9Tl6/q5Z+HswhG4cF3uZ1/G5pFPJuStyQ4IIHayyb82pH2RDQgHI2UD7s20upN8Z9aic/st8SNzaC2+ZiT68T9mzkNaq+gSWvte4NqFi9XSbRdkLZiOSr6G+u1Upd7WDBvR8+653SNTnMjZJ2XE3YRHzYavLTGvriJrXG444lAZfDeToydlWrABiwtMJrSIlB5D6RjlthpRYuAc5w2gKqyUVU0bKA83cEDWKedhOk/93IBJFk90eu8VbYPwxW4Wn4FWGxiYyW0TNm5b+hSNMwqKrXGbvGX3tJkMVqxWM8HOoQu9m2hLfw8dATeN1JP+XsLUleX9erWh/UF/78qMVeRJ6P2CDGB9k7K+UQlnp2xBbNsEXIzCsjgknwTtIZJXd5CbjQHQbkCQ60QmFeODWbrx2iP7lSKEH803Cd8jPKWcQQVjVA2l9OAgaiIyGZPrzzMxal7ViCsh8UJ+lCrv9Go67i4yNGEWdSBjbI0tPl2zrBbdvnnz8PizAcpOv4X7LttSWySuCymagbHtimIbU6WfWyEsv2tzRUNDEDOXmlsLfILfG5bIvhL+QEC17eTVk27GEM2eEIVmBYi/DuIpRsdXm+AJ/5UzJyuT/3ZiUKoFs1aGkmn3veiYMOe3zchhXLgvi2ceBjH6G60VIeM+8TrhR0QfRwVQwjN4yDspoCaf4p+xOnn7LyOezZ7KtWDCjnveMsEhmqjqK6tg2TMDF6lCmHKaU8+LGFNYEDYkiAsiH7FJIlEe5wj1Bdh3/sbbGXmN+lG29vK3k79qUIPSbefEaLkKCCJPyraLAse7u+VvbIXU7aIg9VanJwkaebqMBcxASJFjxU1OLal/v6QEMMcyWuEUon0dxACfzjcES32yoFxaQuDzIHk8fUszVJWYKirsxTdQH0aSYFRaaSHPasyjARteDl/ajAp/77nMvPszbJhayqd2QGUphBMC7+75JDwUrqlYlAoUH0JvyhaJ2BP+6gHbzw47YyuRgYXraSZmWJB1OejJfywJRX9apWhTGQwCWM3Tat9cWfKDmxPJ8Z+PyYPMwpD6YYJA0N1N5As8ILI9uV5f9DmMvCYxzliVA7zURQFI8KVoRLT34BXe9nBQSUf4yyv07ZAq4ujV7VovUBDuMUI8jUj9Ki+fS9PLj1FYZtpVoqWLt6Fz8nILtwPFJoQmw5U/6DqqEe2RjsrcE9QScVmPbgaGfMRZLmSm15XJ/Fe/HytByIT6KA2MuPKtuSNkWpwk67yhjLqXvC8mybHqYb4GBef1I9FL3csx5JJbienLmipYLfJPZukSN23th1ReX4lveN0=</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password">
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "especializacao-programacao-agentica/23-Exams/ETHAGT01/prova/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["N8Yl3QkoznOwRMnQJQwGOg==;HIMvdOGcFLVhuZimmfFpB0yB8Lpb3mM73TOBsJmks7oceLCQz6lf/teyAciKEgROlGroF0WkB+RNnRaj5yi7UohoUr66UKox8WpkQDBytrLVwpECeTsvns4KHAs6FuvK;r8NhllBcBa2mYtJNVaqrtg=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
 
 
 

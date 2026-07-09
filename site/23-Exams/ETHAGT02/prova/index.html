@@ -29,7 +29,7 @@
     
     
       
-        <title>Prova - Programação Agêntica — Especialização Etho</title>
+        <title>[Protected] Prova - Programação Agêntica — Especialização Etho</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Prova
+              [Protected] Prova
             
           </span>
         </div>
@@ -6968,7 +6968,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -6996,7 +6996,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7104,7 +7104,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7122,7 +7122,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7214,7 +7214,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -9622,8 +9622,6 @@
       
         
       
-        
-      
     
     
     
@@ -9889,34 +9887,6 @@
     
   
     08 — Ecossistema MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../09 — (saltar)" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -10838,89 +10808,34 @@
 
 
 
-<h1 id="ethagt02-prova-do-modulo-tool-calling-e-agent-computer-interface-aci">ETHAGT02 — Prova do Módulo: Tool Calling e Agent-Computer Interface (ACI)</h1>
-<blockquote>
-<p>Universidade Etho · Versão 1.0 · Julho 2026
-Duração: ~60 min · 10 questões · closed book · Pilar Técnico (40%)</p>
-</blockquote>
-<p>Esta prova avalia o design de ferramentas para agentes: o mecanismo de tool calling, os princípios de ACI, engenharia de schemas, ferramentas perigosas com HITL e avaliação via workbench.</p>
-<hr />
-<h2 id="parte-1-conceitos-q1-4">Parte 1 — Conceitos (Q1-4)</h2>
-<p><strong>1. (Múltipla escolha)</strong> Qual é a principal vantagem do function calling nativo sobre o modo prompt-based (parsing de texto)?
-- (a) É mais barato em tokens
-- (b) Elimina o problema de parsing, pois a saída é estruturada
-- &copy; Permite usar modelos menores
-- (d) Reduz a latência</p>
-<p><strong>2. (V/F justificado)</strong> "O custo de uma ferramenta no catálogo se limita à chamada quando ela é invocada."</p>
-<p><strong>3. (Múltipla escolha)</strong> Segundo a matriz de risco de Anthropic, qual quadrante exige <strong>obrigatoriamente</strong> Human-in-the-Loop (HITL)?
-- (a) Baixo impacto + reversível
-- (b) Alto impacto + reversível
-- &copy; Irreversível + alto impacto
-- (d) Baixo impacto + irreversível</p>
-<p><strong>4. (V/F justificado)</strong> "Se o modelo usa uma ferramenta errada ou passa argumentos errados, a reação correta do engenheiro de ACI é culpar o modelo e tentar outro LLM."</p>
-<hr />
-<h2 id="parte-2-aplicacao-e-trade-off-q5-8">Parte 2 — Aplicação e trade-off (Q5-8)</h2>
-<p><strong>5. (Análise de schema)</strong> Avalie o seguinte schema de tool e liste 3 anti-patterns:
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;search&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Consulta pedidos.&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;q&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<p><strong>6. (Trade-off)</strong> Você tem 3 ferramentas: <code>search_orders_by_id</code>, <code>search_orders_by_date</code>, <code>search_orders_by_customer</code>. Elas compartilham ~80% da lógica. O que fazer e por quê?</p>
-<p><strong>7. (Debug de tool)</strong> Um agente de suporte chama a tool <code>edit_file(path, content)</code> e escreve no arquivo errado. O agente interpretou <code>src/app.py</code> como path relativo ao diretório que <em>achava</em> ser o atual. Qual é a correção canônica (caso real da Anthropic)?</p>
-<p><strong>8. (V/F justificado)</strong> "Uma ferramenta de leitura pura (ex.: <code>get_order</code>) precisa obrigatoriamente de idempotency key."</p>
-<hr />
-<h2 id="parte-3-projeto-curto-q9-10">Parte 3 — Projeto curto (Q9-10)</h2>
-<p><strong>9. (Projeto curto)</strong> Escreva a descrição ACI de qualidade para uma tool <code>get_order_status</code> que atualmente tem a descrição vaga <code>"Consulta pedidos."</code>. Siga: (a) o que faz, (b) quando usar, &copy; quando NÃO usar, (d) o que retorna.</p>
-<p><strong>10. (Projeto curto)</strong> Escreva o esqueleto de uma tool <code>charge_customer</code> idempotente, com <code>idempotency_key</code>, tratamento de erro que devolve uma mensagem útil e <code>hint</code> acionável ao modelo no caso de <code>InsufficientFunds</code>.</p>
-<hr />
-<h2 id="criterios-de-correcao-resumo">Critérios de correção (resumo)</h2>
-<table>
-<thead>
-<tr>
-<th>Conceito</th>
-<th>Questões</th>
-<th>Peso</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Tool calling &amp; mecanismo</td>
-<td>1, 2</td>
-<td>20%</td>
-</tr>
-<tr>
-<td>ACI &amp; princípios de design</td>
-<td>4, 5, 9</td>
-<td>25%</td>
-</tr>
-<tr>
-<td>Engenharia de tools &amp; erros</td>
-<td>6, 7, 8</td>
-<td>25%</td>
-</tr>
-<tr>
-<td>HITL &amp; risco</td>
-<td>3, 10</td>
-<td>20%</td>
-</tr>
-<tr>
-<td>Idempotência</td>
-<td>10</td>
-<td>10%</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Conversão</strong>: cada questão vale 10 pts; total 100 pts. Nota 1-5.
-- 90+ pts: 5,0
-- 75-89: 4,0
-- 60-74: 3,0 (mínimo aprovação)
-- &lt;60: reprovação.</p>
-<p>Gabarito comentado em <a href="../gabarito/"><code>gabarito.md</code></a>.</p>
+<div id="mkdocs-encrypted-content" style="display:none">66U7hAvikTEuKKF8frPu/w==;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</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password">
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "especializacao-programacao-agentica/23-Exams/ETHAGT02/prova/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["N8Yl3QkoznOwRMnQJQwGOg==;HIMvdOGcFLVhuZimmfFpB0yB8Lpb3mM73TOBsJmks7oceLCQz6lf/teyAciKEgROlGroF0WkB+RNnRaj5yi7UohoUr66UKox8WpkQDBytrLVwpECeTsvns4KHAs6FuvK;r8NhllBcBa2mYtJNVaqrtg=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
 
 
 

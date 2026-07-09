@@ -29,7 +29,7 @@
     
     
       
-        <title>Gabarito - Programação Agêntica — Especialização Etho</title>
+        <title>[Protected] Gabarito - Programação Agêntica — Especialização Etho</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gabarito
+              [Protected] Gabarito
             
           </span>
         </div>
@@ -6968,7 +6968,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -6996,7 +6996,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7093,7 +7093,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7121,7 +7121,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7218,7 +7218,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7246,7 +7246,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7343,7 +7343,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7371,7 +7371,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7468,7 +7468,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7496,7 +7496,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7593,7 +7593,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7621,7 +7621,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7718,7 +7718,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7746,7 +7746,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7843,7 +7843,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7871,7 +7871,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7968,7 +7968,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7996,7 +7996,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -8132,7 +8132,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -8150,7 +8150,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -9644,8 +9644,6 @@
       
         
       
-        
-      
     
     
     
@@ -9911,34 +9909,6 @@
     
   
     08 — Ecossistema MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../09 — (saltar)" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -10860,121 +10830,34 @@
 
 
 
-<h1 id="ethagt10-gabarito-da-prova">ETHAGT10 — Gabarito da Prova</h1>
-<blockquote>
-<p>Restrito a mentores.</p>
-</blockquote>
-<h2 id="parte-1-conceitos">Parte 1 — Conceitos</h2>
-<p><strong>1.</strong> <strong>(b)</strong> Correta. O supervisor é um roteador: recebe estado, decide qual worker chamar via tool calls e agrega resultados. — <em>Ref.: Cap. 2 — Supervisor e Hierarchical (§2.1).</em></p>
-<p><strong>2.</strong> <strong>Falso.</strong> Mesh (p2p flat) escala mal em coordenação: cada agente precisa conhecer/routear para os demais (explosão O(N²) de ligações), difícil de governar. Pode ser ótimo para poucos agentes peer;Hierarchical/Swarm costumam escalar melhor em muitos workers. — <em>Ref.: Cap. 1 — Catálogo (§1.2); Cap. 6 — Tree, Recursive e Mesh.</em></p>
-<p><strong>3.</strong> <strong>&copy;</strong> Recursive é anti-pattern quando há recursão profunda <em>sem cercas</em> (orçamento de agentes, profundidade máxima, critério de parada, meta-governor com veto) — o sistema explode em complexidade e custo. (a) é um caso <em>favorável</em> ao recursive, não anti-pattern; (b) é falso (recursive é justificável com cercas); (d) é problema de workers/mesh, não de recursão. — <em>Ref.: Cap. 6 (§6.2 Recursive; §6.3 Quando recursive é anti-pattern).</em></p>
-<p><strong>4.</strong> <strong>Falso.</strong> Hierarchical agrega complexidade; só vale quando há sub-domínios separáveis, isolamento desejado ou &gt; ~10 workers que tornariam flat caótico. Para 2-3 workers, flat/supervisor é mais simples e geralmente melhor. — <em>Ref.: Cap. 2 (§2.4 Quando escalar hierarquia vs flat; §2.5 Casos de falha).</em></p>
-<h2 id="parte-2-aplicacao-e-trade-off">Parte 2 — Aplicação e trade-off</h2>
-<p><strong>5.</strong> Hierarchical &gt; swarm quando: (i) &gt; ~10 workers (swarm fica caótico); (ii) sub-domínios nitidamente separáveis e isoláveis; (iii) necessidade de coordenação estruturada/SOPs e responsabilidade rastreável; (iv) quer-se sub-árvores independentes. — <em>Ref.: Cap. 2 (§2.3 Hierarchical; §2.4); Cap. 3 — Swarm e handoffs (§3.3 Limites do swarm).</em></p>
-<p><strong>6.</strong> Escolha típica: <strong>Supervisor</strong> (ou Orchestrator-Workers) com 3 workers especialistas + um sintetizador. Rejeitar <em>swarm</em>: a coordenação por handoffs é frágil quando há 3 especialistas paralelos e um agregador; rejeitar <em>mesh</em>: 3 agentes peer não agregam valor e complicam a convergência. — <em>Ref.: Cap. 7 — Escolha e ADR (§7.1 Matriz); Cap. 4 — Pipeline e Orchestrator-Workers.</em></p>
-<p><strong>7.</strong> Causas: (i) supervisor processa serialmente todas as decisões (gargalo de LLM); (ii) workers redundantes geram ruído/confusão de roteamento. Correções: (a) hierarquizar — sub-supervisores por domínio (paralelismo); (b) cache/roteamento de baixo custo (classificador leve) antes do supervisor caro; &copy; particionar workers. — <em>Ref.: Cap. 2 (§2.5 Casos de falha).</em></p>
-<p><strong>8.</strong> Priorizar <strong>Swarm/Event-driven</strong> (fluxo com handoffs e processamento paralelo): baixa latência percebida (sem serializar tudo num supervisor central) e alta flexibilidade (agentes leves com transfer). Custa mais em coordenação, aceitável dado o enunciado. — <em>Ref.: Cap. 7 — Escolha e ADR (§7.1 Matriz de decisão); Cap. 3 — Swarm.</em></p>
-<h2 id="parte-3-projeto-curto">Parte 3 — Projeto curto</h2>
-<p><strong>9.</strong> ADR esperado:
-- <strong>Contexto</strong>: atendimento multi-tenant com múltiplos domínios, isolamento por tenant, necessidade de escala.
-- <strong>Decisão</strong>: Hierarchical — supervisor raiz roteia por tenant; sub-supervisores por domínio (suporte, vendas) com workers.
-- <strong>Justificativa</strong>: isolamento entre tenants/domínios; escalável com sub-árvores; responsabilidade rastreável.
-- <strong>Alternativas</strong>: Supervisor flat (gargalo acima de ~10 workers); Swarm (frágil para coordenação multi-domínio).
-- <strong>Consequências</strong>: mais complexidade e custo; mas atende isolamento e escala. — <em>Ref.: Cap. 7 — Escolha e ADR (§7.2 O ADR de topologia).</em></p>
-<p><strong>10.</strong> <strong>Tree of Agents</strong>: árvore fixa de especialistas que se ramifica para explorar/avaliar opções (ex.: LATS explorando caminhos). <strong>Recursive</strong>: agente que gera/invoca agentes (meta-agência, potencialmente auto-referente). Cenários: Tree = diagnóstico diferencial com múltiplos ramos; Recursive = um meta-agente que monta dinamicamente uma equipe para uma tarefa nova. — <em>Ref.: Cap. 6 — Tree, Recursive e Mesh (§6.1, §6.2).</em></p>
-<hr />
-<h2 id="erros-comuns-parcialdeducao">Erros comuns (parcial/dedução)</h2>
-<ul>
-<li><strong>Q1</strong>: descrever supervisor como executor → anular; (a) e &copy; revelam mal-entendido do padrão.</li>
-<li><strong>Q2</strong>: defender "mesh sempre escalável" sem citar explosão O(N²) de ligações → até -50%.</li>
-<li><strong>Q4</strong>: aplicar hierarchical cegamente para 2-3 workers → deduzir metade (ignora complexidade desnecessária).</li>
-<li><strong>Q5/Q7</strong>: citar só "muitos workers" sem isolamento/domínios separáveis → até -40%.</li>
-<li><strong>Q9</strong>: ADR sem "Alternativas" ou "Consequências" → estrutura incompleta, -40%.</li>
-<li><strong>Q10</strong>: confundir Tree (ramificação de especialistas) com Recursive (auto-geração de agentes) → anular.</li>
-</ul>
-<p>Crédito parcial: topologia certa com justificativa fraca vale até 60%; topologia defensável mas não ótima, com ADR sólido, merece nota alta.</p>
-<hr />
-<h2 id="rubrica-por-questao-pts">Rubrica por questão (pts)</h2>
-<table>
-<thead>
-<tr>
-<th>Q</th>
-<th>Tipo</th>
-<th>pts</th>
-<th>Aceita parcial</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Múltipla escolha</td>
-<td>10</td>
-<td>0</td>
-</tr>
-<tr>
-<td>2</td>
-<td>V/F justificado</td>
-<td>10</td>
-<td>5</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Múltipla escolha</td>
-<td>10</td>
-<td>0 (mas (a) também aceitável)</td>
-</tr>
-<tr>
-<td>4</td>
-<td>V/F justificado</td>
-<td>10</td>
-<td>5</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Trade-off (≥3 critérios)</td>
-<td>10</td>
-<td>~3 pts por critério</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Análise (escolha + 2 rejeições)</td>
-<td>10</td>
-<td>4 escolha + 3 por rejeição justificada</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Debug (2 causas + 2 correções)</td>
-<td>10</td>
-<td>2,5 por item</td>
-</tr>
-<tr>
-<td>8</td>
-<td>Trade-off (topologia + justif.)</td>
-<td>10</td>
-<td>6 escolha + 4 justificativa</td>
-</tr>
-<tr>
-<td>9</td>
-<td>Projeto (ADR)</td>
-<td>10</td>
-<td>2 pts por seção do ADR preenchida</td>
-</tr>
-<tr>
-<td>10</td>
-<td>Projeto (Tree vs Recursive)</td>
-<td>10</td>
-<td>5 distinção + 5 cenários</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="nota-esperada-por-perfil">Nota esperada por perfil</h2>
-<ul>
-<li><strong>5,0</strong>: justifica topologias com ADR coerente, mede trade-offs, identifica sinais de evolução.</li>
-<li><strong>4,0</strong>: escolhe bem topologias com justificativa sólida, pequenas lacunas.</li>
-<li><strong>3,0</strong>: conhece nomes das topologias mas confunde critérios de escolha.</li>
-<li><strong>&lt;3,0</strong>: afirma mitos (mesh sempre escalável; hierarchical sempre para &gt;2 workers).</li>
-</ul>
+<div id="mkdocs-encrypted-content" style="display:none">3p+FcXgfjWq0PfbV2eEDRA==;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</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password">
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "especializacao-programacao-agentica/23-Exams/ETHAGT10/gabarito/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["N8Yl3QkoznOwRMnQJQwGOg==;HIMvdOGcFLVhuZimmfFpB0yB8Lpb3mM73TOBsJmks7oceLCQz6lf/teyAciKEgROlGroF0WkB+RNnRaj5yi7UohoUr66UKox8WpkQDBytrLVwpECeTsvns4KHAs6FuvK;r8NhllBcBa2mYtJNVaqrtg=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
 
 
 

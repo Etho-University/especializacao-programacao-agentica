@@ -1,3 +1,6 @@
+---
+password: Etho-Prof-2026
+---
 # ETHAGT14 — Prova do Módulo: Escalabilidade & Sistemas Distribuídos de Agentes
 
 > Universidade Etho · Versão 1.0 · Julho 2026

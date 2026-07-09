@@ -1,3 +1,6 @@
+---
+password: Etho-Prof-2026
+---
 # ETHAGT06 — Prova do Módulo: RAG Agêntico
 
 > Universidade Etho · Versão 1.0 · Julho 2026

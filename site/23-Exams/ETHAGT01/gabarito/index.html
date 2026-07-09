@@ -29,7 +29,7 @@
     
     
       
-        <title>Gabarito - Programação Agêntica — Especialização Etho</title>
+        <title>[Protected] Gabarito - Programação Agêntica — Especialização Etho</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gabarito
+              [Protected] Gabarito
             
           </span>
         </div>
@@ -7007,7 +7007,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7025,7 +7025,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -9622,8 +9622,6 @@
       
         
       
-        
-      
     
     
     
@@ -9889,34 +9887,6 @@
     
   
     08 — Ecossistema MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../09 — (saltar)" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -10838,48 +10808,34 @@
 
 
 
-<h1 id="ethagt01-gabarito-da-prova">ETHAGT01 — Gabarito da Prova</h1>
-<blockquote>
-<p>Restrito a mentores. Respostas esperadas e critérios de correção para <a href="../prova/"><code>prova.md</code></a>.</p>
-</blockquote>
-<h2 id="parte-1-conceitos">Parte 1 — Conceitos</h2>
-<p><strong>1. (b) Retrieval · Tools · Memory · Loop de controle.</strong> O Augmented LLM de Anthropic é LLM + retrieval + tools + memory + loop de controle. Ref.: Capítulo 2 — O Augmented LLM: o bloco fundamental, §2.1.</p>
-<p><strong>2. FALSO.</strong> Nem toda aplicação deve ser um agente. Workflows (caminhos predefinidos) oferecem previsibilidade, custo controlado e testabilidade. A recomendação de Anthropic é começar simples e só aumentar complexidade com evidência. Muitas tarefas cabem em uma única chamada ou prompt chaining. Ref.: Capítulo 4 — Workflows vs Agentes, §4.3 (Princípio da complexidade crescente).</p>
-<p><strong>3. &copy; Fine-tuning.</strong> As seis componentes são Perception, Brain, Planning, Action, Tool Use, Collaboration. Fine-tuning é técnica de treinamento, não componente arquitetural. Ref.: Capítulo 1 — Do LLM ao Agente, §1.3 (taxonomia unificada).</p>
-<p><strong>4. FALSO.</strong> No Augmented LLM a recuperação é <strong>dinâmica e dirigida pelo modelo</strong> (in-loop): o LLM decide <em>se</em>, <em>o que</em> e <em>quantas vezes</em> recuperar. No RAG ingênuo, a recuperação é estática e externa. Ref.: Capítulo 2, §2.2 (Retrieval in-loop).</p>
-<h2 id="parte-2-aplicacao-e-trade-off">Parte 2 — Aplicação e trade-off</h2>
-<p><strong>5.</strong> O colega viola o <strong>Princípio da complexidade crescente</strong> (Anthropic: "find the simplest solution possible — and only increase complexity when demonstrably needed"). Riscos: (i) <strong>imprevisibilidade</strong> — o caminho de execução é não-determinístico, dificultando teste e SLA; (ii) <strong>custo/latência variáveis</strong> — o agente pode consumir muitas iterações sem teto; (iii) <strong>dificuldade de debug</strong> — sem caminho fixo, regressões são difíceis de atribuir. Ref.: Capítulo 4, §4.3-4.4.</p>
-<p><strong>6.</strong> Problema 1: o agente <strong>repete a mesma ação</strong> sem detectar o erro — falta detecção de repetição. Correção: ao ver o mesmo <code>Action</code> + <code>Action Input</code> N vezes, forçar mudança (re-planejar ou parar). Problema 2: a <strong>ferramenta não existe</strong> no catálogo (<code>TOOLS</code>). Correção: a mensagem de erro já lista as opções (boa prática), mas o modelo ignora — pode ser necessário reforçar o prompt ou validar o nome da tool antes de tentar. Ref.: Capítulo 3 — O Agent Loop, §3.3 e §3.5 (Limitações: loops).</p>
-<p><strong>7.</strong> Python puro: <strong>máximo controle e visibilidade</strong> do loop, parsing e estado — essencial para aprender o mecanismo. LangGraph: (i) <strong>checkpointing nativo</strong> (persistência, resume, time-travel, HITL); (ii) <strong>controle de fluxo explícito</strong> como grafo visível e versionável; (iii) streaming/callbacks de infraestrutura. Ref.: Capítulo 5, §5.1-5.3.</p>
-<p><strong>8. FALSO.</strong> O custo é tipicamente <strong>linear</strong> por token de entrada na maioria dos provedores. O que cresce é a <strong>latência</strong> e o risco de degradação de qualidade ("lost in the middle"). Mesmo com contexto longo disponível, não se deve preencher sem critério. Ref.: Capítulo 2, §2.4 e Capítulo 6 (observabilidade).</p>
-<h2 id="parte-3-projeto-curto">Parte 3 — Projeto curto</h2>
-<p><strong>9.</strong> Espera-se um esqueleto com os 3 elementos:
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">run_agent</span><span class="p">(</span><span class="n">llm</span><span class="p">,</span> <span class="n">pergunta</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-    <span class="n">mensagens</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">SYSTEM_PROMPT</span><span class="p">},</span>
-                 <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">pergunta</span><span class="p">}]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
-        <span class="n">resposta</span> <span class="o">=</span> <span class="n">llm</span><span class="p">(</span><span class="n">mensagens</span><span class="p">)</span>
-        <span class="n">mensagens</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">resposta</span><span class="p">})</span>
-        <span class="k">if</span> <span class="s2">&quot;Final Answer:&quot;</span> <span class="ow">in</span> <span class="n">resposta</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">resposta</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;Final Answer:&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="n">action</span> <span class="o">=</span> <span class="n">_extrair</span><span class="p">(</span><span class="n">resposta</span><span class="p">,</span> <span class="s2">&quot;Action:&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">TOOLS</span><span class="p">:</span>
-            <span class="n">obs</span> <span class="o">=</span> <span class="n">TOOLS</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="s2">&quot;fn&quot;</span><span class="p">](</span><span class="n">_extrair</span><span class="p">(</span><span class="n">resposta</span><span class="p">,</span> <span class="s2">&quot;Action Input:&quot;</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">obs</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Ferramenta &#39;</span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2">&#39; não existe. Opções: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">TOOLS</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="n">mensagens</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Observation: </span><span class="si">{</span><span class="n">obs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">})</span>
-    <span class="k">return</span> <span class="s2">&quot;Limite de iterações atingido.&quot;</span>
-</code></pre></div>
-Avaliar: (a) <code>max_iter</code> como hard cap, (b) fallback com lista de opções, &copy; condição <code>Final Answer</code>. Ref.: Capítulo 3, §3.3.</p>
-<p><strong>10.</strong> Resposta modelo: (a) <strong>Agente</strong> — research assistant exige número de passos imprevisível e decisões condicionais (refinar queries com base no que encontra). (b) Tools mínimas: <code>search_local_kb</code>, <code>search_web</code>, <code>calculate</code> (se houver dados numéricos). &copy; <strong>Custo por execução</strong> (tokens × preço) e <strong>latência ponta-a-ponta</strong> — métricas de primeira classe desde o dia 1. Ref.: Capítulo 4 §4.4 e Capítulo 6 §6.4.</p>
-<hr />
-<h2 id="nota-esperada-por-perfil">Nota esperada por perfil</h2>
-<ul>
-<li><strong>5,0</strong>: domina o Augmented LLM, implementa ReAct do zero, justifica workflow vs agente com trade-offs.</li>
-<li><strong>4,0</strong>: entende conceitos e implementa o loop, com algumas imprecisões.</li>
-<li><strong>3,0</strong>: conhece definições mas não articula trade-offs ou não implementa o loop corretamente.</li>
-<li><strong>&lt;3,0</strong>: precisa revisar o módulo.</li>
-</ul>
+<div id="mkdocs-encrypted-content" style="display:none">V4zQzf2saBy3iPeeX3IpEw==;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</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password">
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "especializacao-programacao-agentica/23-Exams/ETHAGT01/gabarito/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["N8Yl3QkoznOwRMnQJQwGOg==;HIMvdOGcFLVhuZimmfFpB0yB8Lpb3mM73TOBsJmks7oceLCQz6lf/teyAciKEgROlGroF0WkB+RNnRaj5yi7UohoUr66UKox8WpkQDBytrLVwpECeTsvns4KHAs6FuvK;r8NhllBcBa2mYtJNVaqrtg=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
 
 
 

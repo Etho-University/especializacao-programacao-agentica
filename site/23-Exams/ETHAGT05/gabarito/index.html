@@ -29,7 +29,7 @@
     
     
       
-        <title>Gabarito - Programação Agêntica — Especialização Etho</title>
+        <title>[Protected] Gabarito - Programação Agêntica — Especialização Etho</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gabarito
+              [Protected] Gabarito
             
           </span>
         </div>
@@ -6968,7 +6968,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -6996,7 +6996,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7093,7 +7093,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7121,7 +7121,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7218,7 +7218,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7246,7 +7246,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7343,7 +7343,7 @@
   <span class="md-ellipsis">
     
   
-    Prova
+    [Protected] Prova
   
 
     
@@ -7371,7 +7371,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7507,7 +7507,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -7525,7 +7525,7 @@
   <span class="md-ellipsis">
     
   
-    Gabarito
+    [Protected] Gabarito
   
 
     
@@ -9622,8 +9622,6 @@
       
         
       
-        
-      
     
     
     
@@ -9889,34 +9887,6 @@
     
   
     08 — Ecossistema MCP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../09 — (saltar)" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -10838,44 +10808,34 @@
 
 
 
-<h1 id="ethagt05-gabarito-da-prova">ETHAGT05 — Gabarito da Prova</h1>
-<blockquote>
-<p>Restrito a mentores. Respostas esperadas e critérios de correção para <a href="../prova/"><code>prova.md</code></a>.</p>
-</blockquote>
-<h2 id="parte-1-conceitos">Parte 1 — Conceitos</h2>
-<p><strong>1. (b) Working · Episódica · Semântica · Procedural.</strong> As quatro camadas canônicas, com inspiração cognitiva (Tulving) tratada como categorias de engenharia, não modelos neurológicos. Ref.: Capítulo 1 — Tipos de memória, §1.3.</p>
-<p><strong>2. VERDADEIRO.</strong> Working memory = janela de contexto (tokens), efêmera. Persistent memory = armazenamento externo (banco, vector store), durável. A distinção é temporal e técnica. Ref.: Capítulo 1, §1.3 (tabela das quatro camadas).</p>
-<p><strong>3. (b) Vector store + metadados.</strong> A memória episódica registra eventos com timestamp; o recall é feito por similaridade semântica (embedding) com filtragem por metadados (usuário, sessão, período). Ref.: Capítulo 1, §1.3 e Capítulo 4 — Memória vetorial.</p>
-<p><strong>4. FALSO.</strong> Nem todo agente precisa das quatro camadas. Um chatbot de FAQ precisa só de working memory (e talvez semântica). A regra: <strong>adicione uma camada quando houver evidência de que o agente precisa dela</strong> — não por padrão. Cada camada adiciona complexidade, custo e vetores de falha. Ref.: Capítulo 1, §1.4.</p>
-<h2 id="parte-2-aplicacao-e-trade-off">Parte 2 — Aplicação e trade-off</h2>
-<p><strong>5.</strong> HITL pausa a execução para aguardar confirmação humana. Sem checkpointer, o estado do agente se perde na pausa (o processo termina). O checkpointer <strong>serializa o estado</strong> a cada passo; ao retomar (horas/dias depois), o estado é restaurado. Sem isso, HITL longo é impossível — não há como pausar e continuar. Ref.: Capítulo 2 — Checkpointer, §2.3 (Resume).</p>
-<p><strong>6.</strong> A fórmula dos Generative Agents combina três fatores num score único: <strong>recency</strong> (quão recente — decai exponencialmente com o tempo), <strong>importance</strong> (quão importante — score atribuído na gravação), <strong>relevance</strong> (quão relevante à situação atual — similaridade semântica). O score = <code>f(recency, importance, relevance)</code> determina quais memórias são trazidas à working memory. Ref.: Capítulo 3 — Gerenciamento de contexto, §3.4.</p>
-<p><strong>7.</strong> Três estratégias para fatos que mudam: (i) <strong>Timestamping</strong> — cada fato tem validade (desde/quando); (ii) <strong>Invalidação</strong> — um fato novo conflitante invalida o antigo (ou ambos coexistem com data); (iii) <strong>Decaimento</strong> — fatos não acessados há muito tempo perdem confiança. A memória estruturada como knowledge graph oferece ferramentas naturais para isso (nós com atributos temporais). Ref.: Capítulo 5 — Memória semântica, §5.3.</p>
-<p><strong>8. FALSO.</strong> Para consultas exatas por chave estruturada ("qual o CPF?"), uma base <strong>relacional</strong> é superior: mais barata, mais precisa, mais consistente. A memória vetorial brilha em <em>recall aproximado por semântica</em> ("eventos parecidos com isto"). Regra: vetorial para similaridade, relacional para fatos estruturados, grafos para relações. Ref.: Capítulo 4, §4.3.</p>
-<h2 id="parte-3-projeto-curto">Parte 3 — Projeto curto</h2>
-<p><strong>9.</strong> Espera-se sumarização em cascata:
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">gerenciar_contexto</span><span class="p">(</span><span class="n">mensagens</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">):</span>
-    <span class="k">while</span> <span class="n">contar_tokens</span><span class="p">(</span><span class="n">mensagens</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_tokens</span><span class="p">:</span>
-        <span class="n">antigas</span> <span class="o">=</span> <span class="n">mensagens</span><span class="p">[:</span><span class="n">K</span><span class="p">]</span>
-        <span class="n">resumo</span> <span class="o">=</span> <span class="n">llm_summarize</span><span class="p">(</span><span class="n">antigas</span><span class="p">)</span>
-        <span class="n">mensagens</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Resumo da conversa: &quot;</span> <span class="o">+</span> <span class="n">resumo</span><span class="p">}]</span> <span class="o">+</span> <span class="n">mensagens</span><span class="p">[</span><span class="n">K</span><span class="p">:]</span>
-    <span class="k">return</span> <span class="n">mensagens</span>
-</code></pre></div>
-Avaliar: loop enquanto excede limite, sumariza as K mais antigas, substitui por resumo. Ref.: Capítulo 3, §3.3.</p>
-<p><strong>10.</strong> Exemplos esperados:
-- <strong>Working:</strong> "a conversa atual, incluindo o que o usuário acabou de pedir" (context window).
-- <strong>Episódica:</strong> "o usuário pediu ajuda com deploy na terça passada" (vector store, recall por similaridade).
-- <strong>Semântica:</strong> "o usuário é VIP desde 2024, prefere resposta por e-mail" (KB/Postgres, fato consolidado).
-- <strong>Procedural:</strong> "sempre que o usuário reclamar de lentidão, verificar logs antes de sugerir soluções" (skill/reflexão aprendida).</p>
-<p>Ref.: Capítulo 1, §1.3 e Capítulo 5, §5.4.</p>
-<hr />
-<h2 id="nota-esperada-por-perfil">Nota esperada por perfil</h2>
-<ul>
-<li><strong>5,0</strong>: domina as 4 camadas, justifica quando usar cada, implementa checkpointer e eviction.</li>
-<li><strong>4,0</strong>: diferencia tipos de memória, com pequenas imprecisões em implementação.</li>
-<li><strong>3,0</strong>: conhece os tipos mas não articula trade-offs de custo/privacidade.</li>
-<li><strong>&lt;3,0</strong>: precisa revisar arquitetura de memória.</li>
-</ul>
+<div id="mkdocs-encrypted-content" style="display:none">1TPxKGlOOqA/UNmlnYkk8w==;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</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password">
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "especializacao-programacao-agentica/23-Exams/ETHAGT05/gabarito/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["N8Yl3QkoznOwRMnQJQwGOg==;HIMvdOGcFLVhuZimmfFpB0yB8Lpb3mM73TOBsJmks7oceLCQz6lf/teyAciKEgROlGroF0WkB+RNnRaj5yi7UohoUr66UKox8WpkQDBytrLVwpECeTsvns4KHAs6FuvK;r8NhllBcBa2mYtJNVaqrtg=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
 
 
 

@@ -1,3 +1,6 @@
+---
+password: Etho-Prof-2026
+---
 # ETHAGT05 — Prova do Módulo: Memória de Agentes
 
 > Universidade Etho · Versão 1.0 · Julho 2026
