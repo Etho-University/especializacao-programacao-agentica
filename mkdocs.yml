@@ -54,7 +54,9 @@ plugins:
       date_from_meta:
         as_creation: date
       pretty_print: true
-  - encryptcontent
+  - encryptcontent:
+      remember_password: true
+      session_storage: true
   - social:
       cards_layout: default
       cards_layout_options:
