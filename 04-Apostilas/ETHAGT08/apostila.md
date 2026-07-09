@@ -47,7 +47,28 @@ A arquitetura MCP distingue três papéis:
 - **Client:** um componente *dentro do host* que se conecta a um servidor MCP. Cada servidor conectado tem seu próprio client (relação 1:1).
 - **Server:** um processo que *expõe* capabilities (tools, resources, prompts) ao host. O servidor é onde vivem as integrações com sistemas externos.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT08/host-client-server.mmd`](../../12-Diagrams/ETHAGT08/host-client-server.mmd).
+```mermaid
+%% ETHAGT08 — Arquitetura MCP: host / client / server
+flowchart TB
+    subgraph Host["HOST (Claude Desktop / VSCode / OpenCode)"]
+        direction TB
+        LLM["LLM"]
+        LLM <--> CA["Client A"] & CB["Client B"]
+    end
+    CA -- "MCP<br/>(stdio ou Streamable HTTP)" --> SA["Server A<br/>(ex.: GitHub)"]
+    CB -- "MCP" --> SB["Server B<br/>(ex.: Postgres)"]
+    SA --> ExtA[("APIs externas")]
+    SB --> ExtB[("DB / arquivos")]
+
+    classDef host fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef cli fill:#fce7f3,stroke:#be185d,color:#000
+    classDef srv fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef ext fill:#dcfce7,stroke:#15803d,color:#000
+    class LLM host
+    class CA,CB cli
+    class SA,SB srv
+    class ExtA,ExtB ext
+```
 
 ```
    ┌─────────────── HOST (Claude Desktop / agente) ──────────────┐
@@ -83,7 +104,29 @@ Uma conexão MCP tem ciclo de vida: *initialize* (negociação de versão e capa
 
 O MCP expõe quatro tipos de capabilities. Entender a distinção é central para modelar bem um servidor.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT08/capabilities.mmd`](../../12-Diagrams/ETHAGT08/capabilities.mmd).
+```mermaid
+%% ETHAGT08 — Capacidades MCP (tools / resources / prompts / sampling)
+flowchart LR
+    subgraph Server["MCP Server"]
+        T["Tools<br/>(ações com schema)"]
+        R["Resources<br/>(dados por URI)"]
+        P["Prompts<br/>(templates)"]
+        S["Sampling<br/>(server-initiated LLM)"]
+    end
+    Server -- "expõe" --> Client["Client"]
+    Client -- "usa" --> LLM["LLM do host"]
+    LLM -.calls.-> T
+    LLM -.reads.-> R
+    LLM -.uses.-> P
+    S -.pede raciocínio.-> LLM
+
+    classDef cap fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef flow fill:#fce7f3,stroke:#be185d,color:#000
+    classDef llm fill:#fed7aa,stroke:#c2410c,color:#000
+    class T,R,P,S cap
+    class Client flow
+    class LLM llm
+```
 
 | Primitive | O que é | Quem inicia | Exemplo |
 |---|---|---|---|
@@ -207,7 +250,29 @@ O poder do MCP manifesta-se na composição: um agente que tem acesso a servidor
 
 À medida que uma organização adota MCP, o número de servidores cresce — e com ele, o risco. Servidores desatualizados, permissões frouxas, dependências vulneráveis, conflitos de naming entre servidores. A **governança** é o que mantém o ecossistema confiável em escala.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT08/governance.mmd`](../../12-Diagrams/ETHAGT08/governance.mmd).
+```mermaid
+%% ETHAGT08 — Governança de ecossistema MCP
+flowchart TB
+    Dev["Desenvolvedor<br/>cria server"] --> Submet["Submete ao catálogo"]
+    Submet --> Review{"Review de plataforma<br/>(código + security)"}
+    Review -- "aprova" --> Registry[("Catálogo<br/>interno")]
+    Review -- "rejeita" --> Fix["Corrigir"]
+    Fix --> Dev
+    Registry --> Version["Versionamento semântico"]
+    Version --> Deploy["Deploy (local ou remoto)"]
+    Deploy --> Host["Hosts autorizados"]
+    Host -- "ACLs por tool/resource" --> Users["Usuários/agentes"]
+    Host -- "logs" --> Audit[("Auditoria<br/>centralizada")]
+
+    classDef dev fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef gov fill:#fce7f3,stroke:#be185d,color:#000
+    classDef store fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef op fill:#dcfce7,stroke:#15803d,color:#000
+    class Dev,Fix dev
+    class Submet,Review gov
+    class Registry,Version,Audit store
+    class Deploy,Host,Users op
+```
 
 > **Guia:** [`14-MCP/governance.md`](../../14-MCP/governance.md).
 

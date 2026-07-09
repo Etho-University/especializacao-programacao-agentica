@@ -40,7 +40,40 @@ A literatura empresta termos da psicologia cognitiva (Tulving, 1972): memória *
 | **Semântica** | Fatos, conhecimento | KB, knowledge graph, tabelas | Durável | Round-trip |
 | **Procedural** | Como fazer (skills, ferramentas) | Código, biblioteca de prompts, reflexões | Durável | Compilação/cache |
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT05/memory-layers.mmd`](../../12-Diagrams/ETHAGT05/memory-layers.mmd)
+```mermaid
+%% ETHAGT05 — Camadas de memória
+flowchart TB
+    subgraph Working["Working Memory<br/>(context window, volátil)"]
+        W["mensagens da sessão atual<br/>+ sumarização"]
+    end
+    subgraph Episodic["Episódica<br/>(vector DB)"]
+        E["eventos com timestamp<br/>recall por similaridade"]
+    end
+    subgraph Semantic["Semântica<br/>(KB / Knowledge Graph)"]
+        S["fatos, perfis, relações"]
+    end
+    subgraph Procedural["Procedural<br/>(skills)"]
+        P["sequências de actions<br/>para objetivos recorrentes"]
+    end
+
+    Agent["Agente"] <--> Working
+    Agent <--> Episodic
+    Agent <--> Semantic
+    Agent <--> Procedural
+
+    Check[("Checkpointer<br/>Postgres/Redis")] -.persiste estado.-> Agent
+
+    classDef wk fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef ep fill:#fce7f3,stroke:#be185d,color:#000
+    classDef se fill:#dcfce7,stroke:#15803d,color:#000
+    classDef pr fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef ag fill:#fef3c7,stroke:#b45309,color:#000
+    class Working,W wk
+    class Episodic,E ep
+    class Semantic,S se
+    class Procedural,P pr
+    class Agent,Check ag
+```
 
 A *working memory* já foi introduzida em ETHAGT01 (§2.4) como a janela de contexto, com seus limites. As outras três camadas são o tema deste módulo: como *externalizar* para armazenamento durável aquilo que não cabe (ou não deve) viver no contexto.
 
@@ -63,7 +96,22 @@ O pré-requisito do checkpointing é que o estado do agente seja **serializável
 - **SQLite/Postgres:** persistência relacional, transacional. Ideal para produção.
 - **Redis:** persistência em memória, baixa latência. Bom para estado quente.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT05/checkpointer-resume.mmd`](../../12-Diagrams/ETHAGT05/checkpointer-resume.mmd)
+```mermaid
+%% ETHAGT05 — Checkpointer: pausar e retomar
+flowchart LR
+    A1["Agente em execução<br/>(sessão 1)"] -- "estado serializado" --> CK[("Checkpointer<br/>Postgres")]
+    CK -- "thread_id" --> A2["Agente retoma<br/>(dias depois, sessão 2)"]
+    CK -- "mesmo thread_id" --> A3["Agente retoma<br/>(semana depois, sessão 3)"]
+    A1 -.interrupt.-> HITL["Humano aprova"]
+    HITL -- "resume" --> A1
+
+    classDef ag fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef ck fill:#fef3c7,stroke:#b45309,color:#000
+    classDef hu fill:#dcfce7,stroke:#15803d,color:#000
+    class A1,A2,A3 ag
+    class CK ck
+    class HITL hu
+```
 
 ### 2.3 Resume, replay e branching
 
@@ -128,7 +176,27 @@ Nem tudo merece ficar no contexto. Políticas de **eviction** (expurgo) removem 
 - **Por relevância:** mantém só as mais relevantes à consulta atual (recall vetorial, Capítulo 4).
 - **Combinada:** a fórmula dos *Generative Agents* (Park et al.) combina `recency` (quão recente), `importance` (quão importante) e `relevance` (quão relevante à situação) num score único.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT05/eviction-flow.mmd`](../../12-Diagrams/ETHAGT05/eviction-flow.mmd).
+```mermaid
+%% ETHAGT05 — Política de eviction (relevância × idade)
+flowchart TB
+    Event["novo evento"] --> Score["score = relevance × decay(age)"]
+    Score --> Cmp{"score > threshold?"}
+    Cmp -- "sim" --> Keep[("manter na memória")]
+    Cmp -- "não" --> Crit{"entidade crítica?"}
+    Crit -- "sim (ex.: pagamento)" --> Slow["decay lento<br/>manter mais tempo"]
+    Crit -- "não" --> Archive["arquivar / apagar"]
+
+    Recall["recall frequente?"] -.aumenta.-> Score
+
+    classDef in fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef decide fill:#fce7f3,stroke:#be185d,color:#000
+    classDef keep fill:#dcfce7,stroke:#15803d,color:#000
+    classDef out fill:#fee2e2,stroke:#b91c1c,color:#000
+    class Event in
+    class Score,Cmp,Crit,Recall decide
+    class Keep,Slow keep
+    class Archive out
+```
 
 ### 3.5 Entity-centric memory (estilo MemGPT/Zep)
 

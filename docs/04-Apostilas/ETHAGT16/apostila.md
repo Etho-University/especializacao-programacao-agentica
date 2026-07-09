@@ -57,7 +57,31 @@ Os modelos canônicos de sociedades de agentes: **Generative Agents** (Park et a
 
 O experimento seminal é **Smallville** (Park et al., *Generative Agents*, UIST 2023; arXiv:2304.03442): 25 agentes virtuais numa vila, cada um com uma *persona*, *memória* (a memory stream de ETHAGT05 §7.1), e rotinas. Eles interagem, formam relações, planejam, e *comportamentos sociais emergem* — uma festa de São Patrício surge organicamente porque um agente convida outros. É a demonstração de que memória rica + agentes suficientes produzem *simulacra de comportamento social*.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT16/society.mmd`](../../12-Diagrams/ETHAGT16/society.mmd).
+```mermaid
+%% ETHAGT16 — Sociedade de agentes (papéis + normas + emergência)
+flowchart TB
+    subgraph Society["Sociedade de agentes"]
+        Res["Pesquisador"]
+        Crit["Crítico"]
+        Syn["Sintetizador"]
+        Rev["Revisor"]
+        Edit["Editor"]
+        Res -.-> Crit
+        Crit -.-> Syn
+        Syn -.-> Rev
+        Rev -.-> Edit
+    end
+    Norms["Normas<br/>(citar fontes, veto do editor)"]
+    Norms -.governa.-> Society
+    Society -.produz.-> Emergence["Comportamento emergente"]
+
+    classDef ag fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef nm fill:#fce7f3,stroke:#be185d,color:#000
+    classDef em fill:#fed7aa,stroke:#c2410c,color:#000
+    class Res,Crit,Syn,Rev,Edit ag
+    class Norms nm
+    class Emergence em
+```
 
 ### 2.2 Casos de uso
 
@@ -85,7 +109,27 @@ A regra: **simulações sociais são ferramentas exploratórias, não oráculos.
 
 A aplicação mais ambiciosa de sociedades de agentes é a **pesquisa autônoma**: um sistema que, dada uma pergunta, conduz o ciclo científico — revisão de literatura, formulação de hipótese, desenho e execução de experimento, análise, e redação de relatório — com supervisão humana mínima. É a fronteira que o Capstone desta Especialização integra.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT16/research-pipeline.mmd`](../../12-Diagrams/ETHAGT16/research-pipeline.mmd).
+```mermaid
+%% ETHAGT16 — Pipeline de pesquisa autônoma
+flowchart LR
+    Q([pergunta]) --> Rev["1. Revisão de literatura"]
+    Rev --> Hip["2. Geração de hipóteses"]
+    Hip --> Exp["3. Desenho experimental"]
+    Exp --> Run["4. Execução"]
+    Run --> An["5. Análise"]
+    An --> Wri["6. Escrita"]
+    Wri --> Hitl{"7. HITL revisão"}
+    Hitl -- "ok" --> Pub([paper])
+    Hitl -- "revisar" --> Wri
+
+    classDef st fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef hi fill:#fce7f3,stroke:#be185d,color:#000
+    classDef tm fill:#dcfce7,stroke:#15803d,color:#000
+    class Q tm
+    class Rev,Hip,Exp,Run,An,Wri st
+    class Hitl hi
+    class Pub tm
+```
 
 ### 3.2 O pipeline de pesquisa
 
@@ -123,7 +167,21 @@ O AI Scientist, por exemplo, produz papers que *parecem* científicos mas freque
 
 A característica fascinante e perigosa das sociedades de agentes é a **emergência**: comportamentos do *todo* que não estão em nenhuma *parte*. A festa de São Patrício em Smallville não foi programada — emergiu das interações. Em sistemas de pesquisa, insights podem emergir da colaboração que nenhum agente individual teria.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT16/emergence.mmd`](../../12-Diagrams/ETHAGT16/emergence.mmd).
+```mermaid
+%% ETHAGT16 — Comportamento emergente
+flowchart TB
+    Agents["Agentes individuais<br/>(seguem regras locais)"]
+    Agents --> Inter["interações locais"]
+    Inter --> Pat["Padrões emergentes<br/>(não programados)"]
+    Pat --> Props["Propriedades coletivas:<br/>• coordenação espontânea<br/>• polarização<br/>• especialização<br/>• echo chamber"]
+
+    classDef ag fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef in fill:#fce7f3,stroke:#be185d,color:#000
+    classDef em fill:#fed7aa,stroke:#c2410c,color:#000
+    class Agents ag
+    class Inter in
+    class Pat,Props em
+```
 
 ### 4.2 Quando a soma é diferente das partes
 

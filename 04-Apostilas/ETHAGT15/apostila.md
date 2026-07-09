@@ -48,7 +48,26 @@ A meta-agência é poderosa *e* perigosa. Um sistema que se auto-modifica pode *
 
 A forma mais direta de meta-agência: um **meta-agente arquiteto** que, dada uma descrição de tarefa, produz um agente especializado — escrevendo seu prompt de sistema, selecionando/compondo tools, e definindo sua topologia. O agente gerado é então *avaliado* antes de ser usado.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT15/meta-agent.mmd`](../../12-Diagrams/ETHAGT15/meta-agent.mmd).
+```mermaid
+%% ETHAGT15 — Meta-agente gera agente especializado
+flowchart TB
+    Task([tarefa T]) --> Meta["Meta-agente"]
+    Meta --> Comp["compõe primitivas<br/>(personas, tools, workflows)"]
+    Comp --> Gen["gera config JSON"]
+    Gen --> Valid{"validar"}
+    Valid -- "passa" --> Deploy["instanciar"]
+    Valid -- "falha" --> Meta
+    Deploy --> Exec["executa T"]
+
+    classDef t fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef m fill:#fce7f3,stroke:#be185d,color:#000
+    classDef v fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef o fill:#dcfce7,stroke:#15803d,color:#000
+    class Task t
+    class Meta,Comp,Gen m
+    class Valid v
+    class Deploy,Exec o
+```
 
 ### 2.2 Templates e composição
 
@@ -110,7 +129,28 @@ Quando a tarefa é única ou pequena, o ajuste manual é mais rápido.
 
 Um meta-agente pode *acumular aprendizado* ao longo do tempo: cada execução bem-sucedida reforça o que funciona; cada falha, uma lição (a memória de erros do Reflexion, ETHAGT04 §5, elevada a nível de sistema). Esse aprendizado é armazenado e consultado em futuras configurações.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT15/evolution-loop.mmd`](../../12-Diagrams/ETHAGT15/evolution-loop.mmd).
+```mermaid
+%% ETHAGT15 — Loop de evolução (strategy evolver)
+flowchart LR
+    Cur["estratégia atual"] --> Mut["gerar variações"]
+    Mut --> Eval["avaliar em subset"]
+    Eval --> Sel{"melhor que atual?"}
+    Sel -- "sim" --> Replace["substituir"]
+    Sel -- "não" --> Cur
+    Replace --> Cur
+    Cur -.audit.-> H["HITL"]
+
+    classDef cu fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef mu fill:#fce7f3,stroke:#be185d,color:#000
+    classDef ev fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef se fill:#fef3c7,stroke:#b45309,color:#000
+    classDef hi fill:#dcfce7,stroke:#15803d,color:#000
+    class Cur cu
+    class Mut ev
+    class Eval ev
+    class Sel,Replace se
+    class H hi
+```
 
 ### 4.2 Reflexion em nível de sistema
 
@@ -136,7 +176,36 @@ Não. O auto-aprendizado pode *degradar* se: a métrica de avaliação for falha
 
 O risco mais característico da meta-agência: **recursão descontrolada**. Um meta-agente que cria agentes que criam agentes... pode explode em complexidade e custo. A defesa: *profundidade máxima* (limite de níveis de meta), *orçamento* (limite de agentes gerados), e *base cases* explícitos (critério de parada da recursão).
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT15/safety-fences.mmd`](../../12-Diagrams/ETHAGT15/safety-fences.mmd).
+```mermaid
+%% ETHAGT15 — Safety fences para mudanças auto-propostas
+flowchart TB
+    Proposta["mudança proposta"] --> MG["Meta-Governor"]
+    MG --> Pol{"policy-as-code"}
+    Pol -- "vetar" --> Block(["bloquear"])
+    Pol -- "ok" --> Sand["Sandbox test"]
+    Sand --> P1{"passa?"}
+    P1 -- "não" --> Block
+    P1 -- "sim" --> Shadow["Shadow run"]
+    Shadow --> P2{"melhor?"}
+    P2 -- "não" --> Block
+    P2 -- "sim" --> Canary["Canary"]
+    Canary --> P3{"ok?"}
+    P3 -- "sim" --> Prod["Produção"]
+    P3 -- "não" --> Rollback(["Rollback"])
+
+    classDef pr fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef mg fill:#fce7f3,stroke:#be185d,color:#000
+    classDef po fill:#fef3c7,stroke:#b45309,color:#000
+    classDef st fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef ok fill:#dcfce7,stroke:#15803d,color:#000
+    classDef no fill:#fee2e2,stroke:#b91c1c,color:#000
+    class Proposta pr
+    class MG,Pol mg
+    class Sand,Shadow,Canary st
+    class P1,P2,P3 po
+    class Prod ok
+    class Block,Rollback no
+```
 
 ### 5.2 Goal drift
 

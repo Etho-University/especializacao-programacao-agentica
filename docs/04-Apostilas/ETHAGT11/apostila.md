@@ -34,7 +34,28 @@ Até aqui, imaginamos agentes que se chamam *síncronamente*: o agente A chama o
 
 A alternativa **event-driven** inverte o modelo: agentes não se chamam — eles *publicam* e *consomem eventos*. Um evento ("documento recebido") é publicado num *barramento*; os agentes interessados (*consumidores*) reagem. Quem publica não sabe (nem precisa saber) quem consome.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT11/event-driven.mmd`](../../12-Diagrams/ETHAGT11/event-driven.mmd).
+```mermaid
+%% ETHAGT11 — Pipeline event-driven com mensageria
+flowchart LR
+    Prod[producer] --> T1[("Kafka topic<br/>'raw'")]
+    T1 --> CA[Consumer A<br/>(agente OCR+extract)]
+    CA --> T2[("topic 'extracted'")]
+    T2 --> CB[Consumer B<br/>(agente validate)]
+    CB --> T3[("topic 'validated'")]
+    T3 --> CC[Consumer C<br/>(agente index)]
+    CC --> DB[("vector DB")]
+    CB -.ambíguos.-> DLQ[("DLQ<br/>manual")]
+    CA -.falhas.-> DLQ
+
+    classDef prod fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef topic fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef cons fill:#fce7f3,stroke:#be185d,color:#000
+    classDef store fill:#dcfce7,stroke:#15803d,color:#000
+    class Prod prod
+    class T1,T2,T3 topic
+    class CA,CB,CC cons
+    class DB,DLQ store
+```
 
 Os ganhos são grandes:
 
@@ -126,7 +147,32 @@ Muitas vezes, o melhor é *híbrido*: a workflow engine orquestra os *passos fix
 
 A característica mais valiosa do durable execution para agentes é a **sobrevivência**: um agente que roda por *horas ou dias* (uma pesquisa longa, um processamento em massa) não pode perder tudo num crash. O durable execution persiste o estado a cada passo, permitindo retomar.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT11/durable-execution.mmd`](../../12-Diagrams/ETHAGT11/durable-execution.mmd).
+```mermaid
+%% ETHAGT11 — Durable execution (Temporal-style)
+flowchart TB
+    Start([iniciar workflow]) --> A1["Activity 1<br/>state=v1"]
+    A1 -- checkpoint --> CK[("persiste<br/>state")]
+    A1 --> A2["Activity 2<br/>state=v2"]
+    A2 -- checkpoint --> CK
+    A2 --> Hitl{"precisa HITL?"}
+    Hitl -- "sim" --> Wait["wait_for_signal<br/>(até 7 dias)"]
+    Wait -- "aprovado" --> A3["Activity 3"]
+    Hitl -- "não" --> A3
+    A3 --> Done([finalizar])
+
+    Crash["worker cai?"] -.retoma do último checkpoint.-> A2
+
+    classDef act fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef ck fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef hitl fill:#fce7f3,stroke:#be185d,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    classDef crash fill:#fee2e2,stroke:#b91c1c,color:#000
+    class A1,A2,A3 act
+    class CK ck
+    class Hitl,Wait hitl
+    class Start,Done term
+    class Crash crash
+```
 
 ### 4.2 Long-running agents
 
@@ -156,7 +202,25 @@ A retentatura cria um risco: se a operação *executou* mas a resposta *se perde
 
 Quando um passo de uma sequência *falha definitivamente* (não transitória), você precisa *desfazer* os passos anteriores já executados. O padrão **saga** faz exatamente isso: cada passo tem um passo *compensatório* associado (criar → deletar; cobrar → reembolsar).
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT11/saga.mmd`](../../12-Diagrams/ETHAGT11/saga.mmd).
+```mermaid
+%% ETHAGT11 — Saga pattern (transação compensatória)
+flowchart TB
+    Start([iniciar]) --> S1["1. debitar(origem)"]
+    S1 -- "ok" --> S2["2. creditar(destino)"]
+    S2 -- "ok" --> Done([sucesso])
+    S2 -- "falha" --> C2["compensar 1: estornar(origem)"]
+    C2 --> Fail([falha recuperada])
+    S1 -- "falha" --> Fail
+
+    classDef ok fill:#dcfce7,stroke:#15803d,color:#000
+    classDef step fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef comp fill:#fee2e2,stroke:#b91c1c,color:#000
+    classDef term fill:#fef3c7,stroke:#b45309,color:#000
+    class Start,Done term
+    class S1,S2 step
+    class C2 comp
+    class Fail ok
+```
 
 ```
    transferir(A→B):

@@ -58,7 +58,29 @@ Para decompor um agente em partes compreensíveis, adotamos a taxonomia unificad
 5. **Tool Use (Uso de ferramentas):** a seleção e invocação de capacidades externas que estendem o agente para além do que o LLM sabe "de cor" — busca na web, execução de código, consulta a bancos de dados.
 6. **Collaboration (Colaboração):** a interação com outros agentes ou humanos — coordenação, delegação, negociação. Esta componente, isolada no agente único, torna-se central nos sistemas multi-agente (Fase C do curso).
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT01/augmented-llm.mmd`](../../12-Diagrams/ETHAGT01/augmented-llm.mmd)
+```mermaid
+%% ETHAGT01 — O Augmented LLM (bloco fundamental)
+%% Fonte: Anthropic, Building Effective Agents (2024)
+flowchart LR
+    subgraph AL["Augmented LLM"]
+        direction TB
+        LLM["LLM<br/>(motor cognitivo)"]
+        LLM --> R["retrieve<br/>(gera queries)"]
+        LLM --> T["tools<br/>(escolhe e chama)"]
+        LLM --> M["memory<br/>(decide o que reter)"]
+    end
+    R -.lê.-> V[("vector DB<br/>/ knowledge graph")]
+    T -.chama.-> API[("APIs<br/>/ MCP servers")]
+    M -.persiste.-> CP[("checkpointer<br/>Postgres/Redis")]
+
+    Prompt([prompt do usuário]) --> AL
+    AL --> Resp([resposta / tool call])
+
+    classDef blk fill:#e8f0fe,stroke:#1a56db,stroke-width:2px,color:#000
+    classDef ext fill:#fef3c7,stroke:#b45309,stroke-width:1px,color:#000
+    class AL,LLM,R,T,M blk
+    class V,API,CP,Ext ext
+```
 
 Esta apostila — e todo o curso — estrutura-se em torno desses seis blocos. ETHAGT01 estabelece os blocos fundamentais (Brain + Tool Use + Planning mínimos em loop). Os módulos seguintes aprofundam cada um: ETHAGT02 (Tool Use e ACI), ETHAGT04 (Planning), ETHAGT05 (Memory), ETHAGT06/07 (Perception via retrieval e conhecimento), e a Fase C (Collaboration).
 
@@ -97,7 +119,7 @@ A unidade de construção mais útil da programação agêntica não é o "agent
                   └──────────────────────────────────────────┘
 ```
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT01/augmented-llm.mmd`](../../12-Diagrams/ETHAGT01/augmented-llm.mmd)
+> _Diagrama «augmented-llm» apresentado acima nesta apostila._
 
 A vantagem pedagógica dessa decomposição é enorme: **todo sistema agêntico, por mais complexo, é uma composição de Augmented LLMs.** Um agente solitário é um Augmented LLM em loop. Um sistema multi-agente é uma rede de Augmented LLMs que se comunicam. Ao longo do curso, retornaremos sempre a este bloco fundamental quando precisamos entender um sistema — perguntando, para cada componente: *qual LLM, qual retrieval, quais tools, qual memória, qual loop?*
 
@@ -171,7 +193,32 @@ O ciclo é elegantemente simples:
                     Final Answer
 ```
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT01/agent-loop.mmd`](../../12-Diagrams/ETHAGT01/agent-loop.mmd)
+```mermaid
+%% ETHAGT01 — O Agent Loop (ReAct)
+%% Fonte: Yao et al., ReAct (ICLR 2023, arXiv:2210.03629)
+flowchart TB
+    Start([query do usuário]) --> Think
+    
+    subgraph Loop["Agent Loop (max_steps)"]
+        direction TB
+        Think["Thought<br/>raciocínio sobre o estado"]
+        Think --> Act{"Action?"}
+        Act -- "tool_call" --> Tool[/"executar tool<br/>com args"/]
+        Tool --> Obs["Observation<br/>resultado da tool"]
+        Obs --> Think
+        Act -- "sem tool_call" --> Ans
+        Ans["Answer<br/>resposta final"]
+    end
+    
+    Ans --> End([retorna ao usuário])
+
+    classDef step fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef decide fill:#fef3c7,stroke:#b45309,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class Think,Tool,Obs,Ans step
+    class Act decide
+    class Start,End term
+```
 
 Em cada iteração, o modelo:
 
@@ -309,7 +356,31 @@ A distinção mais importante de ETHAGT01 — e que estrutura todo o resto do cu
 - **Workflow:** o caminho de execução é **predefinido em código**. O LLM é chamado em pontos específicos de um roteiro fixo, definido pelo desenvolvedor. O desenvolvedor retém controle total sobre *o que acontece quando*.
 - **Agente:** o caminho de execução é **decidido pelo LLM em tempo de execução**. O próprio modelo escolhe a próxima ação, observa o resultado e decide novamente, até concluir (ou desistir). O desenvolvedor fornece ferramentas e instruções, mas não o roteiro.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT01/workflow-vs-agent.mmd`](../../12-Diagrams/ETHAGT01/workflow-vs-agent.mmd)
+```mermaid
+%% ETHAGT01 — Workflow vs Agente (decisão arquitetural)
+%% Fonte: Anthropic, Building Effective Agents (2024)
+flowchart TD
+    Q([Preciso de sistema com LLM]) --> S{Consigo listar<br/>os passos?}
+    S -- "Sim" --> W["WORKFLOW<br/>previsível, controlado"]
+    S -- "Não" --> P{O nº de passos<br/>é previsível?}
+    P -- "Sim, mas variável" --> O{Posso confiar<br/>no modelo sem HITL?}
+    P -- "Não" --> A
+    O -- "Sim" --> A["AGENTE<br/>flexível, dirigido pelo modelo"]
+    O -- "Não" --> AH["AGENTE + HITL forte<br/>checkpoints críticos"]
+    
+    W --> Comp["Composição de<br/>Augmented LLMs"]
+    A --> Comp
+    AH --> Comp
+
+    classDef wf fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef ag fill:#fce7f3,stroke:#be185d,color:#000
+    classDef hitl fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef common fill:#dcfce7,stroke:#15803d,color:#000
+    class W wf
+    class A ag
+    class AH hitl
+    class Comp common
+```
 
 A consequência para projeto é direta e aplica-se a toda decisão de arquitetura:
 
@@ -428,7 +499,41 @@ A apostila não toma partido de framework: o curso é *architecture-first*. Mas 
 | Persistência/observabilidade | Por sua conta | Checkpointer nativo | Tracing nativo |
 | Melhor para | Aprender o mecanismo | Sistemas complexos com estado | Protótipos rápidos, multi-agente por convenção |
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT01/framework-comparison.mmd`](../../12-Diagrams/ETHAGT01/framework-comparison.mmd)
+```mermaid
+%% ETHAGT01 — Comparação estrutural: do zero vs framework
+%% O que cada camada abstrai/esconde
+flowchart LR
+    subgraph Puro["Python puro + SDK"]
+        direction TB
+        P1["prompt efetivo<br/>(você escreve)"]
+        P2["loop<br/>(você controla)"]
+        P3["estado<br/>(transparente)"]
+        P4["tools<br/>(você valida)"]
+        P1 --> P2 --> P3 --> P4
+    end
+    
+    subgraph FW["Framework (ex.: LangGraph)"]
+        direction TB
+        F1["prompt efetivo<br/>(framework adiciona)"]
+        F2["loop<br/>(abstraído)"]
+        F3["estado<br/>(serializado opaco)"]
+        F4["tools<br/>(wrappers)"]
+        F0["camada de abstração<br/>↴"]
+        F0 --> F1
+        F0 --> F2
+        F0 --> F3
+        F0 --> F4
+    end
+
+    Puro -.compara.-> FW
+
+    classDef pure fill:#dcfce7,stroke:#15803d,color:#000
+    classDef fw fill:#fef3c7,stroke:#b45309,color:#000
+    classDef abs fill:#fce7f3,stroke:#be185d,color:#000
+    class P1,P2,P3,P4 pure
+    class F1,F2,F3,F4 fw
+    class F0 abs
+```
 
 ### 5.4 Quando reduzir camadas de abstração
 

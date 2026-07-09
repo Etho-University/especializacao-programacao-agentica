@@ -59,7 +59,26 @@ O primeiro salto além do naive RAG é a **adaptatividade**: nem toda pergunta p
 - **Recuperar uma vez** (pergunta factual simples).
 - **Recuperar várias vezes / multi-hop** (pergunta complexa que exige combinar fontes).
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT06/adaptive-rag.mmd`](../../12-Diagrams/ETHAGT06/adaptive-rag.mmd).
+```mermaid
+%% ETHAGT06 — Adaptive RAG
+flowchart TB
+    Q([pergunta]) --> C{"Classificador:<br/>precisa de retrieval?"}
+    C -- "não" --> Direct["Responder direto<br/>(LLM puro)"]
+    C -- "simples" --> R1["retrieve top-3"]
+    C -- "complexa" --> R2["retrieve +<br/>query rewrite"]
+    R1 --> Gen["Gerar resposta"]
+    R2 --> Gen
+    Direct --> Out([resposta])
+
+    classDef cls fill:#fce7f3,stroke:#be185d,color:#000
+    classDef rt fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef gen fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class C cls
+    class R1,R2,Direct rt
+    class Gen gen
+    class Q,Out term
+```
 
 Isso é, essencialmente, o padrão *routing* (ETHAGT03) aplicado à recuperação — classificando a complexidade da pergunta e roteando para o tratador adequado.
 
@@ -88,7 +107,29 @@ Adaptar economiza custo e latência nas perguntas triviais (não recupera desnec
 
 O **Corrective RAG** (Yan et al., *Corrective Retrieval Augmented Generation*, ICML 2024; arXiv:2401.15884) adiciona uma etapa crucial: depois de recuperar, *avalie* se os documentos são relevantes antes de usá-los. Se não forem, *corrija* — tipicamente, buscando em uma fonte alternativa (web).
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT06/crag-flow.mmd`](../../12-Diagrams/ETHAGT06/crag-flow.mmd).
+```mermaid
+%% ETHAGT06 — Corrective RAG (CRAG)
+flowchart TB
+    Q([query]) --> Ret["Retrieve<br/>(KB local)"]
+    Ret --> Av{"Avaliador:<br/>docs relevantes?"}
+    Av -- "sim" --> Gen["Gerar resposta"]
+    Av -- "ambíguo" --> Comb["Combinar local + web"]
+    Av -- "não" --> Web["Web search"]
+    Comb --> Gen
+    Web --> Gen
+    Gen --> Out([resposta])
+
+    classDef rt fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef av fill:#fce7f3,stroke:#be185d,color:#000
+    classDef fb fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef gen fill:#dcfce7,stroke:#15803d,color:#000
+    classDef term fill:#fef3c7,stroke:#b45309,color:#000
+    class Ret rt
+    class Av av
+    class Web,Comb fb
+    class Gen gen
+    class Q,Out term
+```
 
 ### 3.2 Os três caminhos
 
@@ -206,7 +247,24 @@ Para corpus com imagens e tabelas, o RAG precisa lidar com multimodalidade: embe
 
 Sem avaliação sistemática, "melhorar o RAG" é adivinhação. A avaliação de RAG mede *tanto a recuperação quanto a geração*, com métricas específicas. A falta de eval é um dos anti-patterns mais comuns — e o mais caro, porque esconde regressões.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT06/eval-pipeline.mmd`](../../12-Diagrams/ETHAGT06/eval-pipeline.mmd).
+```mermaid
+%% ETHAGT06 — Pipeline de avaliação de RAG
+flowchart LR
+    Q([pergunta]) --> R["Retrieve"]
+    R --> G["Generate"]
+    G --> Ans([resposta])
+    Q -.-> Eval["Eval pipeline"]
+    R -.docs.-> Eval
+    Ans -.-> Eval
+    Eval --> M[/"Métricas:<br/>faithfulness<br/>answer_relevance<br/>context_precision<br/>context_recall"/]
+
+    classDef main fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef ev fill:#fce7f3,stroke:#be185d,color:#000
+    classDef out fill:#dcfce7,stroke:#15803d,color:#000
+    class R,G main
+    class Eval,M ev
+    class Q,Ans out
+```
 
 ### 7.2 As métricas canônicas (estilo Ragas)
 

@@ -56,7 +56,25 @@ ETHAGT01 (§6.3) introduziu o conceito de *trace* — o registro completo de uma
 - **Span:** uma unidade dentro do trace — uma chamada LLM, uma execução de tool, um sub-agente. Spans se aninham.
 - **Baggage (contexto):** metadados propagados ao longo do trace (user_id, versão do agente, flags).
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT12/trace-anatomy.mmd`](../../12-Diagrams/ETHAGT12/trace-anatomy.mmd).
+```mermaid
+%% ETHAGT12 — Anatomia de um trace
+flowchart TB
+    Trace["TRACE<br/>(tarefa completa)"]
+    Trace --> S1["SPAN: chamada LLM 1"]
+    Trace --> S2["SPAN: tool call A"]
+    Trace --> S3["SPAN: chamada LLM 2"]
+    S2 --> S2a["sub-span: API request"]
+    Trace --> S4["SPAN: tool call B"]
+    S1 -.atributos.-> A1["model, tokens, latency"]
+    S2 -.atributos.-> A2["tool, args, result"]
+
+    classDef tr fill:#fce7f3,stroke:#be185d,color:#000
+    classDef sp fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef at fill:#fed7aa,stroke:#c2410c,color:#000
+    class Trace tr
+    class S1,S2,S3,S4,S2a sp
+    class A1,A2 at
+```
 
 ### 2.2 OpenTelemetry para LLMs
 
@@ -105,7 +123,29 @@ O coração da avaliação automatizada é o conjunto de **golden cases**: casos
 - **Detectar regressões:** se você muda o prompt e a taxa cai, você sabe.
 - **Comparar versões:** A/B testing de prompts/tools/modelos.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT12/eval-pipeline.mmd`](../../12-Diagrams/ETHAGT12/eval-pipeline.mmd).
+```mermaid
+%% ETHAGT12 — Pipeline de eval com CI
+flowchart LR
+    Change([mudança]) --> CI{"CI roda eval"}
+    CI --> Golden["golden cases"]
+    CI --> Bench["benchmark subset"]
+    Golden --> Judge["LLM-as-judge"]
+    Bench --> Judge
+    Judge --> Cmp{"regressão?"}
+    Cmp -- "sim" --> Block(["bloquear deploy"])
+    Cmp -- "não" --> Deploy(["deploy"])
+
+    classDef ch fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef ev fill:#fce7f3,stroke:#be185d,color:#000
+    classDef dec fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef ok fill:#dcfce7,stroke:#15803d,color:#000
+    classDef no fill:#fee2e2,stroke:#b91c1c,color:#000
+    class Change ch
+    class Golden,Bench,Judge ev
+    class CI,Cmp dec
+    class Deploy ok
+    class Block no
+```
 
 ### 3.3 Métricas de tarefa vs de processo
 
@@ -132,7 +172,22 @@ A avaliação contínua habilita experimentação controlada: mude uma variável
 
 Benchmarks são *conjuntos padronizados* de tarefas que permitem comparar agentes (e modelos) numa base comum. São essenciais para *posicionar* seu sistema no estado da arte e para medir progresso objetivo.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT12/benchmark-landscape.mmd`](../../12-Diagrams/ETHAGT12/benchmark-landscape.mmd).
+```mermaid
+%% ETHAGT12 — Landscape de benchmarks
+flowchart TB
+    B["Benchmarks canônicos"]
+    B --> Code["SWE-bench<br/>(código)"]
+    B --> General["GAIA<br/>(raciocínio geral)"]
+    B --> Tool["τ-bench<br/>(tool use / policy)"]
+    B --> Web["WebArena<br/>(navegação)"]
+    B --> Sec["AgentDojo<br/>(segurança)"]
+    B --> Multi["τ²-bench<br/>(multi-agent)"]
+
+    classDef root fill:#fce7f3,stroke:#be185d,color:#000
+    classDef bm fill:#dbeafe,stroke:#1e40af,color:#000
+    class B root
+    class Code,General,Tool,Web,Sec,Multi bm
+```
 
 ### 4.2 Os benchmarks canônicos
 

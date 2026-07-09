@@ -43,7 +43,32 @@ O framework **STRIDE** (Spoofing, Tampering, Repudiation, Information disclosure
 - **Tampering:** o agente *modifica* dados indevidamente (deleta, altera registros).
 - **Elevation of privilege:** o agente executa ações além do que deveria (chama tools de admin).
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT13/threat-model.mmd`](../../12-Diagrams/ETHAGT13/threat-model.mmd).
+```mermaid
+%% ETHAGT13 — Threat model (STRIDE para agentes)
+flowchart TB
+    Asset["ATIVOS<br/>(dados, ações, reputação)"]
+    Asset --> Surf["SUPERFÍCIES"]
+    Surf --> S1["input do usuário"]
+    Surf --> S2["RAG / docs"]
+    Surf --> S3["MCP resources"]
+    Surf --> S4["web search results"]
+    Surf --> S5["A2A (outros agentes)"]
+    S1 -.vetor.-> Atk["ATAQUES"]
+    S2 -.vetor.-> Atk
+    S3 -.vetor.-> Atk
+    S4 -.vetor.-> Atk
+    S5 -.vetor.-> Atk
+    Atk --> Impact["IMPACTOS<br/>exfiltração, destruição, custo"]
+
+    classDef as fill:#dcfce7,stroke:#15803d,color:#000
+    classDef su fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef at fill:#fce7f3,stroke:#be185d,color:#000
+    classDef im fill:#fee2e2,stroke:#b91c1c,color:#000
+    class Asset as
+    class Surf,S1,S2,S3,S4,S5 su
+    class Atk at
+    class Impact im
+```
 
 ### 1.4 Tool calling como vetor; propagação em multi-agente
 
@@ -77,7 +102,31 @@ Nenhuma defesa é absoluta — a estratégia é **defesa em profundidade** (múl
 - **Classificadores:** um modelo separado detecta injeções. *Útil como camada.*
 - **Instruction hierarchy:** modelos mais recentes implementam hierarquia explícita (system > user > tool) — uma defesa *arquitetural* mais robusta que prompting.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT13/defense-in-depth.mmd`](../../12-Diagrams/ETHAGT13/defense-in-depth.mmd).
+```mermaid
+%% ETHAGT13 — Defesa em profundidade
+flowchart LR
+    In([input]) --> F1["1. Input filter<br/>(classifica injeção)"]
+    F1 --> F2["2. Schema estrito<br/>(structured output)"]
+    F2 --> Agent["3. Agent LLM<br/>(system prompt robusto)"]
+    Agent --> Tools["4. Tools<br/>(allowlist + escopo mínimo)"]
+    Tools --> Hitl{"destrutiva?"}
+    Hitl -- "sim" --> H["5. HITL obrigatório"]
+    Hitl -- "não" --> F3
+    H --> F3["6. Output filter<br/>(PII, conteúdo)"]
+    F3 --> Audit[("7. Auditoria<br/>(log imutável)")]
+    Audit --> Out([resposta])
+
+    classDef in fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef fl fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef ag fill:#fce7f3,stroke:#be185d,color:#000
+    classDef hi fill:#fef3c7,stroke:#b45309,color:#000
+    classDef au fill:#dcfce7,stroke:#15803d,color:#000
+    class In in
+    class F1,F2,F3 fl
+    class Agent,Tools ag
+    class Hitl,H hi
+    class Audit,Out au
+```
 
 A lição honesta: **prompt injection não tem solução completa hoje.** A engenharia é *reduzir* a taxa de sucesso do ataque e *limitar o dano* quando ele sucede — via HITL, allowlists e isolamento.
 
@@ -121,7 +170,30 @@ Defesas adicionam latência (filtros em série) e custo (chamadas de classificad
 
 O **Human-in-the-Loop** (ETHAGT02 §4) é a defesa mais robusta para *ações irreversíveis*: nada de destrutivo executa sem aprovação humana. Em segurança, o HITL é um *checkpoint* que interrompe o agente antes de ações de alto risco.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT13/hitl-checkpoints.mmd`](../../12-Diagrams/ETHAGT13/hitl-checkpoints.mmd).
+```mermaid
+%% ETHAGT13 — HITL checkpoints em pipeline de agente
+flowchart TB
+    A["Agente propõe ação"] --> Class{"classificação<br/>de risco"}
+    Class -- "baixo" --> Auto["auto-executar<br/>+ audit posterior"]
+    Class -- "médio" --> Batch["fila de aprovação batch"]
+    Class -- "alto / destrutivo" --> Hitl["HITL imediato<br/>(preview + editar)"]
+    Auto --> Exec["executar"]
+    Batch --> Exec
+    Hitl -- "aprovado" --> Exec
+    Hitl -- "rejeitado" --> Reject["observação: rejeitado"]
+    Exec --> Log[("log de auditoria")]
+
+    classDef ag fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef de fill:#fce7f3,stroke:#be185d,color:#000
+    classDef hi fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef ok fill:#dcfce7,stroke:#15803d,color:#000
+    classDef no fill:#fee2e2,stroke:#b91c1c,color:#000
+    class A ag
+    class Class de
+    class Auto,Batch,Hitl hi
+    class Exec,Log ok
+    class Reject no
+```
 
 ### 4.2 Por que HITL *não* é defesa suficiente sozinho
 

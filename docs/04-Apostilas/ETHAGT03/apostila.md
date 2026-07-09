@@ -68,7 +68,27 @@ Os próximos cinco capítulos desenvolvem cada padrão com a mesma estrutura: *o
 
 O **Prompt Chaining** (encadeamento de prompts) é o workflow mais simples além da chamada única: uma sequência *linear e predefinida* de chamadas ao LLM, onde a saída de uma etapa alimenta a próxima. A característica distintiva é que há **gates** (portões) entre etapas — pontos de código que podem validar, transformar ou desviar o fluxo antes de continuar.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT03/prompt-chaining.mmd`](../../12-Diagrams/ETHAGT03/prompt-chaining.mmd)
+```mermaid
+%% ETHAGT03 — Workflow 1: Prompt Chaining
+flowchart LR
+    I([input]) --> L1["LLM 1<br/>(ex.: gerar rascunho)"]
+    L1 --> G1{"gate<br/>(validar?)"}
+    G1 -- "ok" --> L2["LLM 2<br/>(ex.: traduzir)"]
+    G1 -- "falha" --> Fix["corrigir / reverter"]
+    L2 --> G2{"gate"}
+    G2 -- "ok" --> L3["LLM 3<br/>(revisar tom)"]
+    G2 -- "falha" --> Fix
+    L3 --> O([saída])
+
+    classDef llm fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef gate fill:#fef3c7,stroke:#b45309,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    classDef err fill:#fee2e2,stroke:#b91c1c,color:#000
+    class L1,L2,L3 llm
+    class G1,G2 gate
+    class I,O term
+    class Fix err
+```
 
 ```
    input ──► [LLM: gerar] ──► gate ──► [LLM: revisar] ──► gate ──► [LLM: reescrever] ──► output
@@ -117,7 +137,28 @@ Um gate não precisa ser binário. Pode ser um *classificador* que escolhe o pr�
 
 O **Routing** (roteamento) separa a tarefa em duas fases: (1) um **classificador** categoriza a entrada, e (2) um **tratador especializado** processa a categoria. A vantagem é que cada tratador tem prompt, ferramentas e até *modelo* otimizados para seu tipo de caso — em vez de um prompt genérico que tenta cobrir tudo (e cobre nada bem).
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT03/routing.mmd`](../../12-Diagrams/ETHAGT03/routing.mmd)
+```mermaid
+%% ETHAGT03 — Workflow 2: Routing
+flowchart TB
+    I([input]) --> C{"Classifier<br/>(LLM ou modelo tradicional)"}
+    C -- "geral" --> A["LLM A<br/>prompt + tools especializados"]
+    C -- "reembolso" --> B["LLM B<br/>prompt + tools de pagamento"]
+    C -- "técnico" --> D["LLM C<br/>prompt + tools de diagnóstico"]
+    C -- "outros" --> F["Fallback"]
+    A --> O([saída])
+    B --> O
+    D --> O
+    F --> O
+
+    classDef cls fill:#fce7f3,stroke:#be185d,color:#000
+    classDef spec fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef fb fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class C cls
+    class A,B,D spec
+    class F fb
+    class I,O term
+```
 
 ```
                 ┌──► tratador cobrança (prompt + tools especializadas)
@@ -170,7 +211,38 @@ A **Parallelization** executa múltiplas chamadas LLM *simultaneamente* e agrega
 - **Sectioning (particionamento):** divide a tarefa em *subtarefas independentes*, executa cada uma em paralelo e combina. Ex.: resumir um documento longo — particione em seções, resuma cada em paralelo, concatene.
 - **Voting (votação):** executa a *mesma tarefa N vezes* (com temperatura/variação) e agrega — vota a melhor resposta ou checa consenso. Útil quando há incerteza e múltiplas amostras aumentam a confiança.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT03/parallelization.mmd`](../../12-Diagrams/ETHAGT03/parallelization.mmd) (sectioning e voting)
+```mermaid
+%% ETHAGT03 — Workflow 3: Parallelization (duas variantes)
+flowchart TB
+    subgraph Sectioning["Sectioning (subtarefas independentes)"]
+        direction TB
+        IS([input]) --> PS["particionar"]
+        PS --> WA["LLM: parte A<br/>(ex.: resposta)"]
+        PS --> WB["LLM: parte B<br/>(ex.: filtrar)"]
+        WA --> AGS["aggregator"]
+        WB --> AGS
+        AGS --> OS([saída])
+    end
+
+    subgraph Voting["Voting (mesma tarefa N vezes)"]
+        direction TB
+        IV([input]) --> PV["replicar"]
+        PV --> V1["LLM tentativa 1<br/>(prompt/temp diferente)"]
+        PV --> V2["LLM tentativa 2"]
+        PV --> V3["LLM tentativa 3"]
+        V1 --> AGV["aggregator<br/>(maioria / união / melhor)"]
+        V2 --> AGV
+        V3 --> AGV
+        AGV --> OV([saída])
+    end
+
+    classDef llm fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef agg fill:#fce7f3,stroke:#be185d,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class WA,WB,V1,V2,V3 llm
+    class AGS,AGV,PS,PV agg
+    class IS,OS,IV,OV term
+```
 
 ```
    sectioning:                        voting:
@@ -226,7 +298,32 @@ A paralelização multiplica chamadas. Cinco amostras em voting = 5× o custo de
 
 O **Orchestrator-Workers** tem um LLM *orquestrador* que decompõe a tarefa em subtarefas, delega cada uma a um LLM *trabalhador*, e depois sintetiza os resultados. A diferença crucial frente à parallelization é que **a decomposição é dinâmica** — decidida pelo orquestrador em tempo de execução, não fixa em código.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT03/orchestrator-workers.mmd`](../../12-Diagrams/ETHAGT03/orchestrator-workers.mmd)
+```mermaid
+%% ETHAGT03 — Workflow 4: Orchestrator-Workers
+%% Subtarefas SÃO DINÂMICAS (decididas pelo orchestrator)
+flowchart TB
+    I([tarefa]) --> O{"Orchestrator<br/>(LLM: decompor)"}
+    O -- "subtarefa A" --> WA["Worker A"]
+    O -- "subtarefa B" --> WB["Worker B"]
+    O -- "subtarefa C" --> WC["Worker C"]
+    O -- "..." --> WD["Worker ..."]
+    WA --> S["Synthesizer<br/>(LLM: integrar)"]
+    WB --> S
+    WC --> S
+    WD --> S
+    S --> O2([saída integrada])
+
+    Note["Diferença vs parallelization:<br/>subtarefas emergem do input,<br/>não são predefinidas"]
+
+    classDef orc fill:#fce7f3,stroke:#be185d,color:#000
+    classDef wk fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef syn fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class O orc
+    class WA,WB,WC,WD wk
+    class S syn
+    class I,O2 term
+```
 
 ```
                   ┌─ worker A ─┐
@@ -269,7 +366,24 @@ O orchestrator-workers é mais flexível que a parallelization fixa, mas mais ca
 
 O **Evaluator-Optimizer** é um loop: um LLM *gera*, outro (ou o mesmo, com prompt diferente) *avalia* e dá feedback, e o gerador *refina*, repetindo até satisfazer um critério. É o equivalente agêntico de um ciclo de revisão humana, automatizado.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT03/evaluator-optimizer.mmd`](../../12-Diagrams/ETHAGT03/evaluator-optimizer.mmd)
+```mermaid
+%% ETHAGT03 — Workflow 5: Evaluator-Optimizer
+flowchart LR
+    I([input]) --> G["Generator<br/>(LLM: produzir)"]
+    G --> E{"Evaluator<br/>(LLM: avaliar vs critério)"}
+    E -- "não satisfaz<br/>+ feedback" --> G
+    E -- "satisfaz" --> O([saída final])
+    E -.max iter.-> Stop(["parar (teto)"])
+
+    classDef gen fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef ev fill:#fce7f3,stroke:#be185d,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    classDef stop fill:#fee2e2,stroke:#b91c1c,color:#000
+    class G gen
+    class E ev
+    class I,O term
+    class Stop stop
+```
 
 ```
    ┌──►[gerar]──►[avaliar]──►refinar?──não──►[sair]

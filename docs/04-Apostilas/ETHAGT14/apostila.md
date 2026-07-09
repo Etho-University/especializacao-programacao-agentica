@@ -29,7 +29,25 @@ Um agente que funciona para 10 usuários em protótipo frequentemente *quebra* e
 
 Em sistemas agentes, o **gargalo dominante é quase sempre o LLM** — sua latência (segundos por chamada) e custo (centavos por chamada, multiplicados por N iterações). As demais componentes (tools, memória, rede) são tipicamente ordens de magnitude mais rápidas e baratas. A consequência: **otimizar o LLM é onde o maior retorno está.** Antes de micro-otimizar infraestrutura, pergunte: quantas chamadas LLM estou fazendo, e posso fazer menos?
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT14/bottleneck-analysis.mmd`](../../12-Diagrams/ETHAGT14/bottleneck-analysis.mmd).
+```mermaid
+%% ETHAGT14 — Análise de gargalos
+flowchart LR
+    Req([request]) --> LLM["chamada LLM<br/>latência: 2s"]
+    LLM --> Tools["tool calls<br/>latência: 0.5s"]
+    Tools --> Ctx["contexto cresce<br/>custo: $$"]
+    Ctx --> Loop{"mais steps?"}
+    Loop -- "sim" --> LLM
+    Loop -- "não" --> Out([resposta])
+
+    classDef in fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef ga fill:#fee2e2,stroke:#b91c1c,color:#000
+    classDef de fill:#fce7f3,stroke:#be185d,color:#000
+    classDef out fill:#dcfce7,stroke:#15803d,color:#000
+    class Req in
+    class LLM,Tools,Ctx ga
+    class Loop de
+    class Out out
+```
 
 ### 1.3 Custo crescendo com contexto
 
@@ -113,7 +131,26 @@ Para escalar, distribua o processamento por múltiplos *workers*:
 - **Stateless:** workers não mantêm estado entre requests; qualquer worker pode tratar qualquer request. Fácil de escalar (adicione workers), mas exige externalizar estado (memória em Redis/DB). Ideal para a *maioria* do processamento.
 - **Stateful:** workers mantêm estado (ex.: uma sessão longa). Mais complexo de escalar (afinidade), mas necessário para workflows duráveis (ETHAGT11).
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT14/sharding.mmd`](../../12-Diagrams/ETHAGT14/sharding.mmd).
+```mermaid
+%% ETHAGT14 — Sharding por tenant
+flowchart TB
+    In([requests]) --> Router["router por tenant_id"]
+    Router --> SH1["shard 1<br/>(tenants A, B)"]
+    Router --> SH2["shard 2<br/>(tenants C, D)"]
+    Router --> SH3["shard 3<br/>(tenant 'hot' Z)"]
+    SH1 --> DB1[("DB isolado 1")]
+    SH2 --> DB2[("DB isolado 2")]
+    SH3 --> DB3[("DB isolado 3")]
+
+    classDef in fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef rt fill:#fce7f3,stroke:#be185d,color:#000
+    classDef sh fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef db fill:#dcfce7,stroke:#15803d,color:#000
+    class In in
+    class Router rt
+    class SH1,SH2,SH3 sh
+    class DB1,DB2,DB3 db
+```
 
 ### 4.2 Sharding por usuário/sessão/domínio
 
@@ -162,7 +199,30 @@ Em microserviços, um **service mesh** (Istio, Linkerd) gerencia comunicação, 
 
 Em ETHAGT01 (§6.4) estabelecemos custo e latência como métricas de primeira classe. Em escala, isso vira **FinOps**: a prática de gerenciar e otimizar o custo financeiro do sistema como uma disciplina contínua. Agentes são particularmente vulneráveis a custo descontrolado (chamadas LLM multiplicam-se), então FinOps é crítica.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT14/finops-flow.mmd`](../../12-Diagrams/ETHAGT14/finops-flow.mmd).
+```mermaid
+%% ETHAGT14 — Fluxo FinOps
+flowchart LR
+    Exec([execução]) --> Measure["medir custo granular"]
+    Measure --> Tag["tag: usuário/tenant/categoria"]
+    Tag --> Dash["FinOps dashboard"]
+    Dash --> Alert{"custo > orçamento?"}
+    Alert -- "sim" --> Circuit["circuit breaker"]
+    Alert -- "não" --> OK(["ok"])
+    Dash --> Opt["otimização contínua<br/>(routing, cache)"]
+
+    classDef ex fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef me fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef da fill:#fce7f3,stroke:#be185d,color:#000
+    classDef al fill:#fef3c7,stroke:#b45309,color:#000
+    classDef ci fill:#fee2e2,stroke:#b91c1c,color:#000
+    classDef ok fill:#dcfce7,stroke:#15803d,color:#000
+    class Exec ex
+    class Measure,Tag me
+    class Dash da
+    class Alert al
+    class Circuit ci
+    class OK,Opt ok
+```
 
 ### 6.2 Orçamento por execução, usuário, tenant
 

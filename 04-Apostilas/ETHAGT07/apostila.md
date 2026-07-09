@@ -69,7 +69,32 @@ A pergunta "qual o melhor vector DB?" é mal formulada: depende do cenário. Est
 | **Chroma** | Simplicidade, setup zero | Protótipos, desenvolvimento, volumes pequenos |
 | **pgvector** | Já está no Postgres | Operacional: não quer adicionar um sistema novo; volumes médios |
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT07/vector-vs-graph.mmd`](../../12-Diagrams/ETHAGT07/vector-vs-graph.mmd).
+```mermaid
+%% ETHAGT07 — Vector DB vs Knowledge Graph (decisão)
+flowchart TD
+    Q([Preciso armazenar/buscar conhecimento]) --> D1{Dado é texto<br/>livre / similaridade?}
+    D1 -- "Sim" --> V["Vector DB<br/>(similaridade semântica)"]
+    D1 -- "Não" --> D2{Dado tem entidades<br/>e relações?}
+    D2 -- "Sim" --> G["Knowledge Graph<br/>(traversal multi-hop)"]
+    D2 -- "Não" --> D3{É estruturado<br/>(tabelas)?}
+    D3 -- "Sim" --> R["Relacional / SQL"]
+    D3 -- "Não" --> Other["Outro (TSDB, doc DB)"]
+    
+    V --> H{Queries têm<br/>perfil misto?}
+    G --> H
+    H -- "Sim" --> Hyb["Pipeline híbrido<br/>(agente escolhe)"]
+
+    classDef dec fill:#fce7f3,stroke:#be185d,color:#000
+    classDef vec fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef gr fill:#dcfce7,stroke:#15803d,color:#000
+    classDef rel fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef hy fill:#fef3c7,stroke:#b45309,color:#000
+    class D1,D2,D3,H dec
+    class V vec
+    class G gr
+    class R rel
+    class Other,Hyb hy
+```
 
 ### 2.2 Quando *não* usar vector DB
 
@@ -128,7 +153,37 @@ Como popular um KG a partir de texto não-estruturado? Com LLM: dê ao modelo o 
 
 O **GraphRAG** (Edge et al., Microsoft, 2024; arXiv:2404.16130) é a ponte entre KG e RAG. A motivação: o RAG vetorial responde bem a perguntas *locais* ("o que diz este chunk?"), mas falha em perguntas *globais* ("quais os temas principais deste corpus?", "como estes documentos se conectam?"), porque nenhuma parte individual contém a resposta. O GraphRAG constrói um KG a partir do corpus e usa sua estrutura para responder perguntas globais.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT07/graphrag-pipeline.mmd`](../../12-Diagrams/ETHAGT07/graphrag-pipeline.mmd).
+```mermaid
+%% ETHAGT07 — Pipeline GraphRAG (Microsoft)
+flowchart LR
+    subgraph Build["Construção (offline)"]
+        direction TB
+        Docs[corpus de docs] --> Extract["Extração LLM<br/>entidades + relações"]
+        Extract --> Graph[("Knowledge Graph")]
+        Graph --> Comm["Detecção de comunidades<br/>(Leiden)"]
+        Comm --> Sum["Sumarização hierárquica<br/>(LLM por comunidade)"]
+    end
+
+    subgraph Query["Query (online)"]
+        direction TB
+        Q([pergunta]) --> Decide{"Tipo?"}
+        Decide -- "específica" --> Local["Local search<br/>entidades mencionadas + vizinhança"]
+        Decide -- "ampla" --> Global["Global search<br/>agrega resumos de comunidades"]
+        Local --> Ans([resposta])
+        Global --> Ans
+    end
+
+    Sum -.alimenta.-> Query
+
+    classDef build fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef query fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef store fill:#fef3c7,stroke:#b45309,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class Docs,Extract,Comm,Sum build
+    class Q,Decide,Local,Global query
+    class Graph store
+    class Ans term
+```
 
 ### 4.2 O pipeline GraphRAG
 
@@ -162,7 +217,28 @@ GraphRAG é **caro de construir**: extrair entidades/relações de um corpus gra
 
 A conclusão natural dos capítulos anteriores: **não é vector *ou* grafo — é vector *e* grafo.** Um pipeline híbrido usa o vector DB para recall por similaridade e o KG para raciocínio sobre relações, combinando os resultados.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT07/hybrid-retrieval.mmd`](../../12-Diagrams/ETHAGT07/hybrid-retrieval.mmd).
+```mermaid
+%% ETHAGT07 — Pipeline híbrido (vector + graph + SQL)
+flowchart TB
+    Q([pergunta]) --> Ag["Agente de Retrieval"]
+    Ag --> V["Vector search<br/>(similaridade)"]
+    Ag --> G["Graph traversal<br/>(multi-hop)"]
+    Ag --> S["SQL<br/>(estruturado)"]
+    V --> Fuse["Fusão + re-rank<br/>(RRF ou LLM-mediated)"]
+    G --> Fuse
+    S --> Fuse
+    Fuse --> Gen["Gerar resposta<br/>com citações"]
+    Gen --> Out([resposta])
+
+    classDef ag fill:#fce7f3,stroke:#be185d,color:#000
+    classDef src fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef fuse fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef gen fill:#dcfce7,stroke:#15803d,color:#000
+    class Ag ag
+    class V,G,S src
+    class Fuse fuse
+    class Gen,Out gen
+```
 
 ### 5.2 O RetrievalAgent que escolhe estratégia
 

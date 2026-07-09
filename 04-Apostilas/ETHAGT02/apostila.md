@@ -174,7 +174,23 @@ Retorna: id, status (pending|shipped|delivered|cancelled), total, eta."""
 
 ACI não é uma atividade de uma passada: é um **loop iterativo** de projetar → testar → observar falhas → refinar. A versão agêntica do ciclo de design de HCI:
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT02/aci-iteration-loop.mmd`](../../12-Diagrams/ETHAGT02/aci-iteration-loop.mmd)
+```mermaid
+%% ETHAGT02 — Loop de iteração ACI (workbench)
+flowchart LR
+    Design["Design da tool<br/>(nome, schema, descrição)"] --> Bench["Workbench<br/>20+ casos × 3 runs"]
+    Bench --> Measure["Medir:<br/>taxa de uso correto<br/>custo, latência"]
+    Measure --> Diagnose{"Erros<br/>sistemáticos?"}
+    Diagnose -- "Sim" --> Redesign["Redesenhar tool<br/>(não o prompt!)"]
+    Redesign --> Design
+    Diagnose -- "Não" --> Ship(["Pronto para deploy"])
+
+    classDef step fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef decide fill:#fef3c7,stroke:#b45309,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class Design,Bench,Measure,Redesign step
+    class Diagnose decide
+    class Ship term
+```
 
 ```
    projetar ferramenta (descrição + schema)
@@ -296,7 +312,25 @@ Ferramentas evoluem: novos parâmetros, mudança de comportamento, deprecação.
 
 Nem toda ferramenta tem o mesmo risco. A Anthropic propõe pensar em duas dimensões: **impacto** (quão grave é o resultado) e **reversibilidade** (dá pra desfazer?). Isso dá uma matriz de risco que orienta quando exigir intervenção humana.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT02/risk-matrix.mmd`](../../12-Diagrams/ETHAGT02/risk-matrix.mmd)
+```mermaid
+%% ETHAGT02 — Matriz de risco de tools (reversibilidade × impacto)
+%% Classifica quando HITL é obrigatório
+flowchart TB
+    subgraph Chart["Matriz de Risco"]
+        direction TB
+        Hi_Impact_rev["ALTO impacto<br/>REVERSÍVEL<br/>ex.: update_profile<br/>HITL opcional"]
+        Hi_Impact_irrev["ALTO impacto<br/>IRREVERSÍVEL<br/>ex.: delete_account, deploy<br/>HITL OBRIGATÓRIO"]
+        Lo_Impact_rev["BAIXO impacto<br/>REVERSÍVEL<br/>ex.: get_order, search<br/>sem HITL"]
+        Lo_Impact_irrev["BAIXO impacto<br/>IRREVERSÍVEL<br/>ex.: log_event<br/>HITL opcional"]
+    end
+
+    classDef safe fill:#dcfce7,stroke:#15803d,color:#000
+    classDef warn fill:#fef3c7,stroke:#b45309,color:#000
+    classDef danger fill:#fee2e2,stroke:#b91c1c,color:#000
+    class Lo_Impact_rev safe
+    class Hi_Impact_rev,Lo_Impact_irrev warn
+    class Hi_Impact_irrev danger
+```
 
 | | Baixo impacto | Alto impacto |
 |---|---|---|
@@ -309,7 +343,34 @@ O quadrante **irreversível + alto impacto** exige **Human-in-the-Loop (HITL)**:
 
 O HITL não é um obstáculo ao agente — é um **padrão de controle** que permite dar autonomia onde é segura e cercar onde não é. O fluxo canônico:
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT02/hitl-flow.mmd`](../../12-Diagrams/ETHAGT02/hitl-flow.mmd)
+```mermaid
+%% ETHAGT02 — Fluxo HITL para tool destrutiva
+%% O agente nunca tem acesso à tool real
+flowchart TB
+    Agent["Agente<br/>(loop)"] -- "chama request_send_email" --> Runtime["Runtime"]
+    Runtime -- "pausa + serializa estado" --> Human["Humano<br/>vê preview"]
+    Human -- "aprovar" --> Real["_send_email_real<br/>(não exposta ao agente)"]
+    Human -- "rejeitar" --> Reject["observação: rejeitado + motivo"]
+    Human -- "editar" --> Edit["aplicar edição → Real"]
+    Real --> Audit[("log de auditoria")]
+    Real --> Obs1["observação: enviado"]
+    Reject --> Agent
+    Obs1 --> Agent
+    Edit --> Audit
+
+    Agent -.não tem acesso.->xReal["_send_email_real ❌"]
+
+    classDef ag fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef rt fill:#fce7f3,stroke:#be185d,color:#000
+    classDef hu fill:#fef3c7,stroke:#b45309,color:#000
+    classDef rl fill:#dcfce7,stroke:#15803d,color:#000
+    classDef no fill:#fee2e2,stroke:#b91c1c,color:#000,stroke-dasharray:5
+    class Agent ag
+    class Runtime rt
+    class Human hu
+    class Real,Reject,Edit,Audit,Obs1 rl
+    class xReal no
+```
 
 ```
    agente decide chamar ferramenta perigosa

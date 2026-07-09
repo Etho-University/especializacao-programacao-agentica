@@ -87,7 +87,25 @@ Isso é, claro, o padrão *voting* de ETHAGT03 aplicado ao CoT. O custo é N× o
 
 Até aqui, o raciocínio acontece *durante* a ação (pensa-a-cada-passo, estilo ReAct). Há uma alternativa: raciocinar *antes* — planejar todos os passos no início e executar em seguida. Isso é a família **Plan-and-Execute**.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT04/plan-execute.mmd`](../../12-Diagrams/ETHAGT04/plan-execute.mmd)
+```mermaid
+%% ETHAGT04 — Plan-and-Execute
+flowchart TB
+    P([problema]) --> Planner["Planner LLM"]
+    Planner --> Plan["plano<br/>[passo1, passo2, ...]"]
+    Plan --> Exec["Executor<br/>(percorre passos, chama tools)"]
+    Exec --> Rep{"Replanner:<br/>plano ainda ok?"}
+    Rep -- "sim" --> Out([resposta])
+    Rep -- "não" --> Planner
+
+    classDef pl fill:#fce7f3,stroke:#be185d,color:#000
+    classDef ex fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef rp fill:#fed7aa,stroke:#c2410c,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class Planner pl
+    class Exec ex
+    class Rep rp
+    class P,Out term
+```
 
 ```
    input ──►[planner: gera plano]──►[executor: executa cada passo]──► output
@@ -144,7 +162,26 @@ Sem re-planejamento, o plan-and-execute é um workflow rígido (ETHAGT03). Com r
 
 O **Tree of Thoughts** (Yao et al., *Tree of Thoughts: Deliberate Problem Solving with Large Language Models*, NeurIPS 2023; arXiv:2305.10601) abandona a linearidade: em vez de uma cadeia, o modelo explora uma *árvore* de estados de raciocínio, avaliando cada um e expandindo os mais promissores, com *backtracking* (retrocesso) quando um ramo se mostra infrutífero.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT04/tot-search-tree.mmd`](../../12-Diagrams/ETHAGT04/tot-search-tree.mmd)
+```mermaid
+%% ETHAGT04 — Tree of Thoughts (busca com poda)
+flowchart TB
+    Root([estado inicial])
+    Root --> A["cont A<br/>(avaliação 8/10)"]
+    Root --> B["cont B<br/>(3/10)"]
+    Root --> C["cont C<br/>(6/10)"]
+    A --> A1["cont A1"]
+    A --> A2["cont A2"]
+    B -.podar.-> X["❌ abandonar"]
+    C --> C1["cont C1"]
+    A1 --> Sol([solução])
+
+    classDef nd fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef good fill:#dcfce7,stroke:#15803d,color:#000
+    classDef bad fill:#fee2e2,stroke:#b91c1c,color:#000
+    class Root,A,B,C,A1,A2,C1 nd
+    class Sol good
+    class X bad
+```
 
 ```
                     [estado inicial]
@@ -177,7 +214,26 @@ O **LATS** (Language Agent Tree Search, Zhou et al., NeurIPS 2024; arXiv:2310.01
 
 O **Reflexion** (Shinn et al., *Reflexion: Language Agents with Verbal Reinforcement Learning*, NeurIPS 2023; arXiv:2303.11366) adiciona a quarta dimensão do nosso mapa (§1.2): **auto-correção**. A ideia é dar ao agente a capacidade de *criticar a si mesmo* após uma falha e registrar a lição numa *memória de erros* que consulta nas tentativas seguintes.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT04/reflexion-loop.mmd`](../../12-Diagrams/ETHAGT04/reflexion-loop.mmd)
+```mermaid
+%% ETHAGT04 — Reflexion loop
+flowchart LR
+    P([problema]) --> A["Agente ReAct<br/>(tentativa N)"]
+    A --> R{"sucesso?"}
+    R -- "sim" --> Out([resposta])
+    R -- "não" --> Eval["Evaluator<br/>identifica erro"]
+    Eval --> Refl["Reflector<br/>gera reflexão verbal"]
+    Refl --> Mem[("memória de<br/>reflexões")]
+    Mem --> A
+
+    classDef ag fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef ev fill:#fce7f3,stroke:#be185d,color:#000
+    classDef mem fill:#fef3c7,stroke:#b45309,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class A ag
+    class Eval,R,Refl ev
+    class Mem mem
+    class P,Out term
+```
 
 ### 5.2 O loop de três atores
 

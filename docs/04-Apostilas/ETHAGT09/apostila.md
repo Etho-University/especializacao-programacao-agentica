@@ -81,7 +81,23 @@ O *AutoGen* (Wu et al., arXiv:2308.08155) introduz o **group chat**: múltiplos 
 
 O group chat é poderoso para *debate* e *síntese multi-perspectiva*, mas pode divergir (conversa sem foco) e é caro (muitas chamadas).
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT09/handoff.mmd`](../../12-Diagrams/ETHAGT09/handoff.mmd).
+```mermaid
+%% ETHAGT09 — Handoff (Swarm-style)
+flowchart LR
+    T["Triager"] -- "handoff (vendas)" --> S["Sales"]
+    T -- "handoff (cobrança)" --> B["Billing"]
+    T -- "handoff (técnico)" --> Su["Support"]
+    S --> Done([resolução])
+    B --> Done
+    Su --> Done
+
+    classDef tri fill:#fce7f3,stroke:#be185d,color:#000
+    classDef spec fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef term fill:#dcfce7,stroke:#15803d,color:#000
+    class T tri
+    class S,B,Su spec
+    class Done term
+```
 
 ### 2.3 Handoff / transfer (estilo OpenAI Swarm)
 
@@ -111,7 +127,18 @@ Não há "melhor" — a escolha depende de *onde* a decisão de coordenação de
 
 O padrão **blackboard** (quadro-negro) abandona a mensagem direta: em vez de agentes se enviarem mensagens uns aos outros, eles *escrevem e leem num espaço compartilhado* — o blackboard. Cada agente contribui com o que sabe, lê o que os outros escreveram, e age quando vê oportunidade. A coordenação é *pelo estado compartilhado*, não por mensagens endereçadas.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT09/blackboard.mmd`](../../12-Diagrams/ETHAGT09/blackboard.mmd).
+```mermaid
+%% ETHAGT09 — Blackboard pattern
+flowchart TB
+    A1["Agente 1"] <--> BB[("Blackboard<br/>(facts, hypotheses)")]
+    A2["Agente 2"] <--> BB
+    A3["Agente 3"] <--> BB
+
+    classDef ag fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef bb fill:#fed7aa,stroke:#c2410c,color:#000
+    class A1,A2,A3 ag
+    class BB bb
+```
 
 ```
           ┌──────────── BLACKBOARD (estado compartilhado) ───────────┐
@@ -150,7 +177,16 @@ O blackboard pode ser *em memória* (para uma sessão) ou *persistente* (um banc
 
 O **Actor Model** (Hewitt, 1973) é um modelo de computação concorrente onde o universo é composto de *atores*: entidades que encapsulam *estado privado* e só interagem por *troca assíncrona de mensagens*. Não há estado compartilhado; não há locks; cada ator processa uma mensagem por vez. Esse modelo, originado nos anos 70 (Erlang, Akka), mapeia-se com naturalidade elegante para agentes distribuídos.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT09/actor-model.mmd`](../../12-Diagrams/ETHAGT09/actor-model.mmd).
+```mermaid
+%% ETHAGT09 — Actor model
+flowchart LR
+    A1["Ator 1<br/>(mailbox + estado privado)"] -- "msg async" --> A2["Ator 2<br/>(mailbox)"]
+    A2 -- "msg async" --> A3["Ator 3<br/>(mailbox)"]
+    A3 -- "msg async" --> A1
+
+    classDef actor fill:#dbeafe,stroke:#1e40af,color:#000
+    class A1,A2,A3 actor
+```
 
 ### 4.2 Propriedades
 
@@ -174,7 +210,24 @@ Não necessariamente. O overhead de passagem de mensagem existe, mas a *ausênci
 
 Nem toda colaboração é harmoniosa. Agentes podem ter *objetivos parcialmente conflitantes* (comprador quer preço baixo, vendedor quer alto) ou *visões diferentes* (especialistas discordam sobre um diagnóstico). Precisamos de mecanismos de **negociação** e **resolução de conflito**.
 
-> **Diagrama de referência:** [`12-Diagrams/ETHAGT09/negotiation.mmd`](../../12-Diagrams/ETHAGT09/negotiation.mmd).
+```mermaid
+%% ETHAGT09 — Negociação entre agentes
+flowchart LR
+    Buyer["Comprador<br/>objetivo: preço baixo"] -- "propõe 100" --> Seller["Vendedor<br/>objetivo: preço alto"]
+    Seller -- "contrapropõe 150" --> Buyer
+    Buyer -- "120" --> Seller
+    Seller -- "aceito" --> Deal([acordo])
+    Seller -. "rejeita após N rounds" .-> Esc["Escalar<br/>ou timeout"]
+
+    classDef bg fill:#dbeafe,stroke:#1e40af,color:#000
+    classDef sl fill:#fce7f3,stroke:#be185d,color:#000
+    classDef ok fill:#dcfce7,stroke:#15803d,color:#000
+    classDef esc fill:#fee2e2,stroke:#b91c1c,color:#000
+    class Buyer bg
+    class Seller sl
+    class Deal ok
+    class Esc esc
+```
 
 ### 5.2 Bargaining e auction
 
