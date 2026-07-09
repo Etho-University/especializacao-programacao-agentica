@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # 26 — Capstone
 
 O **Projeto Final** da Especialização — integra todos os 16 módulos em uma plataforma realista. Aprovação com nota ≥ 4,0 por painel é **pré-requisito de certificação**.

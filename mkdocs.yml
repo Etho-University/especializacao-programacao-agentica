@@ -275,6 +275,12 @@ nav:
       - Avaliação (Rubrica): 08-Assignments/ETHAGT16/assignment-01.md
   - Professor (Acesso Restrito):
     - Aviso: sobre/aviso-professor.md
+    - Avaliação:
+      - Provas Modulares: avaliacao/provas.md
+      - Prova Final Integradora: 23-Exams/final-exam.md
+      - Capstone: avaliacao/capstone.md
+      - Certificação: avaliacao/certificacao.md
+    - Templates & Checklists: templates/README.md
     - ETHAGT01:
       - Prova: 23-Exams/ETHAGT01/prova.md
       - Gabarito: 23-Exams/ETHAGT01/gabarito.md
@@ -373,9 +379,3 @@ nav:
   - Pesquisa:
     - Master Index: pesquisa/master-index.md
     - Papers: pesquisa/papers.md
-  - Avaliação:
-    - Provas Modulares: avaliacao/provas.md
-    - Prova Final Integradora: 23-Exams/final-exam.md
-    - Capstone: avaliacao/capstone.md
-    - Certificação: avaliacao/certificacao.md
-  - Template & Checklists: templates/README.md

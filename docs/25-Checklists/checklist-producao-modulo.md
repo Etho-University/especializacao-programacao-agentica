@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # Checklist — Produção de Módulo `ETHAGT0x`
 
 > Definition of Done de um curso da Especialização. Todos os itens devem estar marcados antes de o módulo ser considerado pronto.

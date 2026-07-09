@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ETHAGT90 — Guia de Defesa
 
 > Como se preparar para os 45 minutos que decidem sua certificação (25 min apresentação + 20 min Q&A).

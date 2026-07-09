@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # 24 — Templates
 
 Modelos padronizados para produzir material consistente em toda a Especialização. **Sempre copie** o template relevante ao iniciar um novo artefato.

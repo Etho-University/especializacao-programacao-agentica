@@ -1,4 +1,7 @@
-﻿# Provas Modulares
+﻿---
+password: Etho-Prof-2026
+---
+# Provas Modulares
 
 Avaliações individuais para cada módulo da especialização, com gabaritos e critérios de correção.
 

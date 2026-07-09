@@ -1,4 +1,7 @@
-﻿# Certificação
+﻿---
+password: Etho-Prof-2026
+---
+# Certificação
 
 Processo de certificação da especialização, incluindo exame de certificação, blueprint e recertificação.
 

@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # Prova Final Integradora — Especialização em Programação Agêntica
 
 > Universidade Etho · Versão 1.0 · Julho 2026

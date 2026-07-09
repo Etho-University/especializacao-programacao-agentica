@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # ETHAGT90 — Marcos de Acompanhamento
 
 > Cronograma de 8 semanas com **8 marcos (M1-M8)**. Cada marco é check-in com mentor; sem aprovação, não avança.

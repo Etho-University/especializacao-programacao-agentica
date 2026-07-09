@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # 27 — Certification
 
 Critérios, blueprint do exame e processo de certificação da Especialização.

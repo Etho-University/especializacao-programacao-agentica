@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # Template — Rubrica de Avaliação (Pilar Técnico 40%)
 
 > Define **como** um módulo ou capstone é avaliado no Pilar Técnico. Cada item recebe nota 1-5 (escala Etho: 1 muito abaixo · 2 abaixo · 3 esperado · 4 acima · 5 referência). Nota final = média ponderada.

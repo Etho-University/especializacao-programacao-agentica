@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # Exame V1 — Gabarito (restrito a avaliadores)
 
 > Use em conjunto com [`exame-v1.md`](exame-v1.md). Para questões abertas, critérios de correção.

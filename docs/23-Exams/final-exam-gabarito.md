@@ -1,3 +1,6 @@
+﻿---
+password: Etho-Prof-2026
+---
 # Prova Final Integradora — Gabarito Comentado (restrito a avaliadores)
 
 > Respostas esperadas e critérios de correção para [`final-exam.md`](final-exam.md).

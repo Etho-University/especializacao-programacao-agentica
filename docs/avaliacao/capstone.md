@@ -1,4 +1,7 @@
-﻿# Capstone
+﻿---
+password: Etho-Prof-2026
+---
+# Capstone
 
 Projeto final integrador da especialização, onde os alunos aplicam todos os conceitos aprendidos em um projeto prático de sistema agêntico.
 
