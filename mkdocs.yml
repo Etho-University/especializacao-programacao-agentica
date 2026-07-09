@@ -112,6 +112,7 @@ nav:
     - Mapa de Fases: curriculo/fases.md
     - Rastreabilidade: curriculo/rastreabilidade.md
   - Cursos:
+    - Visão Geral: cursos/index.md
     - "ETHAGT01 — Fundamentos (Agentes LLM)":
       - Apresentação (PPTX): 03-Slides/ETHAGT01/ETHAGT01-Apresentacao.pptx
       - Apostila: 04-Apostilas/ETHAGT01/apostila.md
