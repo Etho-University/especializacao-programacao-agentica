@@ -24,6 +24,8 @@
 **Imagem**: Fundo `etho-dark` (#0F1E2D) com pattern sutil de nós e arestas
 **Tempo**: 1 min
 
+**Rodapé**: `LLM` = Large Language Model — Modelo de Linguagem de Grande Escala
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Bem-vindos. Esta é a primeira aula da Especialização em Programação Agêntica. Hoje vamos estabelecer o bloco fundamental — o Augmented LLM em loop — que será a base de todos os módulos seguintes. Não vamos falar de frameworks hoje; vamos falar de arquitetura. Se você entender o bloco fundamental, todo framework será apenas uma instanciação dele.
 💡 ANALOGIA: É como aprender a cozinhar vs aprender a usar uma panela específica. Hoje vocês vão aprender a cozinhar. As panelas (LangGraph, CrewAI, etc.) vêm depois.
@@ -52,6 +54,8 @@
 **Imagem**: Ícones minimalistas em `etho-accent` (#E85D2F)
 **Tempo**: 2 min
 
+**Rodapé**: `ReAct` = Reasoning and Acting — padrão onde o agente intercala Thought, Action e Observation em loop
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Cada objetivo é mensurável. Não é "entender" — é "explicar", "decompor", "implementar", "diferenciar", "adicionar", "avaliar". Se ao final da aula você não consegue fazer essas seis coisas, eu falhei como professor. Vamos revisar estes objetivos no final para confirmar.
 💡 ANALOGIA: É como um checklist de pré-voo. O piloto não diz "entendo como voar" — ele verifica cada item: flaps, trem, motor. Hoje, nosso checklist é estes 6 objetivos.
@@ -78,6 +82,8 @@
 **Animação**: Radar aparece com wipe (left-to-right, 500ms)
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
+
+**Rodapé**: `MCP` = Model Context Protocol — Protocolo de Contexto de Modelo (padrão aberto da Anthropic para conectar LLMs a ferramentas) · `AgentOps` = Agent Operations — práticas de operação e monitoramento de agentes em produção
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: O Framework Etho tem 6 competências em 3 níveis (Básico, Intermediário, Avançado). Este módulo toca 4 delas. A competência C1 — Programação Agêntica — atinge nível Intermediário aqui, o que significa que você consegue construir um agente funcional e justificar escolhas arquiteturais. As outras três ficam em Básico — você conhece o conceito e consegue operar, mas o aprofundamento vem em módulos posteriores.
@@ -165,6 +171,8 @@
 **Animação**: Marcos aparecem sequencialmente (on click)
 **Imagem**: Convergência de 4 rios em um lago
 **Tempo**: 1 min
+
+**Rodapé**: `CoT` = Chain-of-Thought — Cadeia de Pensamento (técnica de prompting que leva o modelo a raciocinar passo a passo) · `ToT` = Tree of Thoughts — Árvore de Pensamentos (explora múltiplos caminhos de raciocínio em árvore)
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Agentes não são ideia nova — o conceito existe desde a década de 90 (agentes autônomos em IA clássica). Mas três coisas mudaram: (1) LLMs ficaram bons o suficiente em reasoning para planejar; (2) tool calling estruturado permitiu ação confiável; (3) context window cresceu o suficiente para manter estado. O custo baixou o suficiente para que múltiplas chamadas em loop sejam viáveis economicamente. A publicação da Anthropic em dez/2024 é o marco porque sistematiza o que funciona em produção.
@@ -275,6 +283,8 @@
 **Imagem**: Duas caixas lado a lado
 **Tempo**: 2 min
 
+**Rodapé**: `HITL` = Human-in-the-Loop — Humano no Ciclo (padrão onde humanos aprovam/editam ações críticas em checkpoints)
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A transição de geração única para controle cognitivo não é apenas "mais chamadas de LLM". É uma mudança de paradigma com implicações arquiteturais profundas. Quando você tem 1 step, o custo é previsível (1 chamada × tokens). Com N steps, o custo varia — uma query simples pode ser 1 step, uma complexa pode ser 20. A latência passa de segundos para minutos. O erro deixa de ser isolado e passa a ser composto — se o step 3 alucina uma action, o step 4 age sobre informação errada. Isso exige: estado (para resumir de onde parou), memória (para não repetir erros), orçamento (para não gastar infinito), observabilidade (para debugar), e error handling (para recuperar).
 💡 ANALOGIA: É a diferença entre pedir um prato no restaurante (1 step — você pede, recebe) vs cozinhar (N steps — planejar, comprar, cortar, cozinhar, provar, ajustar). Cozinhar é mais poderoso mas exige mais infraestrutura: cozinha, utensílios, tempo, cleanup.
@@ -318,6 +328,8 @@
 **Imagem**: Diagrama do augmented LLM
 **Tempo**: 3 min
 
+**Rodapé**: `ACI` = Agent-Computer Interface — Interface Agente-Computador (design das tools; análoga à HCI para humanos)
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: O Augmented LLM não é "LLM + alguma coisa". É uma mudança qualitativa: o modelo passa a ser ATIVO na decisão de quando usar cada capacidade. No RAG tradicional, o pipeline é fixo: query → retrieve → generate. No Augmented LLM, o modelo decide: "Preciso recuperar? Sim. Qual query? 'preço do produto X'. Recuperei. Preciso de mais? Não. Vou usar uma tool? Sim, verificar estoque." Essa autonomia é o que transforma um gerador de texto em um controlador cognitivo. A interface bem documentada — ACI — é tão crítica que a Anthropic dedicou um apêndice inteiro a ela. Vamos aprofundar ACI em ETHAGT02, mas o princípio fica desde já: invista tanto esforço na interface da tool quanto investiria na interface com um humano.
 💡 ANALOGIA: O LLM puro é como um cérebro em uma jarra — inteligente mas isolado. O Augmented LLM é como um cérebro com olhos (perception via retrieval), mãos (tools) e memória (memory). A diferença não é só capacidade — é autonomia. O cérebro decide quando olhar, quando agir, quando lembrar.
@@ -347,6 +359,8 @@
 **Animação**: Setas mostrando decisão do modelo (diamond)
 **Imagem**: Duas arquiteturas lado a lado
 **Tempo**: 2 min
+
+**Rodapé**: `RAG` = Retrieval-Augmented Generation — Geração Aumentada por Recuperação (técnica que recupera conhecimento externo antes de gerar a resposta)
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A grande diferença do retrieval in-loop é a DECISÃO. No RAG tradicional, você sempre recupera — mesmo para "oi, tudo bem?". Isso desperdiça tokens e latência. No RAG agêntico, o modelo avalia: "Esta pergunta precisa de conhecimento externo?" Se sim, gera uma query de busca. Se não, responde direto. E pode fazer isso múltiplas vezes: recuperar, avaliar, recuperar de novo com query diferente. Isso é poderoso mas caro — cada retrieval é uma chamada extra.
@@ -454,6 +468,8 @@ TOOLS = [{
 **Animação**: Transformação antes → depois (morph)
 **Imagem**: Ícone de chave de fenda ajustando uma tool
 **Tempo**: 1 min
+
+**Rodapé**: `HCI` = Human-Computer Interface — Interface Humano-Computador (design de como humanos interagem com software) · `SWE-bench` = Software Engineering Benchmark — benchmark que mede capacidade de resolver issues reais do GitHub
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Este é o princípio mais subestimado em agentes. A Anthropic gastou MAIS tempo otimizando as tools do que o prompt principal do agente SWE-bench. Por quê? Porque a tool é o ponto de contato entre o modelo e o mundo. Se a tool é confusa, o modelo erra — não importa quão bom seja o prompt. O caso dos paths é perfeito: o agente saía do diretório raiz e começava a usar paths relativos errados. A solução óbvia seria "ensinar o modelo no prompt a usar paths absolutos". Mas isso é frágil — o modelo pode esquecer. A solução robusta foi mudar a TOOL para exigir paths absolutos. Aí o modelo não PODE errar, mesmo que queira. Isso é poka-yoke: tornar o erro impossível pela design da interface.

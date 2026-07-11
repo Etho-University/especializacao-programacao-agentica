@@ -62,7 +62,9 @@ def add_bullets(slide, left, top, width, height, items, size=16, color=DARK):
 def add_notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
-def add_footer(slide, num, total, obj=""):
+def add_footer(slide, num, total, obj="", acronyms=""):
+    if acronyms:
+        add_textbox(slide, Inches(0.3), Inches(6.6), Inches(12.7), Inches(0.35), acronyms, size=9, color=INFO)
     add_textbox(slide, Inches(0.3), Inches(7.0), Inches(7), Inches(0.4), obj, size=10, color=MUTED)
     add_textbox(slide, Inches(11.0), Inches(7.0), Inches(2), Inches(0.4), f"Slide {num} / {total}", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
 
@@ -74,12 +76,14 @@ def add_header(slide, code="ETHAGT05"):
     add_textbox(slide, Inches(0.3), Inches(0.02), Inches(3), Inches(0.3), "Universidade Etho", size=11, color=WHITE, bold=True)
     add_textbox(slide, Inches(10.5), Inches(0.02), Inches(2.5), Inches(0.3), code, size=11, color=WHITE, bold=True, align=PP_ALIGN.RIGHT)
 
-def title_slide(title, subtitle, code):
+def title_slide(title, subtitle, code, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_textbox(s, Inches(1), Inches(2.5), Inches(11), Inches(1.2), title, size=40, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(3.8), Inches(11), Inches(0.8), subtitle, size=20, color=MUTED, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(5.5), Inches(11), Inches(0.5), code, size=14, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
+    if acronyms:
+        add_textbox(s, Inches(1), Inches(6.5), Inches(11), Inches(0.4), acronyms, size=11, color=MUTED, align=PP_ALIGN.CENTER)
     return s
 
 def section_slide(num, title):
@@ -89,7 +93,7 @@ def section_slide(num, title):
     add_textbox(s, Inches(3.5), Inches(3.0), Inches(9), Inches(1.5), title, size=32, color=WHITE, bold=True)
     return s
 
-def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
+def content_slide(title, bullets, notes, num, total, obj="", subtitle=None, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -97,11 +101,11 @@ def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
     if subtitle:
         add_textbox(s, Inches(0.5), Inches(1.1), Inches(12), Inches(0.5), subtitle, size=18, color=MUTED)
     add_bullets(s, Inches(0.7), Inches(1.8 if subtitle else 1.5), Inches(12), Inches(5), bullets, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def code_slide(title, code, notes, num, total, obj=""):
+def code_slide(title, code, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_header(s)
@@ -114,11 +118,11 @@ def code_slide(title, code, notes, num, total, obj=""):
     p.font.size = Pt(13)
     p.font.color.rgb = RGBColor(0xA9, 0xDC, 0xFC)
     p.font.name = "Consolas"
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
+def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -127,11 +131,11 @@ def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
     add_bullets(s, Inches(0.7), Inches(2.2), Inches(5.5), Inches(4.5), li, size=15)
     add_textbox(s, Inches(7), Inches(1.5), Inches(6), Inches(0.5), rt, size=20, color=SUCCESS, bold=True)
     add_bullets(s, Inches(7.2), Inches(2.2), Inches(5.5), Inches(4.5), ri, size=15)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def table_slide(title, headers, rows, notes, num, total, obj=""):
+def table_slide(title, headers, rows, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -155,11 +159,11 @@ def table_slide(title, headers, rows, notes, num, total, obj=""):
             for p in cell.text_frame.paragraphs:
                 p.font.size = Pt(12)
                 p.font.color.rgb = DARK
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def exercise_slide(title, items, notes, num, total, obj="Exercicio"):
+def exercise_slide(title, items, notes, num, total, obj="Exercicio", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -170,7 +174,7 @@ def exercise_slide(title, items, notes, num, total, obj="Exercicio"):
     box.line.color.rgb = WARNING
     box.line.width = Pt(2)
     add_bullets(s, Inches(1.0), Inches(1.8), Inches(11.5), Inches(4.5), items, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
@@ -215,7 +219,7 @@ s = content_slide("Agenda da Aula", [
     "  Semantica e Grafos (8 min) — consolidacao, KG, Generative Agents",
     "  Producao (8 min) — consistencia, PII, esquecimento, custo",
     "  Fechamento (12 min) — boas praticas, quiz, projeto, Q&A",
-], "📖 A aula tem dois blocos. DEMO ao vivo no Slide 28. Quiz final com 3 perguntas.\n⚠️ Alunos chegam atrasados e perdem a Seccao B (4 camadas) — e a fundacao.\n➡️ Motivacao.", 4, T, "Agenda")
+], "📖 A aula tem dois blocos. DEMO ao vivo no Slide 28. Quiz final com 3 perguntas.\n⚠️ Alunos chegam atrasados e perdem a Seccao B (4 camadas) — e a fundacao.\n➡️ Motivacao.", 4, T, "Agenda", acronyms="PII = Personally Identifiable Information — dados pessoais identificaveis")
 
 s = comparison_slide("O Agente Amnesico",
     "Sem Memoria", [
@@ -265,7 +269,7 @@ s = content_slide("Working Memory — A Context Window", [
     "  System prompt + ultimas N mensagens",
     "",
     "Custo: cada token no contexto e processado a cada chamada (input cost)",
-], "📖 Context window e a memoria de trabalho — o que o LLM 've' no momento. Efemera e custa por uso.\n💡 Analogia: mesa de trabalho. So cabe certa quantidade de papeis. Se enche, voce arquiva (evict) ou resume.\n❓ 'Se um modelo tem 200k tokens, isso e muito ou pouco?' (1 sessao: muito. 1 ano de uso diario: quase nada)\n⚠️ Context window nao e 'memoria' — e working memory. Memoria de longo prazo e outra coisa.\n➡️ Limites da context window.", 8, T)
+], "📖 Context window e a memoria de trabalho — o que o LLM 've' no momento. Efemera e custa por uso.\n💡 Analogia: mesa de trabalho. So cabe certa quantidade de papeis. Se enche, voce arquiva (evict) ou resume.\n❓ 'Se um modelo tem 200k tokens, isso e muito ou pouco?' (1 sessao: muito. 1 ano de uso diario: quase nada)\n⚠️ Context window nao e 'memoria' — e working memory. Memoria de longo prazo e outra coisa.\n➡️ Limites da context window.", 8, T, acronyms="LLM = Large Language Model — Modelo de Linguagem de Grande Escala")
 
 s = content_slide("Limites da Context Window", [
     "'Lost in the Middle' (arXiv:2307.03172):",
@@ -366,7 +370,7 @@ s = content_slide("Estados Efemeros", [
     "  A/B testing: nao da para voltar no tempo",
     "",
     "Solucao: serializar estado em storage duravel (a cada step)",
-], "📖 Sem checkpointer, o agente e efemero. Perde tudo ao restart. Quebra casos reais: deploy, HITL longo, debug, A/B testing.\n💡 Analogia: videogame sem save — morre e volta ao inicio. Checkpointer e o 'save'.\n⚠️ Checkpointer nao e so 'salvar mensagens' — serializa o estado completo do grafo.\n➡️ Conceito do LangGraph.", 18, T)
+], "📖 Sem checkpointer, o agente e efemero. Perde tudo ao restart. Quebra casos reais: deploy, HITL longo, debug, A/B testing.\n💡 Analogia: videogame sem save — morre e volta ao inicio. Checkpointer e o 'save'.\n⚠️ Checkpointer nao e so 'salvar mensagens' — serializa o estado completo do grafo.\n➡️ Conceito do LangGraph.", 18, T, acronyms="HITL = Human-in-the-Loop — Humano no Ciclo")
 
 s = content_slide("LangGraph Checkpointer — Conceito", [
     "Checkpointer = camada que serializa o estado do grafo a cada step",
@@ -406,7 +410,7 @@ s = content_slide("Backends de Checkpointer", [
     "Outros: MongoDB, DynamoDB (comunidade)",
     "",
     "Criterio: durabilidade vs latencia vs escala",
-], "📖 Tres backends oficiais. Postgres (producao), SQLite (dev), Redis (cache de sessao).\n💡 Analogia: SQLite = bicicleta (simples, local). Postgres = carro (robusto, multiuso). Redis = foguete (rapido mas volatile).\n❓ 'Qual backend usaria para multi-tenant em producao?' (Postgres)\n➡️ Comparacao detalhada.", 21, T)
+], "📖 Tres backends oficiais. Postgres (producao), SQLite (dev), Redis (cache de sessao).\n💡 Analogia: SQLite = bicicleta (simples, local). Postgres = carro (robusto, multiuso). Redis = foguete (rapido mas volatile).\n❓ 'Qual backend usaria para multi-tenant em producao?' (Postgres)\n➡️ Comparacao detalhada.", 21, T, acronyms="ACID = Atomicity Consistency Isolation Durability — propriedades de transacoes  ·  TTL = Time To Live — tempo de validade")
 
 s = table_slide("Comparacao de Backends", ["Eixo", "Postgres", "SQLite", "Redis"], [
     ["Durabilidade", "Alta", "Alta (local)", "Media"],
@@ -530,7 +534,7 @@ s = content_slide("Custo — Quadratico ou Linear?", [
     "MAS: latencia sim cresce, e qualidade degrada com contexto longo",
     "",
     "Conclusao: o problema nao e so custo — e QUALIDADE e LATENCIA",
-], "📖 Desmistificando. Computacao attention e O(n²), mas custo de API que voce paga e LINEAR. O que cresce de verdade e latencia e degradacao de qualidade (Lost in the Middle).\n💡 Analogia: dirigir estrada longa. Combustivel cresce linear, mas fadiga e chance de acidente crescem mais.\n❓ 'Se o custo e linear, por que preocupar?' (Latencia e qualidade — 200k tokens nao dao 200x melhor resposta)\n⚠️ Nao repita 'custo quadratico' sem entender.\n➡️ Estrategia 1.", 32, T)
+], "📖 Desmistificando. Computacao attention e O(n²), mas custo de API que voce paga e LINEAR. O que cresce de verdade e latencia e degradacao de qualidade (Lost in the Middle).\n💡 Analogia: dirigir estrada longa. Combustivel cresce linear, mas fadiga e chance de acidente crescem mais.\n❓ 'Se o custo e linear, por que preocupar?' (Latencia e qualidade — 200k tokens nao dao 200x melhor resposta)\n⚠️ Nao repita 'custo quadratico' sem entender.\n➡️ Estrategia 1.", 32, T, acronyms="KV = Key-Value — chave-valor")
 
 s = content_slide("Estrategia 1 — Janela Deslizante", [
     "Manter apenas as ultimas N mensagens no contexto",
@@ -562,7 +566,7 @@ s = content_slide("Estrategia 3 — Eviction por Relevancia", [
     "Evitar: mensagens antigas de baixa importancia, tool outputs verbosos, redundancias",
     "",
     "Analogos a: LRU cache, mas com score semantico",
-], "📖 Em vez de descartar por tempo ou comprimir tudo, calcule um SCORE por item. Score alto fica; baixo e evictado.\n💡 Analogia: limpar email. Nao apaga por data nem arquiva tudo. Decide: importante (manter), antigo irrelevante (arquivar), spam (apagar).\n⚠️ Recencia e um fator, mas importancia e frequencia tambem. Fato critico de 6 meses pode ser mais importante que mensagem de 5 min.\n➡️ Fluxo de eviction.", 35, T)
+], "📖 Em vez de descartar por tempo ou comprimir tudo, calcule um SCORE por item. Score alto fica; baixo e evictado.\n💡 Analogia: limpar email. Nao apaga por data nem arquiva tudo. Decide: importante (manter), antigo irrelevante (arquivar), spam (apagar).\n⚠️ Recencia e um fator, mas importancia e frequencia tambem. Fato critico de 6 meses pode ser mais importante que mensagem de 5 min.\n➡️ Fluxo de eviction.", 35, T, acronyms="LRU = Least Recently Used — Menos Recentemente Usado")
 
 s = content_slide("Eviction Flow — Decisao de Retencao", [
     "Diagrama: 12-Diagrams/ETHAGT05/eviction-flow.mmd",
@@ -659,7 +663,7 @@ s = content_slide("Pos-Recuperacao — Re-ranking", [
     "Pipeline: vector search (top 20) → re-ranker (top 5) → contexto",
     "",
     "Trade-off: re-ranking adiciona latencia mas melhora precisao",
-], "📖 Vector search usa approximate nearest neighbors — rapido mas impreciso. Re-ranker (cross-encoder) refina top-K para top-N mais preciso.\n💡 Analogia: contratar. Triagem rapida (vector: top 20 curriculos), depois entrevistas (re-ranker: top 5).\n⚠️ Para producao, re-ranking melhora muito a qualidade. Latencia extra (~200ms) e justificavel.\n➡️ Pipeline completo.", 45, T)
+], "📖 Vector search usa approximate nearest neighbors — rapido mas impreciso. Re-ranker (cross-encoder) refina top-K para top-N mais preciso.\n💡 Analogia: contratar. Triagem rapida (vector: top 20 curriculos), depois entrevistas (re-ranker: top 5).\n⚠️ Para producao, re-ranking melhora muito a qualidade. Latencia extra (~200ms) e justificavel.\n➡️ Pipeline completo.", 45, T, acronyms="ANN = Approximate Nearest Neighbor — busca vetorial aproximada")
 
 s = content_slide("Pipeline Completo de Recall Episodico", [
     "1. Query atual → embedding",
@@ -813,7 +817,7 @@ s = content_slide("PII em Memoria — Redacao e Retencao", [
     "  Conversas: 90 dias | Perfil: ate consentimento",
     "",
     "Compliance: LGPD/GDPR exigem minimizacao de dados",
-], "📖 Memoria acumula PII. Redija com NER antes de armazenar. Defina TTL por tipo. LGPD/GDPR exigem minimizacao.\n💡 Analogia: medico guardando prontuarios. Anota so relevante, regras de retencao, protege com senha.\n⚠️ Redija PII ANTES de armazenar. Se nao precisa do CPF explicito, armazene hash ou 'USER_X'.\n➡️ Direito ao esquecimento.", 60, T)
+], "📖 Memoria acumula PII. Redija com NER antes de armazenar. Defina TTL por tipo. LGPD/GDPR exigem minimizacao.\n💡 Analogia: medico guardando prontuarios. Anota so relevante, regras de retencao, protege com senha.\n⚠️ Redija PII ANTES de armazenar. Se nao precisa do CPF explicito, armazene hash ou 'USER_X'.\n➡️ Direito ao esquecimento.", 60, T, acronyms="GDPR = General Data Protection Regulation — Regulamento de Protecao de Dados (EU)  ·  LGPD = Lei Geral de Protecao de Dados — lei brasileira de dados  ·  NER = Named Entity Recognition — Reconhecimento de Entidades Nomeadas")
 
 s = content_slide("Direito ao Esquecimento em Vector DB", [
     "Desafio: 'esquecer tudo sobre o usuario X' em vector DB",
@@ -839,7 +843,7 @@ s = content_slide("Custo de Memoria vs Beneficio", [
     "  Conteudo sem consentimento do usuario",
     "",
     "Regra: melhor memoria MINIMA e util que maxima e ruidosa",
-], "📖 Memoria tem custo. Pergunta-chave: 'vai melhorar decisao futura?' Se nao, nao memorize.\n💡 Analogia: guardar moveis. Nao guarda tudo — so o que vale. Guardar inutil custa espaco e dificulta achar o util.\n❓ 'Citem 3 casos onde NAO vale a pena memorizar.' (Temperatura, saldo, status volatil, conversa trivial)\n⚠️ Memoria maxima e anti-pattern. Cura — qualidade sobre quantidade.\n➡️ Observabilidade.", 62, T)
+], "📖 Memoria tem custo. Pergunta-chave: 'vai melhorar decisao futura?' Se nao, nao memorize.\n💡 Analogia: guardar moveis. Nao guarda tudo — so o que vale. Guardar inutil custa espaco e dificulta achar o util.\n❓ 'Citem 3 casos onde NAO vale a pena memorizar.' (Temperatura, saldo, status volatil, conversa trivial)\n⚠️ Memoria maxima e anti-pattern. Cura — qualidade sobre quantidade.\n➡️ Observabilidade.", 62, T, acronyms="RAG = Retrieval-Augmented Generation — Geracao Aumentada por Recuperacao")
 
 s = content_slide("Observabilidade de Memoria", [
     "Memoria e um sistema — precisa de monitoring:",
@@ -852,7 +856,7 @@ s = content_slide("Observabilidade de Memoria", [
     "",
     "Ferramentas: LangSmith (memory traces), dashboards custom, audit logs",
     "Profundidade em ETHAGT12 — AgentOps",
-], "📖 Memoria precisa de observabilidade. Hit rate, latencia, custo, drift. Sem isso, e caixa preta.\n💡 Analogia: painel do carro. Temperatura, combustivel, velocidade. Sem isso, voce dirige no escuro.\n⚠️ Sem medir hit rate e latencia, nao sabe se sua memoria funciona. Observabilidade desde o dia 1.\n➡️ Fechamento.", 63, T)
+], "📖 Memoria precisa de observabilidade. Hit rate, latencia, custo, drift. Sem isso, e caixa preta.\n💡 Analogia: painel do carro. Temperatura, combustivel, velocidade. Sem isso, voce dirige no escuro.\n⚠️ Sem medir hit rate e latencia, nao sabe se sua memoria funciona. Observabilidade desde o dia 1.\n➡️ Fechamento.", 63, T, acronyms="AgentOps = Agent Operations — operacao e monitoramento de agentes em producao")
 
 s = content_slide("Boas Praticas de Memoria (DO)", [
     "✅ Comece com working memory + checkpointer (antes de vector DB)",

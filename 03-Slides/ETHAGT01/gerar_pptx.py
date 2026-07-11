@@ -66,7 +66,9 @@ def add_bullets(slide, left, top, width, height, items, size=16, color=DARK):
 def add_notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
-def add_footer(slide, num, total, obj=""):
+def add_footer(slide, num, total, obj="", acronyms=""):
+    if acronyms:
+        add_textbox(slide, Inches(0.3), Inches(6.6), Inches(12.7), Inches(0.35), acronyms, size=9, color=INFO)
     add_textbox(slide, Inches(0.3), Inches(7.0), Inches(7), Inches(0.4), obj, size=10, color=MUTED)
     add_textbox(slide, Inches(11.0), Inches(7.0), Inches(2), Inches(0.4), f"Slide {num} / {total}", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
 
@@ -78,12 +80,14 @@ def add_header(slide, code="ETHAGT01"):
     add_textbox(slide, Inches(0.3), Inches(0.02), Inches(3), Inches(0.3), "Universidade Etho", size=11, color=WHITE, bold=True)
     add_textbox(slide, Inches(10.5), Inches(0.02), Inches(2.5), Inches(0.3), code, size=11, color=WHITE, bold=True, align=PP_ALIGN.RIGHT)
 
-def title_slide(title, subtitle, code):
+def title_slide(title, subtitle, code, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_textbox(s, Inches(1), Inches(2.5), Inches(11), Inches(1.2), title, size=40, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(3.8), Inches(11), Inches(0.8), subtitle, size=20, color=MUTED, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(5.5), Inches(11), Inches(0.5), code, size=14, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
+    if acronyms:
+        add_textbox(s, Inches(1), Inches(6.5), Inches(11), Inches(0.4), acronyms, size=11, color=MUTED, align=PP_ALIGN.CENTER)
     return s
 
 def section_slide(num, title):
@@ -93,7 +97,7 @@ def section_slide(num, title):
     add_textbox(s, Inches(3.5), Inches(3.0), Inches(9), Inches(1.5), title, size=32, color=WHITE, bold=True)
     return s
 
-def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
+def content_slide(title, bullets, notes, num, total, obj="", subtitle=None, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -101,11 +105,11 @@ def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
     if subtitle:
         add_textbox(s, Inches(0.5), Inches(1.1), Inches(12), Inches(0.5), subtitle, size=18, color=MUTED)
     add_bullets(s, Inches(0.7), Inches(1.8 if subtitle else 1.5), Inches(12), Inches(5), bullets, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def code_slide(title, code, notes, num, total, obj=""):
+def code_slide(title, code, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_header(s)
@@ -118,11 +122,11 @@ def code_slide(title, code, notes, num, total, obj=""):
     p.font.size = Pt(13)
     p.font.color.rgb = RGBColor(0xA9, 0xDC, 0xFC)
     p.font.name = "Consolas"
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
+def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -131,11 +135,11 @@ def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
     add_bullets(s, Inches(0.7), Inches(2.2), Inches(5.5), Inches(4.5), li, size=15)
     add_textbox(s, Inches(7), Inches(1.5), Inches(6), Inches(0.5), rt, size=20, color=SUCCESS, bold=True)
     add_bullets(s, Inches(7.2), Inches(2.2), Inches(5.5), Inches(4.5), ri, size=15)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def exercise_slide(title, items, notes, num, total, obj="Exercício"):
+def exercise_slide(title, items, notes, num, total, obj="Exercício", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -146,7 +150,7 @@ def exercise_slide(title, items, notes, num, total, obj="Exercício"):
     box.line.color.rgb = WARNING
     box.line.width = Pt(2)
     add_bullets(s, Inches(1.0), Inches(1.8), Inches(11.5), Inches(4.5), items, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
@@ -159,7 +163,8 @@ T = 62  # Total
 s = title_slide(
     "Arquitetura Cognitiva de Agentes LLM",
     "Universidade Etho · Especialização em Programação Agêntica\nFase A — Fundamentos Agênticos · 25 h",
-    "ETHAGT01"
+    "ETHAGT01",
+    acronyms="LLM = Large Language Model — Modelo de Linguagem de Grande Escala"
 )
 add_notes(s, "📖 Bem-vindos à primeira aula. Hoje estabelecemos o bloco fundamental — Augmented LLM em loop. Não vamos falar de frameworks; vamos falar de arquitetura.\n💡 Analogia: aprender a cozinhar vs aprender a usar uma panela. Hoje vocês aprendem a cozinhar.\n❓ 'Quantos já usaram framework de agentes em produção?'\n⚠️ Alunos chegam querendo LangGraph. Redirecionar: arquitetura > framework.\n➡️ Vamos aos objetivos.")
 
@@ -173,7 +178,7 @@ s = content_slide("Objetivos do Módulo", [
     "4. Diferenciar workflows de agentes e justificar quando usar cada",
     "5. Adicionar observabilidade mínima desde a primeira implementação",
     "6. Avaliar criticamente 3 frameworks sob a lente dos princípios",
-], "📖 Cada objetivo é mensurável: explicar, decompor, implementar, diferenciar, adicionar, avaliar.\n❓ 'Qual objetivo vocês acham mais desafiador?' (geralmente #4 ou #6)\n⚠️ Alunos confundem 'aprender ReAct' com 'aprender LangGraph'. ReAct é o padrão; LangGraph é instanciação.\n➡️ Competências.", 2, T, "Objetivos mensuráveis")
+], "📖 Cada objetivo é mensurável: explicar, decompor, implementar, diferenciar, adicionar, avaliar.\n❓ 'Qual objetivo vocês acham mais desafiador?' (geralmente #4 ou #6)\n⚠️ Alunos confundem 'aprender ReAct' com 'aprender LangGraph'. ReAct é o padrão; LangGraph é instanciação.\n➡️ Competências.", 2, T, "Objetivos mensuráveis", acronyms="ReAct = Reasoning and Acting — padrão onde o agente intercala Thought, Action e Observation em loop")
 
 s = content_slide("Competências Desenvolvidas", [
     "C1 Programação Agêntica → I (Intermediário)",
@@ -183,7 +188,7 @@ s = content_slide("Competências Desenvolvidas", [
     "",
     "C1 atinge Intermediário: constrói agente funcional e justifica escolhas",
     "C3, C4, C5 em Básico: fundação para módulos posteriores",
-], "📖 O Framework Etho tem 6 competências em 3 níveis. Este módulo toca 4 delas. C1 atinge Intermediário.\n💡 Analogia: sair do estacionamento (Básico) e dirigir na cidade (Intermediário).\n⚠️ 'Básico' não significa 'superficial' — significa fundação.\n➡️ Agenda.", 3, T, "Conectar ao Framework Etho")
+], "📖 O Framework Etho tem 6 competências em 3 níveis. Este módulo toca 4 delas. C1 atinge Intermediário.\n💡 Analogia: sair do estacionamento (Básico) e dirigir na cidade (Intermediário).\n⚠️ 'Básico' não significa 'superficial' — significa fundação.\n➡️ Agenda.", 3, T, "Conectar ao Framework Etho", acronyms="MCP = Model Context Protocol — Protocolo de Contexto de Modelo  ·  AgentOps = Agent Operations — operação e monitoramento de agentes")
 
 s = content_slide("Agenda da Aula", [
     "Bloco 1 (45 min):",
@@ -224,7 +229,7 @@ s = content_slide("Por Que Agora", [
     "  2. Tool calling estruturado",
     "  3. Context window expandida (128k+)",
     "  4. Redução de custo (gpt-4o-mini, Haiku)",
-], "📖 Agentes não são ideia nova — existem desde os anos 90. Mas 4 fatores convergiram: reasoning, tools, context, custo. A Anthropic em dez/2024 sistematizou o que funciona.\n💡 Analogia: avião — conceito existia há séculos, mas precisou de motor leve + aerodinâmica + materiais.\n❓ 'Qual fator foi o gatilho mais recente?' (Resposta: custo)\n⚠️ Alunos acham que agentes são 'novos'. ReAct é de 2022. Novo é a viabilidade econômica.\n➡️ Vamos ao bloco fundamental.", 6, T, "Confluência histórica")
+], "📖 Agentes não são ideia nova — existem desde os anos 90. Mas 4 fatores convergiram: reasoning, tools, context, custo. A Anthropic em dez/2024 sistematizou o que funciona.\n💡 Analogia: avião — conceito existia há séculos, mas precisou de motor leve + aerodinâmica + materiais.\n❓ 'Qual fator foi o gatilho mais recente?' (Resposta: custo)\n⚠️ Alunos acham que agentes são 'novos'. ReAct é de 2022. Novo é a viabilidade econômica.\n➡️ Vamos ao bloco fundamental.", 6, T, "Confluência histórica", acronyms="CoT = Chain-of-Thought — Cadeia de Pensamento  ·  ToT = Tree of Thoughts — Árvore de Pensamentos")
 
 # ═══════════════════════════════════════
 # SEÇÃO B — Fundamentos (7-22)
@@ -267,7 +272,7 @@ s = content_slide("De Geração Única para Controle Cognitivo", [
     "  Estado persistente, memória entre steps",
     "  Custo variável, latência alta",
     "  Erro composto (falha em step N propaga)",
-], "📖 A transição não é 'mais chamadas' — é mudança de paradigma com implicações arquiteturais: estado, memória, orçamento, observabilidade, error handling.\n💡 Analogia: pedir prato no restaurante (1 step) vs cozinhar (N steps — planejar, comprar, cortar, cozinhar, provar, ajustar).\n⚠️ Alunos subestimam custo. 10 steps × 2k tokens × 1000 usuários/dia = $6k/mês.\n➡️ O bloco fundamental.", 10, T, "Mudança de paradigma")
+], "📖 A transição não é 'mais chamadas' — é mudança de paradigma com implicações arquiteturais: estado, memória, orçamento, observabilidade, error handling.\n💡 Analogia: pedir prato no restaurante (1 step) vs cozinhar (N steps — planejar, comprar, cortar, cozinhar, provar, ajustar).\n⚠️ Alunos subestimam custo. 10 steps × 2k tokens × 1000 usuários/dia = $6k/mês.\n➡️ O bloco fundamental.", 10, T, "Mudança de paradigma", acronyms="HITL = Human-in-the-Loop — Humano no Ciclo (pontos de aprovação humana em ações críticas)")
 
 s = section_slide(2, "O Augmented LLM: O Bloco Fundamental")
 add_notes(s, "Este é o slide mais importante. Se só lembrarem de uma coisa: o Augmented LLM é o bloco fundamental de tudo.")
@@ -283,7 +288,7 @@ s = content_slide("O Augmented LLM", [
     "",
     "Princípio: o MODELO decide quando recuperar, qual tool chamar, o que reter",
     "Interface bem documentada = regra de ouro (ACI)",
-], "📖 O Augmented LLM não é 'LLM + alguma coisa'. É mudança qualitativa: o modelo é ATIVO na decisão.\n💡 Analogia: cérebro em jarra (LLM puro) vs cérebro com olhos (retrieval), mãos (tools) e memória. A diferença é autonomia.\n❓ 'Qual componente é mais negligenciado em produção?' (Memory)\n⚠️ 'LLM + tools' não é Augmented LLM. Faltam retrieval e memory.\n➡️ Vamos aprofundar cada componente.", 12, T, "O bloco fundamental de Anthropic")
+], "📖 O Augmented LLM não é 'LLM + alguma coisa'. É mudança qualitativa: o modelo é ATIVO na decisão.\n💡 Analogia: cérebro em jarra (LLM puro) vs cérebro com olhos (retrieval), mãos (tools) e memória. A diferença é autonomia.\n❓ 'Qual componente é mais negligenciado em produção?' (Memory)\n⚠️ 'LLM + tools' não é Augmented LLM. Faltam retrieval e memory.\n➡️ Vamos aprofundar cada componente.", 12, T, "O bloco fundamental de Anthropic", acronyms="ACI = Agent-Computer Interface — Interface Agente-Computador (design das tools; análoga à HCI para humanos)")
 
 s = content_slide("Retrieval In-Loop", [
     "RAG tradicional (fixo):",
@@ -297,7 +302,7 @@ s = content_slide("Retrieval In-Loop", [
     "",
     "Vantagem: eficiência + flexibilidade",
     "Aprofundamento: ETHAGT06 — RAG Agêntico",
-], "📖 A diferença é a DECISÃO. RAG tradicional sempre recupera — desperdiça tokens. RAG agêntico: o modelo avalia se precisa.\n💡 Analogia: estudante que sempre consulta o livro (fixo) vs que sabe quando consultar (agêntico).\n❓ 'Em que cenário RAG fixo é melhor?' (quando todas as queries precisam de retrieval)\n⚠️ Sem tool de busca explicitamente chamável, o modelo não pode decidir.\n➡️ Tools.", 13, T, "Retrieval como decisão do modelo")
+], "📖 A diferença é a DECISÃO. RAG tradicional sempre recupera — desperdiça tokens. RAG agêntico: o modelo avalia se precisa.\n💡 Analogia: estudante que sempre consulta o livro (fixo) vs que sabe quando consultar (agêntico).\n❓ 'Em que cenário RAG fixo é melhor?' (quando todas as queries precisam de retrieval)\n⚠️ Sem tool de busca explicitamente chamável, o modelo não pode decidir.\n➡️ Tools.", 13, T, "Retrieval como decisão do modelo", acronyms="RAG = Retrieval-Augmented Generation — Geração Aumentada por Recuperação")
 
 s = content_slide("Tools como Extensão de Ação", [
     "Tools = capacidades que o modelo não tem (API, DB, execução, busca)",
@@ -342,7 +347,7 @@ s = content_slide("A Regra de Ouro: ACI", [
     "  Resultado: erro desapareceu, sem mexer no prompt",
     "",
     "Regra: tempo em tools > tempo no prompt principal",
-], "📖 A Anthropic gastou MAIS tempo nas tools do que no prompt principal. Por quê? A tool é o ponto de contato entre modelo e mundo. Se confusa, o modelo erra.\n💡 Analogia: design de UI. Se usuários clicam no botão errado, a solução não é 'treinar' — é mover o botão.\n❓ 'Já tiveram bug onde a solução era melhorar o prompt mas o problema era a tool?'\n⚠️ Passar horas no prompt e 5 min na tool é invertê-lo.\n➡️ O Agent Loop.", 16, T, "Princípio ACI")
+], "📖 A Anthropic gastou MAIS tempo nas tools do que no prompt principal. Por quê? A tool é o ponto de contato entre modelo e mundo. Se confusa, o modelo erra.\n💡 Analogia: design de UI. Se usuários clicam no botão errado, a solução não é 'treinar' — é mover o botão.\n❓ 'Já tiveram bug onde a solução era melhorar o prompt mas o problema era a tool?'\n⚠️ Passar horas no prompt e 5 min na tool é invertê-lo.\n➡️ O Agent Loop.", 16, T, "Princípio ACI", acronyms="HCI = Human-Computer Interface — Interface Humano-Computador  ·  SWE-bench = Software Engineering Benchmark — benchmark de issues reais do GitHub")
 
 s = section_slide(3, "O Agent Loop: ReAct")
 add_notes(s, "O Augmented LLM é o bloco. O Agent Loop é como o colocamos em movimento. ReAct é o padrão fundacional.")
@@ -900,14 +905,14 @@ s = content_slide("Perguntas para Discussão", [
 s = content_slide("Conexão com a Especialização", [
     "ETHAGT02 — Tool Calling e ACI (aprofunda ferramentas)",
     "ETHAGT03 — Padrões de Workflow (os 5 padrões em detalhe)",
-    "ETHAGT04 — Reasoning & Planning (evolução do ReAct)",
+    "ETHAGT04 — Reasoning & Planning (Reflexion, ToT, LATS)",
     "ETHAGT05 — Memória de Agentes (working vs persistente)",
     "ETHAGT06 — RAG Agêntico (retrieval in-loop aprofundado)",
     "ETHAGT08 — MCP (tool use como padrão de servidor)",
     "ETHAGT09-10 — Multi-Agentes (Collaboration)",
     "ETHAGT12 — AgentOps (observabilidade em profundidade)",
     "ETHAGT13 — Segurança (tools como vetor de ataque)",
-], "📖 ETHAGT01 é a fundação. Todo módulo expande um aspecto. A especialização é um zoom progressivo em cada componente do Augmented LLM.\n➡️ Leitura.", 56, T, "Mapa da especialização")
+], "📖 ETHAGT01 é a fundação. Todo módulo expande um aspecto. A especialização é um zoom progressivo em cada componente do Augmented LLM.\n➡️ Leitura.", 56, T, "Mapa da especialização", acronyms="LATS = Language Agent Tree Search — Busca em Árvore com LLM (combina MCTS com LLM para explorar ações)")
 
 s = content_slide("Leitura Recomendada", [
     "Obrigatório (antes de ETHAGT02):",

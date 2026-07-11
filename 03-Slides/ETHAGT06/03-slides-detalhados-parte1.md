@@ -24,6 +24,8 @@
 **Imagem**: Fundo `etho-dark` (#0F1E2D) com pattern sutil de nós e arestas
 **Tempo**: 1 min
 
+**Rodape**: RAG = Retrieval-Augmented Generation — Geracao Aumentada por Recuperacao
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Bem-vindos. Esta é a aula que separa quem faz RAG de quem faz RAG que funciona em produção. Vamos evoluir do RAG "ingênuo" — aquele que funciona na demo e quebra em produção — para o RAG agêntico, onde o agente decide *quando*, *o quê* e *como* recuperar. Veremos 4 arquiteturas (Adaptive, CRAG, Self-RAG, Agentic), técnicas de qualidade (chunking, re-rank, HyDE, hybrid) e como avaliar tudo isso com métricas reais.
 💡 ANALOGIA: É como a diferença entre um estagiário que sempre busca no mesmo arquivo (RAG ingênuo) e um pesquisador sênior que decide quando precisa consultar, avalia se a fonte é boa, reflete se a resposta está correta e sabe quando buscar em outro lugar (RAG agêntico).
@@ -77,6 +79,8 @@
 **Animação**: Radar aparece com wipe (left-to-right, 500ms)
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
+
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Este módulo leva a competência C1 ao nível **Avançado** — você será capaz de projetar e justificar arquiteturas RAG completas. C5 (AgentOps & Avaliação) atinge Intermediário porque construímos um pipeline de avaliação automatizado com Ragas. C4 (Agent Memory) fica em Intermediário porque o estado entre hops do Agentic RAG é uma forma de memória de trabalho.
@@ -304,6 +308,8 @@
 **Animação**: 5 cards aparecem; 4 ficam vermelhos (irrelevantes)
 **Imagem**: Lista de resultados com scores
 **Tempo**: 1.5 min
+
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: O retrieval por similaridade vetorial é uma aproximação. Ele pega os k mais próximos, mas "mais próximo" ≠ "mais relevante". Pense: você busca "política de férias" e o top-5 traz o chunk da política (bom), mas também chunks sobre "ferias comerciais" (irrelevante), "férias coletivas" (parcial), etc. O LLM recebe tudo isso e tenta sintetizar. Resultado: confusão, alucinação, ou pior — responde com o chunk errado porque ele veio primeiro.

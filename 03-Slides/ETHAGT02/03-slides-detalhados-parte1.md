@@ -24,6 +24,8 @@
 **Imagem**: Fundo `etho-dark` (#0F1E2D) com pattern sutil de nós e chaves
 **Tempo**: 1 min
 
+**Rodape**: ACI = Agent-Computer Interface — Interface Agente-Computador
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Bem-vindos. Na aula anterior (ETHAGT01) vimos o Augmented LLM como bloco fundamental — LLM com retrieval, tools e memória em loop. Hoje vamos fazer um zoom profundo no componente "tools". Vamos tratar o design de tools com o mesmo rigor que um designer de UI trata a interface humana. Esta aula vai mudar como vocês pensam sobre a linha que separa "o prompt" de "a tool" — e por que a maioria dos bugs de agentes está do lado erro dessa linha.
 💡 ANALOGIA: ETHAGT01 foi aprender a anatomia do agente. ETHAGT02 é a cirurgia das tools — onde mora a confiabilidade.
@@ -51,6 +53,8 @@
 **Imagem**: Ícones minimalistas em `etho-accent` (#E85D2F)
 **Tempo**: 2 min
 
+**Rodape**: HITL = Human-in-the-Loop — Humano no Ciclo
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Cada objetivo é mensurável. Não é "entender tool calling" — é "dominar o mecanismo". Não é "saber o que é ACI" — é "aplicar os princípios". O objetivo geral captura a essência: tool confiável. Um agente só é tão confiável quanto sua tool menos confiável. Se uma das 8 tools falha 30% das vezes, o agente falha 30% das vezes. Vamos revisar estes objetivos no final para confirmar.
 💡 ANALOGIA: É como um checklist de inspeção de segurança de um avião. Cada item é verificável: trem retraído? flaps ok? combustível suficiente? Não é "o avião parece bom" — é cada item confirmado.
@@ -77,6 +81,8 @@
 **Animação**: Radar aparece com wipe (left-to-right, 500ms)
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
+
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Em ETHAGT01 vocês alcançaram C1 Básico e C3 Básico. Hoje, C1 e C3 sobem para Intermediário — vocês vão conseguir projetar tools de qualidade e justificar escolhas de design. C5 (AgentOps) e C6 (Security) entram em Básico — vocês conhecem workbench e HITL, mas o aprofundamento vem em ETHAGT12 e ETHAGT13. O salto de C3 de Básico para Intermediário é o coração desta aula.
@@ -106,6 +112,8 @@
 **Animação**: Timeline cresce da esquerda para direita (500ms)
 **Imagem**: Ícones de relógio por seção
 **Tempo**: 1 min
+
+**Rodape**: SWE-bench = Software Engineering Benchmark — benchmark de issues reais do GitHub
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A aula tem dois blocos. O primeiro estabelece o mecanismo (como tool calling funciona) e a disciplina (como projetar bem). O segundo é mais prático: engenharia de robustez (idempotência, timeouts), governança (HITL), avaliação (workbench) e fechamento. Há um intervalo de 5 min entre os blocos. O quiz final tem 5 perguntas.
@@ -161,6 +169,8 @@
 **Imagem**: Ícone de humano (HCI) + ícone de robô (ACI)
 **Tempo**: 1 min
 
+**Rodape**: HCI = Human-Computer Interface — Interface Humano-Computador
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A insight fundamental da Anthropic é que o design de tools é uma disciplina tão séria quanto o design de UI. Quando você desenha uma UI mal, o humano confunde — mas pode perguntar, tentar de novo, ou usar a intuição. Quando você desenha uma tool mal, o modelo confunde — e não tem recurso. Ele só tem a descrição e o schema. Se esses forem vagos, o modelo vai errar. E não vai saber que errou. Esta é a diferença crucial: o modelo é um usuário que não pode pedir esclarecimento. Por isso ACI é mais exigente que HCI.
 💡 ANALOGIA: Imagine desenhar uma interface para um usuário cego, mudo, que só pode ler um manual uma vez e nunca perguntar de novo. Você seria EXTREMAMENTE cuidadoso com o manual. A tool é o manual. A descrição é o manual.
@@ -207,6 +217,8 @@
 **Animação**: Setas aparecem sequencialmente
 **Imagem**: Diagrama de sequência D1
 **Tempo**: 2 min
+
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Function calling é o mecanismo padrão desde 2023 (OpenAI jun/2023, Anthropic pouco depois). O LLM recebe, além do prompt, uma lista de tools com descrições e schemas. Durante a geração, o modelo pode decidir NÃO responder direto, mas produzir um `tool_call` — um JSON estruturado com o nome da tool e os argumentos. O runtime (seu código) captura esse JSON, executa a função real, e devolve o resultado como uma mensagem com `role: "tool"`. O LLM então usa esse resultado para continuar. A intelligence está em decidir QUAL tool e QUAIS args. A confiabilidade está no design da tool — se a descrição é clara e o schema é restritivo, o modelo acerta. Se não, erra sistematicamente.

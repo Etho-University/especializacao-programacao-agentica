@@ -526,6 +526,8 @@ def test_search_product_with_typo():
 **Imagem**: Ícone de pipeline/gear
 **Tempo**: 1.5 min
 
+**Rodape**: PR = Pull Request — requisicao de pull (GitHub)
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: O workbench é manual. O teste de regressão é automatizado. A ideia: os mesmos 20+ casos viram testes. A cada PR que mexe em tool, roda os testes. Se a taxa de uso correto cai abaixo de 85%, o CI bloqueia o merge. Isto é CI/CD para tools — garante que melhorias não causam regressões. Sem isto, vocês refatoram uma tool, acham que melhorou, mas quebraram 3 casos que funcionavam. E só descobrem em produção.
 💡 ANALOGIA: É como testes unitários para código normal. Você não da deploy sem testes passando. O mesmo para tools: não da deploy sem workbench passando.
@@ -844,6 +846,8 @@ def test_search_product_with_typo():
 **Animação**: Conexões aparecem do centro para fora
 **Imagem**: Mind map radial
 **Tempo**: 1 min
+
+**Rodape**: RAG = Retrieval-Augmented Generation — Geracao Aumentada por Recuperacao
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: ETHAGT02 é o aprofundamento do componente "tools" do Augmented LLM. Todo módulo seguinte expande um aspecto: composição em ETHAGT03, reasoning em ETHAGT04, memória em ETHAGT05, retrieval em ETHAGT06, escala em ETHAGT08 (MCP), multi-agente em ETHAGT09, avaliação em ETHAGT12, segurança em ETHAGT13.

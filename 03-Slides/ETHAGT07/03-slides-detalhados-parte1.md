@@ -78,6 +78,8 @@
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
 
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Este módulo leva C1 e C4 ao nível Avançado. Em C1, vocês já constroem agentes (ETHAGT01) — agora vocês dominam a infraestrutura cognitiva que sustenta raciocínio multi-hop. Em C4 (Agent Memory), vector DB é a memória semântica e knowledge graph é a memória relacional de um agente. C5 fica em Intermediário porque observabilidade de retrieval híbrido é aprofundada em ETHAGT12.
 💡 ANALOGIA: C4 é a memória do agente. Hoje vocês vão além de "lembrar de fatos" (vector) para "lembrar de relações" (grafo). Um agente sem memória relacional é amnésico em causa-e-efeito.
@@ -107,6 +109,8 @@
 **Animação**: Timeline cresce da esquerda para direita (500ms)
 **Imagem**: Ícones de relógio por seção
 **Tempo**: 1 min
+
+**Rodape**: ANN = Approximate Nearest Neighbor — busca vetorial aproximada
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A aula tem dois blocos. O primeiro estabelece vector DBs e knowledge graphs como fundamentos separados. O segundo une os dois: GraphRAG, híbridos e escala. A DEMO do GraphRAG (Slide 46) é o clímax — mostro vector RAG falhando e GraphRAG acertando a mesma pergunta multi-hop.
@@ -158,6 +162,8 @@
 **Animação**: Marcos aparecem sequencialmente (on click)
 **Imagem**: Convergência de 3 rios (embeddings, grafos, LLMs) em um lago
 **Tempo**: 1 min
+
+**Rodape**: RAG = Retrieval-Augmented Generation — Geracao Aumentada por Recuperacao
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: RAG existe desde 2020, mas era "recupera chunk, gera resposta". Em 2024, a Microsoft publicou GraphRAG, que constrói um grafo de entidades a partir do corpus, detecta comunidades e sumariza hierarquicamente. Isso permite responder perguntas GLOBAIS ("quais os temas principais?") que vector RAG não consegue. A confluência: embeddings ficaram baratos, graph databases (Neo4j) ficaram acessíveis em cloud, e LLMs ficaram bons em extrair entidades/relações.
@@ -402,6 +408,8 @@
 **Imagem**: Fluxo duplo convergindo
 **Tempo**: 1 min
 
+**Rodape**: BM25 = Best Matching 25 — algoritmo de ranking para busca textual
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Dense (embeddings) é ótimo em semântica — "cachorro" encontra "cão". Mas falha em termos exatos — se você busca por " Lei 13.709/2018", o dense pode trazer leis semelhantes mas não a exata. Sparse (BM25) é o oposto: acerta termos exatos, falha em paráfrase. Híbrido combina os dois. A fusão mais simples e eficaz é RRF (Reciprocal Rank Fusion): para cada resultado, some 1/(rank + k) de cada trilha. Não precisa calibrar pesos — RRF é robusto e parameter-light.
 💡 ANALOGIA: Dense é como um tradutor que entende sinonímia (mas pode confundir homônimos). Sparse é como um índice de livro (acerta a página exata, mas não entende paráfrase). Híbrido usa os dois — um para conceito, outro para precisão.
@@ -537,6 +545,8 @@
 **Imagem**: Logo do Chroma
 **Tempo**: 1 min
 
+**Rodape**: MVP = Minimum Viable Product — Produto Minimo Viavel
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Chroma é o "importe e use". Você adiciona documentos em uma linha e query em outra. Ele roda embutido no processo Python — sem Docker, sem servidor. É perfeito para protótipos, MVPs e desenvolvimento local. O trade-off: não está pronto para escala de produção (ainda). Para milhões de vetores em produção, considere Qdrant ou Milvus.
 💡 ANALOGIA: Chroma é o SQLite dos vector DBs. Embutido, simples, perfeito para começar. Para produção com escala, você migra (como migra de SQLite para Postgres).
@@ -560,6 +570,8 @@
 **Animação**: Bullets aparecem sequencialmente
 **Imagem**: Logo do Postgres + pgvector
 **Tempo**: 1 min
+
+**Rodape**: ACID = Atomicity Consistency Isolation Durability — propriedades de transacoes
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: pgvector é uma extensão do PostgreSQL. Você adiciona a coluna de vetor e faz busca vetorial COM JOINs relacionais — tudo no mesmo DB, com ACID, transações, backups que você já tem. Para a maioria das aplicações (até ~1M de vetores), pgvector resolve sem adicionar infra. O trade-off: para bilhões de vetores, soluções dedicadas (Qdrant, Milvus) escalam melhor.
@@ -802,6 +814,8 @@
 **Animação**: Pipeline flui da esquerda para direita
 **Imagem**: Fluxo de extração
 **Tempo**: 2 min
+
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala  ·  NER = Named Entity Recognition — Reconhecimento de Entidades Nomeadas
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Named Entity Recognition (NER) é a extração de entidades de texto. Hoje, usamos LLMs com um prompt: "Extraia todas as entidades com tipo e propriedades." O output é JSON estruturado. O desafio é ambiguidade: "Dipirona" e "Dipirona sódica" são a mesma entidade? ("coreferência"). Outro desafio: entidades novas que não estão no schema. Ferramentas: LangChain LLMGraphTransformer (automatiza NER + relações), GLiNER (NER sem LLM, mais rápido), spaCy (clássico, regrado).

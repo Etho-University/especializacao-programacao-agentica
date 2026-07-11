@@ -59,7 +59,9 @@ def add_bullets(slide, left, top, width, height, items, size=16, color=DARK):
 def add_notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
-def add_footer(slide, num, total, obj=""):
+def add_footer(slide, num, total, obj="", acronyms=""):
+    if acronyms:
+        add_textbox(slide, Inches(0.3), Inches(6.6), Inches(12.7), Inches(0.35), acronyms, size=9, color=INFO)
     add_textbox(slide, Inches(0.3), Inches(7.0), Inches(7), Inches(0.4), obj, size=10, color=MUTED)
     add_textbox(slide, Inches(11.0), Inches(7.0), Inches(2), Inches(0.4), f"Slide {num} / {total}", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
 
@@ -71,12 +73,14 @@ def add_header(slide, code="ETHAGT06"):
     add_textbox(slide, Inches(0.3), Inches(0.02), Inches(3), Inches(0.3), "Universidade Etho", size=11, color=WHITE, bold=True)
     add_textbox(slide, Inches(10.5), Inches(0.02), Inches(2.5), Inches(0.3), code, size=11, color=WHITE, bold=True, align=PP_ALIGN.RIGHT)
 
-def title_slide(title, subtitle, code):
+def title_slide(title, subtitle, code, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_textbox(s, Inches(1), Inches(2.5), Inches(11), Inches(1.2), title, size=40, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(3.8), Inches(11), Inches(0.8), subtitle, size=20, color=MUTED, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(5.5), Inches(11), Inches(0.5), code, size=14, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
+    if acronyms:
+        add_textbox(s, Inches(1), Inches(6.5), Inches(11), Inches(0.4), acronyms, size=11, color=MUTED, align=PP_ALIGN.CENTER)
     return s
 
 def section_slide(num, title):
@@ -86,7 +90,7 @@ def section_slide(num, title):
     add_textbox(s, Inches(3.5), Inches(3.0), Inches(9), Inches(1.5), title, size=32, color=WHITE, bold=True)
     return s
 
-def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
+def content_slide(title, bullets, notes, num, total, obj="", subtitle=None, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -94,11 +98,11 @@ def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
     if subtitle:
         add_textbox(s, Inches(0.5), Inches(1.1), Inches(12), Inches(0.5), subtitle, size=18, color=MUTED)
     add_bullets(s, Inches(0.7), Inches(1.8 if subtitle else 1.5), Inches(12), Inches(5), bullets, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def code_slide(title, code, notes, num, total, obj=""):
+def code_slide(title, code, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_header(s)
@@ -111,11 +115,11 @@ def code_slide(title, code, notes, num, total, obj=""):
     p.font.size = Pt(13)
     p.font.color.rgb = RGBColor(0xA9, 0xDC, 0xFC)
     p.font.name = "Consolas"
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
+def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -124,11 +128,11 @@ def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
     add_bullets(s, Inches(0.7), Inches(2.2), Inches(5.5), Inches(4.5), li, size=15)
     add_textbox(s, Inches(7), Inches(1.5), Inches(6), Inches(0.5), rt, size=20, color=SUCCESS, bold=True)
     add_bullets(s, Inches(7.2), Inches(2.2), Inches(5.5), Inches(4.5), ri, size=15)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def exercise_slide(title, items, notes, num, total, obj="Exercício"):
+def exercise_slide(title, items, notes, num, total, obj="Exercício", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -139,7 +143,7 @@ def exercise_slide(title, items, notes, num, total, obj="Exercício"):
     box.line.color.rgb = WARNING
     box.line.width = Pt(2)
     add_bullets(s, Inches(1.0), Inches(1.8), Inches(11.5), Inches(4.5), items, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
@@ -172,7 +176,7 @@ s = content_slide("Competências Desenvolvidas", [
     "C1 atinge Avançado: projetar e justificar arquiteturas RAG completas",
     "C5 atinge Intermediário: pipeline de avaliação automatizado (Ragas)",
     "C4 atinge Intermediário: estado entre hops (memória de trabalho)"
-], "📖 C1 Avançado = escolher arquitetura certa e justificar trade-offs.\n💡 Analogia: ETHAGT01 foi sair do estacionamento; ETHAGT04 foi a cidade; hoje é rodovia com trânsito intenso.\n⚠️ 'Avançado' ≠ 'saber LangGraph avançado'. Significa justificar com trade-offs.\n➡️ Vamos à agenda.", 3, T)
+], "📖 C1 Avançado = escolher arquitetura certa e justificar trade-offs.\n💡 Analogia: ETHAGT01 foi sair do estacionamento; ETHAGT04 foi a cidade; hoje é rodovia com trânsito intenso.\n⚠️ 'Avançado' ≠ 'saber LangGraph avançado'. Significa justificar com trade-offs.\n➡️ Vamos à agenda.", 3, T, acronyms="AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo")
 
 s = content_slide("Agenda da Aula", [
     "Bloco 1 (~58 min):",
@@ -266,7 +270,7 @@ s = content_slide("Falha 3: Sem Re-Rank, Top-k Traz Lixo", [
     "Exemplo: top-5 traz 1 chunk bom e 4 irrelevantes",
     "",
     "Solução (preview Seção G): re-ranking com Cohere, bge, Jina"
-], "📖 'Mais próximo' ≠ 'mais relevante'. Top-k é aproximação.\n💡 Analogia: pedir 5 livros por título parecido e receber 1 bom + 4 inúteis.\n❓ 'Vocês usam re-rank hoje?' (provavelmente minoria)\n⚠️ Aumentar k PIORA sem re-rank. Mais contexto ≠ melhor.\n➡️ Mas a pior falha é não saber que está falhando.", 12, T)
+], "📖 'Mais próximo' ≠ 'mais relevante'. Top-k é aproximação.\n💡 Analogia: pedir 5 livros por título parecido e receber 1 bom + 4 inúteis.\n❓ 'Vocês usam re-rank hoje?' (provavelmente minoria)\n⚠️ Aumentar k PIORA sem re-rank. Mais contexto ≠ melhor.\n➡️ Mas a pior falha é não saber que está falhando.", 12, T, acronyms="LLM = Large Language Model — Modelo de Linguagem de Grande Escala")
 
 s = content_slide("Falha 4: Sem Avaliação, Você Está Cego", [
     "'Funciona na minha máquina' ≠ funciona em produção",
@@ -689,7 +693,7 @@ s = content_slide("Tools de Busca como Ferramentas do Agente", [
     "Exemplo: 'política interna?' → search_internal; 'notícia de hoje?' → search_web",
     "",
     "Tool return format: lista de docs com score, não texto bruto"
-], "📖 Tools de busca são tools como qualquer outra. Lição de ACI aplica totalmente.\n💡 Analogia: caixa de ferramentas. Agente é mecânico que escolhe a ferramenta. Etiqueta ruim = erro.\n❓ 'Quantas tools de busca vocês têm? Documentadas como?'\n⚠️ Retornar texto bruto é ruim. Melhor: lista estruturada de docs com score.\n➡️ Fontes.", 50, T)
+], "📖 Tools de busca são tools como qualquer outra. Lição de ACI aplica totalmente.\n💡 Analogia: caixa de ferramentas. Agente é mecânico que escolhe a ferramenta. Etiqueta ruim = erro.\n❓ 'Quantas tools de busca vocês têm? Documentadas como?'\n⚠️ Retornar texto bruto é ruim. Melhor: lista estruturada de docs com score.\n➡️ Fontes.", 50, T, acronyms="ACI = Agent-Computer Interface — Interface Agente-Computador")
 
 s = content_slide("Múltiplas Fontes: Web, Interno, KG", [
     "Web search: Tavily, SerpAPI, Brave — dados externos e recentes",
@@ -783,7 +787,7 @@ s = content_slide("Re-Ranking: Por Que e Como", [
     "Re-ranker avalia relevância query-doc, não só similaridade",
     "",
     "Reduz ruído no contexto do LLM"
-], "📖 Retrieve MUITOS (top-50) com método barato, re-rankeie com cross-encoder PRECISO, fique com top-5.\n💡 Analogia: contratar. 100 currículos → triagem rápida → entrevista 5 melhores.\n⚠️ Re-rank de TODA a base é caro. Só dos top-50 já recuperados.\n➡️ Quais re-rankers?", 60, T)
+], "📖 Retrieve MUITOS (top-50) com método barato, re-rankeie com cross-encoder PRECISO, fique com top-5.\n💡 Analogia: contratar. 100 currículos → triagem rápida → entrevista 5 melhores.\n⚠️ Re-rank de TODA a base é caro. Só dos top-50 já recuperados.\n➡️ Quais re-rankers?", 60, T, acronyms="BM25 = Best Matching 25 — algoritmo de ranking para busca textual")
 
 s = content_slide("Re-Rankers: Cohere, bge, Jina", [
     "Cohere Rerank: API comercial, alta qualidade, paga por requisição",
@@ -914,7 +918,7 @@ s = content_slide("LLM-as-Judge e Dataset de Holdout", [
     "Dataset de holdout: perguntas curadas com ground truth",
     "Regressão: faithfulness cai 0.90→0.82 → bloquear deploy",
     "Critério do projeto: faithfulness ≥ 0.85, context recall ≥ 0.80"
-], "📖 LLM-as-judge tem vieses. Mitigue: randomize ordem, use modelo diferente, normalize tamanho. Holdout para regressão.\n💡 Analogia: jurado de concurso com preferências. Mitigue com randomização e jurados diversos.\n❓ 'Se faithfulness cair 5%, o que fazem?' (investigar, reverter, NÃO deployar)\n⚠️ Mesmo modelo para gerar e julgar = self-preference. Use modelos diferentes.\n➡️ Fechamento.", 73, T)
+], "📖 LLM-as-judge tem vieses. Mitigue: randomize ordem, use modelo diferente, normalize tamanho. Holdout para regressão.\n💡 Analogia: jurado de concurso com preferências. Mitigue com randomização e jurados diversos.\n❓ 'Se faithfulness cair 5%, o que fazem?' (investigar, reverter, NÃO deployar)\n⚠️ Mesmo modelo para gerar e julgar = self-preference. Use modelos diferentes.\n➡️ Fechamento.", 73, T, acronyms="LLM-as-Judge = uso de um LLM como avaliador automatico de saidas de outro LLM")
 
 s = section_slide("8", "Boas Práticas, Anti-Patterns e Próximos Passos")
 add_notes(s, "📖 Fechamento. Consolidar: boas práticas, anti-patterns, resumo, quiz, conexão, projeto, Q&A.\n➡️ O que fazer.")

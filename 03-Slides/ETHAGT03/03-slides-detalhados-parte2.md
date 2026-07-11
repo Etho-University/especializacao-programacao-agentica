@@ -89,6 +89,8 @@
 **Imagem**: Flowchart com 3 componentes destacados
 **Tempo**: 2 min
 
+**Rodape**: ReWOO = Reasoning WithOut Observation — raciocinio sem observacao intermediaria
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A implementação tem 3 componentes. O decompositor é um LLM com um prompt de planejamento ("dada esta tarefa, liste as subtarefas necessárias"). Os workers são um pool de LLMs — cada um pode ter um prompt especializado (pesquisar, resumir, validar). O reducer é um LLM que agrega os resultados em uma resposta coerente. O estado (lista de subtarefas + resultados) é passado entre componentes. A conexão com a literatura: Plan-and-Solve (2023) mostrou que separar planejamento de execução melhora qualidade. ReWOO (2023) mostrou que um plano "cego" (sem reagir a resultados intermediários) permite paralelismo total de evidências. LLMCompiler (2023) formalizou a paralelização estruturada.
 💡 ANALOGIA: É como uma empresa de consultoria. O sócio sênior (decompositor) divide o projeto em tarefas. Os consultores (workers) executam. O sócio (reducer) integra em um relatório final.
@@ -216,6 +218,8 @@ async def orchestrate(task):
 **Animação**: Loop animado (Gerar → Avaliar → Refinar → Gerar...)
 **Imagem**: Flowchart com loop circular destacado
 **Tempo**: 2 min
+
+**Rodape**: ReAct = Reasoning and Acting — padrao de loop Thought / Action / Observation
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A estrutura é um loop. O generator produz uma primeira versão. O evaluator avalia contra critérios objetivos. Se passou, entrega. Se não passou, o optimizer refina com o feedback do evaluator. Repete até satisfazer o critério de parada. A diferença de ReAct (ETHAGT01): ReAct é pensar-agir-observer no ambiente. Aqui é gerar-avaliar-refinar contra critério interno. Não há ambiente externo — o feedback vem do próprio LLM avaliador. Isso é poderoso quando bem calibrado e perigoso quando mal calibrado.

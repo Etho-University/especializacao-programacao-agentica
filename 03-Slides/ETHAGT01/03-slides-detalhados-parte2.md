@@ -765,6 +765,8 @@ Agent Run (root span)
 **Imagem**: Mind map radial
 **Tempo**: 1 min
 
+**Rodapé**: `LATS` = Language Agent Tree Search — Busca em Árvore com LLM (combina MCTS com LLM para explorar árvores de ações)
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: ETHAGT01 é a fundação. Todo módulo seguinte expande um aspecto do que vimos hoje. ACI em ETHAGT02. Workflows em ETHAGT03. Planejamento (o componente da taxonomia) em ETHAGT04. Memória em ETHAGT05. RAG em ETHAGT06. MCP em ETHAGT08. Multi-agente em ETHAGT09-10. Observabilidade em ETHAGT12. Segurança em ETHAGT13. A especialização é um zoom progressivo em cada componente do Augmented LLM.
 ➡️ TRANSIÇÃO: "O que ler antes da próxima aula."

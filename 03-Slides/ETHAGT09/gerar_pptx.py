@@ -66,7 +66,9 @@ def add_bullets(slide, left, top, width, height, items, size=16, color=DARK):
 def add_notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
-def add_footer(slide, num, total, obj=""):
+def add_footer(slide, num, total, obj="", acronyms=""):
+    if acronyms:
+        add_textbox(slide, Inches(0.3), Inches(6.6), Inches(12.7), Inches(0.35), acronyms, size=9, color=INFO)
     add_textbox(slide, Inches(0.3), Inches(7.0), Inches(7), Inches(0.4), obj, size=10, color=MUTED)
     add_textbox(slide, Inches(11.0), Inches(7.0), Inches(2), Inches(0.4), f"Slide {num} / {total}", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
 
@@ -78,12 +80,14 @@ def add_header(slide, code="ETHAGT09"):
     add_textbox(slide, Inches(0.3), Inches(0.02), Inches(3), Inches(0.3), "Universidade Etho", size=11, color=WHITE, bold=True)
     add_textbox(slide, Inches(10.5), Inches(0.02), Inches(2.5), Inches(0.3), code, size=11, color=WHITE, bold=True, align=PP_ALIGN.RIGHT)
 
-def title_slide(title, subtitle, code):
+def title_slide(title, subtitle, code, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_textbox(s, Inches(1), Inches(2.5), Inches(11), Inches(1.2), title, size=40, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(3.8), Inches(11), Inches(0.8), subtitle, size=20, color=MUTED, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(5.5), Inches(11), Inches(0.5), code, size=14, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
+    if acronyms:
+        add_textbox(s, Inches(1), Inches(6.5), Inches(11), Inches(0.4), acronyms, size=11, color=MUTED, align=PP_ALIGN.CENTER)
     return s
 
 def section_slide(num, title):
@@ -93,7 +97,7 @@ def section_slide(num, title):
     add_textbox(s, Inches(3.5), Inches(3.0), Inches(9), Inches(1.5), title, size=32, color=WHITE, bold=True)
     return s
 
-def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
+def content_slide(title, bullets, notes, num, total, obj="", subtitle=None, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -101,11 +105,11 @@ def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
     if subtitle:
         add_textbox(s, Inches(0.5), Inches(1.1), Inches(12), Inches(0.5), subtitle, size=18, color=MUTED)
     add_bullets(s, Inches(0.7), Inches(1.8 if subtitle else 1.5), Inches(12), Inches(5), bullets, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def code_slide(title, code, notes, num, total, obj=""):
+def code_slide(title, code, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_header(s)
@@ -118,11 +122,11 @@ def code_slide(title, code, notes, num, total, obj=""):
     p.font.size = Pt(13)
     p.font.color.rgb = RGBColor(0xA9, 0xDC, 0xFC)
     p.font.name = "Consolas"
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
+def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -131,11 +135,11 @@ def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
     add_bullets(s, Inches(0.7), Inches(2.2), Inches(5.5), Inches(4.5), li, size=15)
     add_textbox(s, Inches(7), Inches(1.5), Inches(6), Inches(0.5), rt, size=20, color=SUCCESS, bold=True)
     add_bullets(s, Inches(7.2), Inches(2.2), Inches(5.5), Inches(4.5), ri, size=15)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def exercise_slide(title, items, notes, num, total, obj="Exercício"):
+def exercise_slide(title, items, notes, num, total, obj="Exercício", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -146,7 +150,7 @@ def exercise_slide(title, items, notes, num, total, obj="Exercício"):
     box.line.color.rgb = WARNING
     box.line.width = Pt(2)
     add_bullets(s, Inches(1.0), Inches(1.8), Inches(11.5), Inches(4.5), items, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
@@ -183,7 +187,7 @@ s = content_slide("Competências Desenvolvidas", [
     "C5 AgentOps & Avaliação → B (Básico) → ETHAGT12",
     "",
     "Pré-requisito: ETHAGT04 (Reasoning & Planning)",
-], "📖 Este módulo leva C1 ao Avançado e C2 ao Intermediário. Você consolida programação agêntica e sobe em multi-agent.\n💡 Analogia: faixa preta em um martial art (C1) e faixa azul em outro (C2).\n⚠️ 'Avançado' não é 'sabe tudo' — é 'decide arquitetura e lida com edge cases'.\n➡️ Estrutura da aula.", num=3, total=T)
+], "📖 Este módulo leva C1 ao Avançado e C2 ao Intermediário. Você consolida programação agêntica e sobe em multi-agent.\n💡 Analogia: faixa preta em um martial art (C1) e faixa azul em outro (C2).\n⚠️ 'Avançado' não é 'sabe tudo' — é 'decide arquitetura e lida com edge cases'.\n➡️ Estrutura da aula.", num=3, total=T, acronyms="AgentOps = Agent Operations  ·  MCP = Model Context Protocol")
 
 s = content_slide("Agenda da Aula", [
     "Bloco 1 (45 min):",
@@ -211,7 +215,7 @@ s = content_slide("Por Que Agora", [
     "  2025: MetaGPT (ICLR 2024), padronização emergente",
     "",
     "Confluência: reasoning maduro + frameworks + custo baixo + padronização (MCP + A2A)",
-], "📖 Multi-agent existe desde os anos 80 (HEARSAY-II, FIPA-ACL). O que mudou: LLMs bons em reasoning, frameworks reproduzíveis, custo viável.\n💡 Analogia: TCP/IP padronizou redes e explodiu a internet. MCP + A2A são o TCP/IP dos agentes.\n❓ 'Qual fator foi o gatilho mais recente?' (Padronização — A2A é 2024)\n⚠️ Multi-agent não é 'moda nova' — conceito é antigo; LLM tornou viável.\n➡️ Vamos ao espectro A2A.", num=6, total=T)
+], "📖 Multi-agent existe desde os anos 80 (HEARSAY-II, FIPA-ACL). O que mudou: LLMs bons em reasoning, frameworks reproduzíveis, custo viável.\n💡 Analogia: TCP/IP padronizou redes e explodiu a internet. MCP + A2A são o TCP/IP dos agentes.\n❓ 'Qual fator foi o gatilho mais recente?' (Padronização — A2A é 2024)\n⚠️ Multi-agent não é 'moda nova' — conceito é antigo; LLM tornou viável.\n➡️ Vamos ao espectro A2A.", num=6, total=T, acronyms="ReAct = Reasoning and Acting")
 
 s = section_slide(1, "O Espectro da Comunicação A2A")
 add_notes(s, "📖 Início do bloco de fundamentos. Como agentes se comunicam? Topologias? Como estruturar mensagens? O que pode dar errado?\n➡️ Síncrono vs assíncrono.")
@@ -252,7 +256,7 @@ s = code_slide("Schemas de Mensagem A2A",
   },
   "in_reply_to": "msg_def456"
 }""",
-"📖 Mensagens A2A não são texto livre — são estruturadas. Campos obrigatórios: sender, receiver, message_type, payload, timestamp, version.\n💡 Analogia: envelope de correio. Sem destinatário/remetente/CEP, a carta se perde.\n❓ 'Dois agentes sem concordar no schema?' (Parsing error ou interpretação errada silenciosa)\n⚠️ 'LLM entende' — sim, mas o CÓDIGO que processa não. Schema é para o código.\n➡️ Schemas evoluem — versionamento.", num=10, total=T)
+"📖 Mensagens A2A não são texto livre — são estruturadas. Campos obrigatórios: sender, receiver, message_type, payload, timestamp, version.\n💡 Analogia: envelope de correio. Sem destinatário/remetente/CEP, a carta se perde.\n❓ 'Dois agentes sem concordar no schema?' (Parsing error ou interpretação errada silenciosa)\n⚠️ 'LLM entende' — sim, mas o CÓDIGO que processa não. Schema é para o código.\n➡️ Schemas evoluem — versionamento.", num=10, total=T, acronyms="LLM = Large Language Model")
 
 s = content_slide("Versionamento de Mensagens", [
     "Agentes evoluem independentemente (deploy separado)",
@@ -393,7 +397,7 @@ s = comparison_slide("Handoff vs Delegação",
     ["Controle TRANSFERIDO", "Agente original SAI", "'Transfere a chamada'", "Simples, sem retorno", "Ex.: triager → especialista"],
     "Delegação (Supervisor)",
     ["Controle DELEGADO", "Supervisor espera retorno", "'Coloca em espera e consulta'", "Supervisor continua envolvido", "Ex.: supervisor → sub-agente"],
-    "📖 Handoff = 'transfere para vendas' (você sai). Delegação = 'consulto meu supervisor' (você fica, espera, volta).\n❓ 'Suporte ao cliente?' (Depende do SLA. Handoff = simples; delegação = monitora e escala.)\n⚠️ Usar handoff quando precisa de delegação perde contexto.\n➡️ MetaGPT: comunicação estruturada via SOPs.", num=23, total=T)
+    "📖 Handoff = 'transfere para vendas' (você sai). Delegação = 'consulto meu supervisor' (você fica, espera, volta).\n❓ 'Suporte ao cliente?' (Depende do SLA. Handoff = simples; delegação = monitora e escala.)\n⚠️ Usar handoff quando precisa de delegação perde contexto.\n➡️ MetaGPT: comunicação estruturada via SOPs.", num=23, total=T, acronyms="SLA = Service Level Agreement")
 
 s = content_slide("MetaGPT — SOPs para Multi-Agente", [
     "MetaGPT: agentes seguem SOPs como uma equipe de software",
@@ -709,7 +713,7 @@ s = content_slide("A2A Protocol — Como Funciona", [
     "4. Streaming opcional para tarefas longas (SSE — Server-Sent Events)",
     "",
     "Protocolo HTTP-based — não reinventa a roda (REST + JSON)",
-], "📖 Fluxo: descobre Agent Card → envia Task → B processa → status + resultado. SSE para updates em tempo real.\n💡 Analogia: contratar freelancer. Vê perfil (Agent Card), envia brief (Task), ele entrega com updates (SSE).\n⚠️ 'A2A é novo e complicado' — é HTTP + JSON. Inovação é padronização, não tecnologia.\n➡️ A pergunta: A2A vs MCP?", num=55, total=T)
+], "📖 Fluxo: descobre Agent Card → envia Task → B processa → status + resultado. SSE para updates em tempo real.\n💡 Analogia: contratar freelancer. Vê perfil (Agent Card), envia brief (Task), ele entrega com updates (SSE).\n⚠️ 'A2A é novo e complicado' — é HTTP + JSON. Inovação é padronização, não tecnologia.\n➡️ A pergunta: A2A vs MCP?", num=55, total=T, acronyms="SSE = Server-Sent Events")
 
 s = comparison_slide("MCP vs A2A",
     "MCP (Model Context Protocol)",
@@ -734,7 +738,7 @@ s = content_slide("FIPA e Padrões Históricos", [
     "",
     "Aprendizado: LLM agents redescobrem conceitos de FIPA",
     "Lição: muita coisa 'nova' já foi pensada — aprender com o passado",
-], "📖 FIPA já tinha performatives nos anos 90. LLM agents fazem o mesmo, mas sem saber que já tem nome.\n💡 Analogia: redescobrir a roda. FIPA já tinha 'request' e 'inform'. Aprender com o passado economiza tempo.\n⚠️ 'LLM agents inventaram multi-agent' — não. FIPA, HEARSAY-II, KQML já existiam. LLM tornou viável.\n➡️ Estado da padronização.", num=58, total=T)
+], "📖 FIPA já tinha performatives nos anos 90. LLM agents fazem o mesmo, mas sem saber que já tem nome.\n💡 Analogia: redescobrir a roda. FIPA já tinha 'request' e 'inform'. Aprender com o passado economiza tempo.\n⚠️ 'LLM agents inventaram multi-agent' — não. FIPA, HEARSAY-II, KQML já existiam. LLM tornou viável.\n➡️ Estado da padronização.", num=58, total=T, acronyms="ACL = Agent Communication Language  ·  FIPA = Foundation for Intelligent Physical Agents  ·  KQML = Knowledge Query and Manipulation Language")
 
 s = content_slide("Estado da Padronização", [
     "MCP: mais maduro (Anthropic, amplamente adotado)",

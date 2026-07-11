@@ -63,7 +63,9 @@ def add_bullets(slide, left, top, width, height, items, size=16, color=DARK):
 def add_notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
-def add_footer(slide, num, total, obj=""):
+def add_footer(slide, num, total, obj="", acronyms=""):
+    if acronyms:
+        add_textbox(slide, Inches(0.3), Inches(6.6), Inches(12.7), Inches(0.35), acronyms, size=9, color=INFO)
     add_textbox(slide, Inches(0.3), Inches(7.0), Inches(7), Inches(0.4), obj, size=10, color=MUTED)
     add_textbox(slide, Inches(11.0), Inches(7.0), Inches(2), Inches(0.4), f"Slide {num} / {total}", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
 
@@ -75,12 +77,14 @@ def add_header(slide, code="ETHAGT07"):
     add_textbox(slide, Inches(0.3), Inches(0.02), Inches(3), Inches(0.3), "Universidade Etho", size=11, color=WHITE, bold=True)
     add_textbox(slide, Inches(10.5), Inches(0.02), Inches(2.5), Inches(0.3), code, size=11, color=WHITE, bold=True, align=PP_ALIGN.RIGHT)
 
-def title_slide(title, subtitle, code):
+def title_slide(title, subtitle, code, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_textbox(s, Inches(1), Inches(2.5), Inches(11), Inches(1.2), title, size=36, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(3.8), Inches(11), Inches(0.8), subtitle, size=18, color=MUTED, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(5.5), Inches(11), Inches(0.5), code, size=14, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
+    if acronyms:
+        add_textbox(s, Inches(1), Inches(6.5), Inches(11), Inches(0.4), acronyms, size=11, color=MUTED, align=PP_ALIGN.CENTER)
     return s
 
 def section_slide(num, title):
@@ -90,7 +94,7 @@ def section_slide(num, title):
     add_textbox(s, Inches(3.5), Inches(3.0), Inches(9), Inches(1.5), title, size=32, color=WHITE, bold=True)
     return s
 
-def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
+def content_slide(title, bullets, notes, num, total, obj="", subtitle=None, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -98,11 +102,11 @@ def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
     if subtitle:
         add_textbox(s, Inches(0.5), Inches(1.1), Inches(12), Inches(0.5), subtitle, size=18, color=MUTED)
     add_bullets(s, Inches(0.7), Inches(1.8 if subtitle else 1.5), Inches(12), Inches(5), bullets, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def code_slide(title, code, notes, num, total, obj=""):
+def code_slide(title, code, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_header(s)
@@ -115,11 +119,11 @@ def code_slide(title, code, notes, num, total, obj=""):
     p.font.size = Pt(13)
     p.font.color.rgb = RGBColor(0xA9, 0xDC, 0xFC)
     p.font.name = "Consolas"
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
+def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -128,11 +132,11 @@ def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
     add_bullets(s, Inches(0.7), Inches(2.2), Inches(5.5), Inches(4.5), li, size=15)
     add_textbox(s, Inches(7), Inches(1.5), Inches(6), Inches(0.5), rt, size=20, color=SUCCESS, bold=True)
     add_bullets(s, Inches(7.2), Inches(2.2), Inches(5.5), Inches(4.5), ri, size=15)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def exercise_slide(title, items, notes, num, total, obj="Exercício"):
+def exercise_slide(title, items, notes, num, total, obj="Exercício", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -143,7 +147,7 @@ def exercise_slide(title, items, notes, num, total, obj="Exercício"):
     box.line.color.rgb = WARNING
     box.line.width = Pt(2)
     add_bullets(s, Inches(1.0), Inches(1.8), Inches(11.5), Inches(4.5), items, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
@@ -175,7 +179,7 @@ s = content_slide("Competências Desenvolvidas", [
     "",
     "Vector DB = memória semântica do agente",
     "Knowledge Graph = memória relacional do agente"
-], "📖 C1 e C4 chegam ao Avançado. Vector DB é memória semântica; grafo é memória relacional.\n💡 Analogia: um agente sem memória relacional é amnésico em causa-e-efeito.\n⚠️ 'Avançado em C1' ≠ saber muitos frameworks. É justificar arquitetura com evidência.\n➡️ Agenda da aula.", 3, T, obj="Competências")
+], "📖 C1 e C4 chegam ao Avançado. Vector DB é memória semântica; grafo é memória relacional.\n💡 Analogia: um agente sem memória relacional é amnésico em causa-e-efeito.\n⚠️ 'Avançado em C1' ≠ saber muitos frameworks. É justificar arquitetura com evidência.\n➡️ Agenda da aula.", 3, T, obj="Competências", acronyms="AgentOps = Agent Operations  ·  MCP = Model Context Protocol")
 
 s = content_slide("Agenda da Aula", [
     "Bloco 1 (45 min):",
@@ -190,7 +194,7 @@ s = content_slide("Agenda da Aula", [
     "  Híbridos (12 min) — vector + grafo, router, benchmark",
     "  Escala (8 min) — sharding, reindexação, observabilidade",
     "  Fechamento (10 min) — boas práticas, caso, quiz, Q&A"
-], "📖 Dois blocos. Bloco 1: fundamentos separados. Bloco 2: GraphRAG, híbridos, escala.\n💡 Analogia: bloco 1 = ingredientes; bloco 2 = receita; fechamento = avaliação.\n⚠️ DEMO do GraphRAG (Slide 46) é o clímax — vector RAG falha, GraphRAG acerta.\n➡️ Por que estamos aqui? Quando similaridade não basta.", 4, T, obj="Agenda")
+], "📖 Dois blocos. Bloco 1: fundamentos separados. Bloco 2: GraphRAG, híbridos, escala.\n💡 Analogia: bloco 1 = ingredientes; bloco 2 = receita; fechamento = avaliação.\n⚠️ DEMO do GraphRAG (Slide 46) é o clímax — vector RAG falha, GraphRAG acerta.\n➡️ Por que estamos aqui? Quando similaridade não basta.", 4, T, obj="Agenda", acronyms="ANN = Approximate Nearest Neighbor")
 
 s = comparison_slide(
     "Quando Similaridade Não Basta",
@@ -207,7 +211,7 @@ s = comparison_slide(
         "Raciocínio multi-hop nativo"
     ],
     "📖 Vector search é ótimo para 'encontre documentos parecidos'. Mas 'quais medicações interagem com a do paciente X?' exige encadear 3 fatos. Vector não encadeia.\n💡 Analogia: vector = estante por tema; grafo = GPS com rotas.\n❓ 'No sistema de vocês: existe pergunta que exige encadear 2+ fatos?'\n⚠️ 'Prompt maior' ou 'mais chunks' não resolve multi-hop confiavelmente.\n➡️ A evolução do RAG até GraphRAG.", 5, T, obj="Motivação"
-)
+, acronyms="RAG = Retrieval-Augmented Generation")
 
 s = content_slide("A Evolução do RAG", [
     "2020: RAG original (Lewis et al., arXiv:2005.11401)",
@@ -311,7 +315,7 @@ s = content_slide("Híbrido: Sparse + Dense (BM25 + Dense)", [
     "Híbrido: combina ambos com fusão de scores",
     "Reciprocal Rank Fusion (RRF): simples e eficaz",
     "Qdrant 1.10+: sparse vectors nativos"
-], "📖 Dense acerta sinônimos, falha em termos exatos. Sparse acerta termos exatos, falha em paráfrase. Híbrido une os dois. RRF funde rankings sem calibrar pesos.\n💡 Analogia: dense = tradutor (entende sinonímia). Sparse = índice de livro (acerta a página). Híbrido usa os dois.\n⚠️ Tentar ponderar scores (0.7*dense + 0.3*sparse) = semanas tunando. RRF evita isso.\n➡️ Comparativo dos 5 vector DBs.", 16, T, obj="Híbrido Sparse+Dense")
+], "📖 Dense acerta sinônimos, falha em termos exatos. Sparse acerta termos exatos, falha em paráfrase. Híbrido une os dois. RRF funde rankings sem calibrar pesos.\n💡 Analogia: dense = tradutor (entende sinonímia). Sparse = índice de livro (acerta a página). Híbrido usa os dois.\n⚠️ Tentar ponderar scores (0.7*dense + 0.3*sparse) = semanas tunando. RRF evita isso.\n➡️ Comparativo dos 5 vector DBs.", 16, T, obj="Híbrido Sparse+Dense", acronyms="BM25 = Best Matching 25")
 
 s = section_slide(2, "Comparativo de Vector DBs")
 add_notes(s, "📖 Vamos comparar os 5 vector DBs canônicos. Mensagem central: NÃO existe 'melhor' — existe 'melhor para seu cenário'.\n➡️ O landscape.")
@@ -357,7 +361,7 @@ s = content_slide("Chroma: Simplicidade", [
     "Embutido no processo Python (sem servidor separado)",
     "Melhor quando: prototipagem, MVP, dev local",
     "Trade-off: não é production-ready para escala (ainda)"
-], "📖 Chroma = importe e use. add() e query() em uma linha. Embutido no Python, sem Docker. Perfeito para protótipo/MVP.\n💡 Analogia: Chroma = SQLite dos vector DBs. Embutido, simples. Para produção com escala, migre.\n⚠️ Começar com Chroma e levar para produção sem migrar = funciona até parar. Plano de migração desde o dia 1.\n➡️ pgvector.", 22, T, obj="Chroma")
+], "📖 Chroma = importe e use. add() e query() em uma linha. Embutido no Python, sem Docker. Perfeito para protótipo/MVP.\n💡 Analogia: Chroma = SQLite dos vector DBs. Embutido, simples. Para produção com escala, migre.\n⚠️ Começar com Chroma e levar para produção sem migrar = funciona até parar. Plano de migração desde o dia 1.\n➡️ pgvector.", 22, T, obj="Chroma", acronyms="MVP = Minimum Viable Product")
 
 s = content_slide("pgvector: Operacional", [
     "Extensão do PostgreSQL: vector DB dentro do DB que você já tem",
@@ -365,7 +369,7 @@ s = content_slide("pgvector: Operacional", [
     "ACID, transações, JOINs com vetores",
     "Melhor quando: já usa Postgres e não quer adicionar infra",
     "Trade-off: não escala como solução dedicada para bilhões"
-], "📖 pgvector = extensão do Postgres. Vector DB + JOINs relacionais + ACID, tudo no mesmo DB. Para ~1M de vetores, resolve sem nova infra.\n💡 Analogia: pgvector = picape que já está na garagem. Não troque de veículo se a picada aguenta a carga.\n❓ 'Quando pgvector é melhor que Qdrant?' (Já tem Postgres + quer ACID + volume até ~1M)\n⚠️ Subestimar pgvector = erro. Para 90% das aplicações RAG, resolve.\n➡️ Tabela comparativa.", 23, T, obj="pgvector")
+], "📖 pgvector = extensão do Postgres. Vector DB + JOINs relacionais + ACID, tudo no mesmo DB. Para ~1M de vetores, resolve sem nova infra.\n💡 Analogia: pgvector = picape que já está na garagem. Não troque de veículo se a picada aguenta a carga.\n❓ 'Quando pgvector é melhor que Qdrant?' (Já tem Postgres + quer ACID + volume até ~1M)\n⚠️ Subestimar pgvector = erro. Para 90% das aplicações RAG, resolve.\n➡️ Tabela comparativa.", 23, T, obj="pgvector", acronyms="ACID = Atomicity Consistency Isolation Durability")
 
 s = content_slide("Tabela Comparativa", [
     "              Qdrant    Milvus    Weaviate   Chroma    pgvector",
@@ -461,7 +465,7 @@ s = comparison_slide(
         "Raciocínio multi-hop poderoso"
     ],
     "📖 Modelagem determina o que você raciocina. Tudo 'RELATED_TO' = não distingue relações. Modele orientado a QUERIES.\n💡 Analogia: como modelar DB relacional. Tabela genérica 'Coisa' = queries fracas. Tabelas específicas = queries poderosas.\n⚠️ Modelar 'para parecer com a realidade' sem pensar nas queries = armadilha. Pergunte 'quais perguntas?' primeiro.\n➡️ Como construir grafo a partir de texto? NER.", 32, T, obj="Modelagem"
-)
+, acronyms="NER = Named Entity Recognition")
 
 s = content_slide("Extração de Entidades com LLM (NER)", [
     "Texto → LLM com prompt de NER → entidades estruturadas",
@@ -469,7 +473,7 @@ s = content_slide("Extração de Entidades com LLM (NER)", [
     "Output: [{name: Dipirona, type: Medicamento}, ...]",
     "Desafios: entidades ambíguas, resolução de coreferência",
     "Ferramentas: LangChain LLMGraphTransformer, GLiNER, spaCy"
-], "📖 NER = extração de entidades via LLM com prompt estruturado. Desafios: ambiguidade (Dipirona = Dipirona sódica?), coreferência.\n💡 Analogia: NER = estudante sublinhando termos médicos no prontuário. LLM escala para milhões de docs.\n⚠️ Confiar cegamente no NER do LLM = alucinação. Schema restrito + validação + amostragem humana.\n➡️ Entidades são nós. Relações são arestas.", 33, T, obj="NER")
+], "📖 NER = extração de entidades via LLM com prompt estruturado. Desafios: ambiguidade (Dipirona = Dipirona sódica?), coreferência.\n💡 Analogia: NER = estudante sublinhando termos médicos no prontuário. LLM escala para milhões de docs.\n⚠️ Confiar cegamente no NER do LLM = alucinação. Schema restrito + validação + amostragem humana.\n➡️ Entidades são nós. Relações são arestas.", 33, T, obj="NER", acronyms="LLM = Large Language Model")
 
 s = content_slide("Extração de Relações com LLM", [
     "Dadas 2 entidades → LLM classifica a relação",

@@ -63,7 +63,9 @@ def add_bullets(slide, left, top, width, height, items, size=16, color=DARK):
 def add_notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
-def add_footer(slide, num, total, obj=""):
+def add_footer(slide, num, total, obj="", acronyms=""):
+    if acronyms:
+        add_textbox(slide, Inches(0.3), Inches(6.6), Inches(12.7), Inches(0.35), acronyms, size=9, color=INFO)
     add_textbox(slide, Inches(0.3), Inches(7.0), Inches(7), Inches(0.4), obj, size=10, color=MUTED)
     add_textbox(slide, Inches(11.0), Inches(7.0), Inches(2), Inches(0.4), f"Slide {num} / {total}", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
 
@@ -75,12 +77,14 @@ def add_header(slide, code="ETHAGT08"):
     add_textbox(slide, Inches(0.3), Inches(0.02), Inches(3), Inches(0.3), "Universidade Etho", size=11, color=WHITE, bold=True)
     add_textbox(slide, Inches(10.5), Inches(0.02), Inches(2.5), Inches(0.3), code, size=11, color=WHITE, bold=True, align=PP_ALIGN.RIGHT)
 
-def title_slide(title, subtitle, code):
+def title_slide(title, subtitle, code, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_textbox(s, Inches(1), Inches(2.5), Inches(11), Inches(1.2), title, size=40, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(3.8), Inches(11), Inches(0.8), subtitle, size=20, color=MUTED, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(5.5), Inches(11), Inches(0.5), code, size=14, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
+    if acronyms:
+        add_textbox(s, Inches(1), Inches(6.5), Inches(11), Inches(0.4), acronyms, size=11, color=MUTED, align=PP_ALIGN.CENTER)
     return s
 
 def section_slide(num, title):
@@ -90,7 +94,7 @@ def section_slide(num, title):
     add_textbox(s, Inches(3.5), Inches(3.0), Inches(9), Inches(1.5), title, size=32, color=WHITE, bold=True)
     return s
 
-def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
+def content_slide(title, bullets, notes, num, total, obj="", subtitle=None, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -98,11 +102,11 @@ def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
     if subtitle:
         add_textbox(s, Inches(0.5), Inches(1.1), Inches(12), Inches(0.5), subtitle, size=18, color=MUTED)
     add_bullets(s, Inches(0.7), Inches(1.8 if subtitle else 1.5), Inches(12), Inches(5), bullets, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def code_slide(title, code, notes, num, total, obj=""):
+def code_slide(title, code, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_header(s)
@@ -115,11 +119,11 @@ def code_slide(title, code, notes, num, total, obj=""):
     p.font.size = Pt(13)
     p.font.color.rgb = RGBColor(0xA9, 0xDC, 0xFC)
     p.font.name = "Consolas"
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
+def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -128,11 +132,11 @@ def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
     add_bullets(s, Inches(0.7), Inches(2.2), Inches(5.5), Inches(4.5), li, size=15)
     add_textbox(s, Inches(7), Inches(1.5), Inches(6), Inches(0.5), rt, size=20, color=SUCCESS, bold=True)
     add_bullets(s, Inches(7.2), Inches(2.2), Inches(5.5), Inches(4.5), ri, size=15)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def exercise_slide(title, items, notes, num, total, obj="Exercício"):
+def exercise_slide(title, items, notes, num, total, obj="Exercício", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -143,7 +147,7 @@ def exercise_slide(title, items, notes, num, total, obj="Exercício"):
     box.line.color.rgb = WARNING
     box.line.width = Pt(2)
     add_bullets(s, Inches(1.0), Inches(1.8), Inches(11.5), Inches(4.5), items, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
@@ -180,7 +184,7 @@ s = content_slide("Competências Desenvolvidas", [
     "",
     "Avançado em C1 e C3: opera com autonomia em produção",
     "C6 sobe para Intermediário — aprofundamento em ETHAGT13"
-], "📖 Atinge Avançado em C1 e C3. Vocês saem prontos para projetar, construir e governar servers MCP.\n💡 C1-A é 'carteira definitiva' — dirigem sozinhos.\n⚠️ Avançado ≠ especialista mundial. Significa autonomia em produção.\n➡️ Vamos à agenda.", 3, T)
+], "📖 Atinge Avançado em C1 e C3. Vocês saem prontos para projetar, construir e governar servers MCP.\n💡 C1-A é 'carteira definitiva' — dirigem sozinhos.\n⚠️ Avançado ≠ especialista mundial. Significa autonomia em produção.\n➡️ Vamos à agenda.", 3, T, acronyms="AgentOps = Agent Operations — operacao e monitoramento de agentes em producao")
 
 s = content_slide("Agenda da Aula", [
     "Bloco 1 (45 min):",
@@ -195,7 +199,7 @@ s = content_slide("Agenda da Aula", [
     "  Governança (10 min) — catálogo, versionamento, SBOM",
     "  Segurança (10 min) — sandbox, injection, OAuth 2.1",
     "  Fechamento (15 min) — boas práticas, quiz, Q&A"
-], "📖 Dois blocos. Bloco 1 = teoria + DEMO. Bloco 2 = produção (clients, governança, segurança).\n💡 Bloco 1 = como funciona o motor. Bloco 2 = como dirigir com segurança.\n⚠️ Alunos querem pular para o código. Reforçar: sem arquitetura, código vira cópia.\n➡️ Vamos ao porquê.", 4, T)
+], "📖 Dois blocos. Bloco 1 = teoria + DEMO. Bloco 2 = produção (clients, governança, segurança).\n💡 Bloco 1 = como funciona o motor. Bloco 2 = como dirigir com segurança.\n⚠️ Alunos querem pular para o código. Reforçar: sem arquitetura, código vira cópia.\n➡️ Vamos ao porquê.", 4, T, acronyms="SBOM = Software Bill of Materials — lista de componentes de software")
 
 s = content_slide("Motivação: O Problema N×M", [
     "Cenário: 5 LLMs × 10 sistemas = 50 integrações customizadas",
@@ -208,7 +212,7 @@ s = content_slide("Motivação: O Problema N×M", [
     "  Cada sistema implementa 1 server",
     "",
     "Pergunta: Quantas integrações vocês já fizeram?"
-], "📖 Antes do MCP, N LLMs × M sistemas = N×M integrações. 5×10 = 50. Insustentável.\n💡 Analogia: antes do USB, cada celular tinha carregador único. MCP é o USB-C da IA.\n❓ 'Quantas integrações vocês já fizeram?' (mãos levantadas — geralmente 3-5)\n⚠️ Mesmo com 1 LLM você reescreve para cada sistema. E ao trocar de LLM, refaz tudo.\n➡️ Quando isso mudou?", 5, T)
+], "📖 Antes do MCP, N LLMs × M sistemas = N×M integrações. 5×10 = 50. Insustentável.\n💡 Analogia: antes do USB, cada celular tinha carregador único. MCP é o USB-C da IA.\n❓ 'Quantas integrações vocês já fizeram?' (mãos levantadas — geralmente 3-5)\n⚠️ Mesmo com 1 LLM você reescreve para cada sistema. E ao trocar de LLM, refaz tudo.\n➡️ Quando isso mudou?", 5, T, acronyms="LLM = Large Language Model — Modelo de Linguagem de Grande Escala")
 
 s = content_slide("Contexto: O Nascimento do MCP", [
     "2023: tool calling nativo (OpenAI, Anthropic)",
@@ -220,7 +224,7 @@ s = content_slide("Contexto: O Nascimento do MCP", [
     "Confluência: tool calling maduro + necessidade de padrão + ecossistema fragmentado",
     "Analogia: 'USB-C da IA' — um conector para tudo",
     "Adotantes: Anthropic, Block, Replit, Cloudflare, Zed, Microsoft"
-], "📖 MCP não surgiu do nada. Confluência: tool calling amadureceu + cada provedor inventava formato + Anthropic abriu o padrão.\n💡 Analogia: container de carga. Antes cada navio carregava diferente. Container mudou comércio mundial.\n❓ 'Qual marco foi mais decisivo?' (Resposta: nov/2024 — anúncio abriu o protocolo)\n⚠️ MCP não é proprietário da Anthropic. É aberto, governance multiempresa.\n➡️ Vamos à arquitetura.", 6, T)
+], "📖 MCP não surgiu do nada. Confluência: tool calling amadureceu + cada provedor inventava formato + Anthropic abriu o padrão.\n💡 Analogia: container de carga. Antes cada navio carregava diferente. Container mudou comércio mundial.\n❓ 'Qual marco foi mais decisivo?' (Resposta: nov/2024 — anúncio abriu o protocolo)\n⚠️ MCP não é proprietário da Anthropic. É aberto, governance multiempresa.\n➡️ Vamos à arquitetura.", 6, T, acronyms="SSE = Server-Sent Events — eventos enviados pelo servidor")
 
 # ═══════════════════════════════════════
 # SEÇÃO B — Arquitetura MCP (7-13)
@@ -254,7 +258,7 @@ s = content_slide("Transportes: stdio, HTTP+SSE, Streamable HTTP", [
     "stdio: local, rápido, sem rede",
     "Streamable HTTP: remote, OAuth 2.1, deploy cloud/edge",
     "HTTP+SSE: NÃO USAR — deprecated"
-], "📖 3 transportes. stdio = subprocesso, local. HTTP+SSE = deprecated desde mar/2025 (2 endpoints). Streamable HTTP = atual, single endpoint, SSE opcional.\n💡 stdio = cara a cara. HTTP+SSE = telefonar com 2 linhas. Streamable HTTP = WhatsApp (uma conversa, tudo junto).\n❓ 'Qual transporte para server interno de DB?' (stdio se mesma máquina; Streamable HTTP se remoto)\n⚠️ Tutoriais antigos ainda usam HTTP+SSE. Reforçar: deprecated. Usem Streamable HTTP.\n➡️ Vamos aprofundar no Streamable HTTP.", 9, T)
+], "📖 3 transportes. stdio = subprocesso, local. HTTP+SSE = deprecated desde mar/2025 (2 endpoints). Streamable HTTP = atual, single endpoint, SSE opcional.\n💡 stdio = cara a cara. HTTP+SSE = telefonar com 2 linhas. Streamable HTTP = WhatsApp (uma conversa, tudo junto).\n❓ 'Qual transporte para server interno de DB?' (stdio se mesma máquina; Streamable HTTP se remoto)\n⚠️ Tutoriais antigos ainda usam HTTP+SSE. Reforçar: deprecated. Usem Streamable HTTP.\n➡️ Vamos aprofundar no Streamable HTTP.", 9, T, acronyms="JSON-RPC = JSON Remote Procedure Call — protocolo de RPC sobre JSON")
 
 s = content_slide("Streamable HTTP em Detalhe (spec 2025-11-25)", [
     "Single endpoint: POST /mcp",
@@ -362,7 +366,7 @@ s = content_slide("Sampling: Server-Initiated LLM Calls", [
     "",
     "Server NUNCA tem acesso direto à API key do LLM",
     "Tudo passa pelo host, que controla"
-], "📖 Sampling inverte a direção. Server pede ao host para gerar texto. Server processa dados locais, precisa de raciocínio LLM sem expor tudo.\n💡 Estagiário (server) pede parecer do diretor (LLM) via gerente (host). Estagiário nunca tem telefone do diretor.\n⚠️ Server NUNCA acessa API key direto. Sempre HITL em sampling para produção.\n➡️ Extras.", 19, T)
+], "📖 Sampling inverte a direção. Server pede ao host para gerar texto. Server processa dados locais, precisa de raciocínio LLM sem expor tudo.\n💡 Estagiário (server) pede parecer do diretor (LLM) via gerente (host). Estagiário nunca tem telefone do diretor.\n⚠️ Server NUNCA acessa API key direto. Sempre HITL em sampling para produção.\n➡️ Extras.", 19, T, acronyms="HITL = Human-in-the-Loop — Humano no Ciclo")
 
 s = content_slide("Roots, Notifications, Subscriptions, Elicitation", [
     "Roots: host indica ao server quais diretórios/URIs são permitidos (boundary)",
@@ -408,7 +412,7 @@ def get_config(env: str) -> str:
 def code_review(code: str) -> str:
     """Template de code review."""
     return f"Revise este código:\n{code}"''',
-    "📖 3 decorators. @tool registra função. @resource registra dado por URI (templates com variáveis). @prompt registra template. Type hints → JSON Schema automático.\n💡 Como OpenAPI/Swagger automático. Anota a função, schema é gerado.\n⚠️ Sem docstring, tool fica sem descrição. LLM não sabe quando usar. ACI do ETHAGT02.\n➡️ Exemplos reais.", 23, T)
+    "📖 3 decorators. @tool registra função. @resource registra dado por URI (templates com variáveis). @prompt registra template. Type hints → JSON Schema automático.\n💡 Como OpenAPI/Swagger automático. Anota a função, schema é gerado.\n⚠️ Sem docstring, tool fica sem descrição. LLM não sabe quando usar. ACI do ETHAGT02.\n➡️ Exemplos reais.", 23, T, acronyms="ACI = Agent-Computer Interface — Interface Agente-Computador")
 
 s = content_slide("Exemplo: Filesystem Server", [
     "Tools: read_file, write_file, list_directory, search_files",
@@ -576,7 +580,7 @@ agent = create_react_agent(llm, tools)
 
 # Agente custom = host leve
 # Instancia clients, agrega tools, roteia chamadas''',
-    "📖 MCP não é só para hosts prontos. LangGraph: langchain-mcp-adapters carrega tools de server MCP como BaseTool. OpenAI Agents SDK: MCP como tool source. Agente custom = host leve.\n💡 Escrever próprio navegador em vez de Chrome. Você controla tudo, herda os padrões (HTTP, HTML). Com MCP, herda o protocolo.\n⚠️ Não reimplemente o protocolo MCP no agente. Use as SDKs.\n➡️ Cenário real.", 36, T)
+    "📖 MCP não é só para hosts prontos. LangGraph: langchain-mcp-adapters carrega tools de server MCP como BaseTool. OpenAI Agents SDK: MCP como tool source. Agente custom = host leve.\n💡 Escrever próprio navegador em vez de Chrome. Você controla tudo, herda os padrões (HTTP, HTML). Com MCP, herda o protocolo.\n⚠️ Não reimplemente o protocolo MCP no agente. Use as SDKs.\n➡️ Cenário real.", 36, T, acronyms="ReAct = Reasoning and Acting — padrao de loop Thought / Action / Observation")
 
 s = content_slide("Multi-Server Composition", [
     "Host com 5 servers: filesystem, github, postgres, slack, brave-search",
@@ -632,7 +636,7 @@ s = content_slide("Permissões por Server/Client", [
     "Exemplo: server de DB → read para todos, write só para dev senior",
     "",
     "Princípio: deny by default, allow explicit"
-], "📖 Controle de acesso em 3 níveis. Per-server, per-tool (allowlist), per-resource (ACL por URI). Config declarativa: allow/deny/ask (HITL).\n💡 ACL de filesystem. Permissões diferentes por usuário, arquivo, ação.\n⚠️ Expor todas as tools para todos viola menor privilégio. Deny by default, allow explicit.\n➡️ Supply chain.", 42, T)
+], "📖 Controle de acesso em 3 níveis. Per-server, per-tool (allowlist), per-resource (ACL por URI). Config declarativa: allow/deny/ask (HITL).\n💡 ACL de filesystem. Permissões diferentes por usuário, arquivo, ação.\n⚠️ Expor todas as tools para todos viola menor privilégio. Deny by default, allow explicit.\n➡️ Supply chain.", 42, T, acronyms="ACL = Agent Communication Language — linguagem de comunicacao entre agentes")
 
 s = content_slide("Supply Chain Security: Provenance, SBOM", [
     "Provenance: de onde veio o server? (registry, commit hash, signature)",

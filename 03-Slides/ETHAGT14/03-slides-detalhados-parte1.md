@@ -51,6 +51,8 @@
 **Imagem**: Ícones minimalistas em `etho-accent` (#E85D2F)
 **Tempo**: 2 min
 
+**Rodape**: FinOps = Financial Operations — gestao financeira de custo de agentes  ·  LLM = Large Language Model — Modelo de Linguagem de Grande Escala
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Cada objetivo é mensurável. Não é "entender" — é "identificar", "aplicar", "distribuir", "otimizar", "operar". Se ao final da aula vocês não conseguem fazer essas cinco coisas, eu falhei como professor. O projeto do módulo — otimizar custo/latência em ≥40% sem perder qualidade — é a prova real de que internalizaram.
 💡 ANALOGIA: É como checklist de mergulho. Não dá para mergulhar sem verificar oxigênio, profundímetro e companheiro. Em escala, nosso checklist é estas 5 otimizações.
@@ -78,6 +80,8 @@
 **Animação**: Radar aparece com wipe (left-to-right, 500ms)
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
+
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Este é um módulo terminal — quatro das cinco competências atingem Avançado. "Avançado" significa que vocês conseguem arquitetar, defender e operar sistemas em produção, não apenas implementar. C4 (Memória) aqui ganha dimensão distribuída: checkpointer, estado entre réplicas, consistência. C3 fica em Básico porque não aprofundamos ACI — foco é escala, não design de tools.
@@ -161,6 +165,8 @@
 **Imagem**: Eixo temporal com logos de frameworks/empresas
 **Tempo**: 1 min
 
+**Rodape**: KV = Key-Value — chave-valor
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Em 2023 todo mundo estava fazendo protótipos. Em 2024 surgiram LangGraph, CrewAI, OpenAI SDK. Em 2025 começamos a ver sistemas em produção. Em 2026 a pergunta virou "como escalo sem quebrar o caixa?". A urgência é real: empresas estão gastando 6 dígitos/mês com LLM e percebendo que sem engenharia de escala, não dá para sustentar.
 💡 ANALOGIA: É como a transição da web em 1999. Primeiro vieram os sites (protótipos). Depois veio a pergunta: como servir 1 milhão de usuários? Nasceu a engenharia de escalabilidade web. Estamos no mesmo momento com agentes.
@@ -207,6 +213,8 @@
 **Animação**: Barras crescem mostrando latência acumulada
 **Imagem**: Eixo Y em segundos, 4 barras (chat, 3-step, 5-step, 10-step)
 **Tempo**: 2 min
+
+**Rodape**: ReAct = Reasoning and Acting — padrao de loop Thought / Action / Observation
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: O LLM é um gargalo serial. Cada chamada leva segundos, e em um loop ReAct as chamadas são sequenciais. Um agente de 5 steps com 2s por step = 10s mínimo, sem contar tool calls. Em 1.000 usuários simultâneos, sem paralelização, a fila cresce indefinidamente. As técnicas que veremos — streaming, batching, speculative decoding — atacam este gargalo.
@@ -533,6 +541,8 @@
 **Animação**: Hash do texto, lookup no cache de embeddings
 **Imagem**: Pipeline RAG com cache de embeddings destacado
 **Tempo**: 1 min
+
+**Rodape**: RAG = Retrieval-Augmented Generation — Geracao Aumentada por Recuperacao  ·  TTL = Time To Live — tempo de validade
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Embeddings são determinísticos — mesmo texto + mesmo modelo = mesmo vetor. Re-embeddar documentos em cada query é puro desperdício. Solução: cachear embeddings por hash do texto. Em sistemas RAG com milhões de documentos indexados, isso economiza muita computação. Cuidado: invalidar o cache quando o modelo de embedding muda (e.g., text-embedding-3-small → text-embedding-3-large) — vetores incompatíveis.

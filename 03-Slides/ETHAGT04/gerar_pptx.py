@@ -63,7 +63,9 @@ def add_bullets(slide, left, top, width, height, items, size=16, color=DARK):
 def add_notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
-def add_footer(slide, num, total, obj=""):
+def add_footer(slide, num, total, obj="", acronyms=""):
+    if acronyms:
+        add_textbox(slide, Inches(0.3), Inches(6.6), Inches(12.7), Inches(0.35), acronyms, size=9, color=INFO)
     add_textbox(slide, Inches(0.3), Inches(7.0), Inches(7), Inches(0.4), obj, size=10, color=MUTED)
     add_textbox(slide, Inches(11.0), Inches(7.0), Inches(2), Inches(0.4), f"Slide {num} / {total}", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
 
@@ -75,12 +77,14 @@ def add_header(slide, code="ETHAGT04"):
     add_textbox(slide, Inches(0.3), Inches(0.02), Inches(3), Inches(0.3), "Universidade Etho", size=11, color=WHITE, bold=True)
     add_textbox(slide, Inches(10.5), Inches(0.02), Inches(2.5), Inches(0.3), code, size=11, color=WHITE, bold=True, align=PP_ALIGN.RIGHT)
 
-def title_slide(title, subtitle, code):
+def title_slide(title, subtitle, code, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_textbox(s, Inches(1), Inches(2.5), Inches(11), Inches(1.2), title, size=40, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(3.8), Inches(11), Inches(0.8), subtitle, size=20, color=MUTED, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(5.5), Inches(11), Inches(0.5), code, size=14, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
+    if acronyms:
+        add_textbox(s, Inches(1), Inches(6.5), Inches(11), Inches(0.4), acronyms, size=11, color=MUTED, align=PP_ALIGN.CENTER)
     return s
 
 def section_slide(num, title):
@@ -90,7 +94,7 @@ def section_slide(num, title):
     add_textbox(s, Inches(3.5), Inches(3.0), Inches(9), Inches(1.5), title, size=32, color=WHITE, bold=True)
     return s
 
-def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
+def content_slide(title, bullets, notes, num, total, obj="", subtitle=None, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -98,11 +102,11 @@ def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
     if subtitle:
         add_textbox(s, Inches(0.5), Inches(1.1), Inches(12), Inches(0.5), subtitle, size=18, color=MUTED)
     add_bullets(s, Inches(0.7), Inches(1.8 if subtitle else 1.5), Inches(12), Inches(5), bullets, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def code_slide(title, code, notes, num, total, obj=""):
+def code_slide(title, code, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_header(s)
@@ -115,11 +119,11 @@ def code_slide(title, code, notes, num, total, obj=""):
     p.font.size = Pt(13)
     p.font.color.rgb = RGBColor(0xA9, 0xDC, 0xFC)
     p.font.name = "Consolas"
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
+def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -128,11 +132,11 @@ def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
     add_bullets(s, Inches(0.7), Inches(2.2), Inches(5.5), Inches(4.5), li, size=15)
     add_textbox(s, Inches(7), Inches(1.5), Inches(6), Inches(0.5), rt, size=20, color=SUCCESS, bold=True)
     add_bullets(s, Inches(7.2), Inches(2.2), Inches(5.5), Inches(4.5), ri, size=15)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def exercise_slide(title, items, notes, num, total, obj="Exercício"):
+def exercise_slide(title, items, notes, num, total, obj="Exercício", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -143,7 +147,7 @@ def exercise_slide(title, items, notes, num, total, obj="Exercício"):
     box.line.color.rgb = WARNING
     box.line.width = Pt(2)
     add_bullets(s, Inches(1.0), Inches(1.8), Inches(11.5), Inches(4.5), items, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
@@ -169,14 +173,14 @@ s = content_slide("Objetivos do Módulo", [
     "3. Compreender reasoning model nativo vs prompting",
     "4. Avaliar trade-offs: qualidade × custo × latência × robustez",
     "5. Lidar com falhas: plano rígido, loops, re-planejamento ausente",
-], "📖 Cada objetivo é mensurável. O mais importante é #4 — trade-offs.\n❓ 'Qual objetivo é mais desafiador?' (#2 ou #4)\n➡️ Competências.", 2, T, "5 objetivos mensuráveis")
+], "📖 Cada objetivo é mensurável. O mais importante é #4 — trade-offs.\n❓ 'Qual objetivo é mais desafiador?' (#2 ou #4)\n➡️ Competências.", 2, T, "5 objetivos mensuráveis", acronyms="LATS = Language Agent Tree Search — Busca em Arvore com LLM  ·  ReAct = Reasoning and Acting — padrao de loop Thought / Action / Observation  ·  ReWOO = Reasoning WithOut Observation — raciocinio sem observacao intermediaria  ·  ToT = Tree of Thoughts — Arvore de Pensamentos")
 
 s = content_slide("Competências Desenvolvidas", [
     "C1 Programação Agêntica → I (Intermediário)",
     "C2 Multi-Agent Systems → B (Básico)",
     "C4 Agent Memory → B (Básico)",
     "C5 AgentOps & Avaliação → B (Básico)",
-], "📖 C1 atinge Intermediário. C4 é tocado por Reflexion (memória de erros).\n➡️ Agenda.", 3, T, "Framework Etho")
+], "📖 C1 atinge Intermediário. C4 é tocado por Reflexion (memória de erros).\n➡️ Agenda.", 3, T, "Framework Etho", acronyms="AgentOps = Agent Operations — operacao e monitoramento de agentes em producao")
 
 s = content_slide("Agenda da Aula", [
     "Bloco 1 (60 min):",
@@ -192,7 +196,7 @@ s = content_slide("Agenda da Aula", [
     "  Reasoning Nativo (14 min) — o1/o3, Claude thinking",
     "  Falhas e Orçamento (12 min) — loops, budget, benchmarks",
     "  Fechamento (8 min) — comparação, quiz, Q&A",
-], "📖 Dois blocos. Primeiro: técnicas de planejamento e busca. Segundo: auto-crítica, meta-raciocínio e reasoning nativo.\n➡️ Por que estamos aqui?", 4, T, "Roteiro da aula")
+], "📖 Dois blocos. Primeiro: técnicas de planejamento e busca. Segundo: auto-crítica, meta-raciocínio e reasoning nativo.\n➡️ Por que estamos aqui?", 4, T, "Roteiro da aula", acronyms="CoT = Chain-of-Thought — Cadeia de Pensamento  ·  MCTS = Monte Carlo Tree Search — Busca em Arvore de Monte Carlo")
 
 s = content_slide("Quando ReAct Não Basta", [
     "Cenário: 'Planeje viagem de 7 dias com R$5000'",
@@ -219,7 +223,7 @@ s = content_slide("O Espectro do Raciocínio", [
     "",
     "Cada técnica resolve uma limitação da anterior",
     "Diagrama: 12-Diagrams/ETHAGT04/reasoning-spectrum.mmd",
-], "📖 Cada técnica adiciona algo: CoT adiciona raciocínio. ReAct adiciona ação. ToT adiciona exploração. LATS adiciona busca sistemática. Reflexion adiciona aprendizado. Self-Discover adiciona meta-raciocínio. o1 traz raciocínio para dentro do modelo.\n➡️ Começando pela fundação: CoT.", 6, T, "Panorama das técnicas")
+], "📖 Cada técnica adiciona algo: CoT adiciona raciocínio. ReAct adiciona ação. ToT adiciona exploração. LATS adiciona busca sistemática. Reflexion adiciona aprendizado. Self-Discover adiciona meta-raciocínio. o1 traz raciocínio para dentro do modelo.\n➡️ Começando pela fundação: CoT.", 6, T, "Panorama das técnicas", acronyms="LLM = Large Language Model — Modelo de Linguagem de Grande Escala")
 
 s = section_slide(1, "Tipologia do Raciocínio")
 add_notes(s, "Vamos classificar as estratégias de raciocínio por estrutura e timing.")
@@ -356,7 +360,7 @@ s = content_slide("Quando Re-planejar", [
     "  • Re-planejamento automático (LLM re-gera plano restante)",
     "  • HITL: humano aprova ou ajusta o plano",
     "  • Fallback: plano simplificado pré-definido",
-], "📖 Re-planejamento torna Plan-and-Execute adaptativo. Sem ele, o plano é rígido. A questão é QUANDO disparar.\nSinais objetivos: erro, timeout, custo. Sinais subjetivos: resultado 'estranho'.\nEm produção, HITL no re-planejamento é essencial para alto risco.\n➡️ ToT e LATS.", 17, T, "Detecção de falha de plano")
+], "📖 Re-planejamento torna Plan-and-Execute adaptativo. Sem ele, o plano é rígido. A questão é QUANDO disparar.\nSinais objetivos: erro, timeout, custo. Sinais subjetivos: resultado 'estranho'.\nEm produção, HITL no re-planejamento é essencial para alto risco.\n➡️ ToT e LATS.", 17, T, "Detecção de falha de plano", acronyms="HITL = Human-in-the-Loop — Humano no Ciclo")
 
 s = content_slide("Intervalo", [
     "5 minutos",
@@ -384,7 +388,7 @@ s = content_slide("Tree of Thoughts (ToT)", [
     "",
     "Fonte: Yao et al., NeurIPS 2023 (arXiv:2305.10601)",
     "Diagrama: 12-Diagrams/ETHAGT04/tot-search-tree.mmd",
-], "📖 ToT explora múltiplos caminhos em vez de um só. Em cada nó, LLM gera candidatos. Avaliador pontua. Explora os melhores. Backtracking se beco sem saída.\n💡 Analogia: xadrez. Não joga uma sequência — considera várias, avalia, escolhe.\n❓ 'Em que problema ToT vale o custo?' (espaço de busca grande + função de avaliação clara)\n⚠️ ToT para problema simples = overkill. 5-10x mais caro.\n➡️ LATS.", 20, T, "Busca em árvore")
+], "📖 ToT explora múltiplos caminhos em vez de um só. Em cada nó, LLM gera candidatos. Avaliador pontua. Explora os melhores. Backtracking se beco sem saída.\n💡 Analogia: xadrez. Não joga uma sequência — considera várias, avalia, escolhe.\n❓ 'Em que problema ToT vale o custo?' (espaço de busca grande + função de avaliação clara)\n⚠️ ToT para problema simples = overkill. 5-10x mais caro.\n➡️ LATS.", 20, T, "Busca em árvore", acronyms="BFS = Breadth-First Search — Busca em Largura  ·  DFS = Depth-First Search — Busca em Profundidade")
 
 s = content_slide("LATS: Language Agent Tree Search", [
     "Base: Monte Carlo Tree Search (MCTS) — algoritmo de AlphaGo",
@@ -690,7 +694,7 @@ s = content_slide("Conexão com Próximos Módulos", [
     "",
     "ETHAGT15 — Meta-Agentes",
     "  Self-Discover como bloco para meta-raciocínio",
-], "📖 ETHAGT04 é a base de raciocínio. Memória (ETHAGT05) estende Reflexion. RAG (ETHAGT06) combina raciocínio + recuperação. Multi-agente (ETHAGT09) distribui raciocínio.\n➡️ Leitura.", 42, T, "Mapa da especialização")
+], "📖 ETHAGT04 é a base de raciocínio. Memória (ETHAGT05) estende Reflexion. RAG (ETHAGT06) combina raciocínio + recuperação. Multi-agente (ETHAGT09) distribui raciocínio.\n➡️ Leitura.", 42, T, "Mapa da especialização", acronyms="RAG = Retrieval-Augmented Generation — Geracao Aumentada por Recuperacao")
 
 s = content_slide("Leitura Recomendada", [
     "Obrigatório:",

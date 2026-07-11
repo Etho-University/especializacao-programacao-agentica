@@ -63,7 +63,9 @@ def add_bullets(slide, left, top, width, height, items, size=16, color=DARK):
 def add_notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
-def add_footer(slide, num, total, obj=""):
+def add_footer(slide, num, total, obj="", acronyms=""):
+    if acronyms:
+        add_textbox(slide, Inches(0.3), Inches(6.6), Inches(12.7), Inches(0.35), acronyms, size=9, color=INFO)
     add_textbox(slide, Inches(0.3), Inches(7.0), Inches(7), Inches(0.4), obj, size=10, color=MUTED)
     add_textbox(slide, Inches(11.0), Inches(7.0), Inches(2), Inches(0.4), f"Slide {num} / {total}", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
 
@@ -75,12 +77,14 @@ def add_header(slide, code="ETHAGT03"):
     add_textbox(slide, Inches(0.3), Inches(0.02), Inches(3), Inches(0.3), "Universidade Etho", size=11, color=WHITE, bold=True)
     add_textbox(slide, Inches(10.5), Inches(0.02), Inches(2.5), Inches(0.3), code, size=11, color=WHITE, bold=True, align=PP_ALIGN.RIGHT)
 
-def title_slide(title, subtitle, code):
+def title_slide(title, subtitle, code, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_textbox(s, Inches(1), Inches(2.5), Inches(11), Inches(1.2), title, size=40, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(3.8), Inches(11), Inches(0.8), subtitle, size=20, color=MUTED, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(5.5), Inches(11), Inches(0.5), code, size=14, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
+    if acronyms:
+        add_textbox(s, Inches(1), Inches(6.5), Inches(11), Inches(0.4), acronyms, size=11, color=MUTED, align=PP_ALIGN.CENTER)
     return s
 
 def section_slide(num, title):
@@ -90,7 +94,7 @@ def section_slide(num, title):
     add_textbox(s, Inches(3.5), Inches(3.0), Inches(9), Inches(1.5), title, size=32, color=WHITE, bold=True)
     return s
 
-def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
+def content_slide(title, bullets, notes, num, total, obj="", subtitle=None, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -98,11 +102,11 @@ def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
     if subtitle:
         add_textbox(s, Inches(0.5), Inches(1.1), Inches(12), Inches(0.5), subtitle, size=18, color=MUTED)
     add_bullets(s, Inches(0.7), Inches(1.8 if subtitle else 1.5), Inches(12), Inches(5), bullets, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def code_slide(title, code, notes, num, total, obj=""):
+def code_slide(title, code, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_header(s)
@@ -115,11 +119,11 @@ def code_slide(title, code, notes, num, total, obj=""):
     p.font.size = Pt(13)
     p.font.color.rgb = RGBColor(0xA9, 0xDC, 0xFC)
     p.font.name = "Consolas"
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
+def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -128,11 +132,11 @@ def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
     add_bullets(s, Inches(0.7), Inches(2.2), Inches(5.5), Inches(4.5), li, size=15)
     add_textbox(s, Inches(7), Inches(1.5), Inches(6), Inches(0.5), rt, size=20, color=SUCCESS, bold=True)
     add_bullets(s, Inches(7.2), Inches(2.2), Inches(5.5), Inches(4.5), ri, size=15)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def exercise_slide(title, items, notes, num, total, obj="Exercício"):
+def exercise_slide(title, items, notes, num, total, obj="Exercício", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -143,7 +147,7 @@ def exercise_slide(title, items, notes, num, total, obj="Exercício"):
     box.line.color.rgb = WARNING
     box.line.width = Pt(2)
     add_bullets(s, Inches(1.0), Inches(1.8), Inches(11.5), Inches(4.5), items, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
@@ -180,7 +184,7 @@ s = content_slide("Competências Desenvolvidas", [
     "C1 consolida Intermediário: projetar workflow que melhor se ajusta ao problema",
     "C2 começa: orchestrator-workers é proto-multi-agente",
     "C5 na prática: avaliar classificadores e convergência de loops",
-], "📖 C1 consolida Intermediário. C2 começa (orchestrator-workers é proto-multi-agente). C5 na prática (avaliar classificadores e loops).\n💡 Analogia: ETHAGT01 foi sair do estacionamento. Hoje dirige na cidade com trânsito.\n⚠️ 'Básico' não significa 'superficial' — significa fundação.\n➡️ Agenda.", 3, T, "Conectar ao Framework Etho")
+], "📖 C1 consolida Intermediário. C2 começa (orchestrator-workers é proto-multi-agente). C5 na prática (avaliar classificadores e loops).\n💡 Analogia: ETHAGT01 foi sair do estacionamento. Hoje dirige na cidade com trânsito.\n⚠️ 'Básico' não significa 'superficial' — significa fundação.\n➡️ Agenda.", 3, T, "Conectar ao Framework Etho", acronyms="AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo")
 
 s = content_slide("Agenda da Aula", [
     "Bloco 1 (45 min):",
@@ -232,7 +236,7 @@ s = content_slide("O Princípio de Anthropic: Comece Simples", [
     "  Nível 4: Multi-agente",
     "",
     "Regra: só suba um nível com EVIDÊNCIA de que o anterior é insuficiente",
-], "📖 Hierarquia de complexidade. Base (Nível 0) resolve 90%. Só escale com evidência (métricas, testes, custos).\n💡 Analogia: escada de atendimento médico. Auto-cuidado → clínico → especialista → hospital → UTI. Não manda tudo para UTI.\n❓ 'Em que nível está o sistema de vocês?' (maioria em 0-1 achando que está em 3)\n⚠️ Pular para Nível 3 sem tentar Nível 1 é 'resume-driven development'.\n➡️ Recap da distinção central.", 7, T, "Hierarquia de complexidade")
+], "📖 Hierarquia de complexidade. Base (Nível 0) resolve 90%. Só escale com evidência (métricas, testes, custos).\n💡 Analogia: escada de atendimento médico. Auto-cuidado → clínico → especialista → hospital → UTI. Não manda tudo para UTI.\n❓ 'Em que nível está o sistema de vocês?' (maioria em 0-1 achando que está em 3)\n⚠️ Pular para Nível 3 sem tentar Nível 1 é 'resume-driven development'.\n➡️ Recap da distinção central.", 7, T, "Hierarquia de complexidade", acronyms="LLM = Large Language Model — Modelo de Linguagem de Grande Escala")
 
 s = content_slide("Workflows vs Agentes (Recap)", [
     "Workflows: LLMs e tools orquestrados via CÓDIGO PREDEFINIDO",
@@ -498,7 +502,7 @@ s = content_slide("Guardrails em Paralelo", [
     "",
     "Exemplo: resposta de suporte + verificação de PII em paralelo",
     "         + moderação de toxicidade em paralelo",
-], "📖 Guardrails em paralelo: modelo principal gera, segundo modelo avalia segurança. Se problema, bloqueia/regenera. Latência zero (paralelo). Custo 2× mas segurança crítica.\n💡 Analogia: segurança em evento. Garçom serve (modelo principal), segurança observa (guardrail). Trabalham em paralelo.\n⚠️ Guardrails em série adiciona latência. Paralelo é o ponto.\n➡️ Outra aplicação: LLM-as-judge.", 27, T, "Guardrails paralelos")
+], "📖 Guardrails em paralelo: modelo principal gera, segundo modelo avalia segurança. Se problema, bloqueia/regenera. Latência zero (paralelo). Custo 2× mas segurança crítica.\n💡 Analogia: segurança em evento. Garçom serve (modelo principal), segurança observa (guardrail). Trabalham em paralelo.\n⚠️ Guardrails em série adiciona latência. Paralelo é o ponto.\n➡️ Outra aplicação: LLM-as-judge.", 27, T, "Guardrails paralelos", acronyms="PII = Personally Identifiable Information — dados pessoais identificaveis")
 
 s = content_slide("LLM-as-Judge em Paralelo", [
     "N julgamentos paralelos de uma saída",
@@ -510,7 +514,7 @@ s = content_slide("LLM-as-Judge em Paralelo", [
     "CUIDADO: viés do juiz é sistemático",
     "  → votação NÃO resolve viés, só variância",
     "  → para viés, calibre com rubric estruturada",
-], "📖 LLM-as-judge: LLM avalia saída de outro LLM. Em paralelo, N juízes + agregação reduz variância. Mas viés é sistemático — voting reforça. Para viés, calibre o juiz (rubric).\n💡 Analogia: painel de jurados. Vários reduzem variância da nota. Mas mesmo viés = média não corrige.\n⚠️ N juízes idênticos (mesmo modelo, mesmo prompt) não reduz variância. Precisa variação.\n➡️ Armadilhas do parallelization.", 28, T, "LLM-as-judge paralelo")
+], "📖 LLM-as-judge: LLM avalia saída de outro LLM. Em paralelo, N juízes + agregação reduz variância. Mas viés é sistemático — voting reforça. Para viés, calibre o juiz (rubric).\n💡 Analogia: painel de jurados. Vários reduzem variância da nota. Mas mesmo viés = média não corrige.\n⚠️ N juízes idênticos (mesmo modelo, mesmo prompt) não reduz variância. Precisa variação.\n➡️ Armadilhas do parallelization.", 28, T, "LLM-as-judge paralelo", acronyms="LLM-as-Judge = uso de um LLM como avaliador automatico de saidas de outro LLM")
 
 s = content_slide("Erros Comuns em Parallelization", [
     "1. Dependência oculta: 'independentes' que não são",
@@ -632,7 +636,7 @@ s = content_slide("Implementação: Decomposição + Workers + Reducer", [
     "  • LLMCompiler (arXiv:2310.01757) — paralelização estruturada",
     "",
     "Diagrama: 12-Diagrams/ETHAGT03/orchestrator-workers.mmd",
-], "📖 3 componentes: decompositor (LLM planeja), workers (pool executa), reducer (LLM agrega). Estado passa entre componentes. Plan-and-Solve: separar melhora. ReWOO: plano sem reagir permite paralelismo total. LLMCompiler: formaliza fan-out.\n💡 Analogia: empresa de consultoria. Sócio sênior (decompositor) divide. Consultores (workers) executam. Sócio (reducer) integra.\n⚠️ Sem estado persistente, reducer não acessa resultados dos workers.\n➡️ Casos de uso.", 36, T, "Arquitetura orchestrator-workers")
+], "📖 3 componentes: decompositor (LLM planeja), workers (pool executa), reducer (LLM agrega). Estado passa entre componentes. Plan-and-Solve: separar melhora. ReWOO: plano sem reagir permite paralelismo total. LLMCompiler: formaliza fan-out.\n💡 Analogia: empresa de consultoria. Sócio sênior (decompositor) divide. Consultores (workers) executam. Sócio (reducer) integra.\n⚠️ Sem estado persistente, reducer não acessa resultados dos workers.\n➡️ Casos de uso.", 36, T, "Arquitetura orchestrator-workers", acronyms="ReWOO = Reasoning WithOut Observation — raciocinio sem observacao intermediaria")
 
 s = content_slide("Casos de Uso", [
     "1. Coding em múltiplos arquivos",
@@ -701,7 +705,7 @@ s = content_slide("O Loop: Gerar → Avaliar → Refinar", [
     "  Evaluator = gerar-avaliar-refinar (critério interno)",
     "",
     "Diagrama: 12-Diagrams/ETHAGT03/evaluator-optimizer.mmd",
-], "📖 Loop: generator → evaluator → optimizer. Evaluator avalia contra critério. Se abaixo, optimizer refina com feedback. Repete até parar. Diferença de ReAct: aqui é contra critério interno, não ambiente externo.\n💡 Analogia: escritor com editor. Escreve, editor avalia contra critérios, revisa com feedback. Repete até aprovar.\n⚠️ Confundir com ReAct é comum. ReAct age no ambiente; evaluator avalia contra critério.\n➡️ Quando vale?", 41, T, "Estrutura do loop")
+], "📖 Loop: generator → evaluator → optimizer. Evaluator avalia contra critério. Se abaixo, optimizer refina com feedback. Repete até parar. Diferença de ReAct: aqui é contra critério interno, não ambiente externo.\n💡 Analogia: escritor com editor. Escreve, editor avalia contra critérios, revisa com feedback. Repete até aprovar.\n⚠️ Confundir com ReAct é comum. ReAct age no ambiente; evaluator avalia contra critério.\n➡️ Quando vale?", 41, T, "Estrutura do loop", acronyms="ReAct = Reasoning and Acting — padrao de loop Thought / Action / Observation")
 
 s = content_slide("Quando Tem Valor", [
     "3 condições devem ser VERDADEIRAS:",

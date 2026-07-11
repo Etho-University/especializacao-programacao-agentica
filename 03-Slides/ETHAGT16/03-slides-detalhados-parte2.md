@@ -41,6 +41,8 @@
 **Imagem**: Pipeline estilizado em `etho-primary`
 **Tempo**: 1 min
 
+**Rodape**: HITL = Human-in-the-Loop — Humano no Ciclo
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Toda pesquisa — humana ou de IA — segue um pipeline parecido. Pergunta, literatura, hipótese, experimento, análise, relatório. A diferença em agentes é: ou um agente executa tudo (AI Scientist) ou cada etapa é um agente diferente (multi-agent research lab). O desafio central é coerência: a hipótese precisa casar com a literatura; o experimento precisa testar a hipótese; a análise precisa responder à pergunta. Sem coerência entre etapas, o sistema produz lixo plausível.
 💡 ANALOGIA: É como uma linha de montagem. Cada estação faz uma parte. Mas se a estação 2 não souber o que a estação 1 fez, o produto final não se encaixa.

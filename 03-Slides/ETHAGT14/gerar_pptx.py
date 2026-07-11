@@ -62,7 +62,9 @@ def add_bullets(slide, left, top, width, height, items, size=16, color=DARK):
 def add_notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
-def add_footer(slide, num, total, obj=""):
+def add_footer(slide, num, total, obj="", acronyms=""):
+    if acronyms:
+        add_textbox(slide, Inches(0.3), Inches(6.6), Inches(12.7), Inches(0.35), acronyms, size=9, color=INFO)
     add_textbox(slide, Inches(0.3), Inches(7.0), Inches(7), Inches(0.4), obj, size=10, color=MUTED)
     add_textbox(slide, Inches(11.0), Inches(7.0), Inches(2), Inches(0.4), f"Slide {num} / {total}", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
 
@@ -74,12 +76,14 @@ def add_header(slide, code="ETHAGT14"):
     add_textbox(slide, Inches(0.3), Inches(0.02), Inches(3), Inches(0.3), "Universidade Etho", size=11, color=WHITE, bold=True)
     add_textbox(slide, Inches(10.5), Inches(0.02), Inches(2.5), Inches(0.3), code, size=11, color=WHITE, bold=True, align=PP_ALIGN.RIGHT)
 
-def title_slide(title, subtitle, code):
+def title_slide(title, subtitle, code, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_textbox(s, Inches(1), Inches(2.5), Inches(11), Inches(1.2), title, size=40, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(3.8), Inches(11), Inches(0.8), subtitle, size=20, color=MUTED, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(5.5), Inches(11), Inches(0.5), code, size=14, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
+    if acronyms:
+        add_textbox(s, Inches(1), Inches(6.5), Inches(11), Inches(0.4), acronyms, size=11, color=MUTED, align=PP_ALIGN.CENTER)
     return s
 
 def section_slide(num, title):
@@ -89,7 +93,7 @@ def section_slide(num, title):
     add_textbox(s, Inches(3.5), Inches(3.0), Inches(9), Inches(1.5), title, size=32, color=WHITE, bold=True)
     return s
 
-def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
+def content_slide(title, bullets, notes, num, total, obj="", subtitle=None, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -97,11 +101,11 @@ def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
     if subtitle:
         add_textbox(s, Inches(0.5), Inches(1.1), Inches(12), Inches(0.5), subtitle, size=18, color=MUTED)
     add_bullets(s, Inches(0.7), Inches(1.8 if subtitle else 1.5), Inches(12), Inches(5), bullets, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def code_slide(title, code, notes, num, total, obj=""):
+def code_slide(title, code, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_header(s)
@@ -114,11 +118,11 @@ def code_slide(title, code, notes, num, total, obj=""):
     p.font.size = Pt(13)
     p.font.color.rgb = RGBColor(0xA9, 0xDC, 0xFC)
     p.font.name = "Consolas"
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
+def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -127,11 +131,11 @@ def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
     add_bullets(s, Inches(0.7), Inches(2.2), Inches(5.5), Inches(4.5), li, size=15)
     add_textbox(s, Inches(7), Inches(1.5), Inches(6), Inches(0.5), rt, size=20, color=SUCCESS, bold=True)
     add_bullets(s, Inches(7.2), Inches(2.2), Inches(5.5), Inches(4.5), ri, size=15)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def exercise_slide(title, items, notes, num, total, obj="Exercício"):
+def exercise_slide(title, items, notes, num, total, obj="Exercício", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -142,7 +146,7 @@ def exercise_slide(title, items, notes, num, total, obj="Exercício"):
     box.line.color.rgb = WARNING
     box.line.width = Pt(2)
     add_bullets(s, Inches(1.0), Inches(1.8), Inches(11.5), Inches(4.5), items, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
@@ -164,7 +168,7 @@ s = content_slide("Objetivos do Módulo", [
     "3. Distribuir agentes (sharding, replica, partitioning)",
     "4. Otimizar custo e latência (model routing, batching, speculative)",
     "5. Operar FinOps de agentes (orçamento, observabilidade de custo)",
-], "📖 Objetivos mensuráveis: identificar, aplicar, distribuir, otimizar, operar.\n❓ 'Qual objetivo é mais urgente no trabalho de vocês?' (geralmente caching ou FinOps)\n⚠️ Priorizem caching antes de distribuição (ordem errada: sharding antes de cache).\n➡️ Competências.", 2, T, "Objetivos mensuráveis")
+], "📖 Objetivos mensuráveis: identificar, aplicar, distribuir, otimizar, operar.\n❓ 'Qual objetivo é mais urgente no trabalho de vocês?' (geralmente caching ou FinOps)\n⚠️ Priorizem caching antes de distribuição (ordem errada: sharding antes de cache).\n➡️ Competências.", 2, T, "Objetivos mensuráveis", acronyms="FinOps = Financial Operations — gestao financeira de custo de agentes  ·  LLM = Large Language Model — Modelo de Linguagem de Grande Escala")
 
 s = content_slide("Competências Desenvolvidas", [
     "C1 Programação Agêntica → A (Avançado)",
@@ -175,7 +179,7 @@ s = content_slide("Competências Desenvolvidas", [
     "",
     "Módulo terminal: 4 de 5 competências em Avançado",
     "C4 ganha dimensão distribuída: checkpointer, estado entre réplicas",
-], "📖 Módulo terminal — 4 competências em Avançado. Avançado = arquitetar, defender, operar.\n⚠️ Alunos subestimam C4 aqui. Memória distribuída é o calcanhar de Aquiles da escala.\n➡️ Agenda.", 3, T, "Conectar ao Framework Etho")
+], "📖 Módulo terminal — 4 competências em Avançado. Avançado = arquitetar, defender, operar.\n⚠️ Alunos subestimam C4 aqui. Memória distribuída é o calcanhar de Aquiles da escala.\n➡️ Agenda.", 3, T, "Conectar ao Framework Etho", acronyms="AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo")
 
 s = content_slide("Agenda da Aula", [
     "Bloco 1 (45 min):",
@@ -235,7 +239,7 @@ s = content_slide("Latência de LLM: O Gargalo Dominante", [
     "  Agente 3-step: ~6s",
     "  Agente 5-step: ~15s",
     "  Agente 10-step: ~60s",
-], "📖 LLM é gargalo serial. Cada chamada leva segundos; em loop ReAct, são sequenciais. 1.000 usuários simultâneos sem paralelização = fila cresce.\n💡 Analogia: restaurante com 1 cozinheiro. Adicionar cozinheiro (réplica) ou pré-preparar (caching) reduz espera.\n❓ 'Qual a latência p95 do agente mais crítico de vocês?'\n⚠️ Confundir TTFT com latência total. TTFT é só até o primeiro token.\n➡️ Latência não é o único problema. Custo cresce mais rápido.", 8, T, "LLM domina o tempo total")
+], "📖 LLM é gargalo serial. Cada chamada leva segundos; em loop ReAct, são sequenciais. 1.000 usuários simultâneos sem paralelização = fila cresce.\n💡 Analogia: restaurante com 1 cozinheiro. Adicionar cozinheiro (réplica) ou pré-preparar (caching) reduz espera.\n❓ 'Qual a latência p95 do agente mais crítico de vocês?'\n⚠️ Confundir TTFT com latência total. TTFT é só até o primeiro token.\n➡️ Latência não é o único problema. Custo cresce mais rápido.", 8, T, "LLM domina o tempo total", acronyms="ReAct = Reasoning and Acting — padrao de loop Thought / Action / Observation")
 
 s = content_slide("Custo: Crescimento Quadrático", [
     "Cada step reenvia TODO o histórico anterior",
@@ -249,7 +253,7 @@ s = content_slide("Custo: Crescimento Quadrático", [
     "",
     "KV cache do provider reduz mas não elimina",
     "Implicação: agente profundo = custo explosivo",
-], "📖 O custo oculto que mais surpreende. Em loop ReAct, cada step reenvia histórico. Não é 5 × 1k = 5k — é soma triangular ≈ n²/2.\n💡 Analogia: reunião onde cada participante ouve todo o histórico. Custo de comunicação cresce quadraticamente.\n⚠️ Calcular custo como 'steps × tokens-por-step'. Errado. Use soma triangular.\n➡️ E quando mil usuários fazem isso ao mesmo tempo?", 9, T, "Custo cresce quadraticamente")
+], "📖 O custo oculto que mais surpreende. Em loop ReAct, cada step reenvia histórico. Não é 5 × 1k = 5k — é soma triangular ≈ n²/2.\n💡 Analogia: reunião onde cada participante ouve todo o histórico. Custo de comunicação cresce quadraticamente.\n⚠️ Calcular custo como 'steps × tokens-por-step'. Errado. Use soma triangular.\n➡️ E quando mil usuários fazem isso ao mesmo tempo?", 9, T, "Custo cresce quadraticamente", acronyms="KV = Key-Value — chave-valor")
 
 s = content_slide("Concorrência e Rate Limits", [
     "APIs limitam RPM (requests/min) e TPM (tokens/min)",
@@ -373,7 +377,7 @@ s = code_slide("Cache Semântico: Implementação", (
     "    return response\n"
     "\n"
     "# Custo do embedding ~1000x menor que custo do LLM"
-), "📖 Implementação direta. Embedding é ~1000x mais barato que LLM. Mesmo com hit rate 20%, já vale a pena. TTL obrigatório para evitar cache stale.\n💡 Analogia: sugestão do Google. Calcula embedding da query parcial, busca similares.\n⚠️ Esquecer TTL. Sem TTL, cache acumula queries obsoletas.\n➡️ Threshold é o parâmetro crítico.", 19, T, "Código real")
+), "📖 Implementação direta. Embedding é ~1000x mais barato que LLM. Mesmo com hit rate 20%, já vale a pena. TTL obrigatório para evitar cache stale.\n💡 Analogia: sugestão do Google. Calcula embedding da query parcial, busca similares.\n⚠️ Esquecer TTL. Sem TTL, cache acumula queries obsoletas.\n➡️ Threshold é o parâmetro crítico.", 19, T, "Código real", acronyms="TTL = Time To Live — tempo de validade")
 
 s = content_slide("Threshold de Similaridade", [
     "Threshold alto (0.95): poucos falsos positivos, baixa hit rate",
@@ -396,7 +400,7 @@ s = content_slide("Cache de Embeddings", [
     "",
     "TTL: invalidar quando o modelo de embedding muda",
     "Troca de modelo = vetores incompatíveis = busca retorna lixo",
-], "📖 Embeddings são determinísticos. Re-embeddar documentos em cada query é desperdício. Cachear por hash do texto. Em RAG com milhões de docs, economiza muita computação.\n💡 Analogia: biblioteca que re-cataloga o mesmo livro toda vez. Bobo. Cataloga uma vez.\n⚠️ Trocar modelo de embedding sem invalidar cache. Vetores incompatíveis = lixo.\n➡️ E os resultados de tools?", 21, T, "Evitar re-embedding")
+], "📖 Embeddings são determinísticos. Re-embeddar documentos em cada query é desperdício. Cachear por hash do texto. Em RAG com milhões de docs, economiza muita computação.\n💡 Analogia: biblioteca que re-cataloga o mesmo livro toda vez. Bobo. Cataloga uma vez.\n⚠️ Trocar modelo de embedding sem invalidar cache. Vetores incompatíveis = lixo.\n➡️ E os resultados de tools?", 21, T, "Evitar re-embedding", acronyms="RAG = Retrieval-Augmented Generation — Geracao Aumentada por Recuperacao")
 
 s = content_slide("Cache de Tool Results", [
     "Tools idempotentes (GET, search, lookup) → não mudam frequentemente",

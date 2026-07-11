@@ -24,6 +24,8 @@
 **Imagem**: Fundo `etho-dark` (#0F1E2D) com pattern sutil de traces e spans
 **Tempo**: 1 min
 
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  LLMOps = LLM Operations — praticas de MLOps adaptadas a LLMs
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Bem-vindos. Esta é a aula que separa quem brinca de agentes de quem opera agentes em produção. Até aqui vocês aprenderam a construir. Agora aprendem a saber se está bom, se ficou pior e por quê. AgentOps é a disciplina que dá confiança para iterar.
 💡 ANALOGIA: É como a diferença entre saber dirigir e ter um painel com velocímetro, combustível e temperatura. Sem painel você até dirige — mas não sabe quando vai quebrar.
@@ -50,6 +52,8 @@
 **Animação**: Objetivos aparecem um a um (on click)
 **Imagem**: Ícones minimalistas em `etho-accent` (#E85D2F)
 **Tempo**: 2 min
+
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala  ·  SWE-bench = Software Engineering Benchmark — benchmark de issues reais do GitHub
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Cada objetivo é mensurável. Não é "entender traces" — é "implementar observabilidade". Não é "conhecer benchmarks" — é "aplicar benchmarks". Se ao final vocês não conseguem fazer essas cinco coisas, eu falhei. Vamos revisar no Slide 70.
@@ -159,6 +163,8 @@
 **Imagem**: Ícones por ano
 **Tempo**: 1 min
 
+**Rodape**: ReAct = Reasoning and Acting — padrao de loop Thought / Action / Observation
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: LLMOps tradicional cobre treinar, deployar e monitorar um modelo. AgentOps cobre isso MAIS o comportamento emergente: tools, loops, estado, ambiente. É uma camada a mais. Hamel Husain formalizou o conceito de "evals for LLMs" em 2024 e a partir daí a disciplina se estruturou.
 💡 ANALOGIA: É como a diferença entre monitorar um servidor web (LLMOps) e monitorar um sistema distribuído com microserviços (AgentOps). Mais moving parts, mais coisas que dão errado.
@@ -222,6 +228,8 @@
 **Diagrama**: Agente cercado por fontes externas mutáveis (API, DB, Web, FS)
 **Animação**: Fontes externas piscam
 **Tempo**: 1.5 min
+
+**Rodape**: RAG = Retrieval-Augmented Generation — Geracao Aumentada por Recuperacao
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Em código tradicional, você pode mockar dependências. Em agente, você mocka tools e perde realismo. Esse é o dilema: ou você testa em ambiente real (mas o resultado varia) ou em ambiente mockado (mas não testa o caso real). Solução: ambiente controlado (sandbox) com fixtures conhecidas.
@@ -529,6 +537,8 @@
 **Animação**: Painéis aparecem em grid
 **Tempo**: 1.5 min
 
+**Rodape**: P95 = Percentil 95 — latencia abaixo da qual 95% das requisicoes ficam  ·  P99 = Percentil 99 — latencia abaixo da qual 99% das requisicoes ficam
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Esse é o dashboard mínimo. Se você tem esses 6 painéis, você consegue operar um agente em produção. Success rate diz se está funcionando. Latência P50/P95/P99 diz se está rápido. Custo diz se está sustentável. Tool usage mostra gargalos. Erros agrupados direcionam correção. Distribuição de steps detecta loops. Sem esses, você está cego.
 💡 ANALOGIA: É como o painel do carro. Velocímetro, combustível, temperatura, RPM — cada um diz algo essencial. Sem um deles você pode quebrar sem saber.
@@ -657,6 +667,8 @@
 **Diagrama**: Fundo `etho-primary`
 **Animação**: Número cresce com zoom
 **Tempo**: 0.5 min
+
+**Rodape**: LLM-as-Judge = uso de um LLM como avaliador automatico de saidas de outro LLM
 
 **Notas do Professor**:
 ➡️ TRANSIÇÃO: "Observabilidade é olhar. Avaliação é julgar. Vamos automatizar o julgamento."

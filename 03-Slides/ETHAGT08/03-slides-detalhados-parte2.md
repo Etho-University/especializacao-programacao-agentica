@@ -142,6 +142,8 @@
 **Imagem**: Grid colorido com allow/deny/ask
 **Tempo**: 1.5 min
 
+**Rodape**: ACL = Agent Communication Language — linguagem de comunicacao entre agentes
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Controle de acesso em 3 níveis. Per-server: quais hosts podem conectar (ex.: só homologação e produção autorizados). Per-tool: quais tools são expostas para qual client (allowlist). Per-resource: ACL por URI (ex.: `postgres://users/*` só para client X). Config declarativa com 3 modos: `allow` (permite), `deny` (bloqueia), `ask` (HITL — pede confirmação humana). Exemplo prático: server de DB. `read` para todos os clients, `write` só para dev senior via `ask`.
 💡 ANALOGIA: É como ACL de filesystem. Você tem permissões diferentes por usuário, por arquivo, por ação (read/write/execute).
@@ -472,6 +474,8 @@
 **Animação**: Itens aparecem com checkmarks
 **Imagem**: Lista com checkmarks verdes
 **Tempo**: 2 min
+
+**Rodape**: ACI = Agent-Computer Interface — Interface Agente-Computador
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Checklist de boas práticas. **Descreva tools** como se fosse API pública — ACI do ETHAGT02. **Type hints / JSON Schema** explícito, não confie em inferência só. **Sandbox** todo server de terceiro, sem exceção. **Log estruturado** de toda chamada MCP — timestamp, args, result. **Semver** desde o primeiro release — não espere escalar para versionar. **HITL** para tools destrutivas (delete, write, send). **Pin de versão** — nunca `latest` em produção. **Catálogo + ADR** para todo server de produção.

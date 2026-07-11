@@ -79,6 +79,8 @@
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
 
+**Rodape**: MCP = Model Context Protocol — Protocolo de Contexto de Modelo
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Este módulo atinge nível Avançado em duas competências. C1 — Programação Agêntica — atinge A aqui, o que significa que você consegue projetar sistemas multi-agente complexos e justificar escolhas de topologia. C2 — Multi-Agent Systems — também atinge A, pois este é o módulo central de multi-agente. As outras três ficam em Básico — você conhece o conceito, mas o aprofundamento vem em módulos posteriores (ETHAGT02 para tools, ETHAGT05 para memória, ETHAGT13 para segurança).
 💡 ANALOGIA: É como aprender a reger uma orquestra. Você já toca um instrumento (single agent). Hoje você aprende a conduzir múltiplos instrumentistas (multi-agente). Maestro de orquestra sinfônica (sociedades) vem em ETHAGT16.
@@ -136,6 +138,8 @@
 **Imagem**: Ícone de funil (esquerda) vs fluxo de setas (direita)
 **Tempo**: 2 min
 
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala  ·  PR = Pull Request — requisicao de pull (GitHub)
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: O problema mais comum em produção não é técnico — é de decisão. Times escolhem "supervisor" porque é o exemplo mais visto em tutoriais, não porque é a topologia certa. No cenário de revisão de PR, um supervisor com 3 workers (code, security, docs) funciona, mas: (1) toda revisão passa pelo supervisor (latência cumulativa); (2) se os 3 especialistas são independentes, não há razão para um roteador central; (3) swarm com handoffs seria mais simples. Escolher errado tem custo real: latência, tokens, complexidade de manutenção.
 💡 ANALOGIA: É como um hospital onde todo paciente, não importa o problema, passa pela recepção, depois pelo clínico geral, depois pelo especialista. Se você já sabe que é cardiológico, por que passar pelo clínico? Swarm é a triagem direta; supervisor é o encaminhamento burocrático.
@@ -164,6 +168,8 @@
 **Animação**: Marcos aparecem sequencialmente (on click)
 **Imagem**: Convergência de rios em um lago
 **Tempo**: 1 min
+
+**Rodape**: ReAct = Reasoning and Acting — padrao de loop Thought / Action / Observation
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Multi-agente não é ideia nova — sistemas multi-agente existem desde os anos 90 (Weiss, clássico). Mas três coisas mudaram: (1) LLMs ficaram bons em reasoning e role-playing, permitindo agentes com papéis distintos; (2) frameworks como AutoGen, MetaGPT e LangGraph tornaram a composição viável; (3) o custo baixou o suficiente para múltiplos agentes em loop. MetaGPT (2023) é o marco porque mostrou que SOPs (procedimentos operacionais padrão) podem ser codificados em agentes, replicando a estrutura de uma software house. Hoje a pergunta não é "se" multi-agente, mas "qual topologia usar".
@@ -218,6 +224,8 @@
 **Animação**: Cada topologia aparece com click (grupo de 4)
 **Imagem**: Cada mini-diagrama em cor distinta
 **Tempo**: 3 min
+
+**Rodape**: LATS = Language Agent Tree Search — Busca em Arvore com LLM
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Estas são as 12 topologias que vamos cobrir hoje. Não precisam decorar todas — precisam saber quando usar cada uma. Vamos agrupá-las: centralizadas (supervisor, hierarchical), de fluxo (pipeline, orchestrator-workers), descentralizadas (swarm, mesh, actor), estruturadas (tree, recursive) e reativas/híbridas (event-driven, blackboard, hybrid). Cada uma tem when-to-use e when-to-avoid documentados no catálogo de arquiteturas.
@@ -359,6 +367,8 @@
 **Animação**: Colunas aparecem uma a uma (on click)
 **Imagem**: Ícone de árvore genealógica (tree) vs fractal (recursive)
 **Tempo**: 1.5 min
+
+**Rodape**: MCTS = Monte Carlo Tree Search — Busca em Arvore de Monte Carlo
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Tree of Agents é inspirado em LATS (Language Agent Tree Search, arXiv:2310.01757). Em vez de seguir um caminho, o agente expande múltiplas possibilidades, avalia cada uma, e seleciona o melhor caminho — como um jogador de xadrez que pensa vários movimentos à frente. É poderoso mas caro: o custo explode exponencialmente com a profundidade. Recursive é diferente: não é uma árvore de exploração, é meta-programação. Um meta-agente decide "preciso de um especialista em X", instancia um sub-agente X, delega, e integra o resultado. Sub-agentes podem criar sub-sub-agentes, recursivamente. É adaptativo mas perigoso: sem max_depth, custo e latência explodem.
