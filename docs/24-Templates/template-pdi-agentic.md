@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # Template — PDI Agêntico
 
 > Extensão do **Template de PDI da Universidade Etho** com campos específicos para alunos da Especialização em Programação Agêntica. Use em conjunto com o template oficial (Confluence `UE`).

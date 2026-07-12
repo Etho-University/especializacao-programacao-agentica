@@ -27,7 +27,7 @@ SYNC_FOLDERS = [f"{i:02d}-{name}" for i, name in enumerate([
     "RAG", "Memory", "PromptLibrary", "Tools", "Examples",
     "Research", "Papers", "Glossary", "Exams", "Templates",
     "Checklists", "Capstone", "Certification"
-], 1)]
+], 0)]
 
 # Excluidos de sync (nao existem no topo ou sao apenas docs)
 SKIP_PATTERNS = {".git", "__pycache__", ".cache", "site"}

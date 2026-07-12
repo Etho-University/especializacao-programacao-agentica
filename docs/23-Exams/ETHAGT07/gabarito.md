@@ -1,6 +1,3 @@
----
-password: Etho-Prof-2026
----
 # ETHAGT07 — Gabarito da Prova
 
 > Restrito a mentores. Respostas esperadas e critérios de correção para [`prova.md`](prova.md).

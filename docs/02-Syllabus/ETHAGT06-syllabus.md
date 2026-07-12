@@ -1,11 +1,3 @@
----
-tags:
-  - ETHAGT06
-  - syllabus
-  - rag
-  - retrieval
----
-
 # `ETHAGT06` — RAG Agêntico
 
 > Fase B · Carga 30 h · Versão 1.0 · Julho 2026

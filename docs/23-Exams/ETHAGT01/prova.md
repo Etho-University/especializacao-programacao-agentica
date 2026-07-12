@@ -1,6 +1,3 @@
----
-password: Etho-Prof-2026
----
 # ETHAGT01 — Prova do Módulo: Arquitetura Cognitiva de Agentes LLM
 
 > Universidade Etho · Versão 1.0 · Julho 2026

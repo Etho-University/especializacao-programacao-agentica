@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # 00 — Governança
 
 Documentos fundacionais da Especialização em Programação Agêntica. Esta seção define **por que** a especialização existe, **quais princípios** a regem, **como** ela decide (ADRs) e **para onde** caminha (roadmap).

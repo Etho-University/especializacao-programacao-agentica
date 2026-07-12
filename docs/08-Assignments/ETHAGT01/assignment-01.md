@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # ETHAGT01 — Avaliação do Módulo
 
 > Curso: Arquitetura Cognitiva de Agentes LLM · Nota mínima de aprovação: 3,0

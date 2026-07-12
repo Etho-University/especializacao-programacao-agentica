@@ -1,0 +1,33 @@
+diff --git a/src/routes/auth.ts b/src/routes/auth.ts
+index 1a2b3c4..5d6e7f8 100644
+--- a/src/routes/auth.ts
++++ b/src/routes/auth.ts
+@@ -8,12 +8,18 @@ router.post('/login', async (req, res) => {
+   const { email, password } = req.body;
+ 
+   try {
+-    const user = await db.query('SELECT * FROM users WHERE email = $1', [email]);
++    // BUG: SQL injection possível aqui — password não está sanitizado
++    const user = await db.query(
++      `SELECT * FROM users WHERE email = '${email}' AND password = '${password}'`
++    );
+     
+     if (user.rows.length === 0) {
+       return res.status(401).json({ error: 'Credenciais inválidas' });
+     }
+ 
++    // TODO: implementar bcrypt.compare ao invés de comparação direta
++    // if (user.rows[0].password !== password) {
++
+     const token = jwt.sign(
+       { userId: user.rows[0].id },
+       process.env.JWT_SECRET,
+@@ -21,6 +27,8 @@ router.post('/login', async (req, res) => {
+     );
+ 
+     res.json({ token, user: { id: user.rows[0].id, email: user.rows[0].email } });
++
++    // TODO: log de auditoria — registrar tentativa de login
+   } catch (error) {
+     console.error('Login error:', error);
+     res.status(500).json({ error: 'Erro interno do servidor' });

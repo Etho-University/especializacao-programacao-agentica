@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # ETHAGT03 — Gabarito
 
 > Restrito a mentores. Cada resposta justificada com referência à apostila.

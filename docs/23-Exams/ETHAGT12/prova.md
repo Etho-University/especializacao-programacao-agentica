@@ -1,6 +1,3 @@
----
-password: Etho-Prof-2026
----
 # ETHAGT12 — Prova do Módulo: AgentOps, Observabilidade & Avaliação
 
 > Universidade Etho · Versão 1.0 · Julho 2026

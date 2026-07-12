@@ -1,0 +1,149 @@
+# ETHAGT08 — Lab 1: Meu primeiro MCP server
+# Dataset: Catálogo de cursos da Universidade Etho
+
+[
+  {
+    "code": "ETHAGT01",
+    "title": "Fundamentos de Agentes LLM",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": [],
+    "syllabus": "O que são agentes, loops de raciocínio, ReAct, tool calling, memória, sistemas multi-agente, avaliação e métricas."
+  },
+  {
+    "code": "ETHAGT02",
+    "title": "Tool Calling e Agent-Computer Interface (ACI)",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT01"],
+    "syllabus": "Design de tools, ACI da Anthropic, schemas Pydantic, validação, erros comuns, tool calling destrutivo com HITL."
+  },
+  {
+    "code": "ETHAGT03",
+    "title": "Workflows Agênticos",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT02"],
+    "syllabus": "Prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer. Padrões canônicos da Anthropic."
+  },
+  {
+    "code": "ETHAGT04",
+    "title": "Reasoning e Planning",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT03"],
+    "syllabus": "Chain-of-Thought, Tree-of-Thought, ReAct avançado, Reflexion, plan-and-execute, auto-consistency."
+  },
+  {
+    "code": "ETHAGT05",
+    "title": "Memória de Agentes",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT04"],
+    "syllabus": "Memória episódica, semântica, procedimental. Checkpointers, LangGraph memory, Qdrant, Redis."
+  },
+  {
+    "code": "ETHAGT06",
+    "title": "RAG Agêntico",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT05"],
+    "syllabus": "Naive RAG, agentic RAG, corrective RAG, multi-hop, evaluation com Ragas, chunking, embeddings."
+  },
+  {
+    "code": "ETHAGT07",
+    "title": "Knowledge Graphs e Vector Databases",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT06"],
+    "syllabus": "Neo4j, GraphRAG, vector DB bake-off, embeddings, indexação, Similarity search, hybrid search."
+  },
+  {
+    "code": "ETHAGT08",
+    "title": "MCP — Model Context Protocol",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT02"],
+    "syllabus": "FastMCP, tools, resources, prompts, servers, clients, composição multi-server, segurança."
+  },
+  {
+    "code": "ETHAGT09",
+    "title": "Comunicação Multi-Agente",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT04"],
+    "syllabus": "Group chat, blackboard, broadcast, point-to-point, handoffs, Actor model, padrões de conversação."
+  },
+  {
+    "code": "ETHAGT10",
+    "title": "Topologias Multi-Agente",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT09"],
+    "syllabus": "Hierarchical, swarm, supervisor, flat, ring. LangGraph multi-agent, comparação de topologias."
+  },
+  {
+    "code": "ETHAGT11",
+    "title": "Event-Driven e Orquestração",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT10"],
+    "syllabus": "Kafka, eventos, workflows duráveis, Temporal, desacoplamento, padronização de mensagens."
+  },
+  {
+    "code": "ETHAGT12",
+    "title": "AgentOps e Avaliação",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT06"],
+    "syllabus": "Traces, observabilidade, AgentOps, eval pipelines, golden datasets, métricas de qualidade."
+  },
+  {
+    "code": "ETHAGT13",
+    "title": "Segurança e Governança",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT02"],
+    "syllabus": "Red team, prompt injection, defesa em profundidade, RBAC, auditoria, compliance, governança."
+  },
+  {
+    "code": "ETHAGT14",
+    "title": "Escalabilidade e Sistemas Distribuídos",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT11"],
+    "syllabus": "Cache semântico, sharding por tenant, multi-tenancy, finops, escalabilidade horizontal."
+  },
+  {
+    "code": "ETHAGT15",
+    "title": "Meta-Agentes",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT04", "ETHAGT10"],
+    "syllabus": "Agentes que escrevem agentes, DSPy, otimização de prompts, auto-improvement, meta-programação."
+  },
+  {
+    "code": "ETHAGT16",
+    "title": "Sociedades e Autonomous Research",
+    "area": "agentica",
+    "credits": 4,
+    "hours": 60,
+    "prerequisites": ["ETHAGT10", "ETHAGT15"],
+    "syllabus": "Sociedades de agentes, autonomous research, AI Scientist, emergência, auto-organização."
+  }
+]

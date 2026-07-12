@@ -1,11 +1,3 @@
----
-tags:
-  - ETHAGT08
-  - syllabus
-  - mcp
-  - protocolo
----
-
 # `ETHAGT08` — MCP — Model Context Protocol
 
 > Fase C · Carga 25 h · Versão 1.0 · Julho 2026

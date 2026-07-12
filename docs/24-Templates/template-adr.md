@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # Template — Architecture Decision Record (ADR)
 
 > Use para decisões técnicas ou pedagógicas **custosas de reverter**. Numere sequencialmente (`ADR-NNN`). Não edite ADRs aceitos — crie novo ADR marcando o anterior como *Superseded*.

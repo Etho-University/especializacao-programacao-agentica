@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # Mapa de Rastreabilidade — Competências × Módulos × Avaliações
 
 > Este é o documento que **garante** que toda competência declarada é desenvolvida em ao menos um módulo e medida em ao menos uma avaliação. Sustenta o Pilar Técnico (40%) e habilita o cálculo de progresso de PDI.

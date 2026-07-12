@@ -1,6 +1,3 @@
----
-password: Etho-Prof-2026
----
 # ETHAGT11 — Prova do Módulo: Event-Driven Agents & Workflow Orchestration
 
 > Universidade Etho · Versão 1.0 · Julho 2026

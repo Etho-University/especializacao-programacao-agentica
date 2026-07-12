@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # 25 — Checklists
 
 Listas de verificação para garantir qualidade e consistência. Marque cada item antes de considerar pronto.

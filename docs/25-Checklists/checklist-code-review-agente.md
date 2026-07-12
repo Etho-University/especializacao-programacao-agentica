@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # Checklist — Code Review de Agente
 
 > Use ao revisar código de agentes (em projetos, labs ou pull requests). Complementa o code review tradicional com itens específicos de Agentic AI.

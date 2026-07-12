@@ -1,6 +1,3 @@
----
-password: Etho-Prof-2026
----
 # ETHAGT10 — Prova do Módulo: Padrões de Arquitetura Multi-Agente
 
 > Universidade Etho · Versão 1.0 · Julho 2026

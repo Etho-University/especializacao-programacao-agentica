@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # ETHAGT04 — Avaliação do Módulo
 
 > Curso: Reasoning & Planning (do CoT ao inference-time reasoning) · Nota mínima de aprovação: 3,0

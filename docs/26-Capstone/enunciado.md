@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # ETHAGT90 — Capstone: Enunciado Detalhado
 
 > Especialização em Programação Agêntica · Universidade Etho

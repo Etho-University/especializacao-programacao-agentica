@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # Checklist — Segurança de Agente
 
 > Aplicar **antes** de levar qualquer agente/sistema para avaliação, laboratório de produção, ou entrega a cliente. Baseado em OWASP LLM Top-10, princípios de Anthropic, e boas práticas de `ETHAGT13`.

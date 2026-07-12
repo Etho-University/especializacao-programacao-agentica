@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # Blueprint do Exame de Certificação
 
 > Especialização em Programação Agêntica · Universidade Etho

@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # ETHAGT90 — Rubrica Detalhada
 
 > Nota mínima em **cada pilar**: 4,0. Falhar num pilar reprova o capstone.

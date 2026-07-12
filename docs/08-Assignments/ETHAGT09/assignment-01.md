@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # ETHAGT09 — Avaliação do Módulo
 
 > Curso: Comunicação e Coordenação Multi-Agente (A2A · blackboard · actor model) · Nota mínima de aprovação: 3,0

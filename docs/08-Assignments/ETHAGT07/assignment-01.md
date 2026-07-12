@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # ETHAGT07 — Avaliação do Módulo
 
 > Curso: Knowledge Graphs & Vector Databases para Agentes · Nota mínima de aprovação: 3,0

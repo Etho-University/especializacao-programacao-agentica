@@ -1,6 +1,3 @@
----
-password: Etho-Prof-2026
----
 # ETHAGT10 — Gabarito da Prova
 > Restrito a mentores.
 

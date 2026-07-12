@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # Exame de Certificação — Versão 1 (modelo)
 
 > Especialização em Programação Agêntica · Universidade Etho

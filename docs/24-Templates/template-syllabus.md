@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # Template — Syllabus de Curso `ETHAGT0x`
 
 > Substitua os placeholders `[...]`. Mantenha as seções na ordem. Não deixe campos vazios — use `—` quando não aplicável.

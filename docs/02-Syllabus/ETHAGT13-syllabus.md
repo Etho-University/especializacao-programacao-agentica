@@ -1,11 +1,3 @@
----
-tags:
-  - ETHAGT13
-  - syllabus
-  - seguranca
-  - governanca
----
-
 # `ETHAGT13` — Segurança & Governança de Agentes
 
 > Fase D · Carga 25 h · Versão 1.0 · Julho 2026

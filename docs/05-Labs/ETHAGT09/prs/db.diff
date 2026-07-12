@@ -1,0 +1,39 @@
+diff --git a/src/models/User.ts b/src/models/User.ts
+index 9f8e7d6..2c3a4b1 100644
+--- a/src/models/User.ts
++++ b/src/models/User.ts
+@@ -15,10 +15,16 @@ interface User {
+ }
+ 
+ class UserModel {
+-  async findByEmail(email: string): Promise<User | null> {
+-    // FIXME: precisa de índce no banco para performance
+-    const result = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+-    return result.rows[0] || null;
++  async findByEmail(email: string): Promise<User | null> {
++    const result = await db.query('SELECT * FROM users WHERE email = $1', [email]);
++    return result.rows[0] || null;
++  }
++
++  // NOVA FUNCIONALIDADE: busca por múltiplos IDs
++  // NÃO TESTADO — precisa de testes unitários
++  async findByIds(ids: number[]): Promise<User[]> {
++    const result = await db.query('SELECT * FROM users WHERE id = ANY($1)', [ids]);
++    return result.rows;
+   }
+ 
+   async create(data: CreateUserDTO): Promise<User> {
+@@ -28,10 +34,13 @@ class UserModel {
+       data.email,
+       data.password,
+       data.role || 'user',
++      // ATENÇÃO: default hardcoded — deveria vir do banco
+       new Date(),
+       new Date(),
+     ]);
+     return result.rows[0];
+   }
+ }
++
++// BUG CONHECIDO: soft delete não funciona — registros são deletados fisicamente
+ export default new UserModel();

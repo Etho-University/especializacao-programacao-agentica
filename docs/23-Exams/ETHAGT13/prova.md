@@ -1,6 +1,3 @@
----
-password: Etho-Prof-2026
----
 # ETHAGT13 — Prova do Módulo: Segurança & Governança de Agentes
 
 > Universidade Etho · Versão 1.0 · Julho 2026

@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # ETHAGT90 — Arquitetura de Referência
 
 > Esta é uma **sugestão** de arquitetura. O aluno pode propor alternativa **justificada em ADR**. O importante é atender aos requisitos do [`enunciado.md`](enunciado.md).

@@ -1,6 +1,3 @@
----
-password: Etho-Prof-2026
----
 # ETHAGT04 — Prova do Módulo: Reasoning & Planning
 
 > Universidade Etho · Versão 1.0 · Julho 2026

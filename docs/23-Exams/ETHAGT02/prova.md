@@ -1,6 +1,3 @@
----
-password: Etho-Prof-2026
----
 # ETHAGT02 — Prova do Módulo: Tool Calling e Agent-Computer Interface (ACI)
 
 > Universidade Etho · Versão 1.0 · Julho 2026

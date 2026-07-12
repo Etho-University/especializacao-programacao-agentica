@@ -1,6 +1,3 @@
----
-password: Etho-Prof-2026
----
 # ETHAGT07 — Prova do Módulo: Knowledge Graphs & Vector Databases para Agentes
 
 > Universidade Etho · Versão 1.0 · Julho 2026

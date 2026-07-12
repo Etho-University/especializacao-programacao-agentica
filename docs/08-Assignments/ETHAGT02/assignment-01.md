@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # ETHAGT02 — Avaliação do Módulo
 
 > Curso: Tool Calling e Agent-Computer Interface (ACI) · Nota mínima de aprovação: 3,0

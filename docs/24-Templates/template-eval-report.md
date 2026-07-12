@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # Template — Relatório de Avaliação de Agente (Eval Report)
 
 > Preenchido ao avaliar um agente/sistema (lab, projeto, capstone). Artefato central do módulo `ETHAGT12` e exigência do Capstone. Estende boas práticas de LangSmith/Phoenix/Langfuse.

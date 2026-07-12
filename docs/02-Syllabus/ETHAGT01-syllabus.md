@@ -1,11 +1,3 @@
----
-tags:
-  - ETHAGT01
-  - syllabus
-  - fundamentos
-  - agentes-llm
----
-
 # `ETHAGT01` — Arquitetura Cognitiva de Agentes LLM
 
 > Especialização em Programação Agêntica · Universidade Etho

@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # Recertificação
 
 > Validade da certificação: **2 anos**. Após esse período, o profissional deve recertificar.

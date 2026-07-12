@@ -1,0 +1,12 @@
+[
+  {"id": "T1", "category": "technical", "text": "App crasha ao fazer login com Google. Erro: 'NullPointerException on AuthActivity line 142'. Acontece apenas no Android 14."},
+  {"id": "T2", "category": "billing", "text": "Fui cobrado duas vezes este mês. Meu cartão foi debitado R$ 89,90 em 01/07 e novamente em 15/07. Preciso de reembolso da segunda cobrança."},
+  {"id": "T3", "category": "feature", "text": "Gostaria de exportar relatórios em PDF. Atualmente só consigo exportar em CSV, mas meu gestor precisa de PDF para reuniões."},
+  {"id": "T4", "category": "bug", "text": "Quando faço upload de arquivo .xlsx com mais de 10MB, o sistema trava sem mensagem de erro. O upload simplesmente para em 50%."},
+  {"id": "T5", "category": "technical", "text": "Não consigo acessar o painel pelo Safari. A tela fica em branco. No Chrome funciona normalmente. Já tentei limpar cache."},
+  {"id": "T6", "category": "billing", "text": "Quero cancelar minha assinatura e receber o reembolso proporcional dos dias não utilizados. Meu plano é anual, assinado em março."},
+  {"id": "T7", "category": "bug", "text": "O botão de 'Salvar' na tela de configurações não responde. Clico e nada acontece. Já testei em 3 navegadores diferentes."},
+  {"id": "T8", "category": "feature", "text": "Seria possível adicionar autenticação por biometria (face/fingerprint)? Muitos usuários reclamam que esquecem a senha."},
+  {"id": "T9", "category": "technical", "text": "Preciso integrar o sistema com o SAP via API. Vocês documentam a API? Qual o endpoint de autenticação?"},
+  {"id": "T10", "category": "bug", "text": "Notificações por email estão indo para spam. Já configurei o SPF e DKIM. O problema começou após a migração de servidor na semana passada."}
+]

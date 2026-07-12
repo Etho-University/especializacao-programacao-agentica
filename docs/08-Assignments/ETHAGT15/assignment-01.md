@@ -1,6 +1,3 @@
-﻿---
-password: Etho-Prof-2026
----
 # ETHAGT15 — Avaliação do Módulo
 
 > Curso: Meta-Agentes & Sistemas Autoaprendentes (agents that build agents) · Nota mínima de aprovação: 3,0
