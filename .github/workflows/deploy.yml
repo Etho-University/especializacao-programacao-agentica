@@ -23,6 +23,7 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs-material mkdocs-encryptcontent-plugin mkdocs-print-site-plugin mkdocs-rss-plugin cairosvg
+      - run: python sync_docs.py
       - run: mkdocs build
       - uses: actions/upload-pages-artifact@v3
         with:
