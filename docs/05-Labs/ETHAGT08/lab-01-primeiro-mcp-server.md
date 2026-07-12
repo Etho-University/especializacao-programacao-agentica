@@ -7,7 +7,7 @@ Construir um MCP server funcional usando o Python SDK (FastMCP) que expõe tools
 
 ## Preparação
 - Ambiente: Python 3.11+, `pip install mcp`, Claude Desktop (ou VSCode com MCP, ou OpenCode)
-- Dados/recursos: dataset CSV/JSON (ex.: catálogo de cursos da Universidade Etho em `cursos.json`)
+- Dados/recursos: dataset CSV/JSON (ex.: catálogo de cursos da Universidade Etho em [`cursos.json`](https://raw.githubusercontent.com/Etho-University/especializacao-programacao-agentica/main/05-Labs/ETHAGT08/cursos.json))
 - Leitura prévia: Apostila ETHAGT08, Unidade 1 (Por que MCP), Unidade 2 (Capabilities) e Unidade 3 (Servers)
 
 ## Roteiro

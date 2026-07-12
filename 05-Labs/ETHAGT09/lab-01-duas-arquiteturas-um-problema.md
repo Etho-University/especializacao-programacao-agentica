@@ -7,7 +7,7 @@ Resolver a mesma tarefa (análise de um PR de código) usando duas arquiteturas 
 
 ## Preparação
 - Ambiente: Python 3.11+, `pip install openai langgraph`, `.env` com API key
-- Dados/recursos: 3 diffs de PR em `prs/` (fornecidos), com questões conhecidas
+- Dados/recursos: 3 diffs de PR em [`prs/`](https://github.com/Etho-University/especializacao-programacao-agentica/tree/main/05-Labs/ETHAGT09/prs) (fornecidos), com questões conhecidas
 - Leitura prévia: Apostila ETHAGT09, Unidade 2 (Padrões de conversação) e Unidade 3 (Blackboard)
 
 ## Roteiro

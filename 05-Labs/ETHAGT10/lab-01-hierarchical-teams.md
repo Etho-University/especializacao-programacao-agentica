@@ -7,7 +7,7 @@ Implementar uma topologia hierarchical com um supervisor no topo, 2 workers espe
 
 ## Preparação
 - Ambiente: Python 3.11+, `pip install langgraph openai`, `.env` com API key
-- Dados/recursos: tarefas de análise de código (3 snippets em `tasks/`)
+- Dados/recursos: tarefas de análise de código (3 snippets em [`tasks/`](https://github.com/Etho-University/especializacao-programacao-agentica/tree/main/05-Labs/ETHAGT10/tasks))
 - Leitura prévia: Apostila ETHAGT10, Unidade 2 (Supervisor e Hierarchical)
 
 ## Roteiro

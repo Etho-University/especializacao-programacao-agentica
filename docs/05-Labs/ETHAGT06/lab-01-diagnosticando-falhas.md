@@ -7,7 +7,7 @@ Rodar um pipeline de RAG "ingênuo" (naive RAG) sobre um corpus intencionalmente
 
 ## Preparação
 - Ambiente: Python 3.11+, `pip install openai chromadb ragas`, `.env` com API key
-- Dados/recursos: corpus problemático (fornecido em `corpus/`): documentos com chunks mal-delimitados, tabelas em texto, conteúdo multilingual, PDFs mal-parsed
+- Dados/recursos: corpus problemático (fornecido em [`corpus/`](https://raw.githubusercontent.com/Etho-University/especializacao-programacao-agentica/main/05-Labs/ETHAGT06/corpus/doc1.md)): documentos com chunks mal-delimitados, tabelas em texto, conteúdo multilingual, PDFs mal-parsed
 - Leitura prévia: Apostila ETHAGT06, Unidade 1 (Por que o RAG ingênuo falha)
 
 ## Roteiro

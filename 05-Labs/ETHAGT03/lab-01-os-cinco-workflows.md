@@ -7,7 +7,7 @@ Implementar versões mínimas (mas funcionais) dos 5 padrões de workflow canôn
 
 ## Preparação
 - Ambiente: Python 3.11+, `pip install openai`, `.env` com API key
-- Dados/recursos: `tickets.json` com 10 tickets de suporte pré-rotulados
+- Dados/recursos: [`tickets.json`](https://raw.githubusercontent.com/Etho-University/especializacao-programacao-agentica/main/05-Labs/ETHAGT03/tickets.json) com 10 tickets de suporte pré-rotulados
 - Leitura prévia: Apostila ETHAGT03, Unidades 2-6 (um workflow por unidade)
 
 ## Roteiro
