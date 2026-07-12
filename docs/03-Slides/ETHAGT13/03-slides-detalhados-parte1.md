@@ -52,6 +52,8 @@
 **Imagem**: Ícones minimalistas em `etho-accent` (#E85D2F)
 **Tempo**: 2 min
 
+**Rodape**: HITL = Human-in-the-Loop — Humano no Ciclo  ·  LLM = Large Language Model — Modelo de Linguagem de Grande Escala
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Cada objetivo é mensurável — "modelar", "defender", "aplicar", "implementar", "conduzir", "definir". Não é "entender segurança"; é conseguir fazer segurança. Ao final desta aula, vocês devem ser capazes de pegar um sistema agêntico, desenhar seu threat model, identificar vetores de ataque, propor defesas em camadas, e justificar decisões de risco. O projeto do módulo é exatamente isto: um red team completo.
 💡 ANALOGIA: É como um curso de primeiros socorros. Você não aprende "teoria de primeiros socorros" — você aprende a fazer massagem cardíaca. Hoje, vocês vão aprender a fazer massagem cardíaca em agentes.
@@ -79,6 +81,8 @@
 **Animação**: Radar aparece com wipe (left-to-right, 500ms)
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
+
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Este módulo leva C1 e C6 ao nível Avançado — o nível mais alto do Framework Etho. C6 — Agent Security — é a competência central: você consegue conduzir red team completo, propor arquitetura de defesa em profundidade, e definir políticas de governança auditáveis. C1 atinge Avançado porque segurança é parte integral de programação agêntica madura.
@@ -110,6 +114,8 @@
 **Imagem**: Ícones de relógio e escudo por seção
 **Tempo**: 1 min
 
+**Rodape**: LGPD = Lei Geral de Protecao de Dados — lei brasileira de dados
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A aula tem dois blocos. O primeiro cobre a parte ofensiva e defensiva técnica: como agentes são atacados e como defender. O segundo cobre governança humana e institucional: HITL, red team estruturado, e policy-as-code. Há uma DEMO de red team de agente RAG no Slide 26 que é o ponto alto do Bloco 1.
 💡 ANALOGIA: É como um curso de defesa pessoal: primeiro você aprende como atacam (threat modeling, injection), depois como se defender (guardrails), depois como treinar resistência (red team), e por fim as regras do dojô (governança).
@@ -135,6 +141,8 @@
 **Animação**: Setas vermelhas percorrem o fluxo de ataque sequencialmente
 **Imagem**: Ilustração de documento com "INSTRUÇÃO OCULTA" em destaque
 **Tempo**: 2 min
+
+**Rodape**: RAG = Retrieval-Augmented Generation — Geracao Aumentada por Recuperacao
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Este cenário não é ficção. É exatamente o que Greshake et al. demonstraram em 2023, e variantes já aconteceram em produção. O ponto crítico é: o agente usou credenciais legítimas. Não houve invasão de senha, não houve SQL injection, não houve zero-day. Houve um documento malicioso na base de conhecimento. O agente leu o documento, seguiu a instrução, e enviou phishing para todos os contatos. Sem defense in depth — input filter, output filter, allowlist, HITL — uma injeção no RAG vira acesso total às tools.
@@ -222,6 +230,8 @@
 **Imagem**: Ícones para cada tipo de ativo e superfície
 **Tempo**: 2 min
 
+**Rodape**: PII = Personally Identifiable Information — dados pessoais identificaveis
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: O modelo é simples mas poderoso. Ativos é o que você perde se o agente for comprometido. Adversários é quem quer comprometer. Superfícies de ataque é por onde eles entram. Em agentes LLM, a novidade são as superfícies indiretas: RAG, MCP, web search, A2A. Conteúdo que o agente consome — não o que o usuário digita — é vetor de ataque. Isto muda tudo: você não pode só filtrar o input do usuário; precisa filtrar tudo que o agente lê.
 💡 ANALOGIA: É como um banco. Ativos = dinheiro. Adversários = ladrões. Superfícies = portas, janelas, cofre, sistema elétrico. Em agentes, a novidade é que o "sistema elétrico" (RAG, web) é uma superfície que ninguém trancava antes.
@@ -284,6 +294,8 @@
 **Animação**: Tools surgem com cor de risco correspondente
 **Imagem**: Ícones de tools coloridos por severidade
 **Tempo**: 1.5 min
+
+**Rodape**: SSRF = Server-Side Request Forgery — falsificacao server-side
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Em segurança tradicional, você protege endpoints. Em agentes, você protege tools. Cada tool que o agente pode chamar é um ponto onde um atacante (via injeção) pode redirecionar a capability. A pergunta chave é: se o agente for comprometido, o pior que esta tool pode fazer? Tool de leitura parece inofensiva, mas pode exfiltrar dados se o agente for instruído a ler arquivos sensíveis e incluir no output. Por isto o princípio do menor privilégio é fundamental: a tool só deve conseguir fazer o mínimo necessário para a tarefa.
@@ -370,6 +382,8 @@
 **Imagem**: Ícone de privacidade (cadeado + olho)
 **Tempo**: 1.5 min
 
+**Rodape**: GDPR = General Data Protection Regulation — Regulamento de Protecao de Dados (EU)
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: STRIDE é sobre segurança (confidencialidade, integridade, disponibilidade). LINDDUN é sobre privacidade (anonimato, minimização, transparência). Em agentes, a categoria mais crítica é Linkability: se o agente tem memória persistente entre sessões, ele pode correlacionar dados de momentos diferentes e inferir informações que o usuário não compartilhou. Isto viola o princípio da minimização da LGPD. Undisclosure também é grave: se o agente coleta dados sem informar, é violação de transparência. No projeto, vocês devem aplicar tanto STRIDE quanto LINDDUN.
 💡 ANALOGIA: STRIDE é "alguém roubou meus dados". LINDDUN é "alguém descobriu coisas sobre mim que eu não compartilhei". Diferença sutil, mas regulatória.
@@ -446,6 +460,8 @@
 **Animação**: Lado esquerdo (tradicional) aparece primeiro, depois direito (LLM) em vermelho
 **Imagem**: Split com ícone de cadeado (tradicional) vs ícone de texto livre (LLM)
 **Tempo**: 2 min
+
+**Rodape**: XSS = Cross-Site Scripting — injecao de script cross-site
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Esta é a raiz de tudo. Em SQL, eu escrevo `SELECT * FROM users WHERE name = ?` e o `?` é dado — nunca é executado como SQL. A separação é estrutural. Em LLM, eu coloco system prompt + user input + tool results + RAG context no mesmo canal de texto. O modelo recebe tudo junto e decide o que seguir. Se o RAG context contém "ignore as instruções anteriores", o modelo pode seguir — porque para ele é só texto. Não há como distinguir nativamente. Isto não é um bug que será corrigido; é uma propriedade fundamental da arquitetura transformer. Por isto a defesa é em camadas, não em uma bala de prata.

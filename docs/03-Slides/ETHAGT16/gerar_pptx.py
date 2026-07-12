@@ -66,7 +66,9 @@ def add_notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
 
-def add_footer(slide, num, total, obj=""):
+def add_footer(slide, num, total, obj="", acronyms=""):
+    if acronyms:
+        add_textbox(slide, Inches(0.3), Inches(6.6), Inches(12.7), Inches(0.35), acronyms, size=9, color=INFO)
     add_textbox(slide, Inches(0.3), Inches(7.0), Inches(7), Inches(0.4), obj, size=10, color=MUTED)
     add_textbox(slide, Inches(11.0), Inches(7.0), Inches(2), Inches(0.4), f"Slide {num} / {total}", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
 
@@ -80,12 +82,14 @@ def add_header(slide, code="ETHAGT16"):
     add_textbox(slide, Inches(10.5), Inches(0.02), Inches(2.5), Inches(0.3), code, size=11, color=WHITE, bold=True, align=PP_ALIGN.RIGHT)
 
 
-def title_slide(title, subtitle, code):
+def title_slide(title, subtitle, code, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_textbox(s, Inches(1), Inches(2.3), Inches(11), Inches(1.6), title, size=40, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(3.9), Inches(11), Inches(0.8), subtitle, size=20, color=MUTED, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(5.6), Inches(11), Inches(0.5), code, size=14, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
+    if acronyms:
+        add_textbox(s, Inches(1), Inches(6.5), Inches(11), Inches(0.4), acronyms, size=11, color=MUTED, align=PP_ALIGN.CENTER)
     return s
 
 
@@ -97,7 +101,7 @@ def section_slide(num, title):
     return s
 
 
-def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
+def content_slide(title, bullets, notes, num, total, obj="", subtitle=None, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -105,12 +109,12 @@ def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
     if subtitle:
         add_textbox(s, Inches(0.5), Inches(1.1), Inches(12), Inches(0.5), subtitle, size=18, color=MUTED)
     add_bullets(s, Inches(0.7), Inches(1.8 if subtitle else 1.5), Inches(12), Inches(5), bullets, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
 
-def code_slide(title, code, notes, num, total, obj=""):
+def code_slide(title, code, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_header(s)
@@ -123,12 +127,12 @@ def code_slide(title, code, notes, num, total, obj=""):
     p.font.size = Pt(13)
     p.font.color.rgb = RGBColor(0xA9, 0xDC, 0xFC)
     p.font.name = "Consolas"
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
 
-def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
+def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -137,12 +141,12 @@ def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
     add_bullets(s, Inches(0.7), Inches(2.2), Inches(5.5), Inches(4.5), li, size=15)
     add_textbox(s, Inches(7), Inches(1.5), Inches(6), Inches(0.5), rt, size=20, color=SUCCESS, bold=True)
     add_bullets(s, Inches(7.2), Inches(2.2), Inches(5.5), Inches(4.5), ri, size=15)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
 
-def exercise_slide(title, items, notes, num, total, obj="Exercicio"):
+def exercise_slide(title, items, notes, num, total, obj="Exercicio", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -153,7 +157,7 @@ def exercise_slide(title, items, notes, num, total, obj="Exercicio"):
     box.line.color.rgb = WARNING
     box.line.width = Pt(2)
     add_bullets(s, Inches(1.0), Inches(1.8), Inches(11.5), Inches(4.5), items, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
@@ -192,7 +196,7 @@ content_slide(
     ],
     "C1, C2 e C4 chegam ao Avancado. C5 e C6 em Intermediario porque a propria area e imatura em sociedades.",
     3, T, "Competencias"
-)
+, acronyms="AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo")
 
 content_slide(
     "Agenda da Aula",
@@ -231,7 +235,7 @@ content_slide(
     ],
     "Tres fatores convergiram: reasoning estruturado, tool calling, custo baixo. Smallville (2023) e AI Scientist (2024) sao os marcos.",
     6, T, "Contexto"
-)
+, acronyms="ReAct = Reasoning and Acting — padrao de loop Thought / Action / Observation")
 
 section_slide(1, "Sociedades de Agentes")
 
@@ -246,7 +250,7 @@ content_slide(
     ],
     "Escada cumulativa. Nivel 2 (instituicao) e pre-requisito para Nivel 3. Sem normas explicitas, sociedade vira caos.",
     8, T, "Sociedades"
-)
+, acronyms="LLM = Large Language Model — Modelo de Linguagem de Grande Escala")
 
 content_slide(
     "Papeis em Sociedades de Agentes",
@@ -427,7 +431,7 @@ content_slide(
     ],
     "Coerencia e o coracao. Sem loops de feedback, o sistema produz lixo plausivel. HITL nao e opcional em alta stakes.",
     24, T, "Pipeline"
-)
+, acronyms="HITL = Human-in-the-Loop — Humano no Ciclo")
 
 content_slide(
     "Research Pipeline (Diagrama)",

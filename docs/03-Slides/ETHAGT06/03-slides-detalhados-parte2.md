@@ -145,6 +145,8 @@
 **Imagem**: Ícones de ferramentas
 **Tempo**: 1.5 min
 
+**Rodape**: ACI = Agent-Computer Interface — Interface Agente-Computador
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Insight crucial: as tools de busca são tools como qualquer outra. O agente as chama quando decide. A lição de ETHAGT01/ETHAGT02 sobre ACI (Agent-Computer Interface) aplica totalmente: tool bem documentada > prompt melhor. A descrição da tool deve dizer QUANDO usar ("use search_internal para dados proprietários da empresa") e o que retorna (lista de docs com score, não texto bruto).
 💡 ANALOGIA: É como uma caixa de ferramentas. Você tem martelo, chave de fenda, alicate. O agente é o mecânico que escolhe a ferramenta certa. Se as ferramentas forem mal etiquetadas (ACI ruim), o mecânico erra a escolha.
@@ -391,6 +393,8 @@
 **Animação**: Funil estreita de 50 para 5
 **Imagem**: Ícone de funil
 **Tempo**: 1.5 min
+
+**Rodape**: BM25 = Best Matching 25 — algoritmo de ranking para busca textual
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Re-ranking resolve o problema do "top-k traz lixo". A ideia: recupere MUITOS (top-50) com um método rápido e barato (BM25 ou densa), depois re-rankeie os top-50 com um modelo PRECISO (cross-encoder), e fique só com os top-5 para o LLM. O re-ranker avalia relevância real query-doc (não só similaridade vetorial), e é mais caro/lento — por isso aplicado só aos top-50, não a toda a base. Resultado: contexto limpo para o LLM.

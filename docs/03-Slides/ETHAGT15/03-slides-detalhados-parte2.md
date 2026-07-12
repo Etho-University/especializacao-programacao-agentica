@@ -164,6 +164,8 @@
 **Imagem**: Gráfico de success rate caindo após drift
 **Tempo**: 2 min
 
+**Rodape**: TTL = Time To Live — tempo de validade
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Memória é poder e risco. Risco = drift: ambiente muda, memória reflete o antigo. Dois tipos: conceito (política mudou) e dados (distribuição de inputs mudou). Sintomas: success rate cai, erros aumentam. Estratégias: TTL (descartar >30 dias), janela deslizante (manter só N recentes), detecção ativa (monitorar e descartar quando drift detectado). Esquecer é tão importante quanto lembrar.
 💡 ANALOGIA: É como um mapa GPS. Estradas mudam mas mapa é antigo → você se perde. Precisa atualizar.
@@ -732,6 +734,8 @@
 **Animação**: Conexões aparecem
 **Imagem**: Mind map
 **Tempo**: 1 min
+
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: ETHAGT15 conecta com quatro módulos. ETHAGT16 (Sociedades) usa meta-agentes para orquestrar ecossistemas. ETHAGT90 (Capstone) pode usar meta-agente como camada de orquestração. ETHAGT14 (Escalabilidade) aplica otimização de custo. ETHAGT12 (AgentOps) fornece avaliação e observabilidade para meta-agentes.

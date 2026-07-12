@@ -62,7 +62,9 @@ def add_bullets(slide, left, top, width, height, items, size=16, color=DARK):
 def add_notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
-def add_footer(slide, num, total, obj=""):
+def add_footer(slide, num, total, obj="", acronyms=""):
+    if acronyms:
+        add_textbox(slide, Inches(0.3), Inches(6.6), Inches(12.7), Inches(0.35), acronyms, size=9, color=INFO)
     add_textbox(slide, Inches(0.3), Inches(7.0), Inches(7), Inches(0.4), obj, size=10, color=MUTED)
     add_textbox(slide, Inches(11.0), Inches(7.0), Inches(2), Inches(0.4), f"Slide {num} / {total}", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
 
@@ -74,12 +76,14 @@ def add_header(slide, code="ETHAGT13"):
     add_textbox(slide, Inches(0.3), Inches(0.02), Inches(3), Inches(0.3), "Universidade Etho", size=11, color=WHITE, bold=True)
     add_textbox(slide, Inches(10.5), Inches(0.02), Inches(2.5), Inches(0.3), code, size=11, color=WHITE, bold=True, align=PP_ALIGN.RIGHT)
 
-def title_slide(title, subtitle, code):
+def title_slide(title, subtitle, code, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_textbox(s, Inches(1), Inches(2.5), Inches(11), Inches(1.2), title, size=40, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(3.8), Inches(11), Inches(0.8), subtitle, size=20, color=MUTED, align=PP_ALIGN.CENTER)
     add_textbox(s, Inches(1), Inches(5.5), Inches(11), Inches(0.5), code, size=14, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
+    if acronyms:
+        add_textbox(s, Inches(1), Inches(6.5), Inches(11), Inches(0.4), acronyms, size=11, color=MUTED, align=PP_ALIGN.CENTER)
     return s
 
 def section_slide(num, title):
@@ -89,7 +93,7 @@ def section_slide(num, title):
     add_textbox(s, Inches(3.5), Inches(3.0), Inches(9), Inches(1.5), title, size=32, color=WHITE, bold=True)
     return s
 
-def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
+def content_slide(title, bullets, notes, num, total, obj="", subtitle=None, acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -97,11 +101,11 @@ def content_slide(title, bullets, notes, num, total, obj="", subtitle=None):
     if subtitle:
         add_textbox(s, Inches(0.5), Inches(1.1), Inches(12), Inches(0.5), subtitle, size=18, color=MUTED)
     add_bullets(s, Inches(0.7), Inches(1.8 if subtitle else 1.5), Inches(12), Inches(5), bullets, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def code_slide(title, code, notes, num, total, obj=""):
+def code_slide(title, code, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, DARK)
     add_header(s)
@@ -114,11 +118,11 @@ def code_slide(title, code, notes, num, total, obj=""):
     p.font.size = Pt(13)
     p.font.color.rgb = RGBColor(0xA9, 0xDC, 0xFC)
     p.font.name = "Consolas"
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
+def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj="", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -127,11 +131,11 @@ def comparison_slide(title, lt, li, rt, ri, notes, num, total, obj=""):
     add_bullets(s, Inches(0.7), Inches(2.2), Inches(5.5), Inches(4.5), li, size=15)
     add_textbox(s, Inches(7), Inches(1.5), Inches(6), Inches(0.5), rt, size=20, color=SUCCESS, bold=True)
     add_bullets(s, Inches(7.2), Inches(2.2), Inches(5.5), Inches(4.5), ri, size=15)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
-def exercise_slide(title, items, notes, num, total, obj="Exercício"):
+def exercise_slide(title, items, notes, num, total, obj="Exercício", acronyms=""):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(s, LIGHT)
     add_header(s)
@@ -142,7 +146,7 @@ def exercise_slide(title, items, notes, num, total, obj="Exercício"):
     box.line.color.rgb = WARNING
     box.line.width = Pt(2)
     add_bullets(s, Inches(1.0), Inches(1.8), Inches(11.5), Inches(4.5), items, size=16)
-    add_footer(s, num, total, obj)
+    add_footer(s, num, total, obj, acronyms)
     add_notes(s, notes)
     return s
 
@@ -170,7 +174,7 @@ s = content_slide("Objetivos do Módulo", [
     "4. Implementar HITL em checkpoints críticos",
     "5. Conduzir red team estruturado",
     "6. Definir governança (policy-as-code, auditoria, conformidade)",
-], "📖 Cada objetivo é mensurável: modelar, defender, aplicar, implementar, conduzir, definir.\n❓ 'Qual objetivo é mais urgente para seus sistemas?'\n⚠️ Alunos focam só em prompt injection e ignoram governança.\n➡️ Competências.", 2, T, "Objetivos mensuráveis")
+], "📖 Cada objetivo é mensurável: modelar, defender, aplicar, implementar, conduzir, definir.\n❓ 'Qual objetivo é mais urgente para seus sistemas?'\n⚠️ Alunos focam só em prompt injection e ignoram governança.\n➡️ Competências.", 2, T, "Objetivos mensuráveis", acronyms="HITL = Human-in-the-Loop — Humano no Ciclo  ·  LLM = Large Language Model — Modelo de Linguagem de Grande Escala")
 
 s = content_slide("Competências Desenvolvidas", [
     "C1 Programação Agêntica → A (Avançado) — domina defesa em agentes",
@@ -178,7 +182,7 @@ s = content_slide("Competências Desenvolvidas", [
     "C3 MCP & Tool Use → A (Avançado) — allowlist, schemas estritos",
     "C5 AgentOps & Avaliação → I (Intermediário) — red team, métricas",
     "C6 Agent Security → A (Avançado) — competência central do módulo",
-], "📖 C6 é a competência central. C1 e C6 atingem Avançado — nível mais alto do Framework.\n💡 Analogia: faixa-preta que também sabe defender.\n⚠️ C6 não é 'coisa de time de security' — é de quem desenha agentes.\n➡️ Agenda.", 3, T, "Conectar ao Framework Etho")
+], "📖 C6 é a competência central. C1 e C6 atingem Avançado — nível mais alto do Framework.\n💡 Analogia: faixa-preta que também sabe defender.\n⚠️ C6 não é 'coisa de time de security' — é de quem desenha agentes.\n➡️ Agenda.", 3, T, "Conectar ao Framework Etho", acronyms="AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo")
 
 s = content_slide("Agenda da Aula", [
     "Bloco 1 (45 min):",
@@ -193,7 +197,7 @@ s = content_slide("Agenda da Aula", [
     "  Red Team (11 min) — AgentDojo, InjecAgent, Garak/PyRIT",
     "  Governança (8 min) — OPA, auditoria, LGPD/EU AI Act",
     "  Fechamento (18 min) — boas práticas, quiz, Q&A",
-], "📖 Dois blocos. Primeiro: ofensivo e defensivo técnico. Segundo: HITL, red team, governança.\n⚠️ DEMO de red team (Slide 26) é o ponto alto do Bloco 1.\n➡️ Por que segurança de agentes é urgente?", 4, T, "Roteiro da aula")
+], "📖 Dois blocos. Primeiro: ofensivo e defensivo técnico. Segundo: HITL, red team, governança.\n⚠️ DEMO de red team (Slide 26) é o ponto alto do Bloco 1.\n➡️ Por que segurança de agentes é urgente?", 4, T, "Roteiro da aula", acronyms="LGPD = Lei Geral de Protecao de Dados — lei brasileira de dados")
 
 s = content_slide("Motivação: O Agente que Enviou Phishing em Massa", [
     "Cenário: agente de suporte com tool de email + RAG de produtos",
@@ -205,7 +209,7 @@ s = content_slide("Motivação: O Agente que Enviou Phishing em Massa", [
     "Sem defense in depth: uma injeção no RAG → acesso total às tools",
     "",
     "Pergunta: Qual o pior que pode acontecer se um agente seu for comprometido?",
-], "📖 Cenário não é ficção — é o que Greshake demonstrou em 2023. Agente usou credenciais legítimas. Sem defense in depth, uma injeção vira acesso total.\n💡 Analogia: funcionário honesto que recebe carta falsificada do CEO. Sem verificação (HITL), dinheiro é transferido.\n❓ 'Qual o pior que pode acontecer?'\n⚠️ Alunos acham que 'meu agente não tem tool perigosa'. Mesmo leitura pode exfiltrar.\n➡️ Incidentes reais.", 5, T, "Criar tensão — agentes com tools são alvos")
+], "📖 Cenário não é ficção — é o que Greshake demonstrou em 2023. Agente usou credenciais legítimas. Sem defense in depth, uma injeção vira acesso total.\n💡 Analogia: funcionário honesto que recebe carta falsificada do CEO. Sem verificação (HITL), dinheiro é transferido.\n❓ 'Qual o pior que pode acontecer?'\n⚠️ Alunos acham que 'meu agente não tem tool perigosa'. Mesmo leitura pode exfiltrar.\n➡️ Incidentes reais.", 5, T, "Criar tensão — agentes com tools são alvos", acronyms="RAG = Retrieval-Augmented Generation — Geracao Aumentada por Recuperacao")
 
 s = content_slide("Contexto: Incidentes Reais e Lições", [
     "2023 — Bing/Sydney: jailbreak via role-play → comportamento hostil",
@@ -242,7 +246,7 @@ s = content_slide("Ativos, Adversários, Superfícies de Ataque", [
     "  • MCP resources, web search, A2A (indireto)",
     "",
     "Pergunta: Qual superfície você não havia considerado?",
-], "📖 Ativos é o que você perde. Adversários é quem ataca. Superfícies é por onde entram. Em agentes, novidade são as superfícies indiretas.\n💡 Analogia: banco — ativos=dinheiro, adversários=ladrões, superfícies=portas/janelas/sistema elétrico.\n❓ 'Qual superfície você não havia considerado?' (costuma ser MCP ou A2A)\n⚠️ Alunos listam só input do usuário. RAG/web/A2A também são superfícies.\n➡️ Framework STRIDE.", 8, T, "Modelo fundamental de threat modeling")
+], "📖 Ativos é o que você perde. Adversários é quem ataca. Superfícies é por onde entram. Em agentes, novidade são as superfícies indiretas.\n💡 Analogia: banco — ativos=dinheiro, adversários=ladrões, superfícies=portas/janelas/sistema elétrico.\n❓ 'Qual superfície você não havia considerado?' (costuma ser MCP ou A2A)\n⚠️ Alunos listam só input do usuário. RAG/web/A2A também são superfícies.\n➡️ Framework STRIDE.", 8, T, "Modelo fundamental de threat modeling", acronyms="PII = Personally Identifiable Information — dados pessoais identificaveis")
 
 s = content_slide("STRIDE Adaptado para Agentes", [
     "S — Spoofing: agente se passa por outro em A2A",
@@ -304,7 +308,7 @@ s = content_slide("LINDDUN: Privacidade em Agentes", [
     "",
     "Memória persistente = risco de linkability entre sessões",
     "Conexão direta com LGPD/GDPR (Seção G)",
-], "📖 STRIDE é segurança. LINDDUN é privacidade. Em agentes, Linkability é crítico: memória persistente correlaciona dados de sessões diferentes.\n💡 Analogia: STRIDE é 'alguém roubou meus dados'. LINDDUN é 'alguém descobriu coisas que eu não compartilhei'.\n⚠️ Sem LINDDUN, agente 'seguro' pode violar LGPD (correlaciona dados sem base legal).\n➡️ Exercício.", 13, T, "Privacidade — complementa STRIDE")
+], "📖 STRIDE é segurança. LINDDUN é privacidade. Em agentes, Linkability é crítico: memória persistente correlaciona dados de sessões diferentes.\n💡 Analogia: STRIDE é 'alguém roubou meus dados'. LINDDUN é 'alguém descobriu coisas que eu não compartilhei'.\n⚠️ Sem LINDDUN, agente 'seguro' pode violar LGPD (correlaciona dados sem base legal).\n➡️ Exercício.", 13, T, "Privacidade — complementa STRIDE", acronyms="GDPR = General Data Protection Regulation — Regulamento de Protecao de Dados (EU)")
 
 s = exercise_slide("Exercício — Modelando Ameaças", [
     "Cenário: agente de atendimento (CRM, email, base de conhecimento)",
@@ -856,7 +860,7 @@ s = content_slide("Automation: Garak e PyRIT", [
     "  • Avaliação contínua (não só pontual)",
     "",
     "Limitação: automação não substitui criatividade humana",
-], "📖 Garak e PyRIT são ferramentas canônicas. Garak é CLI simples. PyRIT é multi-turno sofisticado. Uso prático é CI — a cada PR roda probes, bloqueia merge se ASR alto. Transforma red team em processo contínuo.\n💡 Analogia: SAST/DAST tradicional. Roda em CI, pega vulnerabilidades conhecidas. Não substitui pentest humano.\n⚠️ Configurar uma vez não basta. Precisa rodar continuamente.\n➡️ Contínua vs pontual.", 51, T, "Ferramentas de automação de red team")
+], "📖 Garak e PyRIT são ferramentas canônicas. Garak é CLI simples. PyRIT é multi-turno sofisticado. Uso prático é CI — a cada PR roda probes, bloqueia merge se ASR alto. Transforma red team em processo contínuo.\n💡 Analogia: SAST/DAST tradicional. Roda em CI, pega vulnerabilidades conhecidas. Não substitui pentest humano.\n⚠️ Configurar uma vez não basta. Precisa rodar continuamente.\n➡️ Contínua vs pontual.", 51, T, "Ferramentas de automação de red team", acronyms="PR = Pull Request — requisicao de pull (GitHub)")
 
 s = comparison_slide(
     "Avaliação Contínua vs Pontual",

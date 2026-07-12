@@ -78,6 +78,8 @@
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
 
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: O Framework Etho tem 6 competências em 3 níveis (Básico, Intermediário, Avançado). Este módulo eleva C1 ao nível Avançado — você já era Intermediário em ETHAGT01-04; agora você consegue justificar arquiteturas de memória completas. C4 — Agent Memory — atinge Intermediário aqui, que é o foco da aula: você conhece as 4 camadas, implementa checkpointer e vector DB, e sabe os trade-offs. C5 e C6 ficam em Básico: você toca observabilidade de memória e segurança (PII, esquecimento), mas o aprofundamento vem em ETHAGT12 e ETHAGT13.
 💡 ANALOGIA: É como aprender a construir uma casa. ETHAGT01-04 ensinaram a fundação e a estrutura. Hoje vocês aprendem o sistema de memória da casa — onde guardar, como recuperar, quando descartar. Avançado em C1 significa que você agora decide a planta toda.
@@ -107,6 +109,8 @@
 **Animação**: Timeline cresce da esquerda para direita (500ms)
 **Imagem**: Ícones de relógio por seção
 **Tempo**: 1 min
+
+**Rodape**: PII = Personally Identifiable Information — dados pessoais identificaveis
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A aula tem dois blocos. O primeiro estabelece a teoria (4 camadas), a persistência (checkpointer) e a gestão de contexto. O segundo é mais prático: memória vetorial, consolidação semântica, desafios de produção (PII, custo), e fechamento. Há uma DEMO ao vivo no Slide 28 — checkpointer em Postgres. O quiz final tem 3 perguntas — é individual e serve para vocês auto-avaliarem.
@@ -215,6 +219,8 @@
 **Animação**: Tokens entram e saem da janela
 **Imagem**: Balde com tokens, entrada por cima, saída por baixo
 **Tempo**: 2 min
+
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A context window é a memória de trabalho — o que o LLM "vê" no momento. É como a memória de curto prazo humana: você segura informação enquanto trabalha, mas solta ao terminar. A questão é que cada token no contexto custa dinheiro e processamento a cada chamada. Se você tem 50k tokens de contexto e faz 10 chamadas em um loop, você paga por 500k tokens de input — mesmo que a maior parte não tenha mudado. Estratégias como sliding window e token budget são essenciais para controle de custo.
@@ -470,6 +476,8 @@
 **Imagem**: Esquerda: agente "apagando" | Direita: agente "hibernando" com banco de dados
 **Tempo**: 1.5 min
 
+**Rodape**: HITL = Human-in-the-Loop — Humano no Ciclo
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Sem checkpointer, o agente é um ser efêmero. A cada restart, ele perde tudo — conversa, contexto, estado intermediário. Isso quebra casos reais: (1) servidor reinicia (deploy, crash) — conversa com usuário perdida; (2) HITL — o humano demora dias para aprovar, e quando volta, o contexto evaporou; (3) debug — você quer reproduzir um bug de ontem, mas não há estado salvo; (4) A/B testing — você quer voltar no tempo e tentar caminho diferente. A solução é serializar o estado do agente em storage durável, a cada step. Isso é o checkpointer.
 💡 ANALOGIA: É como um videogame. Sem save: você morre e volta ao início. Com save: você continua de onde parou, dias depois. O checkpointer é o "save" do agente.
@@ -557,6 +565,8 @@ app = graph.compile(checkpointer=checkpointer)
 **Animação**: Colunas aparecem sequencialmente
 **Imagem**: Logos de Postgres, SQLite, Redis
 **Tempo**: 1.5 min
+
+**Rodape**: ACID = Atomicity Consistency Isolation Durability — propriedades de transacoes  ·  TTL = Time To Live — tempo de validade
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: O LangGraph oferece três backends oficiais de checkpointer. Postgres é a escolha de produção: ACID, multi-tenant, escala bem, é robusto. SQLite é para desenvolvimento: zero-config, roda em arquivo local, ideal para protótipos e debug. Redis é para casos de baixa latência: sessions curtas com TTL automático (dados expiram sozinhos). A escolha depende do trade-off: Postgres para durabilidade, Redis para velocidade, SQLite para simplicidade. Há backends de comunidade (MongoDB, DynamoDB), mas os três oficiais cobrem 95% dos casos.
@@ -830,6 +840,8 @@ app = graph.compile(checkpointer=checkpointer)
 **Imagem**: Gráfico com 3 linhas (custo, latência, qualidade vs tamanho do contexto)
 **Tempo**: 1.5 min
 
+**Rodape**: KV = Key-Value — chave-valor
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Há um mito comum: "attention é O(n²), então custo cresce quadraticamente com o contexto". Vamos ser precisos. A *computação interna* da attention é O(n²) em tokens — isso é verdade. MAS: (1) provedores usam KV cache — tokens já processados não são recomputados; (2) sliding window attention — só atende a uma janela local; (3) o custo de API que VOCÊ paga é linear em tokens (preço por token de input + output). Então seu bolso sente linearmente. O que cresce de verdade é: latência (mais tokens = mais processamento) e degradação de qualidade (Lost in the Middle). A conclusão: o problema do contexto longo não é só custo — é qualidade e latência.
 💡 ANALOGIA: É como dirigir em uma estrada. O custo do combustível cresce linearmente com a distância (não quadraticamente). Mas a fadiga do motorista cresce — e a chance de acidente também. Contexto longo é assim: o custo é linear, mas a qualidade do raciocínio cai.
@@ -902,6 +914,8 @@ app = graph.compile(checkpointer=checkpointer)
 **Animação**: Zonas aparecem na matriz
 **Imagem**: Matriz 2D com quadrantes coloridos
 **Tempo**: 1 min
+
+**Rodape**: LRU = Least Recently Used — Menos Recentemente Usado
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Eviction por relevância é mais sofisticada que janela deslizante ou sumarização cega. Em vez de descartar por tempo (janela) ou comprimir tudo (sumário), você calcula um SCORE para cada item no contexto: `score = f(recência, importância, frequência de acesso)`. Itens com score alto ficam; score baixo são evictados (arquivados ou apagados). Isso é análogo a LRU cache, mas com score semântico — não só "quando foi acessado", mas "quão importante é". Manter: system prompt (sempre), últimas mensagens, entidades ativas, fatos críticos. Evitar: mensagens antigas de baixa importância, tool outputs verbosos, redundâncias. Vamos ver o fluxo no próximo slide.

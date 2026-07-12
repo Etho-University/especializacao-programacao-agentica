@@ -25,6 +25,8 @@
 **Imagem**: Fundo `etho-dark` (#0F1E2D) com pattern de conectores USB-C e nós interligados
 **Tempo**: 1 min
 
+**Rodape**: MCP = Model Context Protocol — Protocolo de Contexto de Modelo
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Bem-vindos. Esta aula é sobre o **Model Context Protocol** — o "USB-C da IA". O MCP é o padrão aberto anunciado pela Anthropic em novembro de 2024 para padronizar a conexão entre LLMs e sistemas. Hoje vamos do porquê até governança e segurança em produção. Se você dominar este módulo, consegue projetar, construir e operar MCP servers em qualquer organização.
 💡 ANALOGIA: É como o USB-C. Antes do USB-C, cada celular tinha um carregador diferente. O MCP é o USB-C dos agentes: um conector padrão para qualquer sistema.
@@ -80,6 +82,8 @@
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
 
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Este módulo atinge nível **Avançado** em duas competências: C1 (Programação Agêntica) e C3 (MCP & Tool Use). C1-A significa que você constrói agentes em produção com justificativa arquitetural completa. C3-A significa que você projeta, construiu e governa servers MCP. C6 (Agent Security) sobe para Intermediário — você consegue ameaçar e mitigar servers; o aprofundamento vem em ETHAGT13.
 💡 ANALOGIA: É como tirar carteira de motorista. C1-B era "carteira provisória". C1-A é "carteira definitiva". Vocês saem prontos para "dirigir sozinhos".
@@ -110,6 +114,8 @@
 **Imagem**: Ícones de relógio por seção + 2 marcadores DEMO
 **Tempo**: 1 min
 
+**Rodape**: SBOM = Software Bill of Materials — lista de componentes de software
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A aula tem dois blocos. O primeiro é a base teórica + a primeira DEMO (construir um server ao vivo). O segundo é o "como operar em produção": clients, governança, segurança. Há um intervalo de 5 min. O quiz final tem 5 perguntas — individual e serve para auto-avaliação.
 💡 ANALOGIA: Bloco 1 = "como funciona o motor". Bloco 2 = "como dirigir com segurança". Os dois juntos = piloto completo.
@@ -133,6 +139,8 @@
 **Animação**: Linhas aparecem uma a uma até virar caos visual
 **Imagem**: Grid N×M com 5×10 = 50 linhas
 **Tempo**: 2 min
+
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Antes do MCP, integrar N LLMs a M sistemas exigia N×M integrações custom. Se você tem 5 LLMs e 10 sistemas, são 50 conectores para escrever e manter. Cada provedor (OpenAI, Anthropic, Google) tinha seu formato. Cada sistema precisava de conector por provedor. É insustentável. O MCP propõe N+M: cada LLM implementa 1 client; cada sistema implementa 1 server. Total = N+M, não N×M.
@@ -162,6 +170,8 @@
 **Animação**: Marcos aparecem sequencialmente (on click)
 **Imagem**: Convergência de rios em um lago
 **Tempo**: 1 min
+
+**Rodape**: SSE = Server-Sent Events — eventos enviados pelo servidor
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: O MCP não surgiu do nada. Ele é a confluência de três coisas: (1) tool calling amadureceu (function calling nativo em 2023); (2) cada provedor inventava seu formato de tools (fragmentação); (3) a Anthropic decidiu abrir o padrão em vez de fechar. O resultado é um protocolo aberto que OpenAI, Google, Block e Replit adotaram. Hoje (2026), é o padrão de facto para integração de LLMs.
@@ -265,6 +275,8 @@
 **Animação**: Mensagens aparecem sequencialmente
 **Imagem**: Diagrama de sequência UML estilizado
 **Tempo**: 2 min
+
+**Rodape**: JSON-RPC = JSON Remote Procedure Call — protocolo de RPC sobre JSON
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Streamable HTTP é elegante. Um endpoint só: `POST /mcp`. Você envia JSON-RPC 2.0 sobre HTTP. A resposta pode vir de duas formas: JSON direto (síncrono, para requests rápidas) ou SSE stream (para notificações e operações longas). O session management usa o header `Mcp-Session-Id`. Suporta resumabilidade — se a conexão cair, você pode retomar o stream via `Last-Event-ID`. A vantagem sobre HTTP+SSE é estrutural: um endpoint, não dois.
@@ -480,6 +492,8 @@
 **Animação**: Setas aparecem na direção inversa (destacando a inversão)
 **Imagem**: Diagrama de sequência com setas invertidas
 **Tempo**: 2 min
+
+**Rodape**: HITL = Human-in-the-Loop — Humano no Ciclo
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Sampling é especial — inverte a direção. Em tools, o host chama o server. Em sampling, o **server** pede ao **host** para gerar texto via LLM. O fluxo: server → client → host → LLM → host → client → server. Por que isso? Pense num server que processa muitos dados locais e precisa sumarizar. Em vez de enviar todos os dados para o LLM (caro, inseguro), o server pede ao host: "gere um resumo deste texto". O host decide se aprova (HITL), chama o LLM, devolve o resultado. **Crítico**: o server nunca tem acesso direto à API key do LLM. Tudo passa pelo host, que controla.

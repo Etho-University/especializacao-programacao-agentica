@@ -79,6 +79,8 @@
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
 
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Este módulo consolida C1 em Intermediário — você consegue não apenas construir um agente, mas projetar a arquitetura de workflow que melhor se ajusta ao problema. C2 (Multi-Agent) começa em Básico porque orchestrator-workers é proto-multi-agente. C3 aparece porque routing e tools especializados são centrais. C5 porque avaliar classificadores e convergência de loops é AgentOps na prática.
 💡 ANALOGIA: É como aprender a dirigir. ETHAGT01 foi sair do estacionamento. Hoje você dirige na cidade com trânsito (Intermediário em C1). Rodovia à noite (Avançado) vem em ETHAGT04.
@@ -184,6 +186,8 @@
 **Animação**: Níveis aparecem de baixo para cima (on click)
 **Imagem**: Pirâmide com 5 faixas coloridas, "90% dos casos" na base
 **Tempo**: 2 min
+
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A Anthropic propõe uma hierarquia de complexidade. A base (Nível 0) — uma chamada LLM com retrieval e examples — resolve 90% dos casos. Sim, 90%. A maioria das aplicações não precisa de workflow nem de agente. Quando isso é insuficiente, você escala para workflow simples (prompt chaining). Depois workflow complexo. Só depois agente. E multi-agente é raro — último recurso. A regra é: só suba um nível quando tem EVIDÊNCIA (métricas, testes, custos) de que o anterior é insuficiente.
@@ -684,6 +688,8 @@ def route(ticket):
 **Animação**: Duas lanes disparam simultaneamente
 **Imagem**: Duas lanes com ícones de resposta e escudo
 **Tempo**: 2 min
+
+**Rodape**: PII = Personally Identifiable Information — dados pessoais identificaveis
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Guardrails em paralelo é um padrão de produção muito útil. Enquanto o modelo principal gera a resposta, um segundo modelo (em paralelo) avalia se a resposta é segura. Se o guardrail sinaliza problema, bloqueia ou regenera. A vantagem é latência: como roda em paralelo, o guardrail não adiciona tempo. O custo é 2× (duas chamadas), mas a segurança é crítica em produção. Exemplo: resposta de suporte + verificação de PII + moderação de toxicidade, tudo em paralelo.

@@ -81,6 +81,8 @@
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 0.5 min
 
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Este módulo leva C1 e C2 ao nível Avançado — vocês vão modelar e justificar sociedades inteiras, não só agentes. C4 — Agent Memory — também chega ao Avançado porque sociedades exigem memory streams (Smallville), reflection e memória distribuída. C5 e C6 ficam em Intermediário: AgentOps e Security em sociedades ainda são áreas em aberto, então o nível é "entendo os desafios e sei onde estão as lacunas".
 💡 ANALOGIA: Vocês estão saindo do estágio de "piloto de um drone" e entrando no de "comandante de uma esquadrilha". A escala muda as competências exigidas.
@@ -159,6 +161,8 @@
 **Imagem**: Timeline estilizada em `etho-primary`
 **Tempo**: 1 min
 
+**Rodape**: ReAct = Reasoning and Acting — padrao de loop Thought / Action / Observation
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Três coisas convergiram: (1) reasoning estruturado (ReAct, Reflexion), (2) tool calling nativo (API), (3) context window grande e barata. Em 2023, Smallville provou que agentes podem habitar um mundo compartilhado e produzir emergência. Em 2024, AI Scientist e AlphaEvolve provaram que agentes podem conduzir pesquisa autônoma. Estamos a 2-3 anos de sociedades realmente autônomas em escala.
 💡 ANALOGIA: É como a transição da web 1.0 para a 2.0. A tecnologia existia antes, mas a confluência (AJAX, banda larga, smartphones) criou algo novo. Em agentes, a confluência é reasoning + tools + cost.
@@ -202,6 +206,8 @@
 **Animação**: Níveis aparecem de baixo para cima
 **Imagem**: 4 níveis em gradiente `etho-primary` → `etho-accent`
 **Tempo**: 1 min
+
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A escada tem 4 níveis. Nível 0 é o que vocês dominam — um agente. Nível 1 é o multi-agent básico (ETHAGT09-10). Nível 2 é a instituição: papéis fixos, normas explícitas — pense em MetaGPT, onde cada agente tem um SOP. Nível 3 é a sociedade: normas emergem, o comportamento coletivo não é programado. Smallville é o caso canônico de Nível 3.

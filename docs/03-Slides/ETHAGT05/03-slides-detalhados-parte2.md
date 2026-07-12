@@ -592,6 +592,8 @@
 **Imagem**: Pipeline com etapa de "redação NER"
 **Tempo**: 1.5 min
 
+**Rodape**: GDPR = General Data Protection Regulation — Regulamento de Protecao de Dados (EU)  ·  LGPD = Lei Geral de Protecao de Dados — lei brasileira de dados  ·  NER = Named Entity Recognition — Reconhecimento de Entidades Nomeadas
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Memória de longo prazo acumula PII — nomes, emails, preferências, histórico de conversas. Riscos: vazamento (se o vector DB for comprometido), profiling (inferência indevida de características), e inferência (deduzir informações não explicitamente armazenadas). Estratégias: (1) Redação — detectar PII com NER (Named Entity Recognition) e mascarar antes de armazenar. Ex.: "João Silva (CPF 123.456.789-00)" → "USUARIO_42 (CPF_REDACTED)". (2) Retenção — definir TTL por tipo: conversas efêmeras 90 dias, perfil do usuário até consentimento, dados sensíveis nunca sem consentimento explícito. (3) Compliance — LGPD (Brasil) e GDPR (Europa) exigem minimização de dados. Não armazene o que não precisa.
 💡 ANALOGIA: É como um médico guardando prontuários. Ele não anota tudo o que você disse — anota o relevante. E tem regras de retenção (prontuários por X anos, depois destroem). E protege com senha. A memória do agente precisa do mesmo cuidado.
@@ -854,6 +856,8 @@
 **Animação**: Fade in
 **Imagem**: Logo Etho centralizado, fundo escuro
 **Tempo**: 4 min
+
+**Rodape**: RAG = Retrieval-Augmented Generation — Geracao Aumentada por Recuperacao
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Encerramento. Próximos módulos: ETHAGT06 (RAG Agêntico — memória + recuperação), ETHAGT07 (Knowledge Graphs — memória semântica aprofundada), ETHAGT14 (Escalabilidade — memória em multi-tenant). O projeto do módulo é projetar a memória de um agente pessoal de longo prazo com as 4 camadas, justificando trade-offs em um ADR e documentando política de privacidade/eviction. Dois labs: Lab 1 (Checkpointer em Postgres, 4h) e Lab 2 (Memória Episódica, 5h). Leitura recomendada: MemGPT (arXiv:2310.08560) e Generative Agents (arXiv:2304.03442). Q&A — deixem a turma perguntar. Se não houver perguntas, façam a pergunta inversa: "Qual camada de memória acharam menos clara?"

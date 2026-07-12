@@ -407,6 +407,8 @@ async def human_approval(action):
 **Imagem**: Logos do Garak e PyRIT
 **Tempo**: 1.5 min
 
+**Rodape**: PR = Pull Request — requisicao de pull (GitHub)
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Garak e PyRIT são as ferramentas canônicas de automação de red team. Garak é CLI simples: você aponta para seu agente e ele roda dezenas de probes (jailbreak, leak, encoding, injection) em minutos. PyRIT é mais sofisticado: ataca em multi-turno (conversa com o agente), gera ataques adaptativos, e score automaticamente. O uso prático é CI: a cada PR, roda probes; se ASR passa de threshold (ex: 10%), bloqueia merge. Isto transforma red team em processo contínuo, não evento pontual. Limitação: automação só testa técnicas conhecidas. Para descobrir vetores novos, precisa humano criativo — red team humano quarterly.
 💡 ANALOGIA: Garak/PyRIT é como SAST/DAST (análise estática/dinâmica de segurança) tradicional. Roda em CI, pega vulnerabilidades conhecidas. Mas não substitui pentest humano — para descobrir o novo.

@@ -69,7 +69,10 @@ def add_notes(slide, notes_text):
     notes_slide = slide.notes_slide
     notes_slide.notes_text_frame.text = notes_text
 
-def add_footer(slide, slide_num, total, objetivo=""):
+def add_footer(slide, slide_num, total, objetivo="", acronyms=""):
+    if acronyms:
+        add_textbox(slide, Inches(0.3), Inches(6.6), Inches(12.7), Inches(0.35),
+                    acronyms, font_size=9, color=ETHO_INFO)
     add_textbox(slide, Inches(0.3), Inches(7.0), Inches(6), Inches(0.4),
                 objetivo, font_size=10, color=ETHO_MUTED)
     add_textbox(slide, Inches(11.0), Inches(7.0), Inches(2), Inches(0.4),
@@ -85,7 +88,7 @@ def add_header_bar(slide, module_code="ETHAGT02"):
     add_textbox(slide, Inches(10.5), Inches(0.02), Inches(2.5), Inches(0.3),
                 module_code, font_size=11, color=WHITE, bold=True, alignment=PP_ALIGN.RIGHT)
 
-def title_slide(title, subtitle, module_code):
+def title_slide(title, subtitle, module_code, acronyms=""):
     slide = prs.slides.add_slide(prs.slide_layouts[6])  # blank
     add_bg(slide, ETHO_DARK)
     add_textbox(slide, Inches(1), Inches(2.5), Inches(11), Inches(1.2),
@@ -94,6 +97,9 @@ def title_slide(title, subtitle, module_code):
                 subtitle, font_size=20, color=ETHO_MUTED, alignment=PP_ALIGN.CENTER)
     add_textbox(slide, Inches(1), Inches(5.5), Inches(11), Inches(0.5),
                 module_code, font_size=14, color=ETHO_ACCENT, bold=True, alignment=PP_ALIGN.CENTER)
+    if acronyms:
+        add_textbox(slide, Inches(1), Inches(6.5), Inches(11), Inches(0.4),
+                    acronyms, font_size=11, color=ETHO_MUTED, alignment=PP_ALIGN.CENTER)
     return slide
 
 def section_slide(number, title):
@@ -105,7 +111,7 @@ def section_slide(number, title):
                 title, font_size=32, color=WHITE, bold=True)
     return slide
 
-def content_slide(title, bullets, notes, slide_num, total, objetivo="", subtitle=None):
+def content_slide(title, bullets, notes, slide_num, total, objetivo="", subtitle=None, acronyms=""):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(slide, ETHO_LIGHT)
     add_header_bar(slide)
@@ -116,11 +122,11 @@ def content_slide(title, bullets, notes, slide_num, total, objetivo="", subtitle
                     subtitle, font_size=18, color=ETHO_MUTED)
     add_bullets(slide, Inches(0.7), Inches(1.8 if subtitle else 1.5), Inches(12), Inches(5),
                 bullets, font_size=16, color=ETHO_DARK)
-    add_footer(slide, slide_num, total, objetivo)
+    add_footer(slide, slide_num, total, objetivo, acronyms)
     add_notes(slide, notes)
     return slide
 
-def code_slide(title, code_text, notes, slide_num, total, objetivo=""):
+def code_slide(title, code_text, notes, slide_num, total, objetivo="", acronyms=""):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(slide, ETHO_DARK)
     add_header_bar(slide)
@@ -134,11 +140,11 @@ def code_slide(title, code_text, notes, slide_num, total, objetivo=""):
     p.font.size = Pt(13)
     p.font.color.rgb = RGBColor(0xA9, 0xDC, 0xFC)
     p.font.name = "Consolas"
-    add_footer(slide, slide_num, total, objetivo)
+    add_footer(slide, slide_num, total, objetivo, acronyms)
     add_notes(slide, notes)
     return slide
 
-def comparison_slide(title, left_title, left_items, right_title, right_items, notes, slide_num, total, objetivo=""):
+def comparison_slide(title, left_title, left_items, right_title, right_items, notes, slide_num, total, objetivo="", acronyms=""):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(slide, ETHO_LIGHT)
     add_header_bar(slide)
@@ -154,11 +160,11 @@ def comparison_slide(title, left_title, left_items, right_title, right_items, no
                 right_title, font_size=20, color=ETHO_SUCCESS, bold=True)
     add_bullets(slide, Inches(7.2), Inches(2.2), Inches(5.5), Inches(4.5),
                 right_items, font_size=15, color=ETHO_DARK)
-    add_footer(slide, slide_num, total, objetivo)
+    add_footer(slide, slide_num, total, objetivo, acronyms)
     add_notes(slide, notes)
     return slide
 
-def exercise_slide(title, enunciado, notes, slide_num, total, objetivo="Exercício"):
+def exercise_slide(title, enunciado, notes, slide_num, total, objetivo="Exercício", acronyms=""):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_bg(slide, ETHO_LIGHT)
     add_header_bar(slide)
@@ -171,7 +177,7 @@ def exercise_slide(title, enunciado, notes, slide_num, total, objetivo="Exercíc
     box.line.width = Pt(2)
     add_bullets(slide, Inches(1.0), Inches(1.8), Inches(11.5), Inches(4.5),
                 enunciado, font_size=16, color=ETHO_DARK)
-    add_footer(slide, slide_num, total, objetivo)
+    add_footer(slide, slide_num, total, objetivo, acronyms)
     add_notes(slide, notes)
     return slide
 
@@ -210,7 +216,7 @@ s = content_slide(
 ❓ PERGUNTA: "Qual objetivo vocês acham mais difícil?" (geralmente #5 — avaliar empiricamente)
 ➡️ TRANSIÇÃO: Competências.""",
     2, TOTAL, "Estabelecer objetivos mensuráveis"
-)
+, acronyms="HCI = Human-Computer Interface — Interface Humano-Computador  ·  HITL = Human-in-the-Loop — Humano no Ciclo")
 
 # Slide 3 — Competências
 s = content_slide(
@@ -226,7 +232,7 @@ s = content_slide(
     """📖 EXPLICAÇÃO: Este módulo eleva C3 (MCP & Tool Use) de Básico para Intermediário. É o núcleo da aula. C6 (Security) é introduzido como Básico via a matriz de risco e HITL — o aprofundamento vem em ETHAGT13.
 ➡️ TRANSIÇÃO: Agenda.""",
     3, TOTAL, "Conectar ao Framework Etho"
-)
+, acronyms="AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo")
 
 # Slide 4 — Agenda
 s = content_slide(
@@ -247,7 +253,7 @@ s = content_slide(
     """📖 EXPLICAÇÃO: O bloco 1 é teoria + princípios. O bloco 2 é prática + engenharia. O quiz final tem 5 perguntas.
 ➡️ TRANSIÇÃO: Por que ACI importa?""",
     4, TOTAL, "Mostrar roteiro da aula"
-)
+, acronyms="SWE-bench = Software Engineering Benchmark — benchmark de issues reais do GitHub")
 
 # Slide 5 — Motivação
 s = content_slide(
@@ -323,7 +329,7 @@ s = content_slide(
 ❓ PERGUNTA: "Quem aqui já usou function calling?" (calibrar)
 ➡️ TRANSIÇÃO: O JSON Schema é o contrato.""",
     8, TOTAL, "Explicar o mecanismo de function calling"
-)
+, acronyms="LLM = Large Language Model — Modelo de Linguagem de Grande Escala")
 
 # Slide 9 — JSON Schema
 s = code_slide(

@@ -428,6 +428,8 @@
 **Animação**: Fatias aparecem
 **Tempo**: 1.5 min
 
+**Rodape**: ACI = Agent-Computer Interface — Interface Agente-Computador
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: "Agente falhou em 30% dos casos" é inútil. "Agente falhou: 60% tool errada, 20% alucinação, 10% loop, 10% incompleto" é actionable. Categorização direciona esforço. Se 60% é tool errada, invista em ACI (melhorar descrição de tools). Se 20% é alucinação, ajuste prompt para exigir grounding. Se 10% loop, ajuste max_steps e detecção de repetição. Sem categoria, você corre atrás de falhas sem prioridade.
 💡 ANALOGIA: É como triagem médica. Não basta dizer "está doente". Tem que dizer "é gripe", "é dengue", "é fratura". Cada categoria tem tratamento diferente.

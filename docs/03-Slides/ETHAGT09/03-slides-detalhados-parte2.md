@@ -457,6 +457,8 @@
 **Imagem**: Diagrama de sequência estilo UML
 **Tempo**: 2 min
 
+**Rodape**: SSE = Server-Sent Events — eventos enviados pelo servidor
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: O fluxo do A2A é elegante. Passo 1: o agente A descobre o Agent Card do agente B fazendo GET em `/.well-known/agent.json` (padrão inspirado em HTTPS well-known). O Agent Card diz: capacidades, endpoints, autenticação. Passo 2: A envia uma Task para B via POST. Passo 3: B processa e retorna status (working, completed, failed) + resultado. Passo 4: para tarefas longas, B pode fazer streaming via SSE (Server-Sent Events) — updates em tempo real. O protocolo é HTTP-based, o que facilita adoção. Não reinventa a roda — usa REST + JSON.
 💡 ANALOGIA: É como contratar um freelancer. Você vê o perfil dele (Agent Card), envia um brief (Task), ele trabalha e entrega. Se demora, ele manda updates (SSE).
@@ -529,6 +531,8 @@
 **Animação**: Timeline cresce da esquerda para direita
 **Imagem**: Timeline histórica
 **Tempo**: 1.5 min
+
+**Rodape**: ACL = Agent Communication Language — linguagem de comunicacao entre agentes  ·  FIPA = Foundation for Intelligent Physical Agents — padrao para agentes  ·  KQML = Knowledge Query and Manipulation Language — linguagem para agentes
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Vale contextualizar: comunicação multi-agente não é nova. FIPA (Foundation for Intelligent Physical Agents, anos 90) definiu padrões de comunicação ACL (Agent Communication Language). FIPA-ACL tem performatives — request, inform, propose, accept, reject — que mapeiam para o que LLM agents fazem implicitamente. KQML (Knowledge Query and Manipulation Language) foi o predecessor. A lição é importante: muita coisa "nova" em LLM agents já foi pensada em sistemas multi-agente clássicos. Os conceitos de performatives, blackboard, actor model são dos anos 70-90. O que é novo é a viabilidade com LLMs — não os conceitos.

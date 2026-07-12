@@ -81,6 +81,8 @@
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
 
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Este módulo leva C1 ao nível Avançado — você consegue projetar sistemas multi-agente e justificar escolhas arquiteturais. C2 atinge Intermediário — você domina os conceitos de sistemas multi-agente e os aplica. As outras três ficam em Básico, mas com aprofundamento em módulos posteriores (ETHAGT10 aprofunda topologias, ETHAGT11 aprofunda event-driven).
 💡 ANALOGIA: É como ter faixa preta em um martial art (C1 Avançado) e faixa azul em outro (C2 Intermediário). Hoje vocês consolidam a faixa preta em programação agêntica e sobem para faixa azul em multi-agent.
@@ -163,6 +165,8 @@
 **Animação**: Marcos aparecem sequencialmente (on click)
 **Imagem**: Convergência de 4 rios em um lago
 **Tempo**: 1 min
+
+**Rodape**: ReAct = Reasoning and Acting — padrao de loop Thought / Action / Observation
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Multi-agent systems não são ideia nova — existem desde a década de 80 (HEARSAY-II, blackboard clássico; FIPA-ACL, anos 90). Mas três coisas mudaram: (1) LLMs ficaram bons em reasoning e tool calling, permitindo agentes flexíveis; (2) frameworks como AutoGen e CAMEL mostraram que LLM agents podem conversar produtivamente; (3) o custo baixou o suficiente para que múltiplos agentes sejam economicamente viáveis. A publicação do AutoGen em 2023 e do Swarm em 2024 são marcos porque mostram padrões reproduzíveis.
@@ -349,6 +353,8 @@
 **Animação**: Números reordenam para 1, 2, 3
 **Imagem**: Ícone de queue desordenada
 **Tempo**: 1 min
+
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Mesmo que nenhuma mensagem se perca, elas podem chegar fora de ordem. Por quê? Em sistemas distribuídos, mensagens podem tomar rotas diferentes com latência variável. Se a mensagem 2 chega antes da 1, o receptor processa na ordem errada e o estado fica inconsistente. Em LLM agents, isso é crítico: a ordem do contexto afeta a interpretação. Se o agente vê a resposta antes da pergunta, alucina. Mitigações: sequence numbers (cada mensagem tem um número sequencial; o receptor ordena), timestamps Lamport (ordem causal), ou fila ordenada (broker garante ordem).
@@ -843,6 +849,8 @@ class Blackboard:
 **Animação**: Código aparece linha a linha
 **Imagem**: Código Python com syntax highlighting
 **Tempo**: 2 min
+
+**Rodape**: CRDT = Conflict-free Replicated Data Type — tipo de dado replicado sem conflito
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A implementação é simples em conceito. Um blackboard é uma lista de entradas. Cada entrada tem: quem escreveu (agent_id), quando (timestamp), o quê (content), e o tipo (fact, hypothesis, result). Agentes leem (read) e escrevem (write). Em memória, é um dict/list compartilhado — rápido mas volátil (se o processo cai, perde tudo). Persistente usa Postgres ou Redis — resiliente e distribuído. O ponto crítico é concorrência: se 2 agentes escrevem ao mesmo tempo, precisa de locking (read/write lock) ou CRDT (Conflict-free Replicated Data Type).

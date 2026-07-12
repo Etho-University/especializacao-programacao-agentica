@@ -79,6 +79,8 @@
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
 
+**Rodape**: MCP = Model Context Protocol — Protocolo de Contexto de Modelo
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Esta é a aula de culminância técnica. C1 e C2 atingem Avançado aqui — vocês saem capazes de arquitetar sistemas onde agentes geram agentes. C4 também chega ao Avançado porque memória acumulada é central em auto-aprendizado. Mas o destaque é C6: Agent Security salta para Intermediário porque meta-agentes introduzem riscos novos (recursão, drift, auto-modificação) que vocês precisam saber mitigar.
 💡 ANALOGIA: É como tirar o brevet de piloto comercial. Você não só voa — você é responsável por voos com passageiros. O nível de rigor sobe.
@@ -161,6 +163,8 @@
 **Animação**: Marcos aparecem sequencialmente
 **Imagem**: Logos/arXiv IDs de cada paper
 **Tempo**: 1 min
+
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Três coisas convergiram. Primeiro, modelos ficaram bons o suficiente para gerar configuração declarativa (JSON, YAML, código) de forma confiável. Segundo, surgiram frameworks de avaliação que permitem medir se uma configuração gerada é boa. Terceiro, a escala de adoção tornou a otimização manual inviável. A combinação desses três fatores tornou a meta-agência não apenas viável, mas necessária. 2023 foi o ano seminal: DSPy, Voyager e Promptbreeder em meses.
@@ -849,6 +853,8 @@
 **Animação**: Loop percorre o diagrama, HITL aparece como checkpoint
 **Imagem**: —
 **Tempo**: 2 min
+
+**Rodape**: HITL = Human-in-the-Loop — Humano no Ciclo
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Este diagrama é o coração do strategy evolver. Sigam: a estratégia atual é a config em produção. O evolver gera variações (mutação — seja por DSPy, Promptbreeder ou reescrita manual). As variações são avaliadas em um subset de tarefas. Se uma variação é melhor que a atual, ela substitui. Se não, a atual se mantém. E o loop repete. O HITL aparece como audit periódico — a cada N ciclos, um humano revisa para prevenir drift. Este padrão — mutação + seleção + retenção — é evolução biológica aplicada a configuração. É poderoso, mas sem HITL pode driftar. O audit é o que mantém o sistema alinhado com o objetivo real.

@@ -22,6 +22,8 @@
 **Diagrama**: Logo Etho + fundo abstrato (árvore de raciocínio)
 **Tempo**: 1 min
 
+**Rodape**: CoT = Chain-of-Thought — Cadeia de Pensamento
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Bem-vindos ao ETHAGT04. Esta é a aula que separa quem entende agentes de quem entende agentes INTELIGENTES. Em ETHAGT01 vocês viram o ReAct — o padrão fundacional. Hoje vamos ver suas evoluções: como fazer um agente PLANEJAR antes de agir, como fazer ele EXPLORAR múltiplos caminhos (em vez de seguir um só), como fazer ele APRENDER com os próprios erros.
 💡 ANALOGIA: ETHAGT01 foi aprender a andar. Hoje vocês vão aprender a correr, pular e escalar.
@@ -46,6 +48,8 @@
 
 **Tempo**: 2 min
 
+**Rodape**: LATS = Language Agent Tree Search — Busca em Arvore com LLM  ·  ReAct = Reasoning and Acting — padrao de loop Thought / Action / Observation  ·  ReWOO = Reasoning WithOut Observation — raciocinio sem observacao intermediaria  ·  ToT = Tree of Thoughts — Arvore de Pensamentos
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Cada objetivo é mensurável. O mais importante é #4 — trade-offs. Não existe "melhor técnica de raciocínio". Existe a técnica certa para o problema certo. Se ao final da aula vocês sabem escolher, a aula funcionou.
 💡 ANALOGIA: É como ter uma caixa de ferramentas com 7 ferramentas. Não usar sempre a mesma — saber qual serve para cada problema.
@@ -68,6 +72,8 @@
 | C5 AgentOps & Avaliação | **B** |
 
 **Tempo**: 1 min
+
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: C1 atinge Intermediário. C2 entra em Básico porque LATS e Reflexion já tocam em multi-step coordination. C4 (memória) é tocado por Reflexion, que usa memória de erros. C5 é tocado pelos benchmarks que vamos discutir (GSM8K, GAIA).
@@ -127,6 +133,8 @@
 
 **Diagrama**: `12-Diagrams/ETHAGT04/reasoning-spectrum.mmd`
 **Tempo**: 1 min
+
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala  ·  MCTS = Monte Carlo Tree Search — Busca em Arvore de Monte Carlo
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Cada técnica resolve uma limitação da anterior. CoT adiciona raciocínio. ReAct adiciona ação. ToT adiciona exploração. LATS adiciona busca sistemática. Reflexion adiciona aprendizado. Self-Discover adiciona meta-raciocínio. o1 traz o raciocínio para dentro do modelo.
@@ -341,6 +349,8 @@
 
 **Tempo**: 2 min
 
+**Rodape**: HITL = Human-in-the-Loop — Humano no Ciclo
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Re-planejamento é o que torna Plan-and-Execute adaptativo. Sem ele, o plano é rígido. A questão é QUANDO disparar o replanner. Sinais objetivos: erro de tool, timeout, custo excedido. Sinais subjetivos: resultado "estranho" — mais difícil de detectar. Em produção, HITL no replanejamento é essencial para tarefas de alto risco.
 ➡️ TRANSIÇÃO: "Vamos subir de nível: Tree of Thoughts."
@@ -379,6 +389,8 @@
 
 **Diagrama**: `12-Diagrams/ETHAGT04/tot-search-tree.mmd`
 **Tempo**: 4 min
+
+**Rodape**: BFS = Breadth-First Search — Busca em Largura  ·  DFS = Depth-First Search — Busca em Profundidade
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: ToT é a generalização de CoT para uma árvore. Em vez de um caminho linear de pensamentos, você explora múltiplos caminhos. Em cada nó da árvore, o LLM gera vários candidatos. Um avaliador (também LLM) pontua cada candidato. Você explora os melhores, e se chegar a um beco sem saída, volta (backtrack). É poderoso mas caro — cada nó da árvore é uma chamada de LLM.
@@ -425,6 +437,8 @@
 - **Quando vale**: problema difícil (GSM8K hard, GAIA, SWE-bench) onde acertar vale mais que economizar
 
 **Tempo**: 3 min
+
+**Rodape**: SWE-bench = Software Engineering Benchmark — benchmark de issues reais do GitHub
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: ToT e LATS são caros. ToT com branching factor 3 e profundidade 3 = 27 chamadas de LLM. LATS com 5 iterações e 3 simulações cada = 15+ chamadas. Em produção, isso pode significar $0.50-$1.00 por execução. Vale quando o problema é difícil o suficiente para justificar. Não vale para "qual é a capital da França".

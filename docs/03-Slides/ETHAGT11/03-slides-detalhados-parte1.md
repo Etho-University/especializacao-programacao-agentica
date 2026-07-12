@@ -79,6 +79,8 @@
 **Imagem**: Badge visual por competência (círculos coloridos)
 **Tempo**: 1 min
 
+**Rodape**: AgentOps = Agent Operations — operacao e monitoramento de agentes em producao  ·  MCP = Model Context Protocol — Protocolo de Contexto de Modelo
+
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: O Framework Etho tem 6 competências em 3 níveis. Este módulo eleva C1 e C2 ao nível Avançado — significa que vocês vão ser capazes de arquitetar sistemas multi-agente orientados a eventos em produção. C5 atinge Intermediário aqui (vocês veem tracing distribuído, mas AgentOps profunda vem em ETHAGT12).
 💡 ANALOGIA: Vocês já sabem dirigir na cidade (Básico). Em ETHAGT10 (multi-agente), aprenderam rodovia (Intermediário). Agora vão dirigir em tráfego intenso com GPS e sistemas de segurança (Avançado).
@@ -107,6 +109,8 @@
 **Animação**: Timeline cresce da esquerda para direita (500ms)
 **Imagem**: Ícones de relógio por seção
 **Tempo**: 1 min
+
+**Rodape**: HITL = Human-in-the-Loop — Humano no Ciclo
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: A aula tem dois blocos. O primeiro cobre fundamentos (por que event-driven), mensageria (a "poeira" de brokers) e workflow engines. O segundo aprofunda durable execution, resiliência e fecha com boas práticas. Há duas DEMOS ao vivo — uma com Kafka, outra com Temporal.
@@ -161,6 +165,8 @@
 **Animação**: Marcos aparecem sequencialmente da esquerda
 **Imagem**: Ícones por marco (log, engrenagem, código, agente, durability)
 **Tempo**: 1 min
+
+**Rodape**: LLM = Large Language Model — Modelo de Linguagem de Grande Escala
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Event-driven não é novo — Kafka existe desde 2011. Mas a combinação com agentes de LLM é recente. Agentes executam por minutos ou horas (vs segundos das aplicações tradicionais), o custo de recomputação é alto (cada token custa), e a necessidade de HITL (esperar humano aprovar) exige pausas duráveis. Tudo isso convergiu em 2024.
@@ -338,6 +344,8 @@
 **Animação**: Cards aparecem um a um; respostas reveladas após votação
 **Imagem**: Cards coloridos
 **Tempo**: 1.5 min
+
+**Rodape**: RAG = Retrieval-Augmented Generation — Geracao Aumentada por Recuperacao
 
 **Notas do Professor**:
 📖 EXPLICAÇÃO COMPLETA: Respostas: (1) Síncrono — usuário espera resposta em chat. (2) Assíncrono — processamento em massa, longa duração. (3) Síncrono com timeout — baixa latência, mas com fallback. (4) Assíncrono — coordenação complexa, longa duração. O ponto não é acertar — é justificar.
