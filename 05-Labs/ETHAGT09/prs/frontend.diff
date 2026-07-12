@@ -1,0 +1,28 @@
+diff --git a/src/components/LoginForm.tsx b/src/components/LoginForm.tsx
+index 8a3b2c1..f4e5d6a 100644
+--- a/src/components/LoginForm.tsx
++++ b/src/components/LoginForm.tsx
+@@ -12,7 +12,14 @@ const LoginForm = () => {
+   const [password, setPassword] = useState('');
+   const [error, setError] = useState('');
+ 
+-  const handleSubmit = async () => {
++  // TODO: refatorar essa função depois
++  // FIXME: validar email no frontend antes de enviar
++  const handleSubmit = async (e: any) => {
++    e.preventDefault();
++    if (!email || !password) {
++      setError('Preencha todos os campos');
++      return;
++    }
+     try {
+       const response = await fetch('/api/auth/login', {
+         method: 'POST',
+@@ -21,6 +28,7 @@ const LoginForm = () => {
+         },
+         body: JSON.stringify({ email, password }),
+       });
++      // Tratar diferentes status codes
+       if (response.ok) {
+         const data = await response.json();
+         localStorage.setItem('token', data.token);

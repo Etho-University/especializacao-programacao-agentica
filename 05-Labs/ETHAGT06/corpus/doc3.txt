@@ -1,0 +1,35 @@
+# Relatório de Dados de Usage — Novembro 2025
+
+## Métricas Gerais
+
+| Métrica | Valor |
+|---------|-------|
+| Usuários ativos | 15.234 |
+| Sessões totais | 89.567 |
+| Tempo médio de sessão | 4m32s |
+| Taxa de bounce | 34,2% |
+
+## Por Plataforma
+
+### Mobile
+- Usuários: 11.234 (73,7%)
+- Sessões: 56.789
+- Tempo médio: 5m12s
+- Dispositivos: 68% Android, 32% iOS
+
+### Desktop
+- Usuários: 4.000 (26,3%)
+- Sessões: 32.778
+- Tempo médio: 3m45s
+- Navegadores: Chrome 78%, Firefox 12%, Safari 8%, Outros 2%
+
+## Funcionalidades Mais Usadas
+
+1. Dashboard — 67% dos usuários
+2. Relatórios — 45% dos usuários
+3. Configurações — 23% dos usuários
+4. API Docs — 12% dos usuários
+
+## Observações
+
+O engajamento aumentou 15% em relação a outubro. A nova feature de dark mode contribuiu significativamente para a retenção.

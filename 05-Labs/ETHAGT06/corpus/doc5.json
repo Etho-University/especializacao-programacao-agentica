@@ -1,0 +1,15 @@
+{
+  "dataset": "metricas_plataforma",
+  "periodo": "2025-Q3",
+  "dados": [
+    {"mes": "julho", "receita": 125000, "custos": 89000, "margem": 28.8},
+    {"mes": "agosto", "receita": 132000, "custos": 91000, "margem": 31.1},
+    {"mes": "setembro", "receita": 141000, "custos": 95000, "margem": 32.6}
+  ],
+  "kpi": {
+    "cac": 150,
+    "ltv": 2400,
+    "churn_rate": 3.2,
+    "nps": 72
+  }
+}
