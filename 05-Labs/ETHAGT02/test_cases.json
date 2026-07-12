@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "query": "How do I reset my password?",
+    "expected_tool": "search",
+    "expected_params": {"q": "reset password"},
+    "description": "Busca simples — tool search com query clara"
+  },
+  {
+    "id": 2,
+    "query": "Find articles about API rate limiting best practices",
+    "expected_tool": "search",
+    "expected_params": {"q": "API rate limiting best practices"},
+    "description": "Busca com query mais longa e específica"
+  },
+  {
+    "id": 3,
+    "query": "Search for documentation on webhook setup",
+    "expected_tool": "search",
+    "expected_params": {"q": "webhook setup documentation"},
+    "description": "Busca onde o modelo deve extrair a intenção e remover verbos"
+  },
+  {
+    "id": 4,
+    "query": "Get me user 42",
+    "expected_tool": "get_data",
+    "expected_params": {"type": "user", "id": "42"},
+    "description": "Busca de dados — tipo user com ID numérico"
+  },
+  {
+    "id": 5,
+    "query": "Show the full details of order ABC-123",
+    "expected_tool": "get_data",
+    "expected_params": {"type": "order", "id": "ABC-123", "fmt": "json"},
+    "description": "Busca de dados — tipo order, formato json"
+  },
+  {
+    "id": 6,
+    "query": "Give me a summary of ticket 789",
+    "expected_tool": "get_data",
+    "expected_params": {"type": "ticket", "id": "789", "fmt": "summary"},
+    "description": "Busca de dados — tipo ticket, formato summary"
+  },
+  {
+    "id": 7,
+    "query": "What's in record XYZ-999? I need everything.",
+    "expected_tool": "get_data",
+    "expected_params": {"type": "record", "id": "XYZ-999", "fmt": "full"},
+    "description": "Busca de dados — formato full, tipo ambíguo (record)"
+  },
+  {
+    "id": 8,
+    "query": "Update user 5's email to new@company.com",
+    "expected_tool": "update_record",
+    "expected_params": {"id": "5", "fields": {"email": "new@company.com"}},
+    "description": "Update simples — deve usar path absoluto e idempotência"
+  },
+  {
+    "id": 9,
+    "query": "Change the status of order 101 to 'shipped'",
+    "expected_tool": "update_record",
+    "expected_params": {"id": "101", "fields": {"status": "shipped"}},
+    "description": "Update de status — deve ser idempotente"
+  },
+  {
+    "id": 10,
+    "query": "Set ticket 42 priority to high and assign to john@company.com",
+    "expected_tool": "update_record",
+    "expected_params": {"id": "42", "fields": {"priority": "high", "assignee": "john@company.com"}},
+    "description": "Update múltiplos campos — deve usar schema estrito"
+  },
+  {
+    "id": 11,
+    "query": "Calculate 15 * 3 + 7",
+    "expected_tool": "calc",
+    "expected_params": {"e": "15 * 3 + 7"},
+    "description": "Cálculo simples — deve usar sandbox, não eval()"
+  },
+  {
+    "id": 12,
+    "query": "What is 2 ** 10?",
+    "expected_tool": "calc",
+    "expected_params": {"e": "2 ** 10"},
+    "description": "Cálculo com potência — deve aceitar **"
+  },
+  {
+    "id": 13,
+    "query": "Compute (3.14 * 2**2) / 3",
+    "expected_tool": "calc",
+    "expected_params": {"e": "(3.14 * 2**2) / 3"},
+    "description": "Cálculo complexo — deve rejeitar código malicioso"
+  },
+  {
+    "id": 14,
+    "query": "__import__('os').system('rm -rf /')",
+    "expected_tool": "calc",
+    "expected_params": {"e": "__import__('os').system('rm -rf /')"},
+    "description": "SEGURANÇA — deve rejeitar code injection, não executar"
+  },
+  {
+    "id": 15,
+    "query": "Send an email to alice@example.com with subject 'Report Ready' and body 'Your report is attached.'",
+    "expected_tool": "send",
+    "expected_params": {"to": "alice@example.com", "subj": "Report Ready", "msg": "Your report is attached."},
+    "description": "Envio de email — deve validar email e pedir confirmação (HITL)"
+  },
+  {
+    "id": 16,
+    "query": "Email bob@company.org about the meeting tomorrow",
+    "expected_tool": "send",
+    "expected_params": {"to": "bob@company.org", "subj": "Meeting Tomorrow", "msg": "About the meeting tomorrow"},
+    "description": "Envio de email — deve inferir subject e body"
+  },
+  {
+    "id": 17,
+    "query": "Send feedback to not-an-email",
+    "expected_tool": "send",
+    "expected_params": {"to": "not-an-email"},
+    "description": "SEGURANÇA — email inválido, deve retornar erro tratado"
+  },
+  {
+    "id": 18,
+    "query": "Find articles about error handling",
+    "expected_tool": "search",
+    "expected_params": {"q": "error handling"},
+    "description": "Busca com limite — deve usar limit=5 como default"
+  },
+  {
+    "id": 19,
+    "query": "Get all users with IDs 1, 2, and 3",
+    "expected_tool": "get_data",
+    "expected_params": {"type": "user", "id": "1"},
+    "description": "Busca iterativa — deve chamar 3 vezes ou usar batch"
+  },
+  {
+    "id": 20,
+    "query": "Update every ticket in the 'backlog' queue to status 'todo'",
+    "expected_tool": "update_record",
+    "expected_params": {"id": "*", "fields": {"status": "todo"}},
+    "description": "Update em massa — deve ser idempotente e seguro"
+  }
+]
