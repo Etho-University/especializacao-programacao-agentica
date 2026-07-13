@@ -1,0 +1,12 @@
+[
+  {"input": "How do I upgrade my plan?", "output": "Go to Billing > Upgrade Plan. Select your desired plan and confirm payment. The upgrade takes effect immediately.", "quality": 5},
+  {"input": "The API returns 403 Forbidden", "output": "A 403 error means your API key lacks permission. Check your key's scopes in Developer > API Keys and regenerate if needed.", "quality": 4},
+  {"input": "Can I schedule reports for automatic delivery?", "output": "Yes. In Reports, click Schedule, set the frequency (daily/weekly/monthly) and choose the delivery method (email, Slack, webhook).", "quality": 5},
+  {"input": "My data export failed with a timeout", "output": "Large exports may time out. Try filtering by date range to reduce the dataset, or use the API for programmatic access to large datasets.", "quality": 4},
+  {"input": "How do I set up a staging environment?", "output": "Create a separate workspace in Settings > Workspaces. Use the staging API key (found in Developer > API Keys) for non-production environments.", "quality": 5},
+  {"input": "The dashboard widget is not loading", "output": "This usually indicates a network issue. Try: 1) Refresh the page, 2) Check if the API endpoint is reachable, 3) Clear browser cache.", "quality": 4},
+  {"input": "Can I restrict access by IP address?", "output": "IP allowlisting is available on Enterprise plans. Configure it in Settings > Security > Network > IP Allowlist.", "quality": 5},
+  {"input": "How do I migrate data from the old system?", "output": "Use our Migration Tool in Settings > Import/Export. It supports CSV, JSON, and direct database connections. See docs.etho.com/migration for details.", "quality": 4},
+  {"input": "The mobile push notifications stopped working", "output": "Check: 1) Notifications are enabled in app settings, 2) Your device's notification permissions, 3) You're logged into the correct account.", "quality": 4},
+  {"input": "I need to generate a compliance report", "output": "Go to Reports > Compliance. Select the framework (SOC2, GDPR, HIPAA) and date range. The report generates in PDF and JSON formats.", "quality": 5}
+]

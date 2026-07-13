@@ -1,0 +1,26 @@
+[
+  {
+    "id": "TOP-01",
+    "title": "Impacto de técnicas de chunking na qualidade de RAG para documentos técnicos",
+    "domain": "retrieval-augmented-generation",
+    "research_question": "Quais técnicas de chunking (fixed-size, semantic, recursive) produzem melhor recall em documentos técnicos com tabelas e código?",
+    "scope": "Comparar 3 técnicas de chunking em corpus de documentação de API, medindo recall@5 e faithfulness com Ragas.",
+    "keywords": ["chunking", "RAG", "retrieval", "semantic-search", "documentation"]
+  },
+  {
+    "id": "TOP-02",
+    "title": "Trade-offs entre topologias multi-agente para code review",
+    "domain": "multi-agent-systems",
+    "research_question": "Hierarchical, flat e swarm produzem reviews de código com qualidade comparável? Qual tem melhor custo-benefício?",
+    "scope": "Implementar 3 topologias para code review, comparar qualidade (human evaluation), custo (tokens) e latência em 20 PRs reais.",
+    "keywords": ["multi-agent", "code-review", "topology", "hierarchical", "swarm"]
+  },
+  {
+    "id": "TOP-03",
+    "title": "Eficácia de memory systems em agentes de longa duração",
+    "domain": "agent-memory",
+    "research_question": "Agentes com memória episódica + semântica retêm mais contexto ao longo de 50+ interações vs. apenas janela de contexto?",
+    "scope": "Simular 50 interações com um agente de suporte, medir taxa de acerto em perguntas sobre interações anteriores com/sem memory system.",
+    "keywords": ["memory", "episodic", "long-context", "retention", "agent"]
+  }
+]

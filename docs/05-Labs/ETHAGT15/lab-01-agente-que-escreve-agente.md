@@ -7,7 +7,7 @@ Construir um meta-agente que, dada uma descrição de tarefa, gera automaticamen
 
 ## Preparação
 - Ambiente: Python 3.11+, `pip install openai pydantic`, `.env` com API key
-- Dados/recursos: 3 descrições de tarefas em `task_specs.json`
+- Dados/recursos: 3 descrições de tarefas em [`task_specs.json`](https://raw.githubusercontent.com/Etho-University/especializacao-programacao-agentica/main/05-Labs/ETHAGT15/task_specs.json)
 - Leitura prévia: Apostila ETHAGT15, Unidade 1 (Meta-agência) e Unidade 2 (Geração de agentes)
 
 ## Roteiro

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "SPEC-01",
+    "name": "Code Reviewer",
+    "description": "An agent that reviews Python code for bugs, security issues, and style violations. It receives a code snippet and returns a structured list of findings with severity levels.",
+    "input_schema": {"type": "string", "description": "Python code snippet to review"},
+    "output_schema": {"type": "array", "items": {"severity": "str", "line": "int", "message": "str", "suggestion": "str"}},
+    "tools_needed": ["static_analysis"],
+    "benchmark_queries": ["Review this code for SQL injection", "Find race conditions in this async function", "Check this class for SOLID violations"]
+  },
+  {
+    "id": "SPEC-02",
+    "name": "SQL Query Optimizer",
+    "description": "An agent that analyzes slow SQL queries and suggests optimizations including index creation, query rewriting, and schema changes. Receives a SQL query and execution plan, returns optimized version.",
+    "input_schema": {"query": "str", "execution_plan": "str"},
+    "output_schema": {"optimized_query": "str", "explanation": "str", "indexes_to_add": "list[str]"},
+    "tools_needed": ["explain_analyzer", "index_advisor"],
+    "benchmark_queries": ["Optimize this JOIN with 3 tables", "This subquery is slow, suggest alternative", "Add indexes for this WHERE clause pattern"]
+  },
+  {
+    "id": "SPEC-03",
+    "name": "API Documentation Generator",
+    "description": "An agent that generates OpenAPI/Swagger documentation from source code. Receives a Python file with FastAPI/Flask routes and produces complete API documentation with examples.",
+    "input_schema": {"type": "string", "description": "Python source file with API routes"},
+    "output_schema": {"openapi_yaml": "str", "endpoints_documented": "int", "coverage_pct": "float"},
+    "tools_needed": ["ast_parser", "type_extractor"],
+    "benchmark_queries": ["Generate docs for this FastAPI app", "Document all endpoints with request/response examples", "Add authentication headers to the OpenAPI spec"]
+  }
+]

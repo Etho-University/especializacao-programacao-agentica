@@ -1,0 +1,37 @@
+[
+  {
+    "id": "T1",
+    "type": "password_reset",
+    "text": "Esqueci minha senha e o link de redefinição não chega no meu email. Já verifiquei a caixa de spam.",
+    "expected_agent": "auth",
+    "expected_steps": ["verificar_cadastro", "reenviar_link", "confirmar_envio"]
+  },
+  {
+    "id": "T2",
+    "type": "billing",
+    "text": "Meu cartão foi cobrado duas vezes no mesmo mês. Preciso de reembolso da segunda cobrança.",
+    "expected_agent": "billing",
+    "expected_steps": ["verificar_cobranca", "gerar_reembolso", "confirmar_reembolso"]
+  },
+  {
+    "id": "T3",
+    "type": "bug_report",
+    "text": "O botão de exportar PDF não funciona. Quando clico, nada acontece. Testei no Chrome e Firefox.",
+    "expected_agent": "engineering",
+    "expected_steps": ["reproduzir_bug", "diagnosticar", "criar_issue", "responder_usuario"]
+  },
+  {
+    "id": "T4",
+    "type": "feature_request",
+    "text": "Gostaria de ter um modo escuro na aplicação. Muitos usuários estão pedindo isso no forum.",
+    "expected_agent": "product",
+    "expected_steps": ["registrar_feedback", "priorizar", "responder_com_timeline"]
+  },
+  {
+    "id": "T5",
+    "type": "technical",
+    "text": "Preciso integrar o sistema deles com nossa API REST. Qual é o endpoint de autenticação e quais são os rate limits?",
+    "expected_agent": "engineering",
+    "expected_steps": ["consultar_docs", "explicar_autenticacao", "informar_limits"]
+  }
+]

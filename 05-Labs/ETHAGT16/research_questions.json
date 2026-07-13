@@ -1,0 +1,44 @@
+[
+  {
+    "id": "RQ-01",
+    "question": "Can hierarchical multi-agent topologies with automatic delegation outperform flat architectures on complex software engineering tasks?",
+    "domain": "multi-agent-systems",
+    "methodology": "controlled-experiment",
+    "hypothesis": "Hierarchical topologies will achieve higher quality scores on complex tasks but with higher latency and cost.",
+    "variables": {
+      "independent": "agent topology (hierarchical vs flat vs swarm)",
+      "dependent": ["task_completion_rate", "quality_score", "latency", "token_cost"],
+      "controlled": "same LLM model, same task set, same evaluation rubric"
+    },
+    "expected_datasets": ["SWE-bench subset", "custom code review benchmark"],
+    "risks": ["small sample size may reduce statistical power", "LLM non-determinism across runs"]
+  },
+  {
+    "id": "RQ-02",
+    "question": "How does retrieval-augmented generation with agentic query refinement compare to naive RAG on ambiguous user queries?",
+    "domain": "rag",
+    "methodology": "comparative-study",
+    "hypothesis": "Agentic RAG with query refinement will resolve ambiguity in 70%+ of cases where naive RAG fails.",
+    "variables": {
+      "independent": "RAG approach (naive vs agentic with refinement)",
+      "dependent": ["answer_accuracy", "context_relevance", "user_satisfaction_proxy"],
+      "controlled": "same corpus, same embedding model, same LLM"
+    },
+    "expected_datasets": ["AmbigQA", "custom ambiguous queries from support tickets"],
+    "risks": ["refinement loop may increase latency beyond acceptable threshold"]
+  },
+  {
+    "id": "RQ-03",
+    "question": "What is the minimum viable memory system for an agent to maintain coherent multi-session conversations?",
+    "domain": "agent-memory",
+    "methodology": "ablation-study",
+    "hypothesis": "A lightweight episodic memory with semantic search is sufficient for 80% of multi-session coherence, without the overhead of a full knowledge graph.",
+    "variables": {
+      "independent": "memory system complexity (none vs episodic vs episodic+semantic vs full KG)",
+      "dependent": ["coherence_score", "retrieval_accuracy", "latency", "storage_cost"],
+      "controlled": "same agent, same conversation topics, same evaluation criteria"
+    },
+    "expected_datasets": ["custom multi-session conversation logs", "LongBench"],
+    "risks": ["KG construction overhead may not justify marginal quality gain"]
+  }
+]

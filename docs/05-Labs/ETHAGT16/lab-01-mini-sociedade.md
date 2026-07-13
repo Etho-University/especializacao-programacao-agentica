@@ -7,7 +7,7 @@ Simular uma mini sociedade de 5 agentes com papéis distintos (pesquisador, crí
 
 ## Preparação
 - Ambiente: Python 3.11+, `pip install openai`, `.env` com API key
-- Dados/recursos: 3 tópicos de pesquisa em `topics.json`
+- Dados/recursos: 3 tópicos de pesquisa em [`topics.json`](https://raw.githubusercontent.com/Etho-University/especializacao-programacao-agentica/main/05-Labs/ETHAGT16/topics.json)
 - Leitura prévia: Apostila ETHAGT16, Unidade 1 (Sociedades de agentes) e Unidade 2 (Simulações sociais)
 
 ## Roteiro

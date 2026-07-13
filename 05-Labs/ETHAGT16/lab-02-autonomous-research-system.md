@@ -7,7 +7,7 @@ Construir um protótipo de sistema de pesquisa autônoma que, dada uma pergunta 
 
 ## Preparação
 - Ambiente: Python 3.11+, `pip install openai`, `.env` com API key
-- Dados/recursos: 3 perguntas de pesquisa em `research_questions.json`
+- Dados/recursos: 3 perguntas de pesquisa em [`research_questions.json`](https://raw.githubusercontent.com/Etho-University/especializacao-programacao-agentica/main/05-Labs/ETHAGT16/research_questions.json)
 - Leitura prévia: Apostila ETHAGT16, Unidade 3 (Autonomous Research Systems) e Unidade 4 (Emergência)
 
 ## Roteiro

@@ -7,7 +7,7 @@ Usar DSPy para otimizar automaticamente os prompts e tools de um agente, medir o
 
 ## Preparação
 - Ambiente: Python 3.11+, `pip install dspy-ai openai`, `.env` com API key
-- Dados/recursos: dataset de treino (20 exemplos) e teste (10 exemplos) em `train.json` e `test.json`
+- Dados/recursos: dataset de treino (20 exemplos) e teste (10 exemplos) em [`train.json`](https://raw.githubusercontent.com/Etho-University/especializacao-programacao-agentica/main/05-Labs/ETHAGT15/train.json) e [`test.json`](https://raw.githubusercontent.com/Etho-University/especializacao-programacao-agentica/main/05-Labs/ETHAGT15/test.json)
 - Leitura prévia: Apostila ETHAGT15, Unidade 3 (Otimização automatizada) e Unidade 4 (Auto-aprendizado)
 
 ## Roteiro

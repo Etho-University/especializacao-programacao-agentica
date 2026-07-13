@@ -7,7 +7,7 @@ Implementar a mesma tarefa em duas topologias (Swarm com handoffs e Supervisor c
 
 ## Preparação
 - Ambiente: Python 3.11+, `pip install langgraph openai`, `.env` com API key
-- Dados/recursos: 5 tarefas de suporte técnico variadas em `tasks.json`
+- Dados/recursos: 5 tarefas de suporte técnico variadas em [`tasks.json`](https://raw.githubusercontent.com/Etho-University/especializacao-programacao-agentica/main/05-Labs/ETHAGT10/tasks.json)
 - Leitura prévia: Apostila ETHAGT10, Unidade 3 (Swarm) e Unidade 2 (Supervisor)
 
 ## Roteiro

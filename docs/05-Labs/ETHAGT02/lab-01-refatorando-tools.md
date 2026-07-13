@@ -7,7 +7,7 @@ Receber 5 tools mal-desenhadas, aplicar os princípios de ACI da Anthropic (poka
 
 ## Preparação
 - Ambiente: Python 3.11+, `pip install openai pydantic instructor`, `.env` com API key
-- Dados/recursos: arquivo `tools_v0.py` (fornecido com 5 tools ruins) e `test_cases.json` (20 casos)
+- Dados/recursos: arquivo [`tools_v0.py`](https://raw.githubusercontent.com/Etho-University/especializacao-programacao-agentica/main/05-Labs/ETHAGT02/tools_v0.py) (fornecido com 5 tools ruins) e [`test_cases.json`](https://raw.githubusercontent.com/Etho-University/especializacao-programacao-agentica/main/05-Labs/ETHAGT02/test_cases.json) (20 casos)
 - Leitura prévia: Apostila ETHAGT02, Unidade 2 (ACI como disciplina) e Unidade 5 (Erros comuns)
 
 ## Roteiro

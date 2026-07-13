@@ -1,0 +1,22 @@
+[
+  {"input": "How do I reset my password?", "output": "Go to Settings > Security > Reset Password. You'll receive a link via email.", "quality": 4},
+  {"input": "Can I export reports as PDF?", "output": "Yes. Navigate to Reports, click the export button, and select PDF format from the dropdown.", "quality": 5},
+  {"input": "The app crashes on login with Android 14", "output": "This is a known issue. Please update to version 2.3.1 which includes the fix for Android 14 compatibility.", "quality": 4},
+  {"input": "How do I add a team member?", "output": "Go to Team Management > Invite Member. Enter their email and select a role (Admin, Editor, Viewer).", "quality": 5},
+  {"input": "What are the API rate limits?", "output": "Free tier: 100 requests/hour. Pro tier: 1000 requests/hour. Enterprise: custom limits.", "quality": 3},
+  {"input": "I was charged twice this month", "output": "I'm sorry about that. I've verified your account and initiated a refund for the duplicate charge. You'll see it in 3-5 business days.", "quality": 5},
+  {"input": "How do I cancel my subscription?", "output": "Go to Billing > Subscription > Cancel Plan. Your access continues until the end of the current billing period.", "quality": 4},
+  {"input": "The CSV export is missing columns", "output": "This was fixed in v2.2.8. Please update your app. If the issue persists, try clearing your browser cache.", "quality": 4},
+  {"input": "Can I use SSO with my company?", "output": "SSO is available on Enterprise plans. Contact sales@etho.com to set up SAML or OIDC integration.", "quality": 5},
+  {"input": "My dashboard shows wrong numbers", "output": "Dashboard data refreshes every 15 minutes. If numbers seem wrong after that, try force-refreshing with Ctrl+Shift+R.", "quality": 3},
+  {"input": "How do I integrate with Slack?", "output": "Go to Integrations > Slack > Connect. Authorize the app and select which channels to receive notifications in.", "quality": 5},
+  {"input": "The mobile app is very slow", "output": "Try these steps: 1) Update to the latest version, 2) Clear app cache in Settings, 3) Check your network connection.", "quality": 4},
+  {"input": "I need to delete my account", "output": "Go to Settings > Account > Delete Account. This action is irreversible. All your data will be permanently removed.", "quality": 5},
+  {"input": "Can I get a discount for annual billing?", "output": "Yes! Annual billing saves 20% compared to monthly. Go to Billing > Change Plan and select the annual option.", "quality": 5},
+  {"input": "The search function returns irrelevant results", "output": "Search index updates hourly. For immediate results, try using specific keywords or filters. We're improving relevance in v2.4.", "quality": 3},
+  {"input": "How do I enable two-factor authentication?", "output": "Go to Settings > Security > Two-Factor Authentication. Scan the QR code with your authenticator app and enter the verification code.", "quality": 5},
+  {"input": "My team member can't access the project", "output": "Check their role in Team Management. Only Admin and Editor roles can access projects. If they're a Viewer, they need to be upgraded.", "quality": 4},
+  {"input": "Where can I find the API documentation?", "output": "Full API docs are at docs.etho.com/api. You can also access them from your dashboard under Developer > API Reference.", "quality": 5},
+  {"input": "The webhook is not firing", "output": "Verify: 1) The endpoint URL is correct and publicly accessible, 2) The webhook is enabled in Settings > Webhooks, 3) Check the delivery logs for errors.", "quality": 4},
+  {"input": "Can I customize the notification emails?", "output": "Yes. Go to Settings > Email Templates. You can customize the header, footer, and content of all transactional emails.", "quality": 5}
+]
